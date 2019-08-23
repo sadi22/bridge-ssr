@@ -113,7 +113,6 @@ class Index extends Component {
             </Head>
             <Layout>
                 <Menu menu={headerMenu} logo={logo}/>
-                {Section}
                 <div
                     // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML={{
