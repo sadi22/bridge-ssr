@@ -35,26 +35,26 @@ class Index extends Component {
   };
 
   static async getInitialProps() {
-    try {
-      const [page, posts, pages] = await Promise.all([
-        wp
-          .pages()
-          .slug('home')
-          .embed()
-          .then(data => {
-            return data[0];
-          }),
-        wp.posts().embed(),
-        wp.pages().embed(),
-      ]);
+    // try {
+    //   const [page, posts, pages] = await Promise.all([
+    //     wp
+    //       .pages()
+    //       .slug('home')
+    //       .embed()
+    //       .then(data => {
+    //         return data[0];
+    //       }),
+    //     wp.posts().embed(),
+    //     wp.pages().embed(),
+    //   ]);
 
-      return { page, posts, pages };
-    } catch (err) {
-      if (err.data.status === 403) {
-        tokenExpired();
-      }
-    }
-    return null;
+    //   return { page, posts, pages };
+    // } catch (err) {
+    //   if (err.data.status === 403) {
+    //     tokenExpired();
+    //   }
+    // }
+    // return null;
   }
 
 
@@ -110,17 +110,17 @@ class Index extends Component {
                 <meta charSet="utf-8" />
                 <title>{page.title.rendered}</title>
             </Head>
-            <Layout>
-                <Menu menu={headerMenu} logo={logo}/>
-                {Section}
-                <div
-                    // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{
-                        __html: page.content.rendered,
-                    }}
-                />
-                <Footer menu={footerMenu} logo={logo}/>
-            </Layout>
+            // <Layout>
+            //     <Menu menu={headerMenu} logo={logo}/>
+            //     {Section}
+            //     <div
+            //         // eslint-disable-next-line react/no-danger
+            //         dangerouslySetInnerHTML={{
+            //             __html: page.content.rendered,
+            //         }}
+            //     />
+            //     <Footer menu={footerMenu} logo={logo}/>
+            // </Layout>
         </Fragment>
     );
   }
