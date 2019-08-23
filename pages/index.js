@@ -9,7 +9,7 @@ import WPAPI from 'wpapi';
 import PageWrapper from '../components/PageWrapper';
 // import Menu from '../components/Header/index';
 // import Footer from '../components/Footer/index';
-// import Config from '../config';
+import Config from '../config';
 
 const wp = new WPAPI({ endpoint: Config.apiUrl });
 
