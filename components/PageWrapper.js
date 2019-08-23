@@ -12,9 +12,9 @@ const PageWrapper = Comp =>
   class extends React.Component {
     static async getInitialProps(args) {
       const [headerMenu, footerMenu, logo, childProps] = await Promise.all([
-        wp.menus().id('header-menu'),
-        wp.menus().id('footer-menu'),
-        wp.site_logo(),
+        {},
+        {},
+        '',
         Comp.getInitialProps(args),
       ]);
 
