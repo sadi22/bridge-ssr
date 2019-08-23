@@ -19,21 +19,21 @@ const getSlug = url => {
 class Footer extends Component{
     render() {
         const { logo, menu } = this.props;
-        // const menuItems = menu.items.map(item => {
-        //     const slug = getSlug(item.url);
-        //     const actualPage = item.object === 'category' ? 'category' : 'post';
-        //     return (
-        //         <li key={item.ID}>
-        //             <Link
-        //                 as={`/${item.object}/${slug}`}
-        //                 href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
-        //                 key={item.ID}
-        //             >
-        //                 <a>{item.title}</a>
-        //             </Link>
-        //         </li>
-        //     );
-        // });
+        const menuItems = menu.items.map(item => {
+            const slug = getSlug(item.url);
+            const actualPage = item.object === 'category' ? 'category' : 'post';
+            return (
+                <li key={item.ID}>
+                    <Link
+                        as={`/${item.object}/${slug}`}
+                        href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+                        key={item.ID}
+                    >
+                        <a>{item.title}</a>
+                    </Link>
+                </li>
+            );
+        });
         return (
           <Fragment>
             <Head>
@@ -58,6 +58,7 @@ class Footer extends Component{
                         <div className="col-lg-6">
                             <div className="footer-menu text-center">
                                 <ul>
+                                    {menuItems}
                                 </ul>
                             </div>
                         </div>
