@@ -34,28 +34,28 @@ import PageWrapper from '../components/PageWrapper';
 //     id: '',
 //   };
 
-//   static async getInitialProps() {
-//     try {
-//       const [page, posts, pages] = await Promise.all([
-//         wp
-//           .pages()
-//           .slug('home')
-//           .embed()
-//           .then(data => {
-//             return data[0];
-//           }),
-//         wp.posts().embed(),
-//         wp.pages().embed(),
-//       ]);
+  // static async getInitialProps() {
+  //   try {
+  //     const [page, posts, pages] = await Promise.all([
+  //       wp
+  //         .pages()
+  //         .slug('home')
+  //         .embed()
+  //         .then(data => {
+  //           return data[0];
+  //         }),
+  //       wp.posts().embed(),
+  //       wp.pages().embed(),
+  //     ]);
 
-//       return { page, posts, pages };
-//     } catch (err) {
-//       if (err.data.status === 403) {
-//         tokenExpired();
-//       }
-//     }
-//     return null;
-//   }
+  //     return { page, posts, pages };
+  //   } catch (err) {
+  //     if (err.data.status === 403) {
+  //       tokenExpired();
+  //     }
+  //   }
+  //   return null;
+  // }
 
 
 //   render() {
@@ -131,6 +131,28 @@ import PageWrapper from '../components/PageWrapper';
 
 
 class Index extends Component {
+    static async getInitialProps() {
+    // try {
+    //   const [page, posts, pages] = await Promise.all([
+    //     wp
+    //       .pages()
+    //       .slug('home')
+    //       .embed()
+    //       .then(data => {
+    //         return data[0];
+    //       }),
+    //     wp.posts().embed(),
+    //     wp.pages().embed(),
+    //   ]);
+
+    //   return { page, posts, pages };
+    // } catch (err) {
+    //   if (err.data.status === 403) {
+    //     tokenExpired();
+    //   }
+    // }
+    return null;
+  }
   render() {
     console.log(wp.posts().embed());
     return <p>Hello World</p>
