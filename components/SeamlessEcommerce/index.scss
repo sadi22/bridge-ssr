@@ -1,0 +1,53 @@
+@import '../../src/styles/style';
+
+.section-title{
+    padding-bottom: 64px;
+
+    h2{
+        text-transform: capitalize;
+        font-weight: 500;
+        margin-bottom: 23px;
+    }
+
+    p{
+        color: #282c47;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 32px;
+    }
+}
+
+.seamless-ecommerce{
+    padding-top: 164px;
+
+    .section-title{
+        h2{
+            font-size: calc(34px + (38 - 34) * ((100vw - 320px) / (1920 - 320)));
+            line-height: 1.26;
+        }
+    }
+
+    .seamless-image-area{
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: center;
+        max-width: 963px;
+        width: 100%;
+        margin: 0 auto;
+
+        .seamless-image{
+            img{
+                box-shadow: 0 2px 7px rgba(40, 44, 71, 0.24);
+                border-radius: 8px
+            }
+
+            &.img1{
+                padding-right: 15px;
+            }
+            &.img2{
+                padding-left: 15px;
+            }
+        }
+    }
+}

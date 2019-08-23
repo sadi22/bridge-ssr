@@ -1,0 +1,93 @@
+@import '../../src/styles/style';
+
+
+.site-footer{
+    padding-top: 90px;
+    padding-bottom: 25px;
+    
+    @media #{$device_768_991} {
+        padding-top: 70px;
+    }
+    
+    .footer-logo{
+        @media #{$device_768_991} {
+            text-align: center;
+        }
+    }
+    
+    .footer-menu{
+        @media #{$device_768_991} {
+            margin: 18px 0;
+        }
+        
+        ul{
+            display: flex;
+            flex-flow: wrap;
+            align-items: center;
+            justify-content: center;
+            
+            li{
+                margin-left: 40px;
+                
+                &:first-child{
+                    margin-left: 0;
+                }
+                
+                a{
+                    color: #1d1f2c;
+                    font-family: $roboto;
+                    font-size: 14px;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    
+                    &:hover{
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+    
+    .footer-social-contact{
+        ul{
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            justify-content: flex-end;
+            
+            @media #{$device_768_991} {
+                justify-content: center;
+            }
+            
+            li{
+                a{
+                    font-size: 20px;   
+                    padding: 0 5px;
+                    color: #9ca4b7;
+                    
+                    &:hover{
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+    
+    .copyright-text{
+        margin-top: 55px;
+        
+        @media #{$device_768_991} {
+            margin-top: 25px;
+        }
+        
+        p{
+            color: #9ca4b7;
+            font-family: $lato;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: -0.1px;
+            line-height: 18px;
+            text-transform: capitalize;
+        }
+    }
+}

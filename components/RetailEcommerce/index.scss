@@ -1,0 +1,54 @@
+@import '../../src/styles/style';
+
+.section-title{
+    padding-bottom: 64px;
+    
+    h2{        
+        text-transform: capitalize;
+        font-weight: 500;
+        margin-bottom: 23px;
+    }
+    
+    p{
+        color: #282c47;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 32px;
+    }
+}
+
+.retail-ecommerce{
+    padding-top: 90px;
+    
+    .section-title{
+        h2{
+            font-size: calc(34px + (37 - 34) * ((100vw - 320px) / (1920 - 320))); 
+            line-height: 1.26; 
+        }
+        
+    }
+    
+    .retailer-content{
+        padding-right: 60px;
+        
+        h5{
+            font-weight: 500;
+            margin-bottom: 26px;
+        }
+        p{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 32px;
+        }
+    }
+    .retailer-image{
+        .lines-accent{
+            /*position: absolute;*/
+        }
+        
+        img{
+            border-radius: 7px;
+        }
+        
+    }
+}

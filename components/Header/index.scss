@@ -1,0 +1,90 @@
+@import '../../src/styles/style';
+
+.header-main{
+    background: #fff;
+    padding: 10px 0;
+    
+    .navbar{
+        padding: 0;
+        
+        .navbar-collapse{
+            @media #{$device_992_1199} {
+                margin-top: 10px;
+            }
+        }
+        
+        .navbar-nav{
+            a{
+                color: #1d1f2c;
+                font-family: $roboto;
+                font-size: 14px;
+                font-weight: 500;
+                text-transform: capitalize;
+                margin-left: 22px;
+                
+                &:first-child{
+                    margin-left: 0;
+                }
+                
+                &:hover,
+                &.active{
+                    color: $primary-color;
+                }
+                
+                @media #{$device_992_1199} {
+                    border-bottom: 1px solid #eee;
+                    margin-left: 0;
+                }
+            }
+        }
+        
+        
+        
+        .navbar-toggler{
+            border: 1px solid $primary-color;
+            border-radius: 0;
+            .navbar-toggler-icon{
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(31, 193, 195)' stroke-width='2' stroke-linecap='' stroke-miterlimit='1' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+                
+            }
+        }
+        
+        .getStarted{
+            height: 32px;
+            line-height: 30px;
+            padding: 0 15px;
+            border-radius: 2px;
+            border: 1px solid $primary-color;
+            color: $primary-color;
+            font-family: $lato;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            text-transform: capitalize;
+            display: inline-flex;
+            align-items: center;
+            
+            @media #{$device_992_1199} {
+                margin-top: 20px;
+            }
+            
+            svg{
+                margin-left: 10px;
+                
+                path{
+                    @extend .transition-3s;
+                }
+            }
+            
+            &:hover{
+                background: $primary-color;
+                color: #fff;
+                
+                
+                svg path{
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}
