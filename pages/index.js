@@ -62,7 +62,6 @@ class Index extends Component {
   render() {
     const { id } = this.state;
     const { posts, pages, headerMenu, page, logo, footerMenu } = this.props;
-    const {acf} = page;
     const fposts = posts.map(post => {
       return (
         <ul key={post.slug}>
@@ -92,17 +91,7 @@ class Index extends Component {
       );
     });
 
-    const Section = acf.sections.map(section => {
-        return (
-            <Fragment key={section.acf_fc_layout}>
-                {section.acf_fc_layout === 'banner' ? <Banner {...section}/> : ''}
-                {section.acf_fc_layout === 'title_and_two_image_columns' ? <SeamlessEcommerce {...section}/> : ''}
-                {section.acf_fc_layout === 'feature_box_with_column' ? <DriveSales {...section}/> : ''}
-                {section.acf_fc_layout === 'bottom_cta' ? <BottomCTA {...section}/> : ''}
-            </Fragment>
 
-        );
-    });
 
     return (
         <Fragment>
