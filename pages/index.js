@@ -3,7 +3,7 @@ import React, {Component, Fragment} from 'react';
 // import dynamic from 'next/dynamic'
 // import Head from 'next/head';
 // import Router from 'next/router';
-// import WPAPI from 'wpapi';
+import WPAPI from 'wpapi';
 // import Layout from '../components/Layout';
 
 // import PageWrapper from '../components/PageWrapper';
@@ -132,6 +132,7 @@ import React, {Component, Fragment} from 'react';
 
 class Index extends Component {
   render() {
+    console.log(wp.posts().embed());
     return <p>Hello World</p>
   }
 }
