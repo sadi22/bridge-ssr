@@ -11,7 +11,7 @@ import PageWrapper from '../components/PageWrapper';
 // import Footer from '../components/Footer/index';
 // import Config from '../config';
 
-// const wp = new WPAPI({ endpoint: Config.apiUrl });
+const wp = new WPAPI({ endpoint: Config.apiUrl });
 
 // const Banner = dynamic(() => import('../components/Banner/index'));
 // const BottomCTA = dynamic(() => import('../components/BottomCTA/index'));
