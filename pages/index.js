@@ -6,7 +6,7 @@ import React, {Component, Fragment} from 'react';
 import WPAPI from 'wpapi';
 // import Layout from '../components/Layout';
 
-// import PageWrapper from '../components/PageWrapper';
+import PageWrapper from '../components/PageWrapper';
 // import Menu from '../components/Header/index';
 // import Footer from '../components/Footer/index';
 // import Config from '../config';
@@ -136,4 +136,4 @@ class Index extends Component {
     return <p>Hello World</p>
   }
 }
-export default Index;
+export default PageWrapper(Index);
