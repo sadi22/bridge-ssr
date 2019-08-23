@@ -1,4 +1,4 @@
-let wpUrl = 'https://wordpress.org/news/wp-json';
+let wpUrl = 'https://lincolnislam.pro/wp-json';
 
 // If we're running on Docker, use the WordPress container hostname instead of localhost.
 if (process.env.HOME === '/home/node') {
