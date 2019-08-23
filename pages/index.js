@@ -110,17 +110,6 @@ class Index extends Component {
                 <meta charSet="utf-8" />
                 <title>{page.title.rendered}</title>
             </Head>
-            // <Layout>
-            //     <Menu menu={headerMenu} logo={logo}/>
-            //     {Section}
-            //     <div
-            //         // eslint-disable-next-line react/no-danger
-            //         dangerouslySetInnerHTML={{
-            //             __html: page.content.rendered,
-            //         }}
-            //     />
-            //     <Footer menu={footerMenu} logo={logo}/>
-            // </Layout>
         </Fragment>
     );
   }
