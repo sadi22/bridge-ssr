@@ -5,13 +5,11 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 var port = process.env.PORT || 8080;
 const handle = app.getRequestHandler();
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 app
   .prepare()
   .then(() => {
     const server = express();
-
     server.get('/post/:slug', (req, res) => {
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug, apiRoute: 'post' };
