@@ -1,6 +1,7 @@
 .next
 node_modules
 .idea
+.DS_Store
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

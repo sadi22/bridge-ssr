@@ -1,0 +1,63 @@
+@import '../../src/styles/style';
+
+.supplier-profiles-reach{
+    padding-top: 85px;
+    
+    .section-title{
+        max-width: 750px;
+        margin: 0 auto;
+    }
+    
+    .unique-reach-content,
+    .customer-profiling-content{
+        .section-title{
+           max-width: 100%;    
+            
+            h3{
+                margin-bottom: 26px;
+            }
+            p{
+                color: #1d1f2c;
+                line-height: 26px;
+            }
+        }
+    }
+    
+    .unique-reach {
+        margin-top: 60px;
+        
+        .unique-reach-image {
+            width: 570px;
+            background: #ddd;
+            height: 570px;
+            border-radius: 100%;
+            position: relative;
+            background-image: linear-gradient(180deg, #ffffff 0%, #cbf5f6 100%);
+            opacity: 0.6;
+        }
+        
+        .unique-reach-content{
+            padding-right: 90px;
+            
+            .section-title {
+                padding-bottom: 35px;
+            }
+            
+            ul.vertical-line-wrapper {
+                display: inline-flex;
+                
+                li {
+                    padding: 5px 20px 8px 20px;
+                    font-size: 16px;
+                    margin-left: 25px;
+                    margin-bottom: 5px;
+                    @extend .transition-3s;
+
+                    &.active{                    
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+                    }
+                }
+            }
+        }
+    }
+}

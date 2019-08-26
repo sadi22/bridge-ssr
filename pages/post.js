@@ -38,6 +38,7 @@ class Post extends Component {
 
   render() {
     const { post, headerMenu, logo, footerMenu } = this.props;
+    console.log(this.props);
     if (!post.title) return <Error statusCode={404} />;
 
     return (
@@ -51,7 +52,7 @@ class Post extends Component {
               __html: post.content.rendered,
             }}
           />
-          <Footer logo={logo} menu={footerMenu}/>
+          {/* <Footer logo={logo} menu={footerMenu}/> */}
         </Container>
       </Layout>
     );

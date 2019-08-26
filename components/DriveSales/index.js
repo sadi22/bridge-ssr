@@ -1,12 +1,12 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
+import Parser from 'html-react-parser';
 import style from "./index.scss";
-
 
 class DriveSales extends Component{
     render() {
-    	const { title, feature_box } = this.props;
+        const { title, feature_box } = this.props;
     	let featureBoxMarkup = null;
     	if(feature_box){
     		featureBoxMarkup = feature_box.map((feature, i) => {
@@ -41,7 +41,7 @@ class DriveSales extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
-                                <h2>Everything You Need to Drive Sales</h2>
+                                <h2>{Parser(title)}</h2>
                             </div>
                         </div>
                     </div>

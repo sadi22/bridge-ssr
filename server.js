@@ -4,8 +4,7 @@ const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-var port = process.env.PORT || 8080;
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 app
   .prepare()
   .then(() => {
@@ -18,7 +17,7 @@ app
     });
 
     server.get('/page/:slug', (req, res) => {
-      const actualPage = '/post';
+      const actualPage = '/page';
       const queryParams = { slug: req.params.slug, apiRoute: 'page' };
       app.render(req, res, actualPage, queryParams);
     });
@@ -39,7 +38,7 @@ app
       return handle(req, res);
     });
 
-    server.listen(port, err => {
+    server.listen(3000, err => {
       if (err) throw err;
       console.log('> Ready on http://localhost:3000');
     });

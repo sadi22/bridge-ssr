@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import Link from 'next/link';
-import Router from 'next/router';
 import Config from '../config';
 
 const linkStyle = {
@@ -27,7 +26,6 @@ class Menu extends Component {
 
   render() {
     const { menu } = this.props;
-    const { token, username } = this.state;
     const menuItems = menu.items.map(item => {
       if (item.object === 'custom') {
         return (
@@ -55,25 +53,11 @@ class Menu extends Component {
           <a style={linkStyle}>Home</a>
         </Link>
         {menuItems}
-
-        {token ? (
-          <button
-            type="button"
-            className="pointer black"
-            onClick={() => {
-              localStorage.removeItem(Config.AUTH_TOKEN);
-              Router.push('/login');
-            }}
-          >
-            Logout {username}
-          </button>
-        ) : (
-          <Link href="/login">
-            <a style={linkStyle}>Login</a>
-          </Link>
-        )}
       </div>
     );
   }
 }
 export default Menu;
+
+
+

@@ -1,14 +1,25 @@
 @import '../../src/styles/style';
 
 .drive-sales{
-    padding: 120px 0;
-
+    padding-bottom: 120px;
+    
+    @media #{$device_992_1199} {
+        padding-bottom: 40px;
+    }
+    @media #{$device_768_991} {
+        padding-bottom: 30px;
+    }
+    @media #{$device_0_575} {
+        padding-bottom: 0;
+    }
+    
     .overlay{
         background-color: #0b253c;
         top: inherit;
-        height: calc(100% - 190px);
+        height: calc(100% - 73px);
         bottom: 0;
         overflow: hidden;
+        
         &:before{
             content: "";
             position: absolute;
@@ -20,9 +31,13 @@
             border-right: 1902px solid transparent;
         }
     }
-
+    
     .section-title{
         padding-bottom: 36px;
+        
+        @media #{$device_768_991} {
+            padding-bottom: 0;
+        }
     }
     .row > div[class^="col-"]{
         margin-bottom: 30px;
@@ -35,7 +50,15 @@
         background-color: #ffffff;
         padding: 30px 55px 30px 30px;
         height: 100%;
-
+        
+        @media #{$device_768_991} {
+            padding: 30px;
+        }
+        @media #{$device_0_575} {
+            display: block;
+            padding: 20px;
+        }
+        
         .icon{
             width: 60px;
             height: 60px;
@@ -45,7 +68,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-
+            
             &.icon1{
                 background-color: #8fe5e1;
             }
@@ -58,7 +81,7 @@
             &.icon4{
                 background-color: #f6c2f2;
             }
-
+            
             img{
                 transform: translateY(10px);
             }
@@ -66,13 +89,20 @@
         .drive-content{
             width: calc(100% - 60px);
             padding-left: 30px;
-
+            
+            @media #{$device_0_575} {
+                width: 100%;
+                padding-left: 0;
+                margin-top: 20px;
+            }
+            
             h4{
                 font-weight: 500;
                 margin-bottom: 22px;
-            }
-            p{
-
+                
+                @media #{$device_768_991} {
+                    margin-bottom: 15px;
+                }
             }
         }
     }

@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
+import Parser from 'html-react-parser';
+
 import style from "./index.scss";
 
 
@@ -8,9 +10,7 @@ class SeamlessEcommerce extends Component{
     
     render() {
     	const {title, sub_title, left_image, right_image} = this.props;
-    	const renderWithHtml = (title) => {
-    		return title;
-    	}
+    
         return (
           <Fragment>
             <Head>
@@ -25,8 +25,8 @@ class SeamlessEcommerce extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
-                                <h2>{renderWithHtml(title)}</h2>
-                                <p>{sub_title}</p>
+                                <h2>{Parser(title)}</h2>
+                                <p>{Parser(sub_title)}</p>
                             </div>
                         </div>
                     </div>

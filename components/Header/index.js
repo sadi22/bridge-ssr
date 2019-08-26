@@ -31,26 +31,33 @@ class Menu extends Component {
     render() {
         const { menu, logo } = this.props;
         const { token, username } = this.state;
-        // const menuItems = menu.items.map(item => {
-        //     if (item.object === 'custom') {
-        //         return (
-        //             <Link href={item.url} key={item.ID}>
-        //                 <a style={linkStyle}>{item.title}</a>
-        //             </Link>
-        //         );
-        //     }
-        //     const slug = getSlug(item.url);
-        //     const actualPage = item.object === 'category' ? 'category' : 'post';
-        //     return (
-        //         <Link
-        //             as={`/${item.object}/${slug}`}
-        //             href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
-        //             key={item.ID}
-        //         >
-        //             <a style={linkStyle}>{item.title}</a>
-        //         </Link>
-        //     );
-        // });
+        const menuItems = menu.items.map(item => {
+            if (item.object === 'custom') {
+                return (
+                    <Link href={item.url} key={item.ID}>
+                        <a style={linkStyle}>{item.title}</a>
+                    </Link>
+                );
+            }
+            const slug = getSlug(item.url);
+            let actualPage = 'page';
+            if(item.object === 'page') {
+                actualPage = 'page'
+            }else if(item.object === 'post') {
+                actualPage = 'post'
+            }else if(item.object === 'category') {
+                actualPage = 'category'
+            }
+            return (
+                <Link
+                    as={`/${item.object}/${slug}`}
+                    href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+                    key={item.ID}
+                >
+                    <a style={linkStyle}>{item.title}</a>
+                </Link>
+            );
+        });
 
         return (
             <div>
@@ -79,6 +86,7 @@ class Menu extends Component {
                                             <Link href="/">
                                                 <a style={linkStyle}>Home</a>
                                             </Link>
+                                            {menuItems}
                                         </Nav>
                                         <a href="" className="getStarted">get Started
                                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>

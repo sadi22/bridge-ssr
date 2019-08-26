@@ -59,7 +59,6 @@ h1, h2, h3, h4, h5, h6 {
 
 a:hover,
 a:focus,
-input:focus,
 button:focus,
 a:active {
     text-decoration: none;
@@ -75,9 +74,22 @@ ul {
 input,
 textarea,
 select {
-    border: 1px solid #d1d1d1;
-    font-size: 14px;
-    padding: 8px 15px;
+    color: #525f7f;
+    font-family: $roboto;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0 20px;
+    height: 55px;
     width: 100%;
     resize: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    border-radius: 2px;
+    border: 1px solid #dde9e9;
+    background-color: #ffffff;
+}
+input:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    border: 1px solid #dde9e9;
 }

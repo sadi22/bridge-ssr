@@ -1,11 +1,14 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
+import Parser from 'html-react-parser';
+
 import style from "./index.scss";
 
 
 class RetailEcommerce extends Component{
     render() {
+        const {title, sub_title, left_text, right_image} = this.props;
         return (
           <Fragment>
             <Head>
@@ -20,8 +23,8 @@ class RetailEcommerce extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
-                                <h2>Cutting-Edge Retail Ecommerce. <span className="primary-color pos-relative underline">Totally FREE.</span> Forever.</h2>
-                                <p>No long term contracts, no strings attached</p>
+                                <h2>{Parser(title)}</h2>
+                                <p>{Parser(sub_title)}</p>
                             </div>
                         </div>
                     </div>
@@ -29,16 +32,16 @@ class RetailEcommerce extends Component{
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="retailer-content">
-                                <h5>Introducing Bridge, the industry’s most anticipated and progressive ecommerce platform designed exclusively for independent off-premise retailers.</h5>
-                                <p>We've purposefully built our software based on feedback from retailers like yourself, so we've made sure to include the most sought-after consumer-facing features as well as back-off business intelligence tools to help keep you one step ahead of your competition.</p>
+                                {Parser(left_text)}
                             </div>
                         </div>
                         
                         <div className="col-lg-6">
                             <div className="retailer-image pos-relative">
-                                <div className="retailer-image pos-relative">
+                                <div className="lines-accent">
+                                    <img src='/static/images/lines-accent.png' />
                                 </div>
-                                <img src='/static/images/retail-ecommerce.jpg' className="img-fluid"/>
+                                {right_image ? <img src={right_image} className="img-fluid"/> : ''}
                             </div>
                         </div>
                     </div>

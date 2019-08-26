@@ -2,18 +2,21 @@
 
 .bottom-cta{
     padding-top: 50px;
-    padding-bottom: 88px;
     background-color: #0b253c;
-
+    
+    @media #{$device_992_1199} {
+        padding-top: 30px;
+    }
+    
     .section-title{
         max-width: 614px;
-
+        
         h2{
             color: #fff;
         }
         p{
             color: #bdc3d3;
-
+            
             span.underline{
                 color: #fff;
             }

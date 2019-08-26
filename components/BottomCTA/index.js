@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
+import Parser from 'html-react-parser';
+
 import style from "./index.scss";
 
 
@@ -21,8 +23,8 @@ class BottomCTA extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <h2>{title}</h2>
-                                <p>{sub_title}</p>
+                                <h2>{Parser(title)}</h2>
+                                <p>{Parser(sub_title)}</p>
                             </div>
                         </div>
                     </div>
