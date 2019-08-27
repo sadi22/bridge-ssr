@@ -15,7 +15,6 @@ import { faEdit, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown);
 
 const getSlug = url => {
-  console.log(url);
   const parts = url.split('/');
   return parts.length > 2 ? parts[parts.length - 2] : '';
 };
@@ -115,7 +114,7 @@ class Banner extends Component{
           });
 
           userDropdownLinkMarkup = user.map((item, i) => {
-            const slug = getSlug(item.link);
+            const slug = item.link ? getSlug(item.link) : '';
             let actualPage = slug ? 'page' : '';
             return (
 
