@@ -7,7 +7,7 @@
     "build-css": "node-sass src/styles/style.scss -o static/styles/",
     "watch-css": "npm run build-css && node-sass src/styles/style.scss -o static/styles/ --watch --recursive",
     "export": "next export",
-    "deploy": "npm run build && npm run start"
+    "deploy": "npm run build && npm run start",
     "start": "CHOKIDAR_USEPOLLING=true NODE_ENV=production node server.js"
   },
   "keywords": [],
