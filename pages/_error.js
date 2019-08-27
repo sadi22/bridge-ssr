@@ -18,7 +18,7 @@ class ErrorPage extends React.Component {
 
   static getInitialProps({res, xhr}) {
     const errorCode = res ? res.statusCode : (xhr ? xhr.status : null)
-    
+    console.log(errorCode);
     return {errorCode}
   }
 

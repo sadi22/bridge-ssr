@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
 
-import style from "./index.scss";
+import "./index.scss";
 
 
 class SeamlessEcommerce extends Component{
@@ -13,13 +13,8 @@ class SeamlessEcommerce extends Component{
     
         return (
           <Fragment>
-             <div>
-              <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
-            
+            // <style dangerouslySetInnerHTML={{ __html: style }} />
+           
             <div className="seamless-ecommerce">
                 <div className="container">
                     <div className="row">

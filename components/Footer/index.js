@@ -43,13 +43,10 @@ class Footer extends Component{
         });
         return (
           <Fragment>
-            <div>
-              <style
+            <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
-
+            />
             <footer className="site-footer">
                 <div className="container">
                     <div className="row align-items-center">

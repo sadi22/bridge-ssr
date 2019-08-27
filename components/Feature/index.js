@@ -48,12 +48,10 @@ class Feature extends Component{
     	}
         return (
           <Fragment>
-             <div>
-              <style
+             <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
+            />
             
             <div className="feature">
                 

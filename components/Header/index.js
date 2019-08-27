@@ -5,7 +5,7 @@ import Head from 'next/head'
 import { Navbar, Nav } from "react-bootstrap";
 
 import Config from '../../config';
-import styles from "./index.scss";
+import style from "./index.scss";
 
 const linkStyle = {
     marginRight: 15,
@@ -67,13 +67,10 @@ class Menu extends Component {
         
         return (
             <div>
-                 <div>
-                    <style
+                <style
                     // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{ __html: styles }}
-                    />
-                </div>
-
+                    dangerouslySetInnerHTML={{ __html: style }}
+                />
                 <header className="header-main">
                     <div className="container">
                         <div className="row">
