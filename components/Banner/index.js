@@ -15,6 +15,7 @@ import { faEdit, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown);
 
 const getSlug = url => {
+  console.log(url);
   const parts = url.split('/');
   return parts.length > 2 ? parts[parts.length - 2] : '';
 };
