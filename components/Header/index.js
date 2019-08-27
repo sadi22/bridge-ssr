@@ -33,33 +33,34 @@ class Menu extends Component {
         const { token, username } = this.state;
         let menuItems = null;
         if(menu.items) {
-            menuItems = menu.items.map(item => {
-                if (item.object === 'custom') {
-                    return (
-                        <Link href={item.url} key={item.ID}>
-                            <a style={linkStyle}>{item.title}</a>
-                        </Link>
-                    );
-                }
-                const slug = getSlug(item.url);
-                let actualPage = 'page';
-                if(item.object === 'page') {
-                    actualPage = 'page'
-                }else if(item.object === 'post') {
-                    actualPage = 'post'
-                }else if(item.object === 'category') {
-                    actualPage = 'category'
-                }
-                return (
-                    <Link
-                        as={`/${item.object}/${slug}`}
-                        href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
-                        key={item.ID}
-                    >
-                        <a style={linkStyle}>{item.title}</a>
-                    </Link>
-                );
-            }); 
+            console.log(menu.items);
+            // menuItems = menu.items.map(item => {
+            //     if (item.object === 'custom') {
+            //         return (
+            //             <Link href={item.url} key={item.ID}>
+            //                 <a style={linkStyle}>{item.title}</a>
+            //             </Link>
+            //         );
+            //     }
+            //     const slug = getSlug(item.url);
+            //     let actualPage = 'page';
+            //     if(item.object === 'page') {
+            //         actualPage = 'page'
+            //     }else if(item.object === 'post') {
+            //         actualPage = 'post'
+            //     }else if(item.object === 'category') {
+            //         actualPage = 'category'
+            //     }
+            //     return (
+            //         <Link
+            //             as={`/${item.object}/${slug}`}
+            //             href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+            //             key={item.ID}
+            //         >
+            //             <a style={linkStyle}>{item.title}</a>
+            //         </Link>
+            //     );
+            // }); 
         }
        
         const getting_started_slug = getSlug(getting_started_link);
