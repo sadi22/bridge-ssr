@@ -51,8 +51,8 @@ class Index extends Component {
                 </Head>
                 <Layout>
                     <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>
-                    {/* <ACFCONTENT {...page}/> */}
-                   
+                    <ACFCONTENT {...page}/>
+
                     <div
                         // eslint-disable-next-line react/no-danger
                         dangerouslySetInnerHTML={{
