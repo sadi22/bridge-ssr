@@ -6,6 +6,7 @@
   "scripts": {
     "build-css": "node-sass src/styles/style.scss -o static/styles/",
     "watch-css": "npm run build-css && node-sass src/styles/style.scss -o static/styles/ --watch --recursive",
+    "build": "next build",
     "start": "CHOKIDAR_USEPOLLING=true NODE_ENV=production node server.js"
   },
   "keywords": [],
