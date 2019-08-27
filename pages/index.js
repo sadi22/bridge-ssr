@@ -18,26 +18,26 @@ const wp = new WPAPI({ endpoint: Config.apiUrl });
 //         id: '',
 //     };
 
-//     static async getInitialProps() {
-//         try {
-//             const [page, posts, pages] = await Promise.all([
-//                 wp
-//                     .pages()
-//                     .slug('home')
-//                     .embed()
-//                     .then(data => {
-//                         return data[0];
-//                     }),
-//                 wp.posts().embed(),
-//                 wp.pages().embed(),
-//             ]);
+    // static async getInitialProps() {
+    //     try {
+    //         const [page, posts, pages] = await Promise.all([
+    //             wp
+    //                 .pages()
+    //                 .slug('home')
+    //                 .embed()
+    //                 .then(data => {
+    //                     return data[0];
+    //                 }),
+    //             wp.posts().embed(),
+    //             wp.pages().embed(),
+    //         ]);
 
-//             return { page, posts, pages };
-//         } catch (err) {
-//             console.log(err);
-//         }
-//         return null;
-//     }
+    //         return { page, posts, pages };
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    //     return null;
+    // }
 
 
 //     render() {
@@ -66,6 +66,26 @@ const wp = new WPAPI({ endpoint: Config.apiUrl });
 //     }
 // }
 class Index extends Component {
+    static async getInitialProps() {
+        try {
+            const [page, posts, pages] = await Promise.all([
+                wp
+                    .pages()
+                    .slug('home')
+                    .embed()
+                    .then(data => {
+                        return data[0];
+                    }),
+                wp.posts().embed(),
+                wp.pages().embed(),
+            ]);
+
+            return { page, posts, pages };
+        } catch (err) {
+            console.log(err);
+        }
+        return null;
+    }
    render() {
     return (<p>Hello</p>)
    }
