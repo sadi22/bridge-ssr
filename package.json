@@ -7,7 +7,7 @@
     "build-css": "node-sass src/styles/style.scss -o static/styles/",
     "watch-css": "npm run build-css && node-sass src/styles/style.scss -o static/styles/ --watch --recursive",
     "build": "next build",
-    "start": "CHOKIDAR_USEPOLLING=true node server.js"
+    "start": "CHOKIDAR_USEPOLLING=true NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +30,7 @@
     "next": "7.0.2",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.5.3",
+    "nprogress": "^0.2.0",
     "postcss-easy-import": "^3.0.0",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",

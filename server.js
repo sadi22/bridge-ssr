@@ -5,13 +5,14 @@ var compression = require('compression');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-// app.use(compression())
+var port = process.env.PORT || 8080;
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 app
   .prepare()
   .then(() => {
     const server = express();
-    server.use(compression()) 
+    server.use(compression())
     server.get('/post/:slug', (req, res) => {
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug, apiRoute: 'post' };
@@ -40,7 +41,7 @@ app
       return handle(req, res);
     });
 
-    server.listen(3000, err => {
+    server.listen(port, err => {
       if (err) throw err;
       console.log('> Ready on http://localhost:3000');
     });
