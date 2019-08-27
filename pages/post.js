@@ -44,7 +44,7 @@ class Post extends Component {
     return (
       <Layout>
         <Container>
-          <Menu menu={headerMenu} logo={logo}/>
+          // <Menu menu={headerMenu} logo={logo}/>
           <h1>{post.title.rendered}</h1>
           <div
             // eslint-disable-next-line react/no-danger
