@@ -18,26 +18,26 @@ const wp = new WPAPI({ endpoint: Config.apiUrl });
 //         id: '',
 //     };
 
-    // static async getInitialProps() {
-    //     try {
-    //         const [page, posts, pages] = await Promise.all([
-    //             wp
-    //                 .pages()
-    //                 .slug('home')
-    //                 .embed()
-    //                 .then(data => {
-    //                     return data[0];
-    //                 }),
-    //             wp.posts().embed(),
-    //             wp.pages().embed(),
-    //         ]);
+//     static async getInitialProps() {
+//         try {
+//             const [page, posts, pages] = await Promise.all([
+//                 wp
+//                     .pages()
+//                     .slug('home')
+//                     .embed()
+//                     .then(data => {
+//                         return data[0];
+//                     }),
+//                 wp.posts().embed(),
+//                 wp.pages().embed(),
+//             ]);
 
-    //         return { page, posts, pages };
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    //     return null;
-    // }
+//             return { page, posts, pages };
+//         } catch (err) {
+//             console.log(err);
+//         }
+//         return null;
+//     }
 
 
 //     render() {
@@ -87,7 +87,26 @@ class Index extends Component {
         return null;
     }
    render() {
-    return (<p>Hello</p>)
+        const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link } = this.props;
+        return (
+            <Fragment>
+                <Head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta charSet="utf-8" />
+                    <title>{page.title.rendered}</title>
+                </Head>
+                <Layout>
+                    <ACFCONTENT {...page}/>
+
+                    <div
+                        // eslint-disable-next-line react/no-danger
+                        dangerouslySetInnerHTML={{
+                            __html: page.content.rendered,
+                        }}
+                    />
+                </Layout>
+            </Fragment>
+        );
    }
 }
 export default PageWrapper(Index);
