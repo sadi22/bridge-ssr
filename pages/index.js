@@ -41,7 +41,7 @@ class Index extends Component {
 
 
     render() {
-        const { headerMenu, page, logo, social, footer_text, footerMenu } = this.props;
+        const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link } = this.props;
         return (
             <Fragment>
                 <Head>
@@ -50,8 +50,8 @@ class Index extends Component {
                     <title>{page.title.rendered}</title>
                 </Head>
                 <Layout>
-                    <Menu menu={headerMenu} logo={logo}/>
-                    <ACFCONTENT {...page}/>
+                    <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>
+                    {/* <ACFCONTENT {...page}/> */}
                    
                     <div
                         // eslint-disable-next-line react/no-danger

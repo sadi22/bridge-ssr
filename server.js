@@ -1,15 +1,17 @@
 const express = require('express');
 const next = require('next');
+var compression = require('compression');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-var port = process.env.PORT || 8080;
 const handle = app.getRequestHandler();
+// app.use(compression())
 
 app
   .prepare()
   .then(() => {
     const server = express();
+    server.use(compression()) 
     server.get('/post/:slug', (req, res) => {
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug, apiRoute: 'post' };
@@ -38,7 +40,7 @@ app
       return handle(req, res);
     });
 
-    server.listen(port, err => {
+    server.listen(3000, err => {
       if (err) throw err;
       console.log('> Ready on http://localhost:3000');
     });

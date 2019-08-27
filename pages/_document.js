@@ -1,11 +1,7 @@
 import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
-import bootstrap from '../src/styles/lib/bootstrap.min.css';
-import stylesheet from '../src/styles/style.scss';
-import gutenberg from '../src/styles/gutenberg.min.css';
 
-export default class MyDocument extends Document {
-  
+export default class MyDocument extends Document {  
   render() {
     // make the environment available on the client
     return (
@@ -20,18 +16,10 @@ export default class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-config" content="/static/favicon/browserconfig.xml" />
           <meta name="theme-color" content="#ffffff" />
-          <style
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: bootstrap }}
-          />
-          <style
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: gutenberg }}
-          />
-          <style
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: stylesheet }}
-          />
+          <link href="/static/styles/lib/bootstrap.min.css" rel="stylesheet" />
+          <link href="/static/styles/lib/gutenberg.min.css" rel="stylesheet" />
+          <link href="/static/styles/lib/npProgress.css" rel="stylesheet" />
+          <link href="/static/styles/style.css" rel="stylesheet" />
         </Head>
         <body>
           <Main />

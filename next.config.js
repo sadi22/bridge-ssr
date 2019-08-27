@@ -1,9 +1,15 @@
 const path = require('path');
 const glob = require('glob');
+// const withSass = require('@zeit/next-sass');
+
+  
+// const withPlugins = require('next-compose-plugins');
+// const optimizedImages = require('next-optimized-images');
 
 module.exports = {
   webpack: config => {
     config.module.rules.push(
+      
       {
         test: /\.(css|scss)/,
         loader: 'emit-file-loader',
@@ -36,3 +42,4 @@ module.exports = {
     return config;
   },
 };
+

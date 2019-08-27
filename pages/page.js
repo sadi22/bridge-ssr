@@ -27,7 +27,7 @@ class Post extends Component {
   }
 
   render() {
-    const { headerMenu, page, logo, social, footer_text, footerMenu } = this.props;
+    const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link } = this.props;
     if (!page.title) return <Error statusCode={404} />;
 
     return (
@@ -38,7 +38,7 @@ class Post extends Component {
             <title>{page.title.rendered}</title>
         </Head>
         <Layout>
-            <Menu menu={headerMenu} logo={logo}/>
+            <Menu menu={headerMenu} logo={logo} getting_started_link ={getting_started_link}/>
             <ACFCONTENT {...page}/>
             <div
                 // eslint-disable-next-line react/no-danger
