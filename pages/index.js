@@ -88,6 +88,7 @@ class Index extends Component {
     }
    render() {
         const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link } = this.props;
+        console.log(headerMenu, footerMenu);
         return (
             <Fragment>
                 <Head>
