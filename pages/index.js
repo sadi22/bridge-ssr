@@ -90,4 +90,4 @@ class Index extends Component {
     return (<p>Hello</p>)
    }
 }
-export default Index;
+export default PageWrapper(Index);
