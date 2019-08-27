@@ -2,6 +2,11 @@
 
 .bridge-banner{
     padding-top: 108px;
+    padding-bottom: 40px;
+    
+    @media #{$device_768_991} {
+        padding-bottom: 20px;
+    }
     
     @media #{$device_576_767} {
         padding-top: 50px;
@@ -67,7 +72,7 @@
             text-transform: uppercase;
             margin-bottom: 33px;
         }
-        .select-area{
+        .business-type-area{
             display: flex;
             flex-flow: row;
             align-items: center;
@@ -76,10 +81,9 @@
             h3{
                 color: #282c47;
                 font-weight: 500;
-                margin-right: 30px;
+                margin-right: 12px;
                 
                 @media #{$device_0_575} {
-                    margin-right: 18px;
                     font-size: 25px;
                 }
 
@@ -103,7 +107,7 @@
                 justify-content: center;
                 cursor: pointer;
                 border: none;
-                
+                padding: 14px 5px;
                 @media #{$device_0_575} {
                     width: 45px;
                     height: 38px;
@@ -123,6 +127,123 @@
                     }
                 }
             }
+            .user-type-link {
+                display: none;
+            }
+            .user-type-link:first-of-type {
+                display: block;
+            }
         }
     }
 }
+
+
+
+.bridge-select {
+    position: relative;
+    margin-right: 30px;
+    font-family: "Trasandina W03 Medium";
+    
+    @media #{$device_0_575} {
+        margin-right: 2px;
+    }
+    
+    select {
+        display: none;
+    }
+    
+    .select-selected {
+        &:after {
+            position: absolute;
+            content: "";
+            top: 21px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: $primary-color transparent transparent transparent;
+            
+            @media #{$device_0_575} {
+                top: 17px;
+            }
+        }
+        
+        &:before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: calc(100% - 36px);
+            height: 2px;
+            background: $primary-color;
+        }
+    }
+    
+    .select-selected {
+        color: $primary-color;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        user-select: none;
+        text-transform: capitalize;
+        font-weight: 500;
+        font-size: calc(28px + (32 - 28) * ((100vw - 320px) / (1920 - 320))); 
+        line-height: 1.31;
+        padding-right: 33px;
+        
+        @media #{$device_0_575} {
+            font-size: 25px;
+        }
+    }
+    
+    .select-items {
+        position: absolute;
+        top: -16px;
+        right: -15px;
+        z-index: 99;
+        text-transform: capitalize;
+        font-weight: 500;
+        font-size: calc(28px + (32 - 28) * ((100vw - 320px) / (1920 - 320)));
+        line-height: 1.31;
+        background: #fff;
+        width: 200px;
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        padding: 16px 20px 31px;
+        opacity: 1;
+        visibility: visible;
+        @extend .transition-3s;
+        
+        @media #{$device_0_575} {
+            font-size: 25px;
+            width: 145px;
+            right: 1px;
+            padding: 16px 10px 31px;
+        }
+        
+        &.select-hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        & > div {
+            cursor: pointer;
+            margin-bottom: 7px;
+            @extend .transition-3s;
+            
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+    
+    .select-items > div:hover,
+    .same-as-selected {
+        color: $primary-color;
+    }
+}
+
+
+
+
+

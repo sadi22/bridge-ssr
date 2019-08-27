@@ -11,12 +11,12 @@ class BottomCTA extends Component{
         const {title, sub_title} = this.props;
         return (
           <Fragment>
-            <Head>
+             <div>
               <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
               />
-            </Head>
+            </div>
 
             <div className="bottom-cta">
                 <div className="container">

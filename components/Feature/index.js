@@ -1,12 +1,16 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import Parser from 'html-react-parser';
-
 import style from "./index.scss";
 
 
 class Feature extends Component{
+
+    constructor(props) {
+        super(props);
+    }
 
     componentDidMount() {
         var changed_img = document.getElementsByClassName('feature-list-hovered-image');
@@ -31,25 +35,25 @@ class Feature extends Component{
     }
     
     render() {
-        const {title, description, feature_list} = this.props;
+        const {title, description, feature_list, show_more, show_more_link} = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
     	if(feature_list){
     		featureListMarkup = feature_list.map((feature, i) => {
-                if(i == 0) defaultImage = feature.feature_image;
+                if(i == 0) defaultImage = feature.feature_image.url;
 			    return (
-                    <li className="feature-list active" data-src={feature.feature_image} key={i}>{feature.feature_title}</li>
+                    <li className="feature-list active" data-src={feature.feature_image.url} key={i}>{feature.feature_title}</li>
 			      );
 			    });
     	}
         return (
           <Fragment>
-            <Head>
+             <div>
               <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
               />
-            </Head>
+            </div>
             
             <div className="feature">
                 
@@ -70,11 +74,17 @@ class Feature extends Component{
                     <div className="row">
                         <div className="col-lg-5">
                             <div className="feature-content">
-                                <ul>
+                                <ul id="feature_list">
                                     <span className="line"></span>
                                     {featureListMarkup}
                                 </ul>
-                                <a href="#" className="show-more">show more</a>
+
+                                { show_more ? 
+                                    <Link href={show_more_link} as={show_more_link}>
+                                        <a className="show-more">Show more</a>
+                                    </Link>
+                                    : ''
+                                }
                             </div>
                         </div>
                     </div>

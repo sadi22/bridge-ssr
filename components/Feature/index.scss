@@ -1,16 +1,17 @@
 @import '../../src/styles/style';
 
 .feature{
-    padding-top: 110px;
-    padding-bottom: 150px;
+    padding-top: 50px;
+    padding-bottom: 75px;
     position: relative;
     
     @media #{$device_992_1199} {
-        padding-bottom: 110px;
+        padding-bottom: 50px;
     }
     @media #{$device_768_991} {
-        padding-top: 90px;
-        padding-bottom: 90px;
+    }
+    @media #{$device_0_575} {
+        padding-bottom: 30px;
     }
     
     .section-title{
@@ -92,44 +93,7 @@
             max-width: 320px;
             margin: 0 auto;
         }
-
-        ul{
-            border-left: 2px solid #d6eeee;
-            position: relative;
-            display: flex;
-            flex-flow: column;
-            
-            .line {
-                position: absolute;
-                width: 2px;
-                background: $primary-color;
-                height: 46px;
-                left: -2px;
-                top: 0;
-                transition:all 0.4s ease;
-            }
-            
-            li{
-                padding: 10px 0 10px 55px;
-                color: $body-font-color;
-                font-family: $trasandina;
-                font-size: 18px;
-                font-weight: 500;
-                line-height: 32px;
-                display: inline-block;
-                cursor: pointer;
-                margin-bottom: 10px;
-                
-                @media #{$device_992_1199} {
-                    padding: 10px 0 10px 35px;
-                    line-height: 26px;
-                }
-                
-                &:last-child{
-                    margin-bottom: 0;
-                }
-            }
-        }
+        
         .show-more{
             color: $primary-color;
             font-family: $roboto;

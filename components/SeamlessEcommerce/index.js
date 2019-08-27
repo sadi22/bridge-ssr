@@ -13,12 +13,12 @@ class SeamlessEcommerce extends Component{
     
         return (
           <Fragment>
-            <Head>
+             <div>
               <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
               />
-            </Head>
+            </div>
             
             <div className="seamless-ecommerce">
                 <div className="container">
@@ -35,11 +35,11 @@ class SeamlessEcommerce extends Component{
                         <div className="col-lg-12">
                             <div className="seamless-image-area">
                                 <div className="seamless-image img1">
-                                    { left_image ? <img src={left_image} alt="hero image" className="banner-img img-fluid" />: ''}
+                                    { left_image ? <img src={left_image.url} alt={left_image.alt} title={left_image.title} className="banner-img img-fluid" />: ''}
                                 </div>
 
                                 <div className="seamless-image img2">
-                                    { left_image ? <img src={right_image} alt="hero image" className="banner-img img-fluid" />: ''}
+                                    { left_image ? <img src={right_image.url} alt={right_image.alt} title={right_image.title} className="banner-img img-fluid" />: ''}
                                 </div>
                             </div>
                         </div>

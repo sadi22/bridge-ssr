@@ -1,0 +1,40 @@
+
+body, p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+//*-----------heading tag Typogrpahy------------*/
+h1 {
+    font-size: calc(44px + (56 - 44) * ((100vw - 320px) / (1920 - 320))); //---56px font size---
+    line-height: 1.14; //---64px line height---
+    color: #1d1f2c;
+    font-family: "Trasandina W03 Medium";
+}
+h2 {
+    font-size: calc(36px + (40 - 36) * ((100vw - 320px) / (1920 - 320))); //---40px font size---
+    line-height: 1.05; //---42px line height---
+    color: #1d1f2c;
+    font-family: "Trasandina W03 Medium";
+}
+h3 {
+    font-size: calc(28px + (32 - 28) * ((100vw - 320px) / (1920 - 320))); //---32px font size---
+    line-height: 1.31; //---42px line height---
+    font-family: "Trasandina W03 Medium";
+}
+h4 {
+    font-size: calc(22px + (24 - 22) * ((100vw - 320px) / (1920 - 320))); //---24px font size---
+    line-height: 1.33; //---32px line height---
+    color: #1d1f2c;
+    font-family: "Trasandina W03 Medium";
+}
+h5 {
+    font-size: 20px;
+    line-height: 32px;
+    color: #1d1f2c;
+}
+h6 {
+    font-size: 16px;
+    line-height: 26px;
+}

@@ -1,22 +1,24 @@
 @import '../../src/styles/style';
 
 .drive-sales{
-    padding-bottom: 120px;
+    padding-bottom: 90px;
+    padding-top: 75px;
     
     @media #{$device_992_1199} {
         padding-bottom: 40px;
+        padding-top: 45px;
     }
     @media #{$device_768_991} {
-        padding-bottom: 30px;
+        padding-top: 45px;
     }
-    @media #{$device_0_575} {
-        padding-bottom: 0;
+    @media #{$device_576_767} {
+        padding-bottom: 20px;
     }
     
     .overlay{
         background-color: #0b253c;
         top: inherit;
-        height: calc(100% - 73px);
+        height: calc(100% - 117px);
         bottom: 0;
         overflow: hidden;
         

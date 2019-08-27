@@ -61,12 +61,18 @@
             
             li{
                 a{
-                    font-size: 20px;   
+                    font-size: 20px;
                     padding: 0 5px;
                     color: #9ca4b7;
+                    display: block;
+                    line-height: 25px;
                     
                     &:hover{
                         color: $primary-color;
+                    }
+                    
+                    .fa-facebook-f {
+                        font-size: 18px;
                     }
                 }
             }

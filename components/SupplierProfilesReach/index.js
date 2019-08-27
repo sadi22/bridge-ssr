@@ -8,26 +8,54 @@ import style from "./index.scss";
 
 
 class SupplierProfilesReach extends Component{
+    componentDidMount() {
+        if(this.props.enable_feature_list_with_image) {
+            var changed_img = document.getElementsByClassName('unique-reach-image-src');
+            var items = document.getElementsByClassName('unique-reach-list');
+            var item_height = document.getElementsByClassName('unique-reach-list')[0].offsetHeight;
+            document.getElementsByClassName('unique-reach-line')[0].style.height = item_height + 'px';
+    
+            for(var i=0; i<items.length; i++) {
+    
+                items[i].onmouseover = function(e) {
+                    var myTarget = e.target;
+                    var imgSrc = myTarget.getAttribute('data-src');
+                    changed_img[0].setAttribute('src', imgSrc);
+    
+                    e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
+                    e.target.classList.add( "active" );
+    
+                    var this_item_height = myTarget.offsetHeight;
+                    var target_offset = myTarget.offsetTop;
+    
+                    document.getElementsByClassName('unique-reach-line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;");
+    
+                }
+            }
+        }
+        
+    }
+
     render() {
         const {title, subtitle, description, image, enable_feature_list_with_image, feature_list_title, feature_description, features_text_with_image} = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
     	if(features_text_with_image){            
     		featureListMarkup = features_text_with_image.map((feature, i) => {
-                if(i == 0) defaultImage = feature.feature_image;
+                if(i == 0) defaultImage = feature.feature_image.url;
 			    return (
-                    <li className="unique-reach-list active" data-src={feature.feature_image} key={i}>{feature.feature_text}</li>
+                    <li className="unique-reach-list active" data-src={feature.feature_image.url} key={i}>{feature.feature_text}</li>
 			      );
 			    });
     	}
         return (
           <Fragment>
-            <Head>
-              <style
+             <div>
+                <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </Head>
+                />
+            </div>
             <div className="supplier-profiles-reach section-padding">
                 <div className="container">
                     <div className="row">
@@ -50,7 +78,7 @@ class SupplierProfilesReach extends Component{
                         
                         <div className="col-lg-6 ml-auto">
                             <div className="customer-profiling-image pos-relative">
-                                { image ? <img src={image} alt="hero image" className="img-fluid" />: ''}
+                                { image ? <img src={image.url} alt={image.alt} title={image.title} className="img-fluid" />: ''}
                             </div>
                         </div>
                     </div>
@@ -82,35 +110,6 @@ class SupplierProfilesReach extends Component{
             </div>
           </Fragment>
         )
-    }
-    
-    componentDidMount() {
-        if(this.props.enable_feature_list_with_image) {
-            var changed_img = document.getElementsByClassName('unique-reach-image-src');
-            var items = document.getElementsByClassName('unique-reach-list');
-            var item_height = document.getElementsByClassName('unique-reach-list')[0].offsetHeight;
-            document.getElementsByClassName('unique-reach-line')[0].style.height = item_height + 'px';
-    
-            for(var i=0; i<items.length; i++) {
-    
-                items[i].onmouseover = function(e) {
-                    var myTarget = e.target;
-                    var imgSrc = myTarget.getAttribute('data-src');
-                    changed_img[0].setAttribute('src', imgSrc);
-    
-                    e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
-                    e.target.classList.add( "active" );
-    
-                    var this_item_height = myTarget.offsetHeight;
-                    var target_offset = myTarget.offsetTop;
-    
-                    document.getElementsByClassName('unique-reach-line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;");
-    
-                }
-            }
-    
-        }
-        
     }
 }
 

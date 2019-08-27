@@ -9,6 +9,10 @@ const RetailEcommerce = dynamic(() => import('./RetailEcommerce/index'));
 const SeamlessEcommerce = dynamic(() => import('./SeamlessEcommerce/index'));
 const Feature = dynamic(() => import('./Feature/index'));
 const OverView = dynamic(() => import('./SupplierProfilesReach/index'));
+const Team = dynamic(() => import('./Team/index'));
+const FeatureWithLeftImage = dynamic(() => import('./WholesalerBusinessIntelligence/index'));
+const Press = dynamic(() => import('./Press/index'));
+const Contact = dynamic(() => import('./Contact/index'));
 
 class ACFCONTENT extends Component {
     render() {
@@ -25,11 +29,15 @@ class ACFCONTENT extends Component {
                         {section.acf_fc_layout === 'overview_with_image' ? <OverView {...section}/> : ''}
                         {section.acf_fc_layout === 'feature_box_with_column' ? <DriveSales {...section}/> : ''}
                         {section.acf_fc_layout === 'bottom_cta' ? <BottomCTA {...section}/> : ''}
+                        {section.acf_fc_layout === 'team' ? <Team {...section}/> : ''}
+                        {section.acf_fc_layout === 'feature_list_with_image_on_the_left' ? <FeatureWithLeftImage {...section}/> : ''}
+                        {section.acf_fc_layout === 'press' ? <Press {...section}/> : ''}
+                        {section.acf_fc_layout === 'google_maps' ? <Contact {...section}/> : ''}
                     </Fragment>
                 );
             });
         }
-
+       
         return (
             <Fragment>
                 {Section}

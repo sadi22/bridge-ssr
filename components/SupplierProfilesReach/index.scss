@@ -1,7 +1,14 @@
 @import '../../src/styles/style';
 
 .supplier-profiles-reach{
-    padding-top: 85px;
+    padding-top: 78px;
+    
+    @media #{$device_992_1199} {
+        padding-top: 53px;
+    }
+    @media #{$device_768_991} {
+        padding-top: 33px;
+    }
     
     .section-title{
         max-width: 750px;

@@ -31,9 +31,10 @@
                     color: $primary-color;
                 }
                 
-                @media #{$device_992_1199} {
+                @media #{$device_768_991} {
                     border-bottom: 1px solid #eee;
                     margin-left: 0;
+                    display: block;
                 }
             }
         }
@@ -64,7 +65,7 @@
             display: inline-flex;
             align-items: center;
             
-            @media #{$device_992_1199} {
+            @media #{$device_768_991} {
                 margin-top: 20px;
             }
             

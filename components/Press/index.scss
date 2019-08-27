@@ -1,0 +1,69 @@
+@import '../../src/styles/variables';
+@import '../../src/styles/mixin';
+
+.bridge-press-banner{
+    position: relative;
+    
+    .banner-content{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 120px 0;
+        
+        @media #{$device_992_1199} {
+            padding: 100px 0 80px;
+        }
+        @media #{$device_576_767} {
+            padding: 70px 0 40px;
+        }
+        
+        h2{
+            font-weight: 500;
+            max-width: 580px;
+            width: 100%;
+            color: #282c47;
+        }
+    }
+}
+
+.bridge-press-list {
+    padding: 70px 0 170px;
+    
+    @media #{$device_992_1199} {
+        padding: 50px 0 50px;
+    }
+    
+    .single-col{
+        margin-bottom: 30px;
+    }
+    .single-press{
+        text-align: center;
+        
+        a{
+            display: block;
+            
+            &:hover img{
+                animation: pulse 0.5s ease 1;
+            }
+        }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        @include transforms(scale(1));
+    }
+    50% {
+        @include transforms(scale(1.08));
+    }
+    100% {
+        @include transforms(scale(1));
+    }
+}
+
+
+
+
+

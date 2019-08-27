@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Roboto:300,400,500,700,900&display=swap');
+
+//-------trasandina font family---------
+@font-face {font-family: "Trasandina W03 Medium";
+    src: url("/static/fonts/Trasandina W03 Medium.eot");
+    src: url("/static/fonts/Trasandina W03 Medium.eot?#iefix") format("embedded-opentype"),
+    url("/static/fonts/Trasandina W03 Medium.woff2") format("woff2"),
+    url("/static/fonts/Trasandina W03 Medium.woff") format("woff"),
+    url("/static/fonts/Trasandina W03 Medium.ttf") format("truetype"),
+    url("/static/fonts/Trasandina W03 Medium.svg#Trasandina") format("svg");
+}
+
+@font-face {font-family: "Trasandina W03 Book";
+    src: url("/static/fonts/Trasandina W03 Book.eot");
+    src: url("/static/fonts/Trasandina W03 Book.eot?#iefix") format("embedded-opentype"),
+    url("/static/fonts/Trasandina W03 Book.woff2") format("woff2"),
+    url("/static/fonts/Trasandina W03 Book.woff") format("woff"),
+    url("/static/fonts/Trasandina W03 Book.ttf") format("truetype"),
+    url("/static/fonts/Trasandina W03 Book.svg#Trasandina") format("svg");
+}
+
+
+//-------base start---------
+* {
+    margin: 0px;
+    padding: 0px;
+}
+*:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+body, p {
+    font-family: $body-font;
+    color: $body-font-color;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-color;
+}
+
+h1, h2, h3, h4, h5, h6, p, figur, a {
+    margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    -webkit-font-variant-ligatures: common-ligatures;
+    font-variant-ligatures: common-ligatures;
+}
+
+a:hover,
+a:focus,
+button:focus,
+a:active {
+    text-decoration: none;
+    outline: none;
+    outline-offset: 0px;
+    box-shadow: none;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+input,
+textarea,
+select {
+    color: #525f7f;
+    font-family: $roboto;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0 20px;
+    height: 55px;
+    width: 100%;
+    resize: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    border-radius: 2px;
+    border: 1px solid #dde9e9;
+    background-color: #ffffff;
+}
+input:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    border: 1px solid #dde9e9;
+}

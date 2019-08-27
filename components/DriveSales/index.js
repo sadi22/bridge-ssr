@@ -14,7 +14,7 @@ class DriveSales extends Component{
 			        <div className="col-lg-6" key={i}>
 		                <div className="single-drive">
 		                    <span className="icon">
-                            { feature.image ? <img src={feature.image} alt="image" className="img-fluid" />: ''}
+                            { feature.image ? <img src={feature.image.url} alt={feature.image.alt} title={feature.image.title} className="img-fluid" />: ''}
 		                    </span>
 		                    <div className="drive-content">
 		                        <h4>{feature.title}</h4>
@@ -28,12 +28,12 @@ class DriveSales extends Component{
 
         return (
           <Fragment>
-            <Head>
+             <div>
               <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
               />
-            </Head>
+            </div>
 
             <div className="drive-sales pos-relative">
                 <div className="overlay"></div>

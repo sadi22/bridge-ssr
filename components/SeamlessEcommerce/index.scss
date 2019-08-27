@@ -1,7 +1,17 @@
 @import '../../src/styles/style';
 
 .seamless-ecommerce{
-    padding-top: 20px;    
+    padding-top: 67px;
+    padding-bottom: 60px;
+    
+    @media #{$device_992_1199} {
+        padding-top: 47px;
+        padding-bottom: 40px;
+    }
+    @media #{$device_0_575} {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
     
     .section-title{
         h2{

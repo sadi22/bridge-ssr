@@ -11,13 +11,12 @@ class RetailEcommerce extends Component{
         const {title, sub_title, left_text, right_image} = this.props;
         return (
           <Fragment>
-            <Head>
+             <div>
               <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
               />
-            </Head>
-            
+            </div>
             <div className="retail-ecommerce">
                 <div className="container">
                     <div className="row">
@@ -41,7 +40,7 @@ class RetailEcommerce extends Component{
                                 <div className="lines-accent">
                                     <img src='/static/images/lines-accent.png' />
                                 </div>
-                                {right_image ? <img src={right_image} className="img-fluid"/> : ''}
+                                {right_image ? <img src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"/> : ''}
                             </div>
                         </div>
                     </div>

@@ -29,7 +29,7 @@ class Menu extends Component {
     }
 
     render() {
-        const { menu, logo } = this.props;
+        const { menu, logo, getting_started_link } = this.props;
         const { token, username } = this.state;
         const menuItems = menu.items.map(item => {
             if (item.object === 'custom') {
@@ -58,15 +58,17 @@ class Menu extends Component {
                 </Link>
             );
         });
-
+        const getting_started_slug = getSlug(getting_started_link);
+        let getting_started_actualPage = 'page';
+        
         return (
             <div>
-                <Head>
+                 <div>
                     <style
-                        // eslint-disable-next-line react/no-danger
-                        dangerouslySetInnerHTML={{ __html: styles }}
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{ __html: styles }}
                     />
-                </Head>
+                </div>
 
                 <header className="header-main">
                     <div className="container">
@@ -88,9 +90,14 @@ class Menu extends Component {
                                             </Link>
                                             {menuItems}
                                         </Nav>
-                                        <a href="" className="getStarted">get Started
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>
-                                        </a>
+                                        <Link
+                                            as={`/${getting_started_actualPage}/${getting_started_slug}`}
+                                            href={`/${getting_started_actualPage}?slug=${getting_started_slug}&apiRoute=${getting_started_actualPage}`}
+                                        >
+                                            <a className="getStarted"> Get Started
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>
+                                            </a>
+                                        </Link>
                                     </Navbar.Collapse>
                                 </Navbar>
                             </div>

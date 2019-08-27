@@ -21,7 +21,14 @@ class Footer extends Component{
         const { logo, menu, social, footer_text } = this.props;
         const menuItems = menu.items.map(item => {
             const slug = getSlug(item.url);
-            const actualPage = item.object === 'category' ? 'category' : 'post';
+            let actualPage = 'page';
+            if(item.object === 'page') {
+                actualPage = 'page'
+            }else if(item.object === 'post') {
+                actualPage = 'post'
+            }else if(item.object === 'category') {
+                actualPage = 'category'
+            }
             return (
                 <li key={item.ID}>
                     <Link
@@ -36,12 +43,12 @@ class Footer extends Component{
         });
         return (
           <Fragment>
-            <Head>
+            <div>
               <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
               />
-            </Head>
+            </div>
 
             <footer className="site-footer">
                 <div className="container">

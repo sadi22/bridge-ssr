@@ -1,0 +1,119 @@
+@import '../../src/styles/style';
+
+.bridge-team-banner{
+    position: relative;
+    
+    .overlay{
+        height: 100%;
+        border-radius: 4px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f5fcfc));
+        background-image: -webkit-linear-gradient(top, #ffffff 0%, #f5fcfc 100%);
+        background-image: linear-gradient(180deg, #ffffff 0%, #f5fcfc 100%);
+        overflow: hidden;
+        
+        &:before{
+            content: "";
+            position: absolute;
+            left: 0px;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            border-bottom: 200px solid #fff;
+            border-left: 2700px solid transparent;
+        }
+    }
+    
+    .banner-content{
+        height: 590px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 50px 0;
+        
+        @media #{$device_768_991} {
+            height: 490px;
+        }
+        
+        h1{
+            font-weight: 500;
+            font-size: calc(40px + (48 - 40) * ((100vw - 320px) / (1920 - 320))); //---56px font size---
+            line-height: 1.29;
+            max-width: 800px;
+            margin-top: -140px;
+            width: 100%;
+        }
+    }
+}
+
+
+.bridge-team{
+    margin-top: -167px;
+    padding-bottom: 100px;
+    
+    @media #{$device_768_991} {
+        padding-bottom: 90px;
+    }
+    @media #{$device_0_575} {
+        margin-top: -120px;
+        padding-bottom: 30px;
+    }
+    
+    .single-col {
+        margin-bottom: 85px;
+        
+        @media #{$device_768_991} {
+            margin-bottom: 55px;
+        }
+    }
+    
+    .single-member{
+        .member-img{
+            width: 220px;
+            height: 220px;
+            border-radius: 100%;
+            margin: 0 auto 11px;
+        }
+        h5{
+            color: #282c47;
+            font-family: $lato;
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 2px;
+        }
+        h6{
+            color: #9ca4b7;
+            font-family: $lato;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.5;
+            text-transform: capitalize;
+            margin-bottom: 11px;
+        }
+        ul li {
+            a{
+                color: rgba(156, 164, 183, 0.82);
+                font-size: 19px;
+                
+                svg{
+                    @extend .transition-3s;
+                }
+                
+                &:hover .fa-linkedin-in{
+                    color: #0077B5;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
