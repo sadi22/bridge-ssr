@@ -88,7 +88,6 @@ class Index extends Component {
     }
    render() {
         const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link } = this.props;
-        console.log(headerMenu, footerMenu);
         return (
             <Fragment>
                 <Head>
@@ -97,6 +96,7 @@ class Index extends Component {
                     <title>{page.title.rendered}</title>
                 </Head>
                 <Layout>
+                    <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>
                     <ACFCONTENT {...page}/>
 
                     <div
@@ -105,6 +105,7 @@ class Index extends Component {
                             __html: page.content.rendered,
                         }}
                     />
+                    <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
                 </Layout>
             </Fragment>
         );
