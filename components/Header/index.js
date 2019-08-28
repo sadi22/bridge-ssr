@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component, Fragment } from 'react';
-import Link from 'next/link';
-import Head from 'next/head'
+import React, { Component, Children } from 'react';
+import Link from '../ActiveLink'
 import { Navbar, Nav } from "react-bootstrap";
 
 import Config from '../../config';
@@ -30,13 +29,12 @@ class Menu extends Component {
 
     render() {
         const { menu, logo, getting_started_link } = this.props;
-        const { token, username } = this.state;
-        let menuItems = null;
+        let menuItems = null;       
         if(menu.items) {
             menuItems = menu.items.map(item => {
                 if (item.object === 'custom') {
                     return (
-                        <Link href={item.url} key={item.ID}>
+                        <Link activeClassName='active' href={item.url} key={item.ID}>
                             <a style={linkStyle}>{item.title}</a>
                         </Link>
                     );
@@ -55,6 +53,7 @@ class Menu extends Component {
                         as={`/${item.object}/${slug}`}
                         href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
                         key={item.ID}
+                        activeClassName='active'
                     >
                         <a style={linkStyle}>{item.title}</a>
                     </Link>
@@ -62,9 +61,36 @@ class Menu extends Component {
             }); 
         }
        
-        const getting_started_slug = getSlug(getting_started_link);
-        let getting_started_actualPage = 'page';
-        
+        let getting_started_slug = '/';
+        let getting_started_actualPage = '';
+        let getStartedLink = () => {
+            return (
+                <Link
+                    as='/'
+                    href='/'
+                >
+                    <a className="getStarted"> Get Started
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>
+                    </a>
+                </Link>
+            );
+        };     
+        if(getting_started_link) {
+            getting_started_slug = getSlug(getting_started_link);
+            getting_started_actualPage = 'page';
+            getStartedLink = () => {
+                return (
+                    <Link
+                        as={`/${getting_started_actualPage}/${getting_started_slug}`}
+                        href={`/${getting_started_actualPage}?slug=${getting_started_slug}&apiRoute=${getting_started_actualPage}`}
+                    >
+                        <a className="getStarted"> Get Started
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>
+                        </a>
+                    </Link>
+                );
+            }
+        } 
         return (
             <div>
                 <style
@@ -76,9 +102,12 @@ class Menu extends Component {
                         <div className="row">
                             <div className="col-12">
                                 <Navbar expand="lg">
-                                    <Navbar.Brand href="#home">
+                                    <Navbar.Brand href="/">
                                         { logo ? (
-                                            <Link href="/">
+                                            <Link
+                                                as='/' 
+                                                href="/"
+                                            >
                                                 <img src={logo}/>
                                             </Link>
                                         ) : '' }
@@ -86,19 +115,16 @@ class Menu extends Component {
                                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                     <Navbar.Collapse id="basic-navbar-nav">
                                         <Nav className="m-auto">
-                                            <Link href="/">
+                                            <Link 
+                                                as='/'
+                                                href="/"
+                                                activeClassName='active'
+                                            >
                                                 <a style={linkStyle}>Home</a>
                                             </Link>
                                             {menuItems}
                                         </Nav>
-                                        <Link
-                                            as={`/${getting_started_actualPage}/${getting_started_slug}`}
-                                            href={`/${getting_started_actualPage}?slug=${getting_started_slug}&apiRoute=${getting_started_actualPage}`}
-                                        >
-                                            <a className="getStarted"> Get Started
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>
-                                            </a>
-                                        </Link>
+                                        {getStartedLink()}
                                     </Navbar.Collapse>
                                 </Navbar>
                             </div>

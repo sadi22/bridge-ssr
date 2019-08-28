@@ -27,19 +27,30 @@ class Post extends Component {
   }
 
   render() {
-    const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link } = this.props;
+    const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link, gmap_api } = this.props;
     if (!page.title) return <Error statusCode={404} />;
+    let seo_title = page.title.rendered;
+    let seo_description = page.title.rendered;
+    let seo_canonical = page.link;
+    if(page.yoast_meta) {
+      seo_title = page.yoast_meta.yoast_wpseo_title;
+      seo_description = page.yoast_meta.yoast_wpseo_metadesc;
+      seo_canonical = page.yoast_meta.yoast_wpseo_canonical;
+    }
 
     return (
       <Fragment>
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta charSet="utf-8" />
-            <title>{page.title.rendered}</title>
+            <title>{seo_title}</title>
+            <meta name="description" content={seo_description}></meta>
+            <meta name="og:title" content={seo_title}></meta>
+            <meta name="og:description" content={seo_description}></meta>
         </Head>
         <Layout>
             <Menu menu={headerMenu} logo={logo} getting_started_link ={getting_started_link}/>
-            <ACFCONTENT {...page}/>
+            <ACFCONTENT {...page} gmap_api={gmap_api}/>
             <div
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{

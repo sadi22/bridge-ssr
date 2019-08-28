@@ -16,7 +16,7 @@ const Contact = dynamic(() => import('./Contact/index'));
 
 class ACFCONTENT extends Component {
     render() {
-        const { acf } = this.props;
+        const { acf, gmap_api } = this.props;
         let Section = null;
         if(acf.sections) {
             Section = acf.sections.map(section => {
@@ -32,7 +32,7 @@ class ACFCONTENT extends Component {
                         {section.acf_fc_layout === 'team' ? <Team {...section}/> : ''}
                         {section.acf_fc_layout === 'feature_list_with_image_on_the_left' ? <FeatureWithLeftImage {...section}/> : ''}
                         {section.acf_fc_layout === 'press' ? <Press {...section}/> : ''}
-                        {section.acf_fc_layout === 'google_maps' ? <Contact {...section}/> : ''}
+                        {section.acf_fc_layout === 'contact' ? <Contact {...section} api={gmap_api}/> : ''}
                     </Fragment>
                 );
             });

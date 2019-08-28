@@ -1,10 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react'
-import Head from 'next/head'
-import Link from 'next/link';
-
+import Link from '../ActiveLink'
 import style from "./index.scss";
-
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -35,6 +32,7 @@ class Footer extends Component{
                         as={`/${item.object}/${slug}`}
                         href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
                         key={item.ID}
+                        activeClassName='active'
                     >
                         <a>{item.title}</a>
                     </Link>
@@ -53,7 +51,7 @@ class Footer extends Component{
                         <div className="col-lg-3">
                             <div className="footer-logo">
                                 { logo ? (
-                                    <Link href="/">
+                                    <Link href="/" as='/'>
                                         <a><img src={logo}/></a>
                                     </Link>
                                 ) : '' }

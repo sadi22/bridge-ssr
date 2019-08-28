@@ -10,17 +10,19 @@ wp.site_logo = wp.registerRoute('bridge/v1', 'site_logo');
 wp.social = wp.registerRoute('bridge/v1', 'social_links');
 wp.footer_text = wp.registerRoute('bridge/v1', 'footer_text');
 wp.getting_started = wp.registerRoute('bridge/v1', 'getting_started_link');
+wp.gmap_api = wp.registerRoute('bridge/v1', 'gmap_api');
 
 const PageWrapper = Comp =>
   class extends React.Component {
     static async getInitialProps(args) {
-      const [headerMenu, footerMenu, logo, social, footer_text, getting_started_link, childProps] = await Promise.all([
+      const [headerMenu, footerMenu, logo, social, footer_text, getting_started_link, gmap_api, childProps] = await Promise.all([
         wp.menus().id('header-menu'),
         wp.menus().id('footer-menu'),
         wp.site_logo(),
         wp.social(),
         wp.footer_text(),
         wp.getting_started(),
+        wp.gmap_api(),
         Comp.getInitialProps(args),
       ]);
       return {
@@ -30,6 +32,7 @@ const PageWrapper = Comp =>
         social,
         footer_text,
         getting_started_link,
+        gmap_api,
         ...(Comp.getInitialProps ? childProps : null),
       };
     }
