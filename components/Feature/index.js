@@ -33,32 +33,32 @@ class Feature extends Component{
             }
         }
     }
-
+    
     render() {
         const {title, description, feature_list, show_more, show_more_link} = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
-      if(feature_list){
-        featureListMarkup = feature_list.map((feature, i) => {
+    	if(feature_list){
+    		featureListMarkup = feature_list.map((feature, i) => {
                 if(i == 0) defaultImage = feature.feature_image;
-          return (
+			    return (
                     <li className="feature-list active" data-src={feature.feature_image.url} key={i}>{feature.feature_title}</li>
-            );
-          });
-      }
+			      );
+			    });
+    	}
         return (
           <Fragment>
              <style
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: style }}
             />
-
+            
             <div className="feature">
-
+                
                 <div className="feature-list-image">
                     <img src="/static/images/feature-list-lines-accent.png" alt="bg-img" className="bg-image" />
                 </div>
-
+            
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -68,7 +68,7 @@ class Feature extends Component{
                             </div>
                         </div>
                     </div>
-
+            
                     <div className="row">
                         <div className="col-lg-5">
                             <div className="feature-content">
@@ -77,7 +77,7 @@ class Feature extends Component{
                                     {featureListMarkup}
                                 </ul>
 
-                                { show_more ?
+                                { show_more ? 
                                     <Link href={show_more_link} as={show_more_link}>
                                         <a className="show-more">Show more</a>
                                     </Link>
@@ -87,7 +87,7 @@ class Feature extends Component{
                         </div>
                     </div>
                 </div>
-
+                
                 <div className="hovered-image-wrapper">
                     <img src={defaultImage.url} alt={defaultImage.alt} title={defaultImage.title} className="feature-list-hovered-image" />
                 </div>

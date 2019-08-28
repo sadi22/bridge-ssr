@@ -293,13 +293,14 @@ select {
   .retail-ecommerce .retailer-image > img {
     border-radius: 7px;
     z-index: 1;
-    position: relative;
+    position: relative; }
+  .retail-ecommerce .retailer-image.image-shadow > img {
     box-shadow: -20px 32px 54px rgba(0, 0, 0, 0.15); }
     @media (max-width: 991px) {
-      .retail-ecommerce .retailer-image > img {
+      .retail-ecommerce .retailer-image.image-shadow > img {
         box-shadow: -20px 12px 54px rgba(0, 0, 0, 0.15); } }
     @media (max-width: 575px) {
-      .retail-ecommerce .retailer-image > img {
+      .retail-ecommerce .retailer-image.image-shadow > img {
         box-shadow: -20px 14px 34px rgba(0, 0, 0, 0.15); } }
 
 /*-------vertical-line-wrapper---

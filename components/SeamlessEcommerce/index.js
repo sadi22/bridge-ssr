@@ -13,7 +13,7 @@ class SeamlessEcommerce extends Component{
     
         return (
           <Fragment>
-            // <style dangerouslySetInnerHTML={{ __html: style }} />
+            <style dangerouslySetInnerHTML={{ __html: style }} />
            
             <div className="seamless-ecommerce">
                 <div className="container">

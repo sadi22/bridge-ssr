@@ -115,13 +115,7 @@ class Menu extends Component {
                                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                     <Navbar.Collapse id="basic-navbar-nav">
                                         <Nav className="m-auto">
-                                            <Link 
-                                                as='/'
-                                                href="/"
-                                                activeClassName='active'
-                                            >
-                                                <a style={linkStyle}>Home</a>
-                                            </Link>
+                                            
                                             {menuItems}
                                         </Nav>
                                         {getStartedLink()}
