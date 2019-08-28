@@ -72,8 +72,8 @@ class Feature extends Component{
                     <div className="row">
                         <div className="col-lg-5">
                             <div className="feature-content">
-                                <ul id="feature_list">
-                                    <span className="line"></span>
+                                <ul id="feature_list" className='vertical-line-wrapper'>
+                                    <span className="line vertical-line"></span>
                                     {featureListMarkup}
                                 </ul>
 

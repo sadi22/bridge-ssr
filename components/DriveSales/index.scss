@@ -1,4 +1,5 @@
-@import '../../src/styles/style';
+@import '../../src/styles/variables';
+@import '../../src/styles/extend-style';
 
 .drive-sales{
     padding-bottom: 90px;
@@ -18,9 +19,13 @@
     .overlay{
         background-color: #0b253c;
         top: inherit;
-        height: calc(100% - 117px);
+        height: calc(100% - 80px);
         bottom: 0;
         overflow: hidden;
+        
+        @media #{$device_min_2000} {
+            height: calc(100% - 147px);
+        }
         
         &:before{
             content: "";
@@ -30,7 +35,7 @@
             width: 100%;
             height: 290px;
             border-top: 290px solid #fff;
-            border-right: 1902px solid transparent;
+            border-right: 2700px solid transparent;
         }
     }
     

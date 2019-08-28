@@ -5,14 +5,16 @@ import Parser from 'html-react-parser';
 
 import style from "./index.scss";
 
-class SeamlessEcommerce extends Component{
 
+class SeamlessEcommerce extends Component{
+    
     render() {
     	const {title, sub_title, left_image, right_image} = this.props;
-
+    
         return (
           <Fragment>
-            <style dangerouslySetInnerHTML={{ __html: style }} />
+            // <style dangerouslySetInnerHTML={{ __html: style }} />
+           
             <div className="seamless-ecommerce">
                 <div className="container">
                     <div className="row">
@@ -23,7 +25,7 @@ class SeamlessEcommerce extends Component{
                             </div>
                         </div>
                     </div>
-
+            
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="seamless-image-area">
@@ -40,7 +42,7 @@ class SeamlessEcommerce extends Component{
                 </div>
             </div>
 
-
+            
           </Fragment>
         )
     }

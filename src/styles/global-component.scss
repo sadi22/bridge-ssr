@@ -1,13 +1,18 @@
 /*-------retail-ecommerce (this is common style with supplier page)---
 ---------------------------------------------------------*/
 .retail-ecommerce{
-    padding-top: 90px;
+    padding-top: 50px;
     overflow: hidden;
-    padding-bottom: 136px;
+    padding-bottom: 90px;
     
+    @media #{$device_992_1199} {
+        padding-bottom: 70px;
+    }
     @media #{$device_768_991} {
-        padding-top: 60px;
-        padding-bottom: 100px;
+        padding-top: 30px;
+    }
+    @media #{$device_0_575} {
+        padding-bottom: 50px
     }
     
     .section-title{
@@ -70,6 +75,13 @@
             z-index: 1;
             position: relative;
             box-shadow: -20px 32px 54px rgba(0, 0, 0, 0.15);
+            
+            @media #{$device_768_991} {
+                box-shadow: -20px 12px 54px rgba(0, 0, 0, 0.15);
+            }
+            @media #{$device_0_575} {
+                box-shadow: -20px 14px 34px rgba(0, 0, 0, 0.15);
+            }
         }
         
     }

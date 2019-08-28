@@ -12,7 +12,6 @@ class Press extends Component{
         let pressListMarkup = null;
     	if(press_list){            
     		pressListMarkup = press_list.map((press, i) => {
-                console.log(press);
 			    return (
                     <div className="col-lg-3 col-sm-6 single-col" key={i}>
                         <div className="single-press">

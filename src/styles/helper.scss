@@ -1,47 +1,55 @@
-
-//*------------font weight Typography------------*/
-.fw-300 {
+//*-------------------------*/
+.fw-300{
     font-weight: 300;
-}.fw-400 {
+}
+.fw-400{
     font-weight: 400;
-}.fw-500 {
+}
+.fw-500{
     font-weight: 500;
-}.fw-600 {
+}
+.fw-600{
     font-weight: 600;
-}.fw-700 {
+}
+.fw-700{
     font-weight: 700;
-}.fw-800 {
-    font-weight: 800;
-}.fw-900 {
+}
+.fw-900{
     font-weight: 900;
 }
 
-
-//*-------------------------*/
 .pos-relative {
     position: relative;
 }
 
-//*-----------extendable classes-----------*/
-a,
-.transition-3s {
+a {
     @include transitions(all 0.3s ease);//from mixin.scss
 }
-.transition-5s {
-    @include transitions(all 0.5s ease);//from mixin.scss
-}
+
 .btn-default {
-    display: block;
+    display: inline-block;
     border: none;
-    height: 50px;
-    line-height: 50px;
-    padding: 0px 20px;
-    font-size: 18px;
+    height: 54px;
+    line-height: 54px;
+    font-family: $roboto;
+    padding: 0px 30px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 2px;
     color: #fff;
     text-align: center;
     text-transform: capitalize;
     background-color: $primary-color;
+    box-shadow: 0 1px 5px rgba(40, 44, 71, 0.24);
+    
+    &:hover{
+        color: #fff;
+        box-shadow: none;
+    }
 }
+
+
+
 .overlay {
     position: absolute;
     left: 0;
@@ -63,34 +71,6 @@ a,
 
 .section-padding{
     padding: 100px 0;
-}
-
-//*------------------------*/
-.visibility-hide {
-    opacity: 0;
-    visibility: hidden;
-}
-.visibility-show {
-    opacity: 1;
-    visibility: visible;
-}
-
-//*-----------------------*/
-.position-center-XY-axis {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    @include transforms(translate(-50%, -50%));//from mixin.scss
-}
-.position-center-X-axis {
-    position: absolute;
-    left: 50%;
-    @include transforms(translateX(-50%));//from mixin.scss
-}
-.position-center-Y-axis {
-    position: absolute;
-    top: 50%;
-    @include transforms(translateY(-50%));//from mixin.scss
 }
 
 
@@ -115,3 +95,39 @@ a,
         line-height: 32px;
     }
 }
+
+
+//----------section title style-2---------------
+.section-title2{
+    margin-bottom: 42px;
+    
+    .sml-title{
+        color: $primary-color;
+        font-family: $roboto;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding-left: 70px;
+        margin-bottom: 23px;
+        display: inline-block;
+        
+        &:before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 50px;
+            height: 2px;
+            background: $primary-color;
+        }
+    }
+}
+
+
+
+
+
+
+
+

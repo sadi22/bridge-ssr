@@ -1,4 +1,5 @@
-@import '../../src/styles/style';
+@import '../../src/styles/variables';
+@import '../../src/styles/extend-style';
 
 .supplier-profiles-reach{
     padding-top: 78px;
@@ -15,6 +16,12 @@
         margin: 0 auto;
     }
     
+    .customer-profiling-image,
+    .customer-profiling-content{
+        @media #{$device_768_991} {
+            text-align: center;
+        }
+    }
     .unique-reach-content,
     .customer-profiling-content{
         .section-title{
@@ -33,18 +40,46 @@
     .unique-reach {
         margin-top: 60px;
         
+        @media #{$device_768_991} {
+            flex-flow: column-reverse;
+        }
+        
         .unique-reach-image {
             width: 570px;
-            background: #ddd;
             height: 570px;
             border-radius: 100%;
             position: relative;
-            background-image: linear-gradient(180deg, #ffffff 0%, #cbf5f6 100%);
             opacity: 0.6;
+            background-image: linear-gradient(180deg, #ffffff 0%, #cbf5f6 100%);
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            
+            @media #{$device_992_1199} {
+                width: 440px;
+                height: 440px;
+            }
+            @media #{$device_768_991} {
+                margin: 40px auto;
+            }
+            @media #{$device_0_575} {
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+                padding: 14px;
+                border-radius: 10px;
+            }
         }
         
         .unique-reach-content{
             padding-right: 90px;
+            
+            @media #{$device_768_991} {
+                text-align: center;
+                padding-right: 0;
+                padding-bottom: 60px;
+            }
             
             .section-title {
                 padding-bottom: 35px;
@@ -52,6 +87,10 @@
             
             ul.vertical-line-wrapper {
                 display: inline-flex;
+                
+                @media #{$device_768_991} {
+                    text-align: left;
+                }
                 
                 li {
                     padding: 5px 20px 8px 20px;

@@ -5,14 +5,21 @@ $body-font: 'Roboto', sans-serif;
 $body-font-color : #1d1f2c;
 
 $roboto : 'Roboto', sans-serif;
+
 $lato : 'Lato', sans-serif;
+
+$poppins : 'Poppins', sans-serif;
+
 $trasandina : 'Trasandina W03 Medium';
+
 $trasandina-book : 'Trasandina W03 Book';
 
 
 //************************************************
 //[Responsive Stylesheet]
 //*************************************************/
+
+$device_min_2000 : '(min-width: 2000px)';//*--media query min 2000px--*/
 
 $device_1600_1699 : '(max-width: 1699px)';//*--media query 1600-1699px--*/
     
