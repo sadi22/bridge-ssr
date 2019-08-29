@@ -29,16 +29,25 @@
         position: relative;
         background: #fff;
         z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        flex-flow: column;
+        align-items: flex-start;
+        justify-content: center;
         
         @media #{$device_992_1199} {
             padding: 40px 0 0 0;
+        }
+        @media #{$device_768_991} {
+            min-height: auto;
+            display: block;
         }
         
         .section-title {
             padding-bottom: 34px;
             
             h2{
-                max-width: 340px;
+                max-width: 370px;
                 width: 100%;
             }
             p{
@@ -47,10 +56,3 @@
         }
     }
 }
-
-
-
-
-
-
-

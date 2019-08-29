@@ -2,6 +2,8 @@
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Fade from 'react-reveal/Fade';
+
 import Parser from 'html-react-parser';
 import style from "./index.scss";
 
@@ -38,11 +40,13 @@ class Feature extends Component{
         const {title, description, feature_list, show_more, show_more_link} = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
+        let initialDelay = 300;
     	if(feature_list){
     		featureListMarkup = feature_list.map((feature, i) => {
                 if(i == 0) defaultImage = feature.feature_image;
+                initialDelay = initialDelay + 100;
 			    return (
-                    <li className="feature-list active" data-src={feature.feature_image.url} key={i}>{feature.feature_title}</li>
+                    <Fade left duration={1500} delay={initialDelay}><li className={`${i==0 ? 'active': ''} feature-list`} data-src={feature.feature_image.url} key={i}>{feature.feature_title}</li></Fade>
 			      );
 			    });
     	}
@@ -63,8 +67,8 @@ class Feature extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <h2>{Parser(title)}</h2>
-                                <p>{Parser(description)}</p>
+                                <Fade bottom><h2>{Parser(title)}</h2></Fade>
+                                <Fade bottom delay={500}><p>{Parser(description)}</p></Fade>
                             </div>
                         </div>
                     </div>

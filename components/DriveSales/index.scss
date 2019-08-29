@@ -90,7 +90,8 @@
             }
             
             img{
-                transform: translateY(10px);
+                position: relative;
+                top: 10px;
             }
         }
         .drive-content{

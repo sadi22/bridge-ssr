@@ -32,9 +32,10 @@
     .feature-list-image{
         position: absolute;
         right: 0;
-        top: 250px;
+        top: 50%;
         overflow: hidden;
         padding-right: 150px;
+        @include transforms(translateY(-50%));
         
         @media #{$device_1400_1599} {
             padding-right: 0;
@@ -44,6 +45,7 @@
         }
         @media #{$device_992_1199} {
             max-width: 585px;
+            top: calc(50% + 50px);
         }
         @media #{$device_768_991} {
             display: none;
@@ -54,10 +56,11 @@
         position: absolute;
         right: 100px;
         z-index: 2;
-        bottom: 170px;
+        top: 50%;
         max-width: 870px;
         text-align: center;
         width: 100%;
+        @include transforms(translateY(-50%));
         
         @media #{$device_1400_1599} {
             right: 80px;
@@ -69,15 +72,17 @@
         @media #{$device_992_1199} {
             max-width: 480px;
             right: 40px;
+            top: calc(50% + 50px);
         }
         @media #{$device_768_991} {
             position: relative;
-            bottom: inherit;
+            top: inherit;
             right: inherit;
             margin: 40px auto 0;
             display: block;
             max-width: 100%;
             padding: 0 15px;
+            @include transforms(inherit);
         }
         
         .feature-list-hovered-image{
@@ -89,6 +94,7 @@
     
     
     .feature-content{
+        overflow: hidden;
         
         @media #{$device_768_991} {
             max-width: 320px;

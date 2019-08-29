@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react'
 import Head from 'next/head';
 import Link from 'next/link';
 import Parser from 'html-react-parser';
+import Fade from 'react-reveal/Fade';
 
 import $ from "jquery";
 import style from "./index.scss";
@@ -147,10 +148,10 @@ class Banner extends Component{
                         <div className="col-12">
                             <div className="banner-content text-center">
                                 <div className="banner-text">
-                                    <h1>{ heading }</h1>
-                                    <p>{ description }</p>
+                                    <Fade bottom><h1>{ heading }</h1></Fade>
+                                    <Fade bottom delay={500}><p>{ description }</p></Fade>
                                 </div>
-                                { image ? <img src={image.url} alt={image.alt} title={image.title} className="banner-img img-fluid" />: ''}
+                                { image ? <Fade delay={1000}><img src={image.url} alt={image.alt} title={image.title} className="banner-img img-fluid" /></Fade>: ''}
                             </div>
                             
                             {enable_user_type_dropdown ? 
