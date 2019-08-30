@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Parser from 'html-react-parser';
 import Fade from 'react-reveal/Fade';
 
-import style from "./index.scss";
+import "./index.scss";
 
 
 class RetailEcommerce extends Component{
@@ -12,12 +12,6 @@ class RetailEcommerce extends Component{
         const {title, sub_title, left_text, right_image, show_background, enable_drop_shadow, enable_double_line_heading } = this.props;
         return (
           <Fragment>
-             <div>
-              <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
             <div className="retail-ecommerce">
                 <div className="container">
                     <div className="row">

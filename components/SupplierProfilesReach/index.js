@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Parser from 'html-react-parser';
 
 
-import style from "./index.scss";
+import "./index.scss";
 
 
 class SupplierProfilesReach extends Component{
@@ -50,12 +50,6 @@ class SupplierProfilesReach extends Component{
     	}
         return (
           <Fragment>
-             <div>
-                <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-                />
-            </div>
             <div className="supplier-profiles-reach section-padding">
                 <div className="container">
                     <div className="row">

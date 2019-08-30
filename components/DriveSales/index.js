@@ -4,7 +4,7 @@ import Head from 'next/head';
 import {Fade, Slide} from 'react-reveal';
 
 import Parser from 'html-react-parser';
-import style from "./index.scss";
+import "./index.scss";
 
 class DriveSales extends Component{
     render() {
@@ -36,13 +36,6 @@ class DriveSales extends Component{
 
         return (
           <Fragment>
-             <div>
-              <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
-
             <div className="drive-sales pos-relative">
                 <div className="overlay"></div>
                 <div className="container">

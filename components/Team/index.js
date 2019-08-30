@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
-import style from "./index.scss";
+import  "./index.scss";
 import Parser from 'html-react-parser';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -36,12 +36,7 @@ class Team extends Component{
     	}
         return (
           <Fragment>
-            <div>
-              <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
+          
             
             <div className="bridge-team-banner">
                 <div className="overlay"></div>

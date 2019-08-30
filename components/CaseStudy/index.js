@@ -8,13 +8,6 @@ class CaseStudy extends Component{
     render() {
         return (
           <Fragment>
-            <Head>
-              <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </Head>
-            
             <div className="case-study">
                 <div className="container">
                     <div className="row">

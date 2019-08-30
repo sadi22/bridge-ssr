@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react'
 import Link from '../ActiveLink'
-import style from "./index.scss";
+import "./index.scss";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -41,10 +41,6 @@ class Footer extends Component{
         });
         return (
           <Fragment>
-            <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-            />
             <footer className="site-footer">
                 <div className="container">
                     <div className="row align-items-center">

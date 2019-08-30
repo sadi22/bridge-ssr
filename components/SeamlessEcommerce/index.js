@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Parser from 'html-react-parser';
 import Fade from 'react-reveal/Fade';
 
-import style from "./index.scss";
+import "./index.scss";
 
 
 class SeamlessEcommerce extends Component{
@@ -14,7 +14,7 @@ class SeamlessEcommerce extends Component{
     
         return (
           <Fragment>
-            <style dangerouslySetInnerHTML={{ __html: style }} />
+            
            
             <div className="seamless-ecommerce">
                 <div className="container">

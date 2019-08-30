@@ -1,15 +1,13 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react'
-import Head from 'next/head';
 import Link from 'next/link';
 import Parser from 'html-react-parser';
 import Fade from 'react-reveal/Fade';
 
 import $ from "jquery";
-import style from "./index.scss";
+import "./index.scss";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown } from "@fortawesome/free-solid-svg-icons";
@@ -134,13 +132,6 @@ class Banner extends Component{
         }
         return (
           <Fragment>
-             <div>
-              <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
-
             <div className="bridge-banner pos-relative">
                 <div className="overlay"></div>
                 <div className="container">

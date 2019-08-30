@@ -7,7 +7,6 @@ import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Header/index';
 import Config from '../config';
 import Footer from "../components/Footer/index";
-import Container from 'react-bootstrap/Container'
 import ACFCONTENT from '../components/AcfContent';
 
 const wp = new WPAPI({ endpoint: Config.apiUrl });
@@ -44,9 +43,12 @@ class Post extends Component {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta charSet="utf-8" />
             <title>{seo_title}</title>
-            <meta name="description" content={seo_description}></meta>
-            <meta name="og:title" content={seo_title}></meta>
-            <meta name="og:description" content={seo_description}></meta>
+            <meta name="og:title" content={seo_title}/>
+            <meta name="og:type" content="article"/>
+            <meta name="og:url" content={seo_canonical}/>
+            <meta name="og:image" content="https://bridgssrelive.wpengine.com/wp-content/uploads/2019/08/site-logo.png"/>
+            <meta name="og:site_name" content="Bridge"/>
+            <meta name="og:description" content={seo_description}/>
         </Head>
         <Layout>
             <Menu menu={headerMenu} logo={logo} getting_started_link ={getting_started_link}/>

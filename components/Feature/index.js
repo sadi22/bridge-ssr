@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
 
 import Parser from 'html-react-parser';
-import style from "./index.scss";
+import "./index.scss";
 
 
 class Feature extends Component{
@@ -52,10 +52,7 @@ class Feature extends Component{
     	}
         return (
           <Fragment>
-             <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-            />
+           
             
             <div className="feature">
                 

@@ -1,61 +1,36 @@
-const path = require("path");
-const glob = require("glob");
+const path = require('path');
+const withSass = require('@zeit/next-sass');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-module.exports = {
-  webpack: (config, { dev }) => {
-    config.module.rules.push(
-      {
-        test: /\.(css|scss)/,
-        loader: "emit-file-loader",
-        options: {
-          name: "dist/[path][name].[ext]"
-        }
-      },
-      {
-        test: /\.css$/,
-        use: ["babel-loader", "raw-loader", "postcss-loader"]
-      },
-      {
-        test: /\.s(a|c)ss$/,
-        use: [
-          "babel-loader",
-          "raw-loader",
-          "postcss-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              includePaths: ["scss", "node_modules"]
-                .map(d => path.join(__dirname, d))
-                .map(g => glob.sync(g))
-                .reduce((a, c) => a.concat(c), [])
-            }
-          }
-        ]
+const nextConfig = withSass({
+  webpack(config, options) {
+    config.module.rules.push({
+      test: /\.(raw)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      use: 'raw-loader',
+    });
+    config.module.rules.push({
+      type: 'javascript/auto',
+      test: /\.modernizrrc(\.json)?$/,
+      use: ['expose-loader?Modernizr', 'modernizr-loader', 'json-loader'],
+    });
+    config.resolve = {
+      alias: {
+        modernizr$: path.resolve(__dirname, ".modernizrrc.json")
       }
-    );
+    };
+    if (config.mode === 'production') {
+      if (Array.isArray(config.optimization.minimizer)) {
+        config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}));
+      }
+    }
     return config;
   }
+});
+
+nextConfig.exportPathMap = () => {
+  return {
+    '/': { page: '/' },
+  };
 };
 
-const withSass = require("@zeit/next-sass");
-function HACK_removeMinimizeOptionFromCssLoaders(config) {
-  console.warn(
-    'HACK: Removing `minimize` option from `css-loader` entries in Webpack config',
-  );
-  config.module.rules.forEach(rule => {
-    if (Array.isArray(rule.use)) {
-      rule.use.forEach(u => {
-        if (u.loader === 'css-loader' && u.options) {
-          delete u.options.minimize;
-        }
-      });
-    }
-  });
-}
-
-module.exports = withSass({
-  webpack(config) {
-    HACK_removeMinimizeOptionFromCssLoaders(config);
-    return config;
-  },
-});
+module.exports = nextConfig;

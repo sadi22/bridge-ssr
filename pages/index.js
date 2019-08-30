@@ -1,8 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import Link from 'next/link';
-import dynamic from 'next/dynamic'
 import Head from 'next/head';
-import Router from 'next/router';
 import WPAPI from 'wpapi';
 import Layout from '../components/Layout';
 import ACFCONTENT from '../components/AcfContent';
@@ -56,9 +53,13 @@ class Index extends Component {
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta charSet="utf-8" />
                     <title>{seo_title}</title>
-                    <meta name="description" content={seo_description}></meta>
-                    <meta name="og:title" content={seo_title}></meta>
-                    <meta name="og:description" content={seo_description}></meta>
+
+                    <meta name="og:title" content={seo_title}/>
+                    <meta name="og:type" content="article"/>
+                    <meta name="og:url" content={seo_canonical}/>
+                    <meta name="og:image" content="https://bridgssrelive.wpengine.com/wp-content/uploads/2019/08/site-logo.png"/>
+                    <meta name="og:site_name" content="Bridge"/>
+                    <meta name="og:description" content={seo_description}/>
                 </Head>
                 <Layout>
                     <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>

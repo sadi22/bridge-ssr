@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
-import style from "./index.scss";
+import "./index.scss";
 import MapContainer from './Map';
 
 
@@ -18,13 +18,6 @@ class Contact extends Component{
         const { title, description, api, location } = this.props;
         return (
           <Fragment>
-            <div>
-              <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
-            
             <div className="bridge-contact pos-relative">
                 <div className="container">
                     <div className="row">

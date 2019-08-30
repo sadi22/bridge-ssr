@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Parser from 'html-react-parser';
 import Fade from 'react-reveal/Fade';
 
-import style from "./index.scss";
+import "./index.scss";
 
 
 class BottomCTA extends Component{
@@ -12,13 +12,6 @@ class BottomCTA extends Component{
         const {title, sub_title} = this.props;
         return (
           <Fragment>
-             <div>
-              <style
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: style }}
-              />
-            </div>
-
             <div className="bottom-cta">
                 <div className="container">
                     <div className="row">
