@@ -11,6 +11,10 @@
         padding-top: 33px;
     }
     
+    .supplier-profiles-reach{
+        padding: 0;
+    }
+
     .section-title{
         max-width: 750px;
         margin: 0 auto;
@@ -45,23 +49,8 @@
         }
         
         .unique-reach-image {
-            width: 570px;
-            height: 570px;
-            border-radius: 100%;
-            position: relative;
-            opacity: 0.6;
-            background-image: linear-gradient(180deg, #ffffff 0%, #cbf5f6 100%);
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            justify-content: center;
-            
-            @media #{$device_992_1199} {
-                width: 440px;
-                height: 440px;
-            }
             @media #{$device_768_991} {
-                margin: 40px auto;
+                text-align: center
             }
             @media #{$device_0_575} {
                 width: 100%;
@@ -69,6 +58,11 @@
                 border-radius: 0;
                 padding: 14px;
                 border-radius: 10px;
+            }
+            
+            img{
+                display: block;
+                margin: 0 auto;
             }
         }
         
@@ -78,7 +72,6 @@
             @media #{$device_768_991} {
                 text-align: center;
                 padding-right: 0;
-                padding-bottom: 60px;
             }
             
             .section-title {

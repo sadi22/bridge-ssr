@@ -176,9 +176,6 @@ a {
 .trasandina-book {
   font-family: "Trasandina W03 Book"; }
 
-.section-padding {
-  padding: 100px 0; }
-
 .underline {
   position: relative; }
 
@@ -274,6 +271,8 @@ select {
   @media (max-width: 575px) {
     .retail-ecommerce {
       padding-bottom: 50px; } }
+  .retail-ecommerce .retail-ecommerce {
+    padding: 0; }
   .retail-ecommerce .section-title h2 {
     font-size: calc(32px + (37 - 32) * ((100vw - 320px) / (1920 - 320)));
     line-height: 1.26; }

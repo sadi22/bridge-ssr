@@ -3,6 +3,9 @@ import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
 
+import TrackVisibility from 'react-on-screen';
+import { motion } from "framer-motion"
+
 
 import "./index.scss";
 
@@ -49,13 +52,23 @@ class SupplierProfilesReach extends Component{
 			    });
     	}
         return (
-          <Fragment>
+          <div>
             <div className="supplier-profiles-reach section-padding">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
-                            <h2>{Parser(title)}</h2>
+                            <motion.h2
+                                className="single-drive"
+                                initial={{ scale:0.5, opacity: 0, visibility:"hidden" }}
+                                animate={{ scale:1, opacity: 1, visibility:"visible" }}
+                                transition={{
+                                type: "spring",
+                                stiffness: 60,
+                                damping: 500,
+                                delay: 0.3,
+                                }}
+                            >{Parser(title)}</motion.h2>
                             </div>
                         </div>
                     </div>
@@ -102,7 +115,7 @@ class SupplierProfilesReach extends Component{
                     : ''}
                 </div>
             </div>
-          </Fragment>
+          </div>
         )
     }
 }

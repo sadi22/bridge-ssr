@@ -21,15 +21,14 @@ class WholesalerBusinessIntelligence extends Component{
 			    });
     	}
         return (
-          <Fragment>
-            
+          <div>
             
             <div className="wholesaler-business-intelligence">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-7">
                             <div className="business-intelligence-img">
-                                {image ? <img src={image.url} alt={image.alt} title={image.title}/> : ''}
+                                {image ? <img src={image.url} alt={image.alt} title={image.title} className="img-fluid" /> : ''}
                             </div>
                         </div>
                         <div className="col-lg-5">
@@ -42,8 +41,7 @@ class WholesalerBusinessIntelligence extends Component{
                 </div>
             </div>
 
-            
-          </Fragment>
+          </div>
         )
     }
 }

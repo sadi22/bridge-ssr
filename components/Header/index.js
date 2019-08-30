@@ -3,6 +3,8 @@ import React, { Component, Children } from 'react';
 import Link from '../ActiveLink'
 import { Navbar, Nav } from "react-bootstrap";
 
+import { motion } from "framer-motion"
+
 import Config from '../../config';
 import "./index.scss";
 
@@ -97,7 +99,17 @@ class Menu extends Component {
                     // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML={{ __html: style }}
                 /> */}
-                <header className="header-main">
+                <motion.header 
+                    initial={{ opacity: 0, visibility:"hidden" }}
+                    animate={{ opacity: 1, visibility:"visible" }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 60,
+                      damping: 500,
+                      delay: 0.6,
+                    }}
+                    className="header-main"
+                >
                     <div className="container">
                         <div className="row">
                             <div className="col-12">
@@ -124,7 +136,7 @@ class Menu extends Component {
                             </div>
                         </div>
                     </div>
-                </header>
+                </motion.header>
 
             </div>
         );

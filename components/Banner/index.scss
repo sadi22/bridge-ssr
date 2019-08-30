@@ -15,7 +15,6 @@
     
     .overlay{
         height: 770px;
-        border-radius: 4px;
         background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f5fcfc));
         background-image: -webkit-linear-gradient(top, #ffffff 0%, #f5fcfc 100%);
         background-image: linear-gradient(180deg, #ffffff 0%, #f5fcfc 100%);
@@ -34,9 +33,9 @@
             left: 0px;
             bottom: 0;
             width: 100%;
-            height: 300px;
-            border-bottom: 300px solid #fff;
-            border-left: 1902px solid transparent;
+            height: 410px;
+            border-bottom: 410px solid #fff;
+            border-left: 2700px solid transparent;
         }
     }
     
@@ -78,7 +77,7 @@
             flex-flow: row;
             align-items: center;
             justify-content: center;
-
+            
             h3{
                 color: #282c47;
                 font-weight: 500;
@@ -97,21 +96,24 @@
                     color: $primary-color;
                 }
             }
-            .button{
+            a.button{
                 width: 70px;
                 height: 54px;
-                border-radius: 2px 2px 2px 0;
+                border-radius: 2px;
                 background-color: $primary-color;
-                display: flex;
-                flex-flow: column;
-                align-items: center;
-                justify-content: center;
                 cursor: pointer;
                 border: none;
+                display: none;
                 padding: 14px 5px;
+                
+                &.user-type-link:first-of-type{
+                    display: block;
+                }
+                
                 @media #{$device_0_575} {
                     width: 45px;
                     height: 38px;
+                    padding: 9px 5px;
                 }
                 
                 svg{
@@ -127,12 +129,6 @@
                         fill: #fff;
                     }
                 }
-            }
-            .user-type-link {
-                display: none;
-            }
-            .user-type-link:first-of-type {
-                display: block;
             }
         }
     }
@@ -225,12 +221,31 @@
         &.select-hide {
             opacity: 0;
             visibility: hidden;
+
+            & > div{
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+            }
         }
         
         & > div {
             cursor: pointer;
             margin-bottom: 7px;
-            @extend .transition-3s;
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease 0;
+
+            &:nth-child(1){
+                transition: all 0.3s ease 0.1s;
+            }
+            &:nth-child(2){
+                transition: all 0.3s ease 0.2s;
+            }
+            &:nth-child(3){
+                transition: all 0.3s ease 0.4s;
+            }
             
             &:last-child{
                 margin-bottom: 0;

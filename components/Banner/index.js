@@ -2,7 +2,8 @@
 import React, { Component, Fragment } from 'react'
 import Link from 'next/link';
 import Parser from 'html-react-parser';
-import Fade from 'react-reveal/Fade';
+
+import { motion } from "framer-motion"
 
 import $ from "jquery";
 import "./index.scss";
@@ -133,20 +134,75 @@ class Banner extends Component{
         return (
           <Fragment>
             <div className="bridge-banner pos-relative">
-                <div className="overlay"></div>
+                <motion.div
+                    initial={{ height:0 }}
+                    animate={{ height:"77%" }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 60,
+                      damping: 500,
+                    }} 
+                    className="overlay"
+                ></motion.div>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-content text-center">
                                 <div className="banner-text">
-                                    <Fade bottom><h1>{ heading }</h1></Fade>
-                                    <Fade bottom delay={500}><p>{ description }</p></Fade>
+                                <motion.h1 
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                        transition={{
+                                          type: "spring",
+                                          stiffness: 60,
+                                          damping: 500,
+                                          delay: 0.7,
+                                          default: { duration: .8 },
+                                        }}
+                                        
+                                    >{ heading }</motion.h1>
+                                    <motion.p
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                        transition={{
+                                          type: "spring",
+                                          stiffness: 100,
+                                          damping: 500,
+                                          delay: 0.9,
+                                          default: { duration: 0.8 },
+                                        }}
+                                    >{ description }</motion.p>
                                 </div>
-                                { image ? <Fade delay={1000}><img src={image.url} alt={image.alt} title={image.title} className="banner-img img-fluid" /></Fade>: ''}
+                                { image ? <motion.img 
+                                    src={image.url} 
+                                    alt={image.alt} 
+                                    title={image.title} 
+                                    className="banner-img img-fluid" 
+                                    initial={{scale: 0.7, opacity:0}}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 100,
+                                        damping: 500,
+                                        delay: 0.9,
+                                        default: { duration: 0.8 },
+                                    }}
+                                />: ''}
                             </div>
                             
                             {enable_user_type_dropdown ? 
-                              <div className="banner-select-option text-center">
+                              <motion.div 
+                                className="banner-select-option text-center"
+                                initial={{translateY: 50, visibility:"hidden"}}
+                                animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 500,
+                                    delay: 1,
+                                    default: { duration: 0.8 },
+                                }}
+                              >
                                   <p>{Parser(user_heading)}</p>
                                   <div className="business-type-area">
                                       <h3><span>{text}</span></h3>
@@ -156,11 +212,8 @@ class Banner extends Component{
                                           </select>
                                       </div>
                                       {userDropdownLinkMarkup}
-                                      {/* <a className="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>
-                                      </a> */}
                                   </div>
-                              </div>
+                              </motion.div>
                             : ''}
                         </div>
                     </div>

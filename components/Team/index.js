@@ -4,6 +4,9 @@ import Head from 'next/head';
 import  "./index.scss";
 import Parser from 'html-react-parser';
 
+import TrackVisibility from 'react-on-screen';
+import { motion } from "framer-motion"
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -21,7 +24,20 @@ class Team extends Component{
                     <div className="col-lg-4 col-sm-6 single-col" key={i}>
                         <div className="single-member text-center">
                             <div className="member-img">
-                                {team.image ? <img src={team.image.url} alt={team.image.alt} title={team.image.title} /> : ''}
+                                {team.image ? <motion.img
+                                 src={team.image.url} 
+                                 alt={team.image.alt} 
+                                 title={team.image.title} 
+                                 initial={{scale: 0.7, opacity:0}}
+                                 animate={{ scale: 1, opacity: 1 }}
+                                 transition={{
+                                     type: "spring",
+                                     stiffness: 100,
+                                     damping: 500,
+                                     delay: 0.9,
+                                     default: { duration: 0.8 },
+                                 }}
+                                 /> : ''}
                                 
                             </div>
                             <h5>{team.name}</h5>
@@ -35,9 +51,8 @@ class Team extends Component{
 			    });
     	}
         return (
-          <Fragment>
+          <div>
           
-            
             <div className="bridge-team-banner">
                 <div className="overlay"></div>
                 <div className="container">
@@ -60,7 +75,7 @@ class Team extends Component{
             </div>
             
             
-          </Fragment>
+          </div>
         )
     }
 }
