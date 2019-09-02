@@ -1,9 +1,8 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-import Head from 'next/head';
 import Parser from 'html-react-parser';
-import TrackVisibility from 'react-on-screen';
 import { motion } from "framer-motion"
+import { Enhance } from "../Enhance";
 
 import "./index.scss";
 
@@ -12,10 +11,7 @@ class RetailEcommerce extends Component{
     render() {
         const {title, sub_title, left_text, right_image, show_background, enable_drop_shadow, enable_double_line_heading } = this.props;
         return (
-            <TrackVisibility once>
-                {({ isVisible }) => isVisible && 
-                <div>
-                    <div className="retail-ecommerce">
+            <div className="retail-ecommerce">
                         <div className="container">
                             <div className="row">
                                 <div className={`${enable_double_line_heading ? 'col-lg-8' : 'col-12'} m-auto`}>
@@ -99,11 +95,9 @@ class RetailEcommerce extends Component{
                             </div>
                         </div>
                     </div>
-                </div>}
-            </TrackVisibility>
           
         )
     }
 }
 
-export default RetailEcommerce;
+export default Enhance(RetailEcommerce);

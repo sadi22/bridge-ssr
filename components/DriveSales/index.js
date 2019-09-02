@@ -1,11 +1,9 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-import Head from 'next/head';
-
-import TrackVisibility from 'react-on-screen';
 import { motion } from "framer-motion"
-
 import Parser from 'html-react-parser';
+import { Enhance } from "../Enhance";
+
 import "./index.scss";
 
 class DriveSales extends Component{
@@ -18,7 +16,6 @@ class DriveSales extends Component{
     		featureBoxMarkup = feature_box.map((feature, i) => {
                   initialDelay = initialDelay + 0.7;
 			      return (
-
 			        <div className="col-lg-6" key={i}>
                         <motion.div 
                             className="single-drive"
@@ -83,39 +80,35 @@ class DriveSales extends Component{
     	}
 
         return (
-            <TrackVisibility once key='DriveSales'>
-                {({ isVisible }) => isVisible && 
-                <div>
-                    <div className="drive-sales pos-relative">
-                        <div className="overlay"></div>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="section-title text-center">
-                                        <motion.h2
-                                            initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                            animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
-                                            transition={{
+            <div className="drive-sales pos-relative">
+                <div className="drive-sales pos-relative">
+                    <div className="overlay"></div>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="section-title text-center">
+                                    <motion.h2
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                        transition={{
                                             type: "spring",
                                             stiffness: 60,
                                             damping: 500,
                                             delay: 0.4,
-                                            }}
-                                        >{Parser(title)}</motion.h2>
-                                    </div>
+                                        }}
+                                    >{Parser(title)}</motion.h2>
                                 </div>
                             </div>
+                        </div>
 
-                            <div className="row">
-                                {featureBoxMarkup}
-                            </div>
+                        <div className="row">
+                            {featureBoxMarkup}
                         </div>
                     </div>
-
-                </div>}
-            </TrackVisibility>
+                </div>
+            </div>
         )
     }
 }
 
-export default DriveSales;
+export default Enhance(DriveSales);

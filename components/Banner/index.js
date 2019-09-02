@@ -2,10 +2,9 @@
 import React, { Component, Fragment } from 'react'
 import Link from 'next/link';
 import Parser from 'html-react-parser';
-
 import { motion } from "framer-motion"
-
 import $ from "jquery";
+import { Enhance } from "../Enhance";
 import "./index.scss";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -132,8 +131,7 @@ class Banner extends Component{
           });
         }
         return (
-          <Fragment>
-            <div className="bridge-banner pos-relative">
+          <div className="bridge-banner pos-relative">
                 <motion.div
                     initial={{ height:0 }}
                     animate={{ height:"77%" }}
@@ -219,9 +217,8 @@ class Banner extends Component{
                     </div>
                 </div>
             </div>
-          </Fragment>
         )
     }
 }
 
-export default Banner;
+export default Enhance(Banner);

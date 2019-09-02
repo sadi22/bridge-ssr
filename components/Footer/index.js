@@ -2,8 +2,9 @@
 import React, { Component, Fragment } from 'react'
 import Link from '../ActiveLink'
 import "./index.scss";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { motion } from "framer-motion"
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -40,8 +41,18 @@ class Footer extends Component{
             );
         });
         return (
-          <Fragment>
-            <footer className="site-footer">
+            <motion.footer
+                initial={false}
+                animate={{ opacity: 1, visibility:"visible" }}
+                transition={{
+                    type: "spring",
+                    stiffness: 60,
+                    damping: 500,
+                    delay: 0.6,
+                }}
+                
+                className="site-footer"
+            >
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-3">
@@ -76,8 +87,7 @@ class Footer extends Component{
                         </div>
                     </div>
                 </div>
-            </footer>
-          </Fragment>
+            </motion.footer>
         )
     }
 }

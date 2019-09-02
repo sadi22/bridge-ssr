@@ -2,18 +2,15 @@
 @import '../../src/styles/extend-style';
 
 .drive-sales{
-    padding-bottom: 90px;
     padding-top: 75px;
     
     @media #{$device_992_1199} {
-        padding-bottom: 40px;
         padding-top: 45px;
     }
     @media #{$device_768_991} {
         padding-top: 45px;
     }
     @media #{$device_576_767} {
-        padding-bottom: 20px;
     }
 
     .drive-sales {

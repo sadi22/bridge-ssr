@@ -1,9 +1,8 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-import Head from 'next/head';
 import Parser from 'html-react-parser';
-import TrackVisibility from 'react-on-screen';
 import { motion } from "framer-motion"
+import { Enhance } from "../Enhance";
 
 import "./index.scss";
 
@@ -14,10 +13,7 @@ class SeamlessEcommerce extends Component{
     	const {title, sub_title, left_image, right_image} = this.props;
     
         return (
-            <TrackVisibility once key='seamless-ecommerce'>
-                {({ isVisible }) => isVisible && 
-                 <div>
-                    <div className="seamless-ecommerce">
+            <div className="seamless-ecommerce">
                         <div className="container">
                             <div className="row">
                                 <div className="col-12">
@@ -86,10 +82,8 @@ class SeamlessEcommerce extends Component{
                             </div>
                         </div>
                     </div>
-                </div>}
-            </TrackVisibility>
         )
     }
 }
 
-export default SeamlessEcommerce;
+export default Enhance(SeamlessEcommerce);

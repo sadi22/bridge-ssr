@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
+import { Enhance } from "../Enhance";
 
 import "./index.scss";
 
@@ -54,4 +55,4 @@ class Press extends Component{
     }
 }
 
-export default Press;
+export default Enhance(Press);

@@ -24,7 +24,8 @@ const nextConfig = withSass({
       }
     }
     return config;
-  }
+  },
+  target: 'serverless'
 });
 
 nextConfig.exportPathMap = () => {

@@ -52,7 +52,6 @@ class Team extends Component{
     	}
         return (
           <div>
-          
             <div className="bridge-team-banner">
                 <div className="overlay"></div>
                 <div className="container">
@@ -73,8 +72,6 @@ class Team extends Component{
                     </div>
                 </div>
             </div>
-            
-            
           </div>
         )
     }

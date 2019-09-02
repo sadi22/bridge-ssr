@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
+import { Enhance } from "../Enhance";
+
 import "./index.scss";
 import MapContainer from './Map';
 
@@ -17,7 +19,6 @@ class Contact extends Component{
     render() {
         const { title, description, api, location } = this.props;
         return (
-          <Fragment>
             <div className="bridge-contact pos-relative">
                 <div className="container">
                     <div className="row">
@@ -35,12 +36,8 @@ class Contact extends Component{
                     <MapContainer apiKey={api} location={location}/>
                 </div>
             </div>
-            
-            
-            
-          </Fragment>
         )
     }
 }
 
-export default Contact;
+export default Enhance(Contact);

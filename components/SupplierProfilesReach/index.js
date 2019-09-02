@@ -1,58 +1,61 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-import Head from 'next/head';
 import Parser from 'html-react-parser';
-
-import TrackVisibility from 'react-on-screen';
 import { motion } from "framer-motion"
-
+import { Enhance } from "../Enhance";
 
 import "./index.scss";
 
 
 class SupplierProfilesReach extends Component{
-    componentDidMount() {
-        if(this.props.enable_feature_list_with_image) {
-            var changed_img = document.getElementsByClassName('unique-reach-image-src');
-            var items = document.getElementsByClassName('unique-reach-list');
-            var item_height = document.getElementsByClassName('unique-reach-list')[0].offsetHeight;
-            document.getElementsByClassName('unique-reach-line')[0].style.height = item_height + 'px';
     
-            for(var i=0; i<items.length; i++) {
-    
-                items[i].onmouseover = function(e) {
-                    var myTarget = e.target;
-                    var imgSrc = myTarget.getAttribute('data-src');
-                    changed_img[0].setAttribute('src', imgSrc);
-    
-                    e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
-                    e.target.classList.add( "active" );
-    
-                    var this_item_height = myTarget.offsetHeight;
-                    var target_offset = myTarget.offsetTop;
-    
-                    document.getElementsByClassName('unique-reach-line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;");
-    
-                }
-            }
-        }
-        
+    featureMouseHover(e) {
+        e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
+        e.target.classList.add( "active" );
+        var imgSrc = e.target.getAttribute('data-src');
+        document.getElementById("unique-reach-image-src").src = imgSrc;
+        var this_item_height = e.target.offsetHeight;
+        var target_offset = e.target.offsetTop;
+        document.getElementsByClassName('vertical-line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;")        
     }
 
     render() {
         const {title, subtitle, description, image, enable_feature_list_with_image, feature_list_title, feature_description, features_text_with_image} = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
+        const variants = {
+            visible: i => ({
+              opacity: 1,
+              translateY: 0,
+              visibility:"visible",
+              transition: {
+                type: "spring",
+                stiffness: 60,
+                damping: 500,
+                delay: i * 0.3,
+              },
+            }),
+            hidden: { opacity: 0 },
+        }
+          
     	if(features_text_with_image){            
     		featureListMarkup = features_text_with_image.map((feature, i) => {
                 if(i == 0) defaultImage = feature.feature_image.url;
 			    return (
-                    <li className="unique-reach-list active" data-src={feature.feature_image.url} key={i}>{feature.feature_text}</li>
+                    <motion.li 
+                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                        custom={i}
+                        animate="visible"
+                        variants={variants}
+                        className={`${i==0 ? 'active': ''} unique-reach-list`} 
+                        data-src={feature.feature_image.url} 
+                        key={i} 
+                        onMouseOver={this.featureMouseHover.bind(this)}
+                    >{feature.feature_text}</motion.li>
 			      );
 			    });
     	}
         return (
-          <div>
             <div className="supplier-profiles-reach section-padding">
                 <div className="container">
                     <div className="row">
@@ -94,7 +97,7 @@ class SupplierProfilesReach extends Component{
                         <div className="row align-items-center unique-reach">
                             <div className="col-lg-6">
                                 <div className="unique-reach-image pos-relative">
-                                    <img src={defaultImage} className="img-fluid unique-reach-image-src" />
+                                    <img src={defaultImage} className="img-fluid unique-reach-image-src" id="unique-reach-image-src"/>
                                 </div>
                             </div>
                             
@@ -115,9 +118,8 @@ class SupplierProfilesReach extends Component{
                     : ''}
                 </div>
             </div>
-          </div>
         )
     }
 }
 
-export default SupplierProfilesReach;
+export default Enhance(SupplierProfilesReach);

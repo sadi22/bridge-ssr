@@ -94,51 +94,44 @@ class Menu extends Component {
             }
         } 
         return (
-            <div>
-                {/* <style
-                    // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{ __html: style }}
-                /> */}
-                <motion.header 
-                    initial={{ opacity: 0, visibility:"hidden" }}
-                    animate={{ opacity: 1, visibility:"visible" }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 60,
-                      damping: 500,
-                      delay: 0.6,
-                    }}
-                    className="header-main"
-                >
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <Navbar expand="lg">
-                                    <Navbar.Brand href="/">
-                                        { logo ? (
-                                            <Link
-                                                as='/' 
-                                                href="/"
-                                            >
-                                                <img src={logo}/>
-                                            </Link>
-                                        ) : '' }
-                                    </Navbar.Brand>
-                                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                                    <Navbar.Collapse id="basic-navbar-nav">
-                                        <Nav className="m-auto">
-                                            
-                                            {menuItems}
-                                        </Nav>
-                                        {getStartedLink()}
-                                    </Navbar.Collapse>
-                                </Navbar>
-                            </div>
+            <motion.header 
+                initial={{ opacity: 0, visibility:"hidden" }}
+                animate={{ opacity: 1, visibility:"visible" }}
+                transition={{
+                    type: "spring",
+                    stiffness: 60,
+                    damping: 500,
+                    delay: 0.6,
+                }}
+                className="header-main"
+            >
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <Navbar expand="lg">
+                                <Navbar.Brand href="/">
+                                    { logo ? (
+                                        <Link
+                                            as='/' 
+                                            href="/"
+                                        >
+                                            <img src={logo}/>
+                                        </Link>
+                                    ) : '' }
+                                </Navbar.Brand>
+                                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                                <Navbar.Collapse id="basic-navbar-nav">
+                                    <Nav className="m-auto">
+                                        
+                                        {menuItems}
+                                    </Nav>
+                                    {getStartedLink()}
+                                </Navbar.Collapse>
+                            </Navbar>
                         </div>
                     </div>
-                </motion.header>
-
-            </div>
+                </div>
+            </motion.header>
         );
     }
 }

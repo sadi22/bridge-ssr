@@ -1,0 +1,79 @@
+import React, {Component, Fragment} from 'react';
+import Head from 'next/head';
+import WPAPI from 'wpapi';
+import {Container, Row} from 'react-bootstrap';
+
+import SinglePost from '../components/SinglePost';
+
+import PageWrapper from '../components/PageWrapper';
+import Menu from '../components/Header/index';
+import Footer from '../components/Footer/index';
+import Config from '../config';
+
+const wp = new WPAPI({ endpoint: Config.apiUrl });
+class Index extends Component {
+    state = {
+        id: '',
+    };
+
+    static async getInitialProps() {
+        try {
+            const [page, posts, pages] = await Promise.all([
+                wp
+                    .pages()
+                    .slug('blog')
+                    .embed()
+                    .then(data => {
+                        return data[0];
+                    }),
+                wp.posts().embed(),
+                wp.pages().embed(),
+            ]);
+            return { page, posts, pages };
+        } catch (err) {
+            console.log(err);
+        }
+        return null;
+    }
+
+
+    render() {
+        const { headerMenu, page, posts, logo, social, footer_text, footerMenu, getting_started_link, gmap_api } = this.props;
+        let seo_title = page.title.rendered;
+        let seo_description = page.title.rendered;
+        let seo_canonical = page.link;
+        if(page.yoast_meta) {
+            seo_title = page.yoast_meta.yoast_wpseo_title;
+            seo_description = page.yoast_meta.yoast_wpseo_metadesc;
+            seo_canonical = page.yoast_meta.yoast_wpseo_canonical;
+        }
+        return (
+            <Fragment>
+                <Head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta charSet="utf-8" />
+                    <title>{seo_title}</title>
+
+                    <meta name="og:title" content={seo_title}/>
+                    <meta name="og:type" content="article"/>
+                    <meta name="og:url" content={seo_canonical}/>
+                    <meta name="og:image" content="https://bridgssrelive.wpengine.com/wp-content/uploads/2019/08/site-logo.png"/>
+                    <meta name="og:site_name" content="Bridge"/>
+                    <meta name="og:description" content={seo_description}/>
+                </Head>
+                <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>
+                <Container>
+                    <Row>
+                        {posts.map(function(name, index){
+                            return <SinglePost key={index} {...name}/>
+                        })}
+                    </Row>
+                </Container>
+               
+                <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
+            </Fragment>
+        );
+    }
+}
+
+export default PageWrapper(Index);

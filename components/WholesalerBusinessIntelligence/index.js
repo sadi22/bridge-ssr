@@ -21,8 +21,6 @@ class WholesalerBusinessIntelligence extends Component{
 			    });
     	}
         return (
-          <div>
-            
             <div className="wholesaler-business-intelligence">
                 <div className="container">
                     <div className="row">
@@ -40,8 +38,6 @@ class WholesalerBusinessIntelligence extends Component{
                     </div>
                 </div>
             </div>
-
-          </div>
         )
     }
 }
