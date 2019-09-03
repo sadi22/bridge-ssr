@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 var compression = require('compression');
+const cacheableResponse = require('cacheable-response')
 const LRUCache = require('lru-cache');
 
 
@@ -33,6 +34,12 @@ app
     server.get('/post/:slug', (req, res) => {
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug, apiRoute: 'post' };
+      renderAndCache(req, res, actualPage, queryParams);
+    });
+
+    server.get('/blog/:pageno', (req, res) => {
+      const actualPage = '/blog';
+      const queryParams = { pageno: req.params.pageno, apiRoute: 'blog' };
       renderAndCache(req, res, actualPage, queryParams);
     });
 

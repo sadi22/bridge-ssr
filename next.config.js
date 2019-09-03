@@ -25,8 +25,9 @@ const nextConfig = withSass({
     }
     return config;
   },
-  target: 'serverless'
 });
+
+
 
 nextConfig.exportPathMap = () => {
   return {
@@ -34,4 +35,8 @@ nextConfig.exportPathMap = () => {
   };
 };
 
-module.exports = nextConfig;
+module.exports = {
+  target: 'serverless',
+  ...nextConfig
+}
+

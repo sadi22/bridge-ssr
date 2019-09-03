@@ -49,7 +49,7 @@ class Post extends Component {
       seo_canonical = post.yoast_meta.yoast_wpseo_canonical;
     }
     if (!post.title) return <Error statusCode={404} />;
-
+    let {featured_image} = post;
     return (
       <Fragment>
         <Head>
@@ -66,13 +66,24 @@ class Post extends Component {
         <Layout>
           <Container>
             <Menu menu={headerMenu} logo={logo} getting_started_link ={getting_started_link}/>
-            <h1>{post.title.rendered}</h1>
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: post.content.rendered,
-              }}
-            />
+            <article id={post.id} style={{paddingTop: '108px'}}>
+              <header>
+                <h1>{post.title.rendered}</h1>
+              </header>
+              <div className='featured-image' style={{paddingTop: '30px'}}>
+                <img src={featured_image ? featured_image.source_url : 'https://via.placeholder.com/1024x400'} alt={featured_image ? featured_image.alt_text : ''} alt={featured_image ? featured_image.alt_text : ''} title={featured_image ? featured_image.media_details.image_meta.title : ''} className="img-fluid" />
+              </div>
+              <div className="entry-content" style={{paddingTop: '30px'}}>
+                
+                <div
+                // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{
+                        __html: post.content.rendered,
+                    }}
+                />
+
+              </div>
+            </article>
             <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
           </Container>
         </Layout>
