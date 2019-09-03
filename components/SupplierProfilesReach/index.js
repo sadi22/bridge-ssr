@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
 import { Enhance } from "../Enhance";
-
+import handleViewport from 'react-in-viewport';
 import "./index.scss";
 
 
@@ -21,6 +21,7 @@ class SupplierProfilesReach extends Component{
 
     render() {
         const {title, subtitle, description, image, enable_feature_list_with_image, feature_list_title, feature_description, features_text_with_image} = this.props;
+        const { inViewport } = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
         const variants = {
@@ -56,21 +57,22 @@ class SupplierProfilesReach extends Component{
 			    });
     	}
         return (
+            <Fragment>
             <div className="supplier-profiles-reach section-padding">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
                             <motion.h2
-                                className="single-drive"
-                                initial={{ scale:0.5, opacity: 0, visibility:"hidden" }}
-                                animate={{ scale:1, opacity: 1, visibility:"visible" }}
-                                transition={{
-                                type: "spring",
-                                stiffness: 60,
-                                damping: 500,
-                                delay: 0.3,
-                                }}
+                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                    animate={inViewport && { translateX: 0, opacity: 1, visibility:"visible" }}
+                                    transition={{
+                                    type: "spring",
+                                    stiffness: 60,
+                                    damping: 500,
+                                    delay: 0.4,
+                                    default: { duration: .8 },
+                                    }}
                             >{Parser(title)}</motion.h2>
                             </div>
                         </div>
@@ -80,15 +82,49 @@ class SupplierProfilesReach extends Component{
                         <div className="col-lg-5">
                             <div className="customer-profiling-content">
                                 <div className="section-title">
-                                    <h3>{Parser(subtitle)}</h3>
-                                    {Parser(description)}
+                                    <motion.h3
+                                        initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                        animate={inViewport && { translateX: 0, opacity: 1, visibility:"visible" }}
+                                        transition={{
+                                        type: "spring",
+                                        stiffness: 60,
+                                        damping: 500,
+                                        delay: 0.4,
+                                        default: { duration: .8 },
+                                        }}
+                                    >{Parser(subtitle)}</motion.h3>
+                                    <motion.div
+                                        initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                        animate={inViewport && { translateX: 0, opacity: 1, visibility:"visible" }}
+                                        transition={{
+                                        type: "spring",
+                                        stiffness: 60,
+                                        damping: 500,
+                                        delay: 0.4,
+                                        default: { duration: .8 },
+                                        }}
+                                    >{Parser(description)}</motion.div>
                                 </div>
                             </div>
                         </div>
                         
                         <div className="col-lg-6 ml-auto">
                             <div className="customer-profiling-image pos-relative">
-                                { image ? <img src={image.url} alt={image.alt} title={image.title} className="img-fluid" />: ''}
+                                { image ? <motion.img 
+                                        src={image.url}
+                                        alt={image.alt} 
+                                        title={image.title} 
+                                        className="img-fluid"
+                                        initial={{scale: 0.7, opacity:0}}
+                                        animate={inViewport && { scale: 1, opacity: 1 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 100,
+                                            damping: 500,
+                                            delay: 0.9,
+                                            default: { duration: 0.8 },
+                                        }} 
+                                    />: ''}
                             </div>
                         </div>
                     </div>
@@ -97,7 +133,20 @@ class SupplierProfilesReach extends Component{
                         <div className="row align-items-center unique-reach">
                             <div className="col-lg-6">
                                 <div className="unique-reach-image pos-relative">
-                                    <img src={defaultImage} className="img-fluid unique-reach-image-src" id="unique-reach-image-src"/>
+                                    <motion.img
+                                            src={defaultImage} 
+                                            className="img-fluid unique-reach-image-src" 
+                                            id="unique-reach-image-src"
+                                            initial={{scale: 0.7, opacity:0}}
+                                            animate={inViewport && { scale: 1, opacity: 1 }}
+                                            transition={{
+                                                type: "spring",
+                                                stiffness: 100,
+                                                damping: 500,
+                                                delay: 0.9,
+                                                default: { duration: 0.8 },
+                                            }} 
+                                    />
                                 </div>
                             </div>
                             
@@ -118,8 +167,8 @@ class SupplierProfilesReach extends Component{
                     : ''}
                 </div>
             </div>
+            </Fragment>
         )
     }
 }
-
-export default Enhance(SupplierProfilesReach);
+export default handleViewport(SupplierProfilesReach, { rootMargin: '10px' }, {disconnectOnLeave: true});

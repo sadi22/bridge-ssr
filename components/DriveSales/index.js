@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
 import { Enhance } from "../Enhance";
 
@@ -9,7 +10,7 @@ import "./index.scss";
 class DriveSales extends Component{
     render() {
         const { title, feature_box } = this.props;
-    
+        const { inViewport } = this.props;
         let featureBoxMarkup = null;
         let initialDelay = 0;
     	if(feature_box){
@@ -20,56 +21,56 @@ class DriveSales extends Component{
                         <motion.div 
                             className="single-drive"
                             initial={{ scale:0.5, opacity: 0, visibility:"hidden" }}
-                            animate={{ scale:1, opacity: 1, visibility:"visible" }}
+                            animate={inViewport && { scale:1, opacity: 1, visibility:"visible" }}
                             transition={{
-                            type: "spring",
-                            stiffness: 60,
-                            damping: 500,
-                            delay: initialDelay,
+                                type: "spring",
+                                stiffness: 60,
+                                damping: 500,
+                                delay: i * 0.7,
                             }}
                         >
                             <motion.span 
                                 className="icon" style={{backgroundColor: feature.image_background_color}}
                                 initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
                                 transition={{
-                                type: "spring",
-                                stiffness: 60,
-                                damping: 500,
-                                delay: initialDelay + 0.3,
+                                    type: "spring",
+                                    stiffness: 60,
+                                    damping: 500,
+                                    delay: i * 0.3,
                                 }}
                             >
                             { feature.image ? <motion.img 
                                 src={feature.image.url} alt={feature.image.alt} title={feature.image.title} className="img-fluid" 
                                 initial={{ translateY: 20, opacity: 0, visibility:"hidden" }}
-                                animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
                                 transition={{
-                                type: "spring",
-                                stiffness: 60,
-                                damping: 500,
-                                delay: initialDelay + 0.4,
+                                    type: "spring",
+                                    stiffness: 60,
+                                    damping: 500,
+                                    delay: i * 0.4,
                                 }}
                             />: ''}
                             </motion.span>
                             <div className="drive-content">
                                 <motion.h4
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 60,
                                     damping: 500,
-                                    delay: initialDelay + 0.5,
+                                    delay: i * 0.5,
                                     }}
                                 >{feature.title}</motion.h4>
                                 <motion.p
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
                                     transition={{
-                                    type: "spring",
-                                    stiffness: 60,
-                                    damping: 500,
-                                    delay: initialDelay + 0.7,
+                                        type: "spring",
+                                        stiffness: 60,
+                                        damping: 500,
+                                        delay: i * 0.7,
                                     }}
                                 >{feature.description}</motion.p>
                             </div>
@@ -77,9 +78,10 @@ class DriveSales extends Component{
 		            </div>
 			      );
 			    });
-    	}
-
+        }
+        
         return (
+            <Fragment>
             <div className="drive-sales pos-relative">
                 <div className="drive-sales pos-relative">
                     <div className="overlay"></div>
@@ -89,7 +91,7 @@ class DriveSales extends Component{
                                 <div className="section-title text-center">
                                     <motion.h2
                                         initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                        animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
                                         transition={{
                                             type: "spring",
                                             stiffness: 60,
@@ -107,8 +109,9 @@ class DriveSales extends Component{
                     </div>
                 </div>
             </div>
+            </Fragment>
         )
     }
 }
 
-export default Enhance(DriveSales);
+export default handleViewport(DriveSales, {}, {disconnectOnLeave: true});

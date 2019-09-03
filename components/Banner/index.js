@@ -4,14 +4,16 @@ import Link from 'next/link';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
 import $ from "jquery";
-import { Enhance } from "../Enhance";
-import "./index.scss";
+import handleViewport from 'react-in-viewport';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown);
+
+import "./index.scss";
+
 
 const getSlug = url => {
   const parts = url.split('/');
@@ -96,6 +98,7 @@ class Banner extends Component{
     }
     render() {
         const {image, heading, description, enable_user_type_dropdown, user_heading, text, user, user_type } = this.props;
+        const { inViewport } = this.props;
         let userDropdownMarkup = null;
         let userDropdownLinkMarkup = null;
         let defaultOption = '';
@@ -131,94 +134,97 @@ class Banner extends Component{
           });
         }
         return (
-          <div className="bridge-banner pos-relative">
-                <motion.div
-                    initial={{ height:0 }}
-                    animate={{ height:"77%" }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 60,
-                      damping: 500,
-                    }} 
-                    className="overlay"
-                ></motion.div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="banner-content text-center">
-                                <div className="banner-text">
-                                <motion.h1 
-                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
-                                        transition={{
-                                          type: "spring",
-                                          stiffness: 60,
-                                          damping: 500,
-                                          delay: 0.7,
-                                          default: { duration: .8 },
-                                        }}
-                                        
-                                    >{ heading }</motion.h1>
-                                    <motion.p
-                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
-                                        transition={{
+          <Fragment>
+            <div className="bridge-banner pos-relative">
+                  <motion.div
+                      initial={inViewport ? { height:0 } : false}
+                      animate={inViewport && { height:"77%" }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 60,
+                        damping: 500,
+                      }} 
+                      className="overlay"
+                  ></motion.div>
+                  
+                  <div className="container">
+                      <div className="row">
+                          <div className="col-12">
+                              <div className="banner-content text-center">
+                                  <div className="banner-text">
+                                  <motion.h1 
+                                          initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
+                                          animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                          transition={{
+                                            type: "spring",
+                                            stiffness: 60,
+                                            damping: 500,
+                                            delay: 0.7,
+                                            default: { duration: .8 },
+                                          }}
+                                          
+                                      >{ heading }</motion.h1>
+                                      <motion.p
+                                          initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
+                                          animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                          transition={{
+                                            type: "spring",
+                                            stiffness: 100,
+                                            damping: 500,
+                                            delay: 0.9,
+                                            default: { duration: 0.8 },
+                                          }}
+                                      >{ description }</motion.p>
+                                  </div>
+                                  { image ? <motion.img 
+                                      src={image.url} 
+                                      alt={image.alt} 
+                                      title={image.title} 
+                                      className="banner-img img-fluid" 
+                                      initial={{scale: 0.7, opacity:0}}
+                                      animate={inViewport && { scale: 1, opacity: 1 }}
+                                      transition={{
                                           type: "spring",
                                           stiffness: 100,
                                           damping: 500,
                                           delay: 0.9,
                                           default: { duration: 0.8 },
-                                        }}
-                                    >{ description }</motion.p>
-                                </div>
-                                { image ? <motion.img 
-                                    src={image.url} 
-                                    alt={image.alt} 
-                                    title={image.title} 
-                                    className="banner-img img-fluid" 
-                                    initial={{scale: 0.7, opacity:0}}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 100,
-                                        damping: 500,
-                                        delay: 0.9,
-                                        default: { duration: 0.8 },
-                                    }}
-                                />: ''}
-                            </div>
-                            
-                            {enable_user_type_dropdown ? 
-                              <motion.div 
-                                className="banner-select-option text-center"
-                                initial={{translateY: 50, visibility:"hidden"}}
-                                animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 100,
-                                    damping: 500,
-                                    delay: 1,
-                                    default: { duration: 0.8 },
-                                }}
-                              >
-                                  <p>{Parser(user_heading)}</p>
-                                  <div className="business-type-area">
-                                      <h3><span>{text}</span></h3>
-                                      <div className="bridge-select">
-                                          <select>
-                                             {userDropdownMarkup}
-                                          </select>
-                                      </div>
-                                      {userDropdownLinkMarkup}
-                                  </div>
-                              </motion.div>
-                            : ''}
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                      }}
+                                  />: ''}
+                              </div>
+                              
+                              {enable_user_type_dropdown ? 
+                                <motion.div 
+                                  className="banner-select-option text-center"
+                                  initial={{translateY: 50, visibility:"hidden"}}
+                                  animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                  transition={{
+                                      type: "spring",
+                                      stiffness: 100,
+                                      damping: 500,
+                                      delay: 1,
+                                      default: { duration: 0.8 },
+                                  }}
+                                >
+                                    <p>{Parser(user_heading)}</p>
+                                    <div className="business-type-area">
+                                        <h3><span>{text}</span></h3>
+                                        <div className="bridge-select">
+                                            <select>
+                                              {userDropdownMarkup}
+                                            </select>
+                                        </div>
+                                        {userDropdownLinkMarkup}
+                                    </div>
+                                </motion.div>
+                              : ''}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </Fragment>
         )
     }
 }
 
-export default Enhance(Banner);
+export default handleViewport(Banner, {}, {disconnectOnLeave: true});

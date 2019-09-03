@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
+import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
-
 import { Enhance } from "../Enhance";
 
 import "./index.scss";
@@ -25,6 +25,7 @@ class Feature extends Component{
     
     render() {
         const {title, description, feature_list, show_more, show_more_link} = this.props;
+        const { inViewport } = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
         let initialDelay = 300;
@@ -49,11 +50,15 @@ class Feature extends Component{
                 initialDelay = initialDelay + 100;
 			    return (
                     <motion.li 
-                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                        custom={i}
-                        animate="visible"
-                        variants={variants}
-
+                        key={i}
+                        initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                        animate={inViewport && { opacity: 1, translateX: 0, visibility:"visible"}}
+                        transition={{
+                            type: "spring",
+                            stiffness: 60,
+                            damping: 500,
+                            delay: i * 0.3,
+                        }}
                         className={`${i==0 ? 'active': ''} feature-list`} 
                         data-src={feature.feature_image.url} key={i} 
                         onMouseOver={this.featureMouseHover.bind(this)}
@@ -62,18 +67,49 @@ class Feature extends Component{
 			    });
     	}
         return (
+            <Fragment>
             <div className="feature">
                 
                 <div className="feature-list-image">
-                    <img src="/static/images/feature-list-lines-accent.png" alt="bg-img" className="bg-image" />
+                    <motion.img 
+                        src="/static/images/feature-list-lines-accent.png"
+                        alt="bg-img" 
+                        className="bg-image" 
+                        initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
+                        animate={inViewport && { opacity: 1, translateX: 0, visibility:"visible"}}
+                        transition={{
+                            type: "spring",
+                            stiffness: 60,
+                            damping: 500,
+                            delay: 0.3,
+                        }}
+                    />
                 </div>
             
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <h2>{Parser(title)}</h2>
-                                <p>{Parser(description)}</p>
+                                <motion.h2
+                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                    animate={inViewport && { opacity: 1, translateX: 0, visibility:"visible"}}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 60,
+                                        damping: 500,
+                                        delay: 0.3,
+                                    }}
+                                >{Parser(title)}</motion.h2>
+                                <motion.p
+                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                    animate={inViewport && { opacity: 1, translateX: 0, visibility:"visible"}}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 60,
+                                        damping: 500,
+                                        delay: 0.4,
+                                    }}
+                                >{Parser(description)}</motion.p>
                             </div>
                         </div>
                     </div>
@@ -116,8 +152,9 @@ class Feature extends Component{
                     />
                 </div>
             </div>
+            </Fragment>
         )
     }
 }
 
-export default Enhance(Feature);
+export default handleViewport(Feature, {}, {disconnectOnLeave: true});

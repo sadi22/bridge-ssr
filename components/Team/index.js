@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
 import  "./index.scss";
+import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
 
 import TrackVisibility from 'react-on-screen';
@@ -17,27 +18,29 @@ library.add(fab);
 class Team extends Component{
     render() {
         const {title, teams} = this.props;
+        const { inViewport } = this.props;
         let teamListMarkup = null;
     	if(teams){            
     		teamListMarkup = teams.map((team, i) => {
 			    return (
-                    <div className="col-lg-4 col-sm-6 single-col" key={i}>
+                    <div className="col-lg-4 col-sm-6 single-col">
                         <div className="single-member text-center">
                             <div className="member-img">
                                 {team.image ? <motion.img
-                                 src={team.image.url} 
-                                 alt={team.image.alt} 
-                                 title={team.image.title} 
-                                 initial={{scale: 0.7, opacity:0}}
-                                 animate={{ scale: 1, opacity: 1 }}
-                                 transition={{
-                                     type: "spring",
-                                     stiffness: 100,
-                                     damping: 500,
-                                     delay: 0.9,
-                                     default: { duration: 0.8 },
-                                 }}
-                                 /> : ''}
+                                src={team.image.url} 
+                                alt={team.image.alt} 
+                                title={team.image.title} 
+                                whileHover={{ scale: 1.1 }}
+                                initial={{scale: 0.7, opacity:0}}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 500,
+                                    delay: 0.9,
+                                    default: { duration: 0.8 },
+                                }}
+                                /> : ''}
                                 
                             </div>
                             <h5>{team.name}</h5>
@@ -58,7 +61,16 @@ class Team extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-content">
-                                <h1>{Parser(title)}</h1>
+                                <motion.h1
+                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                    animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                    transition={{
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 500,
+                                    default: { duration: 0.8 },
+                                    }}
+                                >{Parser(title)}</motion.h1>
                             </div>
                         </div>
                     </div>
@@ -77,4 +89,4 @@ class Team extends Component{
     }
 }
 
-export default Team;
+export default handleViewport(Team, {}, {disconnectOnLeave: true});

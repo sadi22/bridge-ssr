@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
+import handleViewport from 'react-in-viewport';
 import { motion } from "framer-motion"
 import { Enhance } from "../Enhance";
 import "./index.scss";
@@ -10,7 +11,9 @@ import "./index.scss";
 class BottomCTA extends Component{
     render() {
         const {title, sub_title} = this.props;
+        const { inViewport } = this.props;
         return (
+            <Fragment>
             <div className="bottom-cta">
                 <div className="container">
                     <div className="row">
@@ -18,7 +21,7 @@ class BottomCTA extends Component{
                             <div className="section-title">
                                 <motion.h2
                                     initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={{ translateX: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport && { translateX: 0, opacity: 1, visibility:"visible" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 60,
@@ -29,7 +32,7 @@ class BottomCTA extends Component{
                                 >{Parser(title)}</motion.h2>
                                 <motion.p
                                     initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={{ translateX: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport && { translateX: 0, opacity: 1, visibility:"visible" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 60,
@@ -43,8 +46,8 @@ class BottomCTA extends Component{
                     </div>
                 </div>
             </div>
+            </Fragment>
         )
     }
 }
-
-export default Enhance(BottomCTA);
+export default handleViewport(BottomCTA, {}, {disconnectOnLeave: true});

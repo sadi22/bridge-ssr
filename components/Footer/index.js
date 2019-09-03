@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react'
+import handleViewport from 'react-in-viewport';
 import Link from '../ActiveLink'
 import "./index.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +18,8 @@ const getSlug = url => {
 class Footer extends Component{
     render() {
         const { logo, menu, social, footer_text } = this.props;
-        const menuItems = menu.items.map(item => {
+        const { inViewport } = this.props;
+        const menuItems = menu.items.map((item, index) => {
             const slug = getSlug(item.url);
             let actualPage = 'page';
             if(item.object === 'page') {
@@ -28,7 +30,18 @@ class Footer extends Component{
                 actualPage = 'category'
             }
             return (
-                <li key={item.ID}>
+                <motion.li 
+                    key={item.ID}
+                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                    animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 500,
+                        delay: index * 0.6,
+                        default: { duration: 0.6 },
+                    }}
+                >
                     <Link
                         as={`/${item.object}/${slug}`}
                         href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
@@ -37,7 +50,7 @@ class Footer extends Component{
                     >
                         <a>{item.title}</a>
                     </Link>
-                </li>
+                </motion.li>
             );
         });
         return (
@@ -59,7 +72,20 @@ class Footer extends Component{
                             <div className="footer-logo">
                                 { logo ? (
                                     <Link href="/" as='/'>
-                                        <a><img src={logo}/></a>
+                                        <a>
+                                            <motion.img 
+                                                src={logo}
+                                                initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                                animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 100,
+                                                    damping: 500,
+                                                    delay: 0.6,
+                                                    default: { duration: 0.6 },
+                                                }}
+                                            />
+                                        </a>
                                     </Link>
                                 ) : '' }
                             </div>    
@@ -74,8 +100,42 @@ class Footer extends Component{
                         <div className="col-lg-3">
                             <div className="footer-social-contact text-center">
                                 <ul>
-                                    <li><a href={social.facebook} title="Facebook" target='_balnk'><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a></li>
-                                    <li><a href={social.linkedin} title="Linked-in" target='_balnk'><FontAwesomeIcon icon={["fab", "linkedin-in"]} /></a></li>
+                                    <motion.li
+                                        style={{marginRight: '10px'}}
+                                        whileHover={{ scale: 1.2, rotate: 360 }}
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 100,
+                                            damping: 500,
+                                            delay: 0.6,
+                                            default: { duration: 0.6 },
+                                        }}
+                                    >
+                                        <a 
+                                            href={social.facebook} 
+                                            title="Facebook" 
+                                            target='_balnk'
+                                            
+                                        ><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
+                                    </motion.li>
+                                    <motion.li
+                                        whileHover={{ scale: 1.2, rotate: 360 }}
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 100,
+                                            damping: 500,
+                                            delay: 0.6,
+                                            default: { duration: 0.6 },
+                                        }}
+                                    >
+                                        <a href={social.linkedin} title="Linked-in" target='_balnk'>
+                                            <FontAwesomeIcon icon={["fab", "linkedin-in"]} />
+                                        </a>
+                                    </motion.li>
                                 </ul>
                             </div> 
                         </div>
@@ -92,4 +152,4 @@ class Footer extends Component{
     }
 }
 
-export default Footer;
+export default handleViewport(Footer, {}, {disconnectOnLeave: true});

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GoogleApiWrapper, Map } from 'google-maps-react';
+import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 
 const mapStyles = [
     {
@@ -203,7 +203,9 @@ export class MapContainer extends Component {
             zoom = { 14 }
             initialCenter = {{ lat: lat, lng: lng }}
             styles = {mapStyles}
-        />
+        >
+          <Marker name={'Current location'} onClick={this.onMarkerClick}/>
+        </Map>
     );
   }
 }
