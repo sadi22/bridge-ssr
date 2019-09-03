@@ -2,93 +2,59 @@
 @import '../../src/styles/extend-style';
 
 //---- extra style is here------
-.single-post{
-    background-color: #f5f5f5;
-    border: 1px solid #e3e3e3;
-    padding-top: 10px;
-    padding-bottom: 33px;
-    
-    .single-post-wrapper{
-        background: #fff; 
-        display: flex;
-        flex-flow: row;
-        align-items: center;
-        justify-content: center;
-        
-        @media #{$device_768_991} {
+
+.single-post {
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,.05);
+    margin-bottom: 80px;
+    background: #fff;
+    .single-post-featured-img {
+        a {
             display: block;
-        }
-        
-        .single-post{
-            width: 50%;
-            padding-right: 25px;
-            
-            @media #{$device_768_991} {
-                width: 100%;
-                padding-right: 0;
-            }
-            
-            img{
-                width: 100%;
-            }
-        }
 
-        .single-post-img{
-            width: 50%;
-            padding-right: 25px;
-            
-            @media #{$device_768_991} {
-                width: 100%;
-                padding-right: 0;
-            }
-            
-            img{
-                width: 100%;
-            }
-        }
-        .single-post-content{
-            padding-left: 25px;
-            width: 50%;
-            
-            @media #{$device_768_991} {
-                width: 100%;
-                padding: 20px 20px 25px;
-            }
-
-            .small-title{
-                position: relative;
-                color: $primary-color;
-                font-size: 15px;
-                font-weight: 700;
-                letter-spacing: 0.5px;
-                text-transform: uppercase;
-                padding-left: 65px;
-                margin-bottom: 20px;
-                display: inline-block;
-
-                &:before{
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: 13px;
-                    width: 50px;
-                    height: 2px;
-                    background: $primary-color;
-                }
-            }
-
-            h2{
-                margin-bottom: 83px;
-                
-                @media #{$device_768_991} {
-                    margin-bottom: 43px;
-                }
-            }
-
-            a {
-                margin: 10px;
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
             }
         }
     }
-        
+
+    .single-post-content {
+        padding: 70px 30px 30px;
+        max-width: 780px;
+        margin: 0 auto;
+
+        .post-header {
+           h1 {
+                font-size: 4.8rem;
+                line-height: 1.2;
+           }
+        }
+
+        .post-meta {
+            padding-top: 2px;
+            margin-left: 0;
+            li {
+                display: inline;
+                padding-right: 30px;
+                padding-left: 30px;
+                font-size: 13px;
+
+                &:first-child  {  
+                    padding-left: 0;
+                }
+            }
+        }
+
+        a.read-more {
+            color: #1FC1C3;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 25px;
+            display: inline-block;
+        }
+    }
 }

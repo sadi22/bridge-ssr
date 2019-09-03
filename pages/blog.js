@@ -55,8 +55,7 @@ class Index extends Component {
             seo_title = page.yoast_meta.yoast_wpseo_title;
             seo_description = page.yoast_meta.yoast_wpseo_metadesc;
             seo_canonical = page.yoast_meta.yoast_wpseo_canonical;
-        }
-        
+        }        
         let active = page_number;
         let items = [];
         for (let number = 1; number <= Math.ceil(total_posts/10); number++) {
@@ -71,7 +70,6 @@ class Index extends Component {
                 
             );
         }
-        
         return (
             <Fragment>
                 <Head>
@@ -87,7 +85,7 @@ class Index extends Component {
                     <meta name="og:description" content={seo_description}/>
                 </Head>
                 <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>
-                <Container>
+                <Container style={{paddingTop: '108px'}}>
                     <Row className="justify-content-md-center">
                         {posts.map(function(name, index){
                             return <SinglePost key={index} {...name}/>
@@ -99,7 +97,10 @@ class Index extends Component {
                                     as={`/blog/${page_number ? (page_number=='1' ? '1' : parseInt(page_number)-1) : 1}`}
                                     href={`/blog?pageno=${page_number ? (page_number=='1' ? '1' : parseInt(page_number)-1) : 1}&apiRoute=blog`}
                                 >
-                                    <Pagination.Prev href={`/${page_number ? (page_number=='1' ? '1' : parseInt(page_number)-1) : 1}`}/>
+                                    <Pagination.Prev 
+                                        href={`/${page_number ? (page_number=='1' ? '1' : parseInt(page_number)-1) : 1}`}
+                                        disabled={ page_number == 1 }
+                                    />
                                 </Link>
                                 
                                 {items}
@@ -107,7 +108,10 @@ class Index extends Component {
                                     as={`/blog/${page_number ? (page_number=='1' ? '1' : parseInt(page_number)+1) : 1}`}
                                     href={`/blog?pageno=${page_number ? (page_number=='1' ? '1' : parseInt(page_number)+1) : 1}&apiRoute=blog`}
                                 >
-                                    <Pagination.Next href={`/${page_number ? (page_number=='1' ? '1' : parseInt(page_number)+1) : 1}`}/>
+                                    <Pagination.Next 
+                                        href={`/${page_number ? (page_number>=Math.ceil(total_posts/10) ? '' : parseInt(page_number)+1) : 1}`}
+                                        disabled={ page_number >= Math.ceil(total_posts/10) }
+                                    />
                                 </Link>
                             </Pagination>
                             

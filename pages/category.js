@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
 import Error from 'next/error';
 import WPAPI from 'wpapi';
-import Container from 'react-bootstrap/Container'
+import SinglePost from '../components/SinglePost';
+import {Container, Row, Pagination} from 'react-bootstrap';
 
 import Layout from '../components/Layout';
 import PageWrapper from '../components/PageWrapper';
@@ -31,13 +32,26 @@ class Category extends Component {
       return { categories, posts };
     }
 
-    return { categories };
+    return { categories, posts };
   }
 
   render() {
-    const { categories, posts, headerMenu, logo, footerMenu } = this.props;
+    const { categories, headerMenu, page, posts, logo, social, footer_text, footerMenu, getting_started_link, gmap_api, total_posts, page_number } = this.props;
     if (categories.length === 0) return <Error statusCode={404} />;
-
+    let active = page_number;
+    let items = [];
+    for (let number = 1; number <= Math.ceil(total_posts/10); number++) {
+        items.push(
+            <Link
+                as={`/blog/${number}`}
+                href={`/blog?pageno=${number}&apiRoute=blog`}
+                key={number}
+            >
+                <Pagination.Item key={number} active={number == active} href={`/${number}`}>{number}</Pagination.Item>
+            </Link>
+            
+        );
+    }
     const fposts = posts.map(post => {
       return (
         <ul key={post.slug}>
@@ -53,15 +67,20 @@ class Category extends Component {
       );
     });
     return (
-      <Container>
-        <Layout>
-          <Menu menu={headerMenu} logo={logo}/>
-
-          <h1>{categories[0].name} Posts</h1>
-          {fposts}
-          <Footer logo={logo} menu={footerMenu}/>
-        </Layout>
-      </Container>
+      <Fragment>
+          <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>
+          <Container style={{paddingTop: '108px'}}>
+              <Row className="justify-content-md-center">
+                  {posts.map(function(name, index){
+                      return <SinglePost key={index} {...name}/>
+                  })}
+                 
+              </Row>
+              
+          </Container>
+          
+          <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
+      </Fragment>
     );
   }
 }

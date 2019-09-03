@@ -76,6 +76,49 @@ select:focus {
   box-shadow: none;
   border: 1px solid #dde9e9; }
 
+article {
+  border-radius: 5px;
+  box-shadow: 0 30px 50px 0 rgba(1, 1, 1, 0.15);
+  margin-bottom: 80px;
+  background: #fff; }
+  article header {
+    padding-left: 20px;
+    padding-right: 20px; }
+  article .post-content {
+    padding: 0 30px 70px;
+    max-width: 780px;
+    margin: 0 auto; }
+  article .post-meta {
+    padding-top: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 0; }
+    article .post-meta li {
+      display: inline;
+      padding-right: 30px;
+      padding-left: 30px;
+      font-size: 13px; }
+      article .post-meta li:first-child {
+        padding-left: 0; }
+
+.comment-form {
+  border-radius: 5px;
+  box-shadow: 0 30px 50px 0 rgba(1, 1, 1, 0.15);
+  margin-bottom: 80px;
+  background: #fff;
+  padding: 50px 30px; }
+  .comment-form textarea {
+    height: 150px;
+    margin-top: 20px;
+    box-shadow: none; }
+  .comment-form textarea, .comment-form input {
+    color: #5d6483;
+    font-size: 18px;
+    border: 1px solid #e1edff;
+    border-radius: 5px;
+    margin-bottom: 0;
+    padding: 8px 10px 8px 23px; }
+
 body, p {
   font-weight: 400;
   font-size: 16px;
@@ -176,6 +219,9 @@ a {
 .trasandina-book {
   font-family: "Trasandina W03 Book"; }
 
+.section-padding {
+  padding: 100px 0; }
+
 .underline {
   position: relative; }
 
@@ -271,8 +317,6 @@ select {
   @media (max-width: 575px) {
     .retail-ecommerce {
       padding-bottom: 50px; } }
-  .retail-ecommerce .retail-ecommerce {
-    padding: 0; }
   .retail-ecommerce .section-title h2 {
     font-size: calc(32px + (37 - 32) * ((100vw - 320px) / (1920 - 320)));
     line-height: 1.26; }

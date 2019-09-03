@@ -2,13 +2,32 @@ import React, { Component,Fragment } from 'react';
 import Error from 'next/error';
 import Head from 'next/head';
 import WPAPI from 'wpapi';
+import Link from 'next/link';
+
 import Layout from '../components/Layout';
 import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Header/index';
 import Config from '../config';
 import Footer from "../components/Footer/index";
-import Container from 'react-bootstrap/Container'
+import {Container, Form, Button} from 'react-bootstrap'
 const wp = new WPAPI({ endpoint: Config.apiUrl });
+
+
+function formatDate(date) {
+  var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return day + ' ' + monthNames[monthIndex] + ' ' + year;
+}
+
 
 class Post extends Component {
   static async getInitialProps(context) {
@@ -63,17 +82,39 @@ class Post extends Component {
             <meta name="og:site_name" content="Bridge"/>
             <meta name="og:description" content={seo_description}/>
         </Head>
-        <Layout>
+        <Layout style={{marginTop: '108px'}}>
           <Container>
             <Menu menu={headerMenu} logo={logo} getting_started_link ={getting_started_link}/>
             <article id={post.id} style={{paddingTop: '108px'}}>
               <header>
                 <h1>{post.title.rendered}</h1>
               </header>
+              <div className='post-meta'>
+                  <ul className='d-inline'>
+                      <li>
+                          <span itemProp="name">By: <span itemProp="author" itemScope="" itemType="http://schema.org/Person">{post.author_name}</span></span>
+                      </li>
+                      <li>
+                          <time className="entry-date published updated" dateTime={post.date_gmt} itemProp="datePublished" pubdate={post.date_gmt}>{formatDate(new Date(post.date_gmt))}</time>
+                      </li>
+
+                      <li>
+                          {Object.keys(post.category_info).map((item,i) => 
+                              <Link
+                                  as={`/category/${post.category_info[item].term_slug}`}
+                                  href={`/category?slug=${post.category_info[item].term_slug}&apiRoute=post`}
+                                  key={item}
+                              >
+                                  <a>{post.category_info[item].term_name}</a>
+                              </Link>
+                          )}
+                      </li>
+                  </ul>
+              </div>
               <div className='featured-image' style={{paddingTop: '30px'}}>
                 <img src={featured_image ? featured_image.source_url : 'https://via.placeholder.com/1024x400'} alt={featured_image ? featured_image.alt_text : ''} alt={featured_image ? featured_image.alt_text : ''} title={featured_image ? featured_image.media_details.image_meta.title : ''} className="img-fluid" />
               </div>
-              <div className="entry-content" style={{paddingTop: '30px'}}>
+              <div className="post-content" style={{paddingTop: '30px'}}>
                 
                 <div
                 // eslint-disable-next-line react/no-danger
@@ -84,6 +125,30 @@ class Post extends Component {
 
               </div>
             </article>
+            <div className="comment-form">
+              <Form>
+                <Form.Group controlId="formBasicChecbox">
+                  <Form.Control as="textarea" rows="5" placeholder="Write your comment"/>
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type="email" placeholder="Enter email" />
+                  <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                  </Form.Text>
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control type="text" placeholder="Name" />
+                </Form.Group>
+                
+                <Button variant="primary" type="submit" className='btn-default'>
+                  Submit
+                </Button>
+              </Form>
+            </div>
+            
             <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
           </Container>
         </Layout>
