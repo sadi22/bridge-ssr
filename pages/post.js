@@ -99,7 +99,7 @@ class Post extends Component {
                       </li>
 
                       <li>
-                          {Object.keys(post.category_info).map((item,i) => 
+                          {post.category_info  && Object.keys(post.category_info).map((item,i) => 
                               <Link
                                   as={`/category/${post.category_info[item].term_slug}`}
                                   href={`/category?slug=${post.category_info[item].term_slug}&apiRoute=post`}

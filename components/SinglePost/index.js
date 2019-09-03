@@ -58,7 +58,7 @@ class SinglePost extends Component{
                                         </li>
 
                                         <li>
-                                            {Object.keys(category_info).map((item,i) => 
+                                            {category_info  && Object.keys(category_info).map((item,i) => 
                                                 <Link
                                                     as={`/category/${category_info[item].term_slug}`}
                                                     href={`/category?slug=${category_info[item].term_slug}&apiRoute=post`}
