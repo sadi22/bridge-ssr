@@ -30,7 +30,7 @@ class Contact extends Component{
                                 <div className="section-title">
                                     <motion.h2
                                         initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 60,
@@ -41,7 +41,7 @@ class Contact extends Component{
                                     >{Parser(title)}</motion.h2>
                                     <motion.p
                                         initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 60,
@@ -63,4 +63,4 @@ class Contact extends Component{
         )
     }
 }
-export default handleViewport(Contact, {}, {disconnectOnLeave: true});
+export default handleViewport(Contact, {}, {disconnectOnLeave: false});

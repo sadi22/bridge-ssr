@@ -14,10 +14,6 @@
     @media #{$device_0_575} {
         padding-bottom: 50px
     }
-
-    .retail-ecommerce{
-        padding: 0;
-    }
     
     .section-title{
         h2{
@@ -128,6 +124,96 @@ ul.vertical-line-wrapper{
 
         &:last-child{
             margin-bottom: 0;
+        }
+    }
+}
+
+
+/*-------newsletter form---
+---------------------------------------------------------*/
+.newsletter-form{
+    width: 560px;
+    margin: 0 auto 70px;
+    
+    @media #{$device_576_767} {
+        width: 500px;
+    }
+    @media #{$device_0_575} {
+        width: 100%;
+    }
+    
+    form{
+        position: relative;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        width: 100%;
+        
+        @media #{$device_0_575} {
+            display: block;
+        }
+        
+        .input-wrapper{
+            width: calc(100% - 180px);
+
+            @media #{$device_0_575} {
+                width: 100%;
+            }
+            
+            .fa-envelope{
+                position: absolute;
+                top: 50%;
+                left: 23px;
+                @include transforms(translateY(-50%));
+
+                path{
+                    fill: #9ca4b7;
+                }
+            }
+        }
+        
+        input{
+            color: #525f7f;
+            font-family: $roboto;
+            font-size: 15px;
+            font-weight: 400;
+            padding: 0 20px 0 50px;
+            height: 54px;
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+            
+        }
+        .btn-default{
+            width: 170px;
+            margin-left: 10px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 5px 16px rgba(0, 30, 76, 0.16);
+            
+            @media #{$device_0_575} {
+                margin: 15px auto 0;
+            }
+            
+            svg{
+                width: 14px;
+                height: 14px;
+                position: absolute;
+                top: 50%;
+                margin-top: -7px;
+                right: 15px;
+                @extend .transition-3s;
+                
+                path{
+                    fill: #fff;
+                }
+            }
+            
+            &:hover svg{
+                right: 0;
+                opacity: 0;
+                visibility: hidden;
+            }
+            
         }
     }
 }

@@ -70,6 +70,8 @@ class Index extends Component {
                 
             );
         }
+        console.log('%cMade at %cBridge', 'font-weight: bolder;', ' font-weight: bolder; color: #1FC8C9;');
+
         return (
             <Fragment>
                 <Head>

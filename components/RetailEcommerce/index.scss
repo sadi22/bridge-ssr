@@ -1,0 +1,21 @@
+div.retailer-newsletter-form{
+    width: 100%;
+    margin-top: 40px;
+    h6{
+        font-weight: 500;
+        color: #1d1f2c;
+        margin-bottom: 15px;
+    }
+    form {
+        display: block;
+
+        .input-wrapper {
+            width: 100%;
+        }
+        .btn-default {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 10px;
+        }
+    }
+}

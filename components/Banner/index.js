@@ -4,16 +4,21 @@ import Link from 'next/link';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
 import $ from "jquery";
+import Config from '../../config';
+import axios from 'axios';
 import handleViewport from 'react-in-viewport';
-
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { ToastContainer, toast } from 'react-toastify';
+import {Spinner,Button} from 'react-bootstrap'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library, config } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
-import { faEdit, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-library.add(fab, far, faEdit, faCaretDown);
+import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+library.add(fab, far, faEdit, faCaretDown, faEnvelope);
 
 import "./index.scss";
 
+config.autoAddCss = false;
 
 const getSlug = url => {
   const parts = url.split('/');
@@ -21,6 +26,14 @@ const getSlug = url => {
 };
 
 class Banner extends Component{
+    constructor(props) {
+      super(props);
+      this.state = {
+          email: '',
+          startSubmission: false,
+      };
+    }
+
     componentDidMount(){
        
         var x, i, j, selElmnt, a, b, c;
@@ -96,8 +109,49 @@ class Banner extends Component{
         
         document.addEventListener("click", closeAllSelect);
     }
+
+    handleChange = evt => {
+      this.setState({
+          [evt.target.name]: evt.target.value,
+      });
+    };
+
+    handleSubmit = (formID,evt) => {
+      evt.preventDefault();
+      this.setState({
+          startSubmission : !this.state.startSubmission
+      });
+      axios({
+          method: 'post',
+          url: `${Config.apiUrl}/bridge/v1/forms/${formID}`,
+          data: {
+              email:this.state.email,
+          },
+          headers: {
+              'Content-Type': 'application/json;charset=UTF-8',
+              "Access-Control-Allow-Origin": "*",
+          }
+        },
+        )
+        .then((response) => {
+          toast.success("🔥 Congratulations. You will be notified", {
+              position: toast.POSITION.TOP_RIGHT
+          });
+        })
+        .catch((error) => {
+            console.log(error);
+          toast.error("⚠️ Upps! Something wrong !", {
+              position: toast.POSITION.TOP_RIGHT
+          });
+        })
+        .then(() => {
+          this.setState({
+              startSubmission : !this.state.startSubmission
+          })
+        });
+    }
     render() {
-        const {image, heading, description, enable_user_type_dropdown, user_heading, text, user, user_type } = this.props;
+        const {image, heading, description, enable_user_type_dropdown, user_heading, text, user, user_type, gravity_form_id } = this.props;
         const { inViewport } = this.props;
         let userDropdownMarkup = null;
         let userDropdownLinkMarkup = null;
@@ -137,12 +191,13 @@ class Banner extends Component{
           <Fragment>
             <div className="bridge-banner pos-relative">
                   <motion.div
-                      initial={inViewport ? { height:0 } : false}
-                      animate={inViewport && { height:"77%" }}
+                      initial={{ height:0 }}
+                      animate={inViewport ? { height:"77%" } : { height:0 }}
                       transition={{
                         type: "spring",
                         stiffness: 60,
                         damping: 500,
+                        delay: 0.7,
                       }} 
                       className="overlay"
                   ></motion.div>
@@ -154,7 +209,7 @@ class Banner extends Component{
                                   <div className="banner-text">
                                   <motion.h1 
                                           initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
-                                          animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                          animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                           transition={{
                                             type: "spring",
                                             stiffness: 60,
@@ -166,7 +221,7 @@ class Banner extends Component{
                                       >{ heading }</motion.h1>
                                       <motion.p
                                           initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
-                                          animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                          animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                           transition={{
                                             type: "spring",
                                             stiffness: 100,
@@ -176,13 +231,42 @@ class Banner extends Component{
                                           }}
                                       >{ description }</motion.p>
                                   </div>
+
+                                  {gravity_form_id && 
+                                  <motion.div 
+                                    class="newsletter-form"
+                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
+                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                    transition={{
+                                      type: "spring",
+                                      stiffness: 100,
+                                      damping: 500,
+                                      delay: 0.9,
+                                      default: { duration: 0.8 },
+                                    }}
+                                  >
+                                      <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
+                                          <span className="input-wrapper pos-relative">
+                                              <FontAwesomeIcon icon={["fas", "envelope"]} />
+                                              <input type="email" name="email" placeholder="Enter your email" required/>
+                                          </span>
+                                          <button class="btn-default">
+                                              Get Started
+                                              {!this.state.startSubmission &&<svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>}
+                                              {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
+                                          </button>
+                                      </form>
+                                  </motion.div>}
+
+                                  
+
                                   { image ? <motion.img 
                                       src={image.url} 
                                       alt={image.alt} 
                                       title={image.title} 
                                       className="banner-img img-fluid" 
                                       initial={{scale: 0.7, opacity:0}}
-                                      animate={inViewport && { scale: 1, opacity: 1 }}
+                                      animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
                                       transition={{
                                           type: "spring",
                                           stiffness: 100,
@@ -192,12 +276,14 @@ class Banner extends Component{
                                       }}
                                   />: ''}
                               </div>
+
+                              
                               
                               {enable_user_type_dropdown ? 
                                 <motion.div 
                                   className="banner-select-option text-center"
                                   initial={{translateY: 50, visibility:"hidden"}}
-                                  animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                  animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{translateY: 50, visibility:"hidden"}}
                                   transition={{
                                       type: "spring",
                                       stiffness: 100,
@@ -222,9 +308,10 @@ class Banner extends Component{
                       </div>
                   </div>
               </div>
+              <ToastContainer autoClose={2000} />
           </Fragment>
         )
     }
 }
 
-export default handleViewport(Banner, {}, {disconnectOnLeave: true});
+export default handleViewport(Banner, {}, {disconnectOnLeave: false});

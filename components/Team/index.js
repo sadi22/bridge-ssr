@@ -32,7 +32,7 @@ class Team extends Component{
                                 title={team.image.title} 
                                 whileHover={{ scale: 1.1 }}
                                 initial={{scale: 0.7, opacity:0}}
-                                animate={{ scale: 1, opacity: 1 }}
+                                animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
                                 transition={{
                                     type: "spring",
                                     stiffness: 100,
@@ -43,10 +43,43 @@ class Team extends Component{
                                 /> : ''}
                                 
                             </div>
-                            <h5>{team.name}</h5>
-                            <h6>{team.designation}</h6>
+                            <motion.h5
+                                initial={{scale: 0.7, opacity:0}}
+                                animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 500,
+                                    delay: 0.9,
+                                    default: { duration: 0.8 },
+                                }}
+                            
+                            >{team.name}</motion.h5>
+                            <motion.h6
+                                initial={{scale: 0.7, opacity:0}}
+                                animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 500,
+                                    delay: 0.9,
+                                    default: { duration: 0.8 },
+                                }}
+                            >{team.designation}</motion.h6>
                             <ul className="social">
-                                <li><a href={team.linkedin_link} target="_blank" title="Linked In"><FontAwesomeIcon icon={["fab", "linkedin-in"]} /></a></li>
+                                <motion.li
+                                    initial={{scale: 0.7, opacity:0}}
+                                    animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 100,
+                                        damping: 500,
+                                        delay: 0.9,
+                                        default: { duration: 0.8 },
+                                    }}
+                                >
+                                    <a href={team.linkedin_link} target="_blank" title="Linked In"><FontAwesomeIcon icon={["fab", "linkedin-in"]} /></a>
+                                </motion.li>
                             </ul>
                         </div>
                     </div>
@@ -63,7 +96,7 @@ class Team extends Component{
                             <div className="banner-content">
                                 <motion.h1
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }: { translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 100,
@@ -89,4 +122,4 @@ class Team extends Component{
     }
 }
 
-export default handleViewport(Team, {}, {disconnectOnLeave: true});
+export default handleViewport(Team, {}, {disconnectOnLeave: false});

@@ -33,7 +33,7 @@ class Footer extends Component{
                 <motion.li 
                     key={item.ID}
                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                    animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" } : { translateY: 50, opacity: 0, visibility:"hidden" }}
                     transition={{
                         type: "spring",
                         stiffness: 100,
@@ -54,18 +54,7 @@ class Footer extends Component{
             );
         });
         return (
-            <motion.footer
-                initial={false}
-                animate={{ opacity: 1, visibility:"visible" }}
-                transition={{
-                    type: "spring",
-                    stiffness: 60,
-                    damping: 500,
-                    delay: 0.6,
-                }}
-                
-                className="site-footer"
-            >
+            <footer className="site-footer">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-3">
@@ -75,8 +64,8 @@ class Footer extends Component{
                                         <a>
                                             <motion.img 
                                                 src={logo}
-                                                initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                                animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                                initial={!inViewport && { translateY: 50, opacity: 0, visibility:"hidden" }}
+                                                animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" } : { translateY: 50, opacity: 0, visibility:"hidden" }}
                                                 transition={{
                                                     type: "spring",
                                                     stiffness: 100,
@@ -102,9 +91,9 @@ class Footer extends Component{
                                 <ul>
                                     <motion.li
                                         style={{marginRight: '10px'}}
-                                        whileHover={{ scale: 1.2, rotate: 360 }}
+                                        whileHover={{ scale: 1.2 }}
                                         initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                             type: "spring",
                                             stiffness: 100,
@@ -121,9 +110,9 @@ class Footer extends Component{
                                         ><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
                                     </motion.li>
                                     <motion.li
-                                        whileHover={{ scale: 1.2, rotate: 360 }}
+                                        whileHover={{ scale: 1.2 }}
                                         initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                             type: "spring",
                                             stiffness: 100,
@@ -147,9 +136,9 @@ class Footer extends Component{
                         </div>
                     </div>
                 </div>
-            </motion.footer>
+            </footer>
         )
     }
 }
 
-export default handleViewport(Footer, {}, {disconnectOnLeave: true});
+export default handleViewport(Footer, {}, {disconnectOnLeave: false});

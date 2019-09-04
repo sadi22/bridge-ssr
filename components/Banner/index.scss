@@ -1,5 +1,6 @@
 @import '../../src/styles/variables';
 @import '../../src/styles/extend-style';
+@import 'node_modules/@fortawesome/fontawesome-svg-core/styles';
 
 .bridge-banner{
     padding-top: 108px;
@@ -14,7 +15,7 @@
     }
     
     .overlay{
-        height: 770px;
+        height: 890px;
         background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f5fcfc));
         background-image: -webkit-linear-gradient(top, #ffffff 0%, #f5fcfc 100%);
         background-image: linear-gradient(180deg, #ffffff 0%, #f5fcfc 100%);

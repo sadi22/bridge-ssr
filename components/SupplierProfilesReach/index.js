@@ -65,7 +65,7 @@ class SupplierProfilesReach extends Component{
                             <div className="section-title text-center">
                             <motion.h2
                                     initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport && { translateX: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 60,
@@ -84,7 +84,7 @@ class SupplierProfilesReach extends Component{
                                 <div className="section-title">
                                     <motion.h3
                                         initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport && { translateX: 0, opacity: 1, visibility:"visible" }}
+                                        animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 60,
@@ -95,7 +95,7 @@ class SupplierProfilesReach extends Component{
                                     >{Parser(subtitle)}</motion.h3>
                                     <motion.div
                                         initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport && { translateX: 0, opacity: 1, visibility:"visible" }}
+                                        animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 60,
@@ -116,7 +116,7 @@ class SupplierProfilesReach extends Component{
                                         title={image.title} 
                                         className="img-fluid"
                                         initial={{scale: 0.7, opacity:0}}
-                                        animate={inViewport && { scale: 1, opacity: 1 }}
+                                        animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
                                         transition={{
                                             type: "spring",
                                             stiffness: 100,
@@ -138,7 +138,7 @@ class SupplierProfilesReach extends Component{
                                             className="img-fluid unique-reach-image-src" 
                                             id="unique-reach-image-src"
                                             initial={{scale: 0.7, opacity:0}}
-                                            animate={inViewport && { scale: 1, opacity: 1 }}
+                                            animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
                                             transition={{
                                                 type: "spring",
                                                 stiffness: 100,
@@ -171,4 +171,4 @@ class SupplierProfilesReach extends Component{
         )
     }
 }
-export default handleViewport(SupplierProfilesReach, { rootMargin: '10px' }, {disconnectOnLeave: true});
+export default handleViewport(SupplierProfilesReach, { rootMargin: '10px' }, {disconnectOnLeave: false});

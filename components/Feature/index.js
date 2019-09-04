@@ -29,20 +29,7 @@ class Feature extends Component{
         let defaultImage = '';
         let featureListMarkup = null;
         let initialDelay = 300;
-        const variants = {
-            visible: i => ({
-              opacity: 1,
-              translateY: 0,
-              visibility:"visible",
-              transition: {
-                type: "spring",
-                stiffness: 60,
-                damping: 500,
-                delay: i * 0.3,
-              },
-            }),
-            hidden: { opacity: 0 },
-        }
+        
           
     	if(feature_list){
     		featureListMarkup = feature_list.map((feature, i) => {
@@ -52,7 +39,7 @@ class Feature extends Component{
                     <motion.li 
                         key={i}
                         initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                        animate={inViewport && { opacity: 1, translateX: 0, visibility:"visible"}}
+                        animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: -50, opacity: 0, visibility:"hidden" }}
                         transition={{
                             type: "spring",
                             stiffness: 60,
@@ -76,7 +63,7 @@ class Feature extends Component{
                         alt="bg-img" 
                         className="bg-image" 
                         initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
-                        animate={inViewport && { opacity: 1, translateX: 0, visibility:"visible"}}
+                        animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: 50, opacity: 0, visibility:"hidden" }}
                         transition={{
                             type: "spring",
                             stiffness: 60,
@@ -92,7 +79,7 @@ class Feature extends Component{
                             <div className="section-title">
                                 <motion.h2
                                     initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport && { opacity: 1, translateX: 0, visibility:"visible"}}
+                                    animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: -50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                         type: "spring",
                                         stiffness: 60,
@@ -102,7 +89,7 @@ class Feature extends Component{
                                 >{Parser(title)}</motion.h2>
                                 <motion.p
                                     initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport && { opacity: 1, translateX: 0, visibility:"visible"}}
+                                    animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: -50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                         type: "spring",
                                         stiffness: 60,
@@ -141,7 +128,7 @@ class Feature extends Component{
                         className="feature-list-hovered-image"
                         id='feature-list-hovered-image'
                         initial={{scale: 0.7, opacity:0}}
-                        animate={{ scale: 1, opacity: 1 }}
+                        animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
                         transition={{
                             type: "spring",
                             stiffness: 100,
@@ -157,4 +144,4 @@ class Feature extends Component{
     }
 }
 
-export default handleViewport(Feature, {}, {disconnectOnLeave: true});
+export default handleViewport(Feature, {}, {disconnectOnLeave: false});

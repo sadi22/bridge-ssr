@@ -1,0 +1,27 @@
+@import '../../src/styles/variables';
+@import '../../src/styles/extend-style';
+
+.site-404{
+    .content-404{
+        height: 100vh;
+        min-height: 450px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        
+        h2{
+            text-transform: capitalize;
+            margin: 20px 0 30px;
+        }
+        .back2home{
+            &:hover{
+                background: #1ea5a7;
+            }
+            svg{
+                margin-right: 5px;
+            }
+        }
+    }
+}

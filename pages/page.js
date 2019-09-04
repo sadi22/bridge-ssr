@@ -11,6 +11,8 @@ import ACFCONTENT from '../components/AcfContent';
 
 const wp = new WPAPI({ endpoint: Config.apiUrl });
 
+wp.menus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z(-]+)');
+
 class Post extends Component {
   static async getInitialProps(context) {
     const { slug, apiRoute } = context.query;
@@ -27,6 +29,8 @@ class Post extends Component {
 
   render() {
     const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link, gmap_api } = this.props;
+    console.log('%cMade at %cBridge', 'font-weight: bolder;', ' font-weight: bolder; color: #1FC8C9;');
+
     if (!page.title) return <Error statusCode={404} />;
     let seo_title = page.title.rendered;
     let seo_description = page.title.rendered;

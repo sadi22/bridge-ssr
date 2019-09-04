@@ -65,6 +65,7 @@ a:active {
     outline: none;
     outline-offset: 0px;
     box-shadow: none;
+    cursor: pointer;
 }
 ul {
     list-style: none;
@@ -96,6 +97,9 @@ select:focus {
     border: 1px solid #dde9e9;
 }
 
+img {
+    max-width: 100%;
+}
 
 
 article {

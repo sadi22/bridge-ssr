@@ -66,6 +66,8 @@ class Category extends Component {
         </ul>
       );
     });
+    console.log('%cMade at %cBridge', 'font-weight: bolder;', ' font-weight: bolder; color: #1FC8C9;');
+
     return (
       <Fragment>
           <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>

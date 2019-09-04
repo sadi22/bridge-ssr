@@ -23,7 +23,7 @@ class SeamlessEcommerce extends Component{
                             <div className="section-title text-center">
                                 <motion.h2
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 60,
@@ -34,7 +34,7 @@ class SeamlessEcommerce extends Component{
                                 >{Parser(title)}</motion.h2>
                                 <motion.p
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 60,
@@ -55,7 +55,7 @@ class SeamlessEcommerce extends Component{
                                     src={left_image.url} alt={left_image.alt} title={left_image.title} 
                                     className="banner-img img-fluid" 
                                     initial={{ rotateY: -180, opacity:0 }}
-                                    animate={inViewport && { rotateY: 0, opacity:1 }}
+                                    animate={inViewport ? { rotateY: 0, opacity:1 }:{ rotateY: -180, opacity:0 }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 260,
@@ -70,7 +70,7 @@ class SeamlessEcommerce extends Component{
                                     { left_image ? <motion.img 
                                         src={right_image.url} alt={right_image.alt} title={right_image.title} className="banner-img img-fluid" 
                                         initial={{ rotateY: -180, opacity:0 }}
-                                        animate={inViewport && { rotateY: 0, opacity:1 }}
+                                        animate={inViewport ? { rotateY: 0, opacity:1 }:{ rotateY: -180, opacity:0 }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 260,
@@ -90,4 +90,4 @@ class SeamlessEcommerce extends Component{
     }
 }
 
-export default handleViewport(SeamlessEcommerce, {}, {disconnectOnLeave: true});
+export default handleViewport(SeamlessEcommerce, {}, {disconnectOnLeave: false});

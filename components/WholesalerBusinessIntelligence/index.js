@@ -18,7 +18,7 @@ class WholesalerBusinessIntelligence extends Component{
                     <div className="single-block supply" key={i}>
                         <motion.h4
                             initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                            animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                            animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                             transition={{
                             type: "spring",
                             stiffness: 100,
@@ -28,7 +28,7 @@ class WholesalerBusinessIntelligence extends Component{
                         >{Parser(feature.feature_title)}</motion.h4>
                         <motion.p
                             initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                            animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                            animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                             transition={{
                             type: "spring",
                             stiffness: 100,
@@ -53,7 +53,7 @@ class WholesalerBusinessIntelligence extends Component{
                                     title={image.title} 
                                     className="img-fluid"
                                     initial={{ translateY: 100, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 100, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                         type: "spring",
                                         stiffness: 100,
@@ -68,7 +68,7 @@ class WholesalerBusinessIntelligence extends Component{
                             <div className="business-intelligence-content">
                             <motion.h2
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
+                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 100,
@@ -86,4 +86,4 @@ class WholesalerBusinessIntelligence extends Component{
     }
 }
 
-export default handleViewport(WholesalerBusinessIntelligence, { rootMargin: '-10.0px' }, {disconnectOnLeave: true});
+export default handleViewport(WholesalerBusinessIntelligence, { rootMargin: '-10.0px' }, {disconnectOnLeave: false});

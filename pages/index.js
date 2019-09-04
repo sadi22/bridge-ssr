@@ -47,6 +47,7 @@ class Index extends Component {
             seo_description = page.yoast_meta.yoast_wpseo_metadesc;
             seo_canonical = page.yoast_meta.yoast_wpseo_canonical;
         }
+        console.log('%cMade at %cBridge', 'font-weight: bolder;', ' font-weight: bolder; color: #1FC8C9;');
         return (
             <Fragment>
                 <Head>

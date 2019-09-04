@@ -17,20 +17,7 @@ const getSlug = url => {
     return parts.length > 2 ? parts[parts.length - 2] : '';
 };
 
-const variants = {
-    visible: i => ({
-        translateY: 0, 
-        opacity: 1, 
-        visibility:"visible",
-        transition: {
-            type: "spring",
-            stiffness: 60,
-            damping: 500,
-            delay: i * .03,
-        },
-    }),
-    hidden: { y: -50 },
-  }
+
 
 class Menu extends Component {
     state = {
