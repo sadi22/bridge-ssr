@@ -1,8 +1,9 @@
 const path = require('path');
 const withSass = require('@zeit/next-sass');
+const withCSS = require('@zeit/next-css')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const nextConfig = withSass({
+const nextConfig = withCSS(withSass({
   webpack(config, options) {
     config.module.rules.push({
       test: /\.(raw)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -24,10 +25,8 @@ const nextConfig = withSass({
       }
     }
     return config;
-  },
-});
-
-
+  }
+}));
 
 nextConfig.exportPathMap = () => {
   return {
@@ -35,8 +34,4 @@ nextConfig.exportPathMap = () => {
   };
 };
 
-module.exports = {
-  target: 'serverless',
-  ...nextConfig
-}
-
+module.exports = nextConfig;
