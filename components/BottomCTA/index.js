@@ -34,7 +34,7 @@ class BottomCTA extends Component{
           .then(data => {
             return data[0];
           });
-    
+
         return { page };
     }
 
@@ -43,11 +43,11 @@ class BottomCTA extends Component{
             e.stopPropagation();
             $(this).children('label').hide();
         });
-        
-        $('body').on('click', function(){            
+
+        $('body').on('click', function(){
             $('.single-input').each(function(){
                 var eachVal = $(this).children('input').val();
-                
+
                 if(eachVal) $(this).children('label').hide();
                 if(!eachVal) $(this).children('label').show();
                 $(this).siblings().children('label').show();
@@ -76,8 +76,10 @@ class BottomCTA extends Component{
                 company:this.state.company,
             },
             headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Credentials' : true,
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Methods':'POST',
+                'Access-Control-Allow-Headers':'application/json',
             }
           },
           )
@@ -134,9 +136,9 @@ class BottomCTA extends Component{
                             </div>
                         </div>
                     </div>
-                    {gravity_form_id && 
+                    {gravity_form_id &&
                     <motion.form
-                         onSubmit={this.handleSubmit.bind(this, gravity_form_id)} 
+                         onSubmit={this.handleSubmit.bind(this, gravity_form_id)}
                          className="cta-contact-form"
                          initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
                          animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
@@ -169,14 +171,14 @@ class BottomCTA extends Component{
                             <div className="col-lg-3 col-md-6">
                                 <div className="single-input">
                                     <Button className="btn-default" type="submit">
-                                        Request Demo  
+                                        Request Demo
                                         {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
                                     </Button>
                                 </div>
                             </div>
                         </div>
                     </motion.form>}
-                    
+
                 </div>
             </div>
             <ToastContainer autoClose={2000} />

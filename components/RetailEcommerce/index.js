@@ -31,7 +31,7 @@ class RetailEcommerce extends Component{
             [evt.target.name]: evt.target.value,
         });
       };
-  
+
       handleSubmit = (formID,evt) => {
         evt.preventDefault();
         this.setState({
@@ -44,8 +44,10 @@ class RetailEcommerce extends Component{
                 email:this.state.email,
             },
             headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Credentials' : true,
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Methods':'POST',
+                'Access-Control-Allow-Headers':'application/json',
             }
           },
           )
@@ -100,10 +102,10 @@ class RetailEcommerce extends Component{
                             </div>
                         </div>
                     </div>
-            
+
                     <div className="row align-items-center">
                         <div className="col-lg-6">
-                            <motion.div 
+                            <motion.div
                                 className="retailer-content"
                                 initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                 animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
@@ -116,7 +118,7 @@ class RetailEcommerce extends Component{
                                 }}
                             >
                                 {Parser(left_text)}
-                                {gravity_form_id &&  <motion.div 
+                                {gravity_form_id &&  <motion.div
                                     className="newsletter-form retailer-newsletter-form"
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
                                     animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
@@ -142,12 +144,12 @@ class RetailEcommerce extends Component{
                                 </motion.div>}
                             </motion.div>
                         </div>
-                        
+
                         <div className="col-lg-6">
                             <div className={`${enable_drop_shadow ? 'image-shadow' : ''} retailer-image pos-relative`}>
                                 <div className="lines-accent">
-                                    { show_background ? <motion.img 
-                                    src='/static/images/lines-accent.png' 
+                                    { show_background ? <motion.img
+                                    src='/static/images/lines-accent.png'
                                     initial={{ translateX: 100, opacity: 0, visibility:"hidden" }}
                                     animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: 100, opacity: 0, visibility:"hidden" }}
                                     transition={{
@@ -159,7 +161,7 @@ class RetailEcommerce extends Component{
                                     }}
                                     /> : '' }
                                 </div>
-                                {right_image ? <motion.img 
+                                {right_image ? <motion.img
                                 src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"
                                 initial={{ translateY: 100, opacity: 0, visibility:"hidden" }}
                                 animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 100, opacity: 0, visibility:"hidden" }}
