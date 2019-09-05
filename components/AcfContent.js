@@ -2,17 +2,17 @@ import React, {Component, Fragment} from 'react';
 import dynamic from 'next/dynamic'
 
 
-const Banner = dynamic(() => import('./Banner'));
-const BottomCTA = dynamic(() => import('./BottomCTA/index'));
-const DriveSales = dynamic(() => import('./DriveSales/index'));
-const RetailEcommerce = dynamic(() => import('./RetailEcommerce/index'));
-const SeamlessEcommerce = dynamic(() => import('./SeamlessEcommerce/index'));
-const Feature = dynamic(() => import('./Feature/index'));
-const OverView = dynamic(() => import('./SupplierProfilesReach/index'));
-const Team = dynamic(() => import('./Team/index'));
-const FeatureWithLeftImage = dynamic(() => import('./WholesalerBusinessIntelligence/index'));
-const Press = dynamic(() => import('./Press/index'));
-const Contact = dynamic(() => import('./Contact/index'));
+const Banner = dynamic(() => import('./Banner'), { loading: () => <p></p> });
+const BottomCTA = dynamic(() => import('./BottomCTA/index'), { loading: () => <p></p> });
+const DriveSales = dynamic(() => import('./DriveSales/index'), { loading: () => <p></p> });
+const RetailEcommerce = dynamic(() => import('./RetailEcommerce/index'), { loading: () => <p></p> });
+const SeamlessEcommerce = dynamic(() => import('./SeamlessEcommerce/index'), { loading: () => <p></p> });
+const Feature = dynamic(() => import('./Feature/index'), { loading: () => <p></p> });
+const OverView = dynamic(() => import('./SupplierProfilesReach/index'), { loading: () => <p></p> });
+const Team = dynamic(() => import('./Team/index'), { loading: () => <p></p> });
+const FeatureWithLeftImage = dynamic(() => import('./WholesalerBusinessIntelligence/index'), { loading: () => <p></p> });
+const Press = dynamic(() => import('./Press/index'), { loading: () => <p></p> });
+const Contact = dynamic(() => import('./Contact/index'), { loading: () => <p></p> });
 
 class ACFCONTENT extends Component {
     render() {

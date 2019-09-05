@@ -8,7 +8,7 @@ const LRUCache = require('lru-cache');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-var port = process.env.PORT || 8080;
+var port = process.env.NODE_ENV !== 'production' ? process.env.PORT || 8080 : 3000;
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 
@@ -73,9 +73,9 @@ app
       }
     });
 
-    server.listen(port, err => {
+    server.listen(3000, err => {
       if (err) throw err;
-      console.log('> Ready on http://localhost:3000');
+      console.log(`> Ready on http://localhost:${port}`);
     });
   })
   .catch(ex => {

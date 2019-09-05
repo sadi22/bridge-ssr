@@ -8,6 +8,7 @@ const linkStyle = {
   margin: '0 10px 0 0'
 }
 
+
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
 })
@@ -26,7 +27,7 @@ export default class MyApp extends App {
   }
 
   render () {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps } = this.props;
     return (
       <>
         <Component {...pageProps} />
