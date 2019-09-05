@@ -416,6 +416,8 @@ ul.vertical-line-wrapper {
       ul.vertical-line-wrapper li {
         padding: 10px 0 10px 35px;
         line-height: 26px; } }
+    ul.vertical-line-wrapper li.active {
+      color: #1fc1c3; }
     ul.vertical-line-wrapper li:last-child {
       margin-bottom: 0; }
 

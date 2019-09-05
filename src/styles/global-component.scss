@@ -121,6 +121,10 @@ ul.vertical-line-wrapper{
             padding: 10px 0 10px 35px;
             line-height: 26px;
         }
+        
+        &.active{
+            color: $primary-color;
+        }
 
         &:last-child{
             margin-bottom: 0;
