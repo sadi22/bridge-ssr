@@ -82,9 +82,9 @@ app
       renderAndCache(req, res, actualPage, queryParams);
     });
 
-    server.get('/page/:slug', (req, res) => {
+    server.get('/:slug', (req, res) => {
       const actualPage = '/page';
-      const queryParams = { slug: req.params.slug, apiRoute: 'page' };
+      const queryParams = { slug: req.params.slug };
       renderAndCache(req, res, actualPage, queryParams);
     });
 

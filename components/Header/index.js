@@ -52,9 +52,10 @@ class Menu extends Component {
                 }else if(item.object === 'category') {
                     actualPage = 'category'
                 }
+                let as = item.object === 'page' ? `/${slug}` : `/${item.object}/${slug}`;
                 return (
                     <Link
-                        as={`/${item.object}/${slug}`}
+                        as={`${as}`}
                         href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
                         key={item.ID}
                         activeClassName='active'
@@ -99,7 +100,7 @@ class Menu extends Component {
                 return (
                     
                     <Link
-                        as={`/${getting_started_actualPage}/${getting_started_slug}`}
+                        as={`/${getting_started_slug}`}
                         href={`/${getting_started_actualPage}?slug=${getting_started_slug}&apiRoute=${getting_started_actualPage}`}
                     >
                         <motion.a 

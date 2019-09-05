@@ -9,6 +9,7 @@ import "./index.scss";
 
 function featureMouseHover(e) {
     e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
+    e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
     e.target.classList.add( "active" );
     var imgSrc = e.target.getAttribute('data-src');
     document.getElementById("unique-reach-image-src").src = imgSrc;
@@ -19,7 +20,6 @@ function featureMouseHover(e) {
 
 const FeatureBlock = (props) => {
     const { inViewport, innerRef, index, features_text_with_image,feature_list_title, feature_description  } = props;
-    console.log(inViewport);
     let defaultImage = '';
     let featureListMarkup = null;
 

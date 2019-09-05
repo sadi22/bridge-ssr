@@ -29,6 +29,7 @@ class Footer extends Component{
             }else if(item.object === 'category') {
                 actualPage = 'category'
             }
+            let as = item.object === 'page' ? `/${slug}` : `/${item.object}/${slug}`;
             return (
                 <motion.li 
                     key={item.ID}
@@ -43,7 +44,7 @@ class Footer extends Component{
                     }}
                 >
                     <Link
-                        as={`/${item.object}/${slug}`}
+                        as={`${as}`}
                         href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
                         key={item.ID}
                         activeClassName='active'

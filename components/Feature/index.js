@@ -17,6 +17,8 @@ class Feature extends Component{
 
     featureMouseHover(e) {
         var imgSrc = e.target.getAttribute('data-src');
+        e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
+        e.target.classList.add( "active" );
         document.getElementById("feature-list-hovered-image").src = imgSrc;
         var this_item_height = e.target.offsetHeight;
         var target_offset = e.target.offsetTop;

@@ -172,11 +172,13 @@ class Banner extends Component{
           userDropdownLinkMarkup = user.map((item, i) => {
             const slug = item.link ? getSlug(item.link) : '';
             let actualPage = slug ? 'page' : '';
+            let as = actualPage === 'page' ? `/${slug}` : `/${actualPage}/${slug}` ;
             return (
 
               <Link
-                  as={`/${actualPage}/${slug}`}
+                  as={`${as}`}
                   href={`/page?slug=${slug}&apiRoute=page`}
+                  href={`/${actualPage}?slug=${slug}&apiRoute=${actualPage}`}
                   key={i}
               >
                   <a className={`button user-type-link ${item.type.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '').toLowerCase()}`}>
