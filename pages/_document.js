@@ -28,16 +28,7 @@ export default class MyDocument extends Document {
 
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-config" content="/static/favicon/browserconfig.xml" />
-          <meta name="theme-color" content="#ffffff" />
-
-
-          <meta name="og:title" content="Bridge"/>
-          <meta name="og:type" content="article"/>
-          <meta name="og:url" content="https://bridgssrelive.wpengine.com/wp-content/uploads/2019/08/site-logo.png"/>
-          <meta name="og:image" content="https://bridgssrelive.wpengine.com/wp-content/uploads/2019/08/site-logo.png"/>
-          <meta name="og:site_name" content="Bridge"/>
-          <meta name="og:description" content="Bridge"/>
-        
+          <meta name="theme-color" content="#ffffff" />  
           
           <link href="/static/styles/lib/bootstrap.min.css" rel="stylesheet" />
           <link href="/static/styles/lib/gutenberg.min.css" rel="stylesheet" />

@@ -3,7 +3,8 @@ const next = require('next');
 var compression = require('compression');
 const cacheableResponse = require('cacheable-response')
 const LRUCache = require('lru-cache');
-
+const sm = require('sitemap');
+const axios = require('axios');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -21,11 +22,49 @@ const ssrCache = new LRUCache({
   maxAge: 1000 * 60 * 60 * 24 * 30
 });
 
+
+const determinePriority = (item) => {
+  if (item.type === 'page') {
+    return 0.6
+  } else if (item.type === 'post') {
+    return 0.8
+  } else {
+    return 1.0
+  }
+};
+
+const createSitemap = (res) => {
+  let urlRoutes = [];
+  
+  let sitemap = sm.createSitemap ({
+    hostname: 'http://localhost:3000',
+    cacheTime: 60
+  });
+  
+  axios.get('https://bridgssrelive.wpengine.com/wp-json/wp/v2/pages')
+    .then(function(response) {
+      urlRoutes = [...urlRoutes, ...response.data]
+      urlRoutes.map((item) => {
+        sitemap.add({
+          url: `/${item.slug}`,
+          changefreq: 'daily',
+          priority: determinePriority(item)
+        })
+      })
+      res.send( sitemap.toString() )
+    });
+};
+
 app
   .prepare()
   .then(() => {
     const server = express();
     server.use(compression());
+
+    server.get('/sitemap.xml', function(req, res) {
+      res.header('Content-Type', 'application/xml');
+      createSitemap(res);
+    });
 
     server.get('/_next/*', (req, res) => {
         handle(req, res);

@@ -59,7 +59,9 @@
     "react-reveal": "^1.2.2",
     "react-toastify": "^5.3.2",
     "react-visibility-sensor": "^5.1.1",
+    "sitemap": "^4.1.1",
     "styled-jsx": "^3.2.1",
-    "wpapi": "^1.2.1"
+    "wpapi": "^1.2.1",
+    "xmlbuilder": "^13.0.2"
   }
 }
