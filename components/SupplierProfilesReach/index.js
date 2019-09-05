@@ -16,7 +16,7 @@ class SupplierProfilesReach extends Component{
         document.getElementById("unique-reach-image-src").src = imgSrc;
         var this_item_height = e.target.offsetHeight;
         var target_offset = e.target.offsetTop;
-        document.getElementsByClassName('vertical-line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;")        
+        document.getElementsByClassName('vertical-line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;");        
     }
 
     render() {
@@ -64,8 +64,8 @@ class SupplierProfilesReach extends Component{
                         <div className="col-12">
                             <div className="section-title text-center">
                             <motion.h2
-                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 60,
@@ -83,24 +83,24 @@ class SupplierProfilesReach extends Component{
                             <div className="customer-profiling-content">
                                 <div className="section-title">
                                     <motion.h3
-                                        initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 60,
                                         damping: 500,
-                                        delay: 0.4,
+                                        delay: 0.6,
                                         default: { duration: .8 },
                                         }}
                                     >{Parser(subtitle)}</motion.h3>
                                     <motion.div
-                                        initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 60,
                                         damping: 500,
-                                        delay: 0.4,
+                                        delay: 0.8,
                                         default: { duration: .8 },
                                         }}
                                     >{Parser(description)}</motion.div>
@@ -115,13 +115,13 @@ class SupplierProfilesReach extends Component{
                                         alt={image.alt} 
                                         title={image.title} 
                                         className="img-fluid"
-                                        initial={{scale: 0.7, opacity:0}}
-                                        animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
+                                        initial={{translateX: 100, opacity:0}}
+                                        animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: 100, opacity:0}}
                                         transition={{
                                             type: "spring",
                                             stiffness: 100,
                                             damping: 500,
-                                            delay: 0.9,
+                                            delay: 1,
                                             default: { duration: 0.8 },
                                         }} 
                                     />: ''}

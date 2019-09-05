@@ -62,8 +62,8 @@ class Feature extends Component{
                         src="/static/images/feature-list-lines-accent.png"
                         alt="bg-img" 
                         className="bg-image" 
-                        initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
-                        animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: 50, opacity: 0, visibility:"hidden" }}
+                        initial={{ translateX: 150, opacity: 0, visibility:"hidden" }}
+                        animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: 150, opacity: 0, visibility:"hidden" }}
                         transition={{
                             type: "spring",
                             stiffness: 60,
@@ -127,8 +127,8 @@ class Feature extends Component{
                         title={defaultImage.title}
                         className="feature-list-hovered-image"
                         id='feature-list-hovered-image'
-                        initial={{scale: 0.7, opacity:0}}
-                        animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
+                        initial={{translateX: 100, opacity:0}}
+                        animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: 100, opacity:0}}
                         transition={{
                             type: "spring",
                             stiffness: 100,

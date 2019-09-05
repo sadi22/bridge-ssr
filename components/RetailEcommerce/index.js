@@ -163,8 +163,8 @@ class RetailEcommerce extends Component{
                                 </div>
                                 {right_image ? <motion.img
                                 src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"
-                                initial={{ translateY: 100, opacity: 0, visibility:"hidden" }}
-                                animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 100, opacity: 0, visibility:"hidden" }}
+                                initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
+                                animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: 50, opacity: 0, visibility:"hidden" }}
                                 transition={{
                                     type: "spring",
                                     stiffness: 100,
