@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component, Children } from 'react';
+import $ from 'jquery';
 import Link from '../ActiveLink'
 import { Navbar, Nav } from "react-bootstrap";
 import { motion } from "framer-motion"
@@ -29,6 +30,15 @@ class Menu extends Component {
         const token = localStorage.getItem(Config.AUTH_TOKEN);
         const username = localStorage.getItem(Config.USERNAME);
         this.setState({ token, username });
+        
+        //------sticky menu----
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() >= 5) {
+                $(".header-main").addClass("sticked");
+            } else {
+                $(".header-main").removeClass("sticked");
+            }
+        });
     }
 
     render() {

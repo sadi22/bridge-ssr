@@ -3,9 +3,12 @@
 @import 'node_modules/@fortawesome/fontawesome-svg-core/styles';
 
 .bridge-banner{
-    padding-top: 108px;
+    padding-top: 173px;
     padding-bottom: 40px;
     
+    @media #{$device_992_1199} {
+        padding-top: 108px;
+    }
     @media #{$device_768_991} {
         padding-bottom: 20px;
     }

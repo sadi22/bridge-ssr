@@ -4,6 +4,23 @@
 .header-main{
     background: #fff;
     padding: 10px 0;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    left: 0;
+    top: 0;
+    
+    &.sticked{
+        box-shadow: 0 0 3px rgba(0,0,0,0.12);
+    }
+    
+    @media #{$device_992_1199} {
+        position: relative;
+        
+        &.sticked{
+            box-shadow: none;
+        }
+    }
     
     .navbar{
         padding: 0;

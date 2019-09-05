@@ -60,23 +60,30 @@ class WholesalerBusinessIntelligence extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-7">
-                            <div className="business-intelligence-img">
-                                {image ? <motion.img 
-                                    src={image.url} 
-                                    alt={image.alt} 
-                                    title={image.title} 
-                                    className="img-fluid"
-                                    initial={{ translateX: -100, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -100, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 100,
-                                        damping: 500,
-                                        delay: 0.8,
-                                        duration: 1,
-                                    }}
-                                 /> : ''}
-                            </div>
+                            <motion.div 
+                            className="business-intelligence-img"
+                            initial={{ translateX: -100, opacity: 0, visibility:"hidden" }}
+                            animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -100, opacity: 0, visibility:"hidden" }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 100,
+                                damping: 500,
+                                delay: 0.8,
+                                duration: 1,
+                            }}
+                            >
+                                <div className="overflow">
+                                    {image ? <motion.img 
+                                        src={image.url} 
+                                        alt={image.alt} 
+                                        title={image.title} 
+                                        className="img-fluid"
+                                        whileHover={{
+                                            scale: 1.1
+                                        }}
+                                     /> : ''}
+                                </div>
+                            </motion.div>
                         </div>
                         <div className="col-lg-5">
                             <div className="business-intelligence-content">

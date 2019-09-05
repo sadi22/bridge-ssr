@@ -64,22 +64,29 @@ const FeatureBlock = (props) => {
     return (
         <div className="row align-items-center unique-reach" ref={innerRef}>
             <div className="col-lg-6">
-                <div className="unique-reach-image pos-relative">
-                    <motion.img
+                <motion.div 
+                className="unique-reach-image pos-relative"
+                initial={{translateX: -100, opacity:0}}
+                animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: -100, opacity:0}}
+                transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 500,
+                    delay: 0.3,
+                    default: { duration: 0.8 },
+                }}
+                >
+                    <div className="overflow">
+                        <motion.img
                             src={defaultImage} 
                             className="img-fluid unique-reach-image-src" 
-                            id="unique-reach-image-src"
-                            initial={{translateX: -100, opacity:0}}
-                            animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: -100, opacity:0}}
-                            transition={{
-                                type: "spring",
-                                stiffness: 100,
-                                damping: 500,
-                                delay: 0.3,
-                                default: { duration: 0.8 },
-                            }} 
-                    />
-                </div>
+                            id="unique-reach-image-src" 
+                            whileHover={{
+                                scale: 1.1
+                            }}    
+                        />
+                    </div>
+                </motion.div>
             </div>
             
             <div className="col-lg-5 ml-auto">
@@ -179,23 +186,30 @@ class SupplierProfilesReach extends Component{
                         </div>
                         
                         <div className="col-lg-6 ml-auto">
-                            <div className="customer-profiling-image pos-relative">
-                                { image ? <motion.img 
-                                        src={image.url}
-                                        alt={image.alt} 
-                                        title={image.title} 
-                                        className="img-fluid"
-                                        initial={{translateX: 100, opacity:0}}
-                                        animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: 100, opacity:0}}
-                                        transition={{
-                                            type: "spring",
-                                            stiffness: 100,
-                                            damping: 500,
-                                            delay: 1,
-                                            default: { duration: 0.8 },
-                                        }} 
-                                    />: ''}
-                            </div>
+                            <motion.div 
+                            className="customer-profiling-image pos-relative"
+                            initial={{translateX: 100, opacity:0}}
+                            animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: 100, opacity:0}}
+                            transition={{
+                                type: "spring",
+                                stiffness: 100,
+                                damping: 500,
+                                delay: 1,
+                                default: { duration: 0.8 },
+                            }}
+                            >
+                                <div className="overflow">
+                                    { image ? <motion.img 
+                                            src={image.url}
+                                            alt={image.alt} 
+                                            title={image.title} 
+                                            className="img-fluid"
+                                            whileHover={{
+                                                scale: 1.1
+                                              }}
+                                        />: ''}
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
             

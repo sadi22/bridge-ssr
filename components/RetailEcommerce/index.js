@@ -161,18 +161,26 @@ class RetailEcommerce extends Component{
                                     }}
                                     /> : '' }
                                 </div>
-                                {right_image ? <motion.img
-                                src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"
-                                initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
-                                animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: 50, opacity: 0, visibility:"hidden" }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 100,
-                                    damping: 500,
-                                    delay: 1.4,
-                                    duration: 1,
-                                }}
-                                />: ''}
+                                {right_image ? 
+                                <motion.div 
+                                    className="img-wrapper"
+                                    initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
+                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: 50, opacity: 0, visibility:"hidden" }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 100,
+                                        damping: 500,
+                                        delay: 1.4,
+                                        duration: 1,
+                                    }}
+                                    >
+                                    <motion.img 
+                                    src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"
+                                    whileHover={{
+                                        scale: 1.1
+                                    }}
+                                    />
+                                </motion.div>: ''}
                             </div>
                         </div>
                     </div>

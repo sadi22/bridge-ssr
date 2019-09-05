@@ -70,17 +70,22 @@
             }
         }
         
-        & > img{
-            border-radius: 7px;
-            z-index: 1;
-            position: relative;
-            box-shadow: -20px 32px 54px rgba(0, 0, 0, 0.15);
+        .img-wrapper{
+            overflow: hidden;
             
-            @media #{$device_768_991} {
-                box-shadow: -20px 12px 54px rgba(0, 0, 0, 0.15);
-            }
-            @media #{$device_0_575} {
-                box-shadow: -20px 14px 34px rgba(0, 0, 0, 0.15);
+            & > img{
+                border-radius: 7px;
+                z-index: 1;
+                position: relative;
+                box-shadow: -20px 32px 54px rgba(0, 0, 0, 0.15);
+                @include transitions(all 4s linear);
+
+                @media #{$device_768_991} {
+                    box-shadow: -20px 12px 54px rgba(0, 0, 0, 0.15);
+                }
+                @media #{$device_0_575} {
+                    box-shadow: -20px 14px 34px rgba(0, 0, 0, 0.15);
+                }
             }
         }
         

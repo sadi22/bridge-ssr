@@ -123,12 +123,7 @@ class Feature extends Component{
                 </div>
                 
                 <div className="hovered-image-wrapper" id='hovered-image-wrapper'>
-                    <motion.img 
-                        src={defaultImage.url}
-                        alt={defaultImage.alt}
-                        title={defaultImage.title}
-                        className="feature-list-hovered-image"
-                        id='feature-list-hovered-image'
+                    <motion.div
                         initial={{translateX: 100, opacity:0}}
                         animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: 100, opacity:0}}
                         transition={{
@@ -138,7 +133,18 @@ class Feature extends Component{
                             delay: 0.9,
                             default: { duration: 0.8 },
                         }}
-                    />
+                    >
+                        <motion.img 
+                            src={defaultImage.url}
+                            alt={defaultImage.alt}
+                            title={defaultImage.title}
+                            className="feature-list-hovered-image"
+                            id='feature-list-hovered-image'
+                            whileHover={{
+                                scale: 1.1
+                            }}
+                        />
+                    </motion.div>
                 </div>
             </div>
             </Fragment>
