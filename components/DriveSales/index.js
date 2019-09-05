@@ -20,7 +20,8 @@ const FeatureBlock = (props) => {
                     damping: 500,
                     delay: index * 0.7,
                 }}
-            >
+            >   
+                
                 <motion.span 
                     className="icon" style={{backgroundColor: feature.image_background_color}}
                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}

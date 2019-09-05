@@ -43,13 +43,19 @@ const FeatureBlock = (props) => {
             if(i == 0) defaultImage = feature.feature_image.url;
             return (
                 <motion.li 
-                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                    custom={i}
-                    animate="visible"
-                    variants={variants}
+                    key={i}
+                    initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
+                    animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: 50, opacity: 0, visibility:"hidden" }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 60,
+                        damping: 500,
+                        delay: i * 0.2,
+                        default: { duration: 1 },
+                    }}
+                
                     className={`${i==0 ? 'active': ''} unique-reach-list`} 
-                    data-src={feature.feature_image.url} 
-                    key={i} 
+                    data-src={feature.feature_image.url} key={i} 
                     onMouseOver={featureMouseHover.bind(this)}
                 >{feature.feature_text}</motion.li>
                 );
@@ -63,13 +69,13 @@ const FeatureBlock = (props) => {
                             src={defaultImage} 
                             className="img-fluid unique-reach-image-src" 
                             id="unique-reach-image-src"
-                            initial={{scale: 0.7, opacity:0}}
-                            animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
+                            initial={{translateX: -100, opacity:0}}
+                            animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: -100, opacity:0}}
                             transition={{
                                 type: "spring",
                                 stiffness: 100,
                                 damping: 500,
-                                delay: 0.9,
+                                delay: 0.3,
                                 default: { duration: 0.8 },
                             }} 
                     />
@@ -79,8 +85,28 @@ const FeatureBlock = (props) => {
             <div className="col-lg-5 ml-auto">
                 <div className="unique-reach-content">
                     <div className="section-title">
-                        <h3>{Parser(feature_list_title)}</h3>
-                        <p>{Parser(feature_description)}</p>
+                        <motion.h3
+                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                        transition={{
+                        type: "spring",
+                        stiffness: 60,
+                        damping: 500,
+                        delay: 0.5,
+                        default: { duration: 0.8 },
+                        }}
+                        >{Parser(feature_list_title)}</motion.h3>
+                        <motion.p
+                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                        transition={{
+                        type: "spring",
+                        stiffness: 60,
+                        damping: 500,
+                        delay: 0.7,
+                        default: { duration: 0.8 },
+                        }}
+                        >{Parser(feature_description)}</motion.p>
                     </div>
                     
                     <ul className="vertical-line-wrapper unique-reach-wrapper">
@@ -108,8 +134,8 @@ class SupplierProfilesReach extends Component{
                         <div className="col-12">
                             <div className="section-title text-center">
                             <motion.h2
-                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 60,
@@ -127,24 +153,24 @@ class SupplierProfilesReach extends Component{
                             <div className="customer-profiling-content">
                                 <div className="section-title">
                                     <motion.h3
-                                        initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 60,
                                         damping: 500,
-                                        delay: 0.4,
+                                        delay: 0.7,
                                         default: { duration: .8 },
                                         }}
                                     >{Parser(subtitle)}</motion.h3>
                                     <motion.div
-                                        initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 60,
                                         damping: 500,
-                                        delay: 0.4,
+                                        delay: 0.9,
                                         default: { duration: .8 },
                                         }}
                                     >{Parser(description)}</motion.div>
@@ -159,13 +185,13 @@ class SupplierProfilesReach extends Component{
                                         alt={image.alt} 
                                         title={image.title} 
                                         className="img-fluid"
-                                        initial={{scale: 0.7, opacity:0}}
-                                        animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
+                                        initial={{translateX: 100, opacity:0}}
+                                        animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: 100, opacity:0}}
                                         transition={{
                                             type: "spring",
                                             stiffness: 100,
                                             damping: 500,
-                                            delay: 0.9,
+                                            delay: 1,
                                             default: { duration: 0.8 },
                                         }} 
                                     />: ''}

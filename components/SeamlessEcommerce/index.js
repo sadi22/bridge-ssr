@@ -54,14 +54,14 @@ class SeamlessEcommerce extends Component{
                                     { left_image ? <motion.img 
                                     src={left_image.url} alt={left_image.alt} title={left_image.title} 
                                     className="banner-img img-fluid" 
-                                    initial={{ rotateY: -180, opacity:0 }}
-                                    animate={inViewport ? { rotateY: 0, opacity:1 }:{ rotateY: -180, opacity:0 }}
+                                    initial={{ translateX: -80, opacity:0 }}
+                                    animate={inViewport ? { translateX: 0, opacity:1 }:{ translateX: -80, opacity:0 }}
                                     transition={{
                                     type: "spring",
                                     stiffness: 260,
                                     damping: 20,
                                     delay: 0.8,
-                                    default: { duration: 1 },
+                                    default: { duration: 0.5 },
                                     }}
                                     />: ''}
                                 </div>
@@ -69,14 +69,14 @@ class SeamlessEcommerce extends Component{
                                 <div className="seamless-image img2">
                                     { left_image ? <motion.img 
                                         src={right_image.url} alt={right_image.alt} title={right_image.title} className="banner-img img-fluid" 
-                                        initial={{ rotateY: -180, opacity:0 }}
-                                        animate={inViewport ? { rotateY: 0, opacity:1 }:{ rotateY: -180, opacity:0 }}
+                                        initial={{ translateX: 80, opacity:0 }}
+                                        animate={inViewport ? { translateX: 0, opacity:1 }:{ translateX: 80, opacity:0 }}
                                         transition={{
                                         type: "spring",
                                         stiffness: 260,
                                         damping: 20,
                                         delay: 1,
-                                        default: { duration: 1 },
+                                        default: { duration: 0.5 },
                                         }}
                                         />: ''}
                                 </div>

@@ -9,6 +9,30 @@
   src: url("/static/fonts/Trasandina W03 Book.eot");
   src: url("/static/fonts/Trasandina W03 Book.eot?#iefix") format("embedded-opentype"), url("/static/fonts/Trasandina W03 Book.woff2") format("woff2"), url("/static/fonts/Trasandina W03 Book.woff") format("woff"), url("/static/fonts/Trasandina W03 Book.ttf") format("truetype"), url("/static/fonts/Trasandina W03 Book.svg#Trasandina") format("svg"); }
 
+.transition-3s, input,
+textarea,
+select, .newsletter-form form .btn-default svg {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+
+.transition-5s {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+
+.visibility-hide {
+  opacity: 0;
+  visibility: hidden; }
+
+.visibility-show {
+  opacity: 1;
+  visibility: visible; }
+
 * {
   margin: 0px;
   padding: 0px; }
@@ -392,6 +416,8 @@ ul.vertical-line-wrapper {
       ul.vertical-line-wrapper li {
         padding: 10px 0 10px 35px;
         line-height: 26px; } }
+    ul.vertical-line-wrapper li.active {
+      color: #1fc1c3; }
     ul.vertical-line-wrapper li:last-child {
       margin-bottom: 0; }
 

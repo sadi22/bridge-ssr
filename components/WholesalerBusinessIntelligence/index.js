@@ -10,12 +10,24 @@ import "./index.scss";
 class WholesalerBusinessIntelligence extends Component{
     render() {
         const {title, image, feature_list} = this.props;
-        const { inViewport } = this.props;
+        const { inViewport, index } = this.props;
         let featureListMarkup = null;
     	if(feature_list){            
     		featureListMarkup = feature_list.map((feature, i) => {
 			    return (
-                    <div className="single-block supply" key={i}>
+                    <motion.div 
+                    className="single-block supply" 
+                    key={i}
+                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                    transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 500,
+                    delay: index * 1.2,
+                    default: { duration: 0.8 },
+                    }}
+                    >
                         <motion.h4
                             initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
                             animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
@@ -23,6 +35,7 @@ class WholesalerBusinessIntelligence extends Component{
                             type: "spring",
                             stiffness: 100,
                             damping: 500,
+                            delay:1.2,
                             default: { duration: 0.8 },
                             }}
                         >{Parser(feature.feature_title)}</motion.h4>
@@ -33,11 +46,12 @@ class WholesalerBusinessIntelligence extends Component{
                             type: "spring",
                             stiffness: 100,
                             damping: 500,
+                            delay:1.4,
                             default: { duration: 0.8 },
                             }}
                         >{Parser(feature.feature_description)}</motion.p>
                         
-                    </div>
+                    </motion.div>
 			      );
 			    });
     	}
@@ -52,13 +66,13 @@ class WholesalerBusinessIntelligence extends Component{
                                     alt={image.alt} 
                                     title={image.title} 
                                     className="img-fluid"
-                                    initial={{ translateY: 100, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 100, opacity: 0, visibility:"hidden" }}
+                                    initial={{ translateX: -100, opacity: 0, visibility:"hidden" }}
+                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -100, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                         type: "spring",
                                         stiffness: 100,
                                         damping: 500,
-                                        delay: 1.4,
+                                        delay: 0.8,
                                         duration: 1,
                                     }}
                                  /> : ''}
@@ -73,6 +87,7 @@ class WholesalerBusinessIntelligence extends Component{
                                     type: "spring",
                                     stiffness: 100,
                                     damping: 500,
+                                    delay:1,
                                     default: { duration: 0.8 },
                                     }}
                                 >{Parser(title)}</motion.h2>

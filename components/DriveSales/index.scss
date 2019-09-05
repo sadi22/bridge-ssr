@@ -58,6 +58,9 @@
         background-color: #ffffff;
         padding: 30px 55px 30px 30px;
         height: 100%;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        position: relative;
         
         @media #{$device_768_991} {
             padding: 30px;
@@ -65,6 +68,23 @@
         @media #{$device_0_575} {
             display: block;
             padding: 20px;
+        }
+        
+        &:before {
+            content: '';
+            position: absolute;
+            border: 6px solid transparent;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 5px;
+            -webkit-animation-duration: 0.8s;
+            animation-duration: 0.8s;
+        }
+        &:hover:before {
+            -webkit-animation-name: ripple-out;
+            animation-name: ripple-out;
         }
         
         .icon{
@@ -114,5 +134,52 @@
                 }
             }
         }
+    }
+}
+
+/* Ripple Out */
+@-webkit-keyframes ripple-out {
+    0% {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        border-color: transparent;
+    }
+    18%{
+        border-color: transparent;
+        opacity: 1;
+    }
+    100% {
+        top: -12px;
+        right: -12px;
+        bottom: -12px;
+        left: -12px;
+        opacity: 0;
+        border-color: #e1e1e1;
+    }
+}
+
+@keyframes ripple-out {
+    0% {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        border-color: transparent;
+    }
+    18%{
+        border-color: transparent;
+        opacity: 1;
+    }
+    100% {
+        top: -12px;
+        right: -12px;
+        bottom: -12px;
+        left: -12px;
+        opacity: 0;
+        border-color: #e1e1e1;
     }
 }
