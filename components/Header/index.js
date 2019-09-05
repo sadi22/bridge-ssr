@@ -72,7 +72,6 @@ class Menu extends Component {
                     >
                         
                         <motion.a 
-                            whileHover={{ scale: 1.2 }}
                             style={linkStyle} 
                             initial={{ translateY: -50, opacity: 0, visibility:"hidden" }}
                             animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
@@ -115,7 +114,6 @@ class Menu extends Component {
                     >
                         <motion.a 
                             className="getStarted"
-                            whileHover={{ scale: 1.2 }}
                             initial={{ translateY: -50, opacity: 0, visibility:"hidden" }}
                             animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
                             transition={{

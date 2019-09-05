@@ -16,12 +16,8 @@ const TeamBlock = (props) => {
     return (
         <div className="col-lg-4 col-sm-6 single-col" ref={innerRef}>
             <div className="single-member text-center">
-                <div className="member-img">
-                    {team.image ? <motion.img
-                    src={team.image.url} 
-                    alt={team.image.alt} 
-                    title={team.image.title} 
-                    whileHover={{ scale: 1.1 }}
+                <motion.div
+                    className="member-img overflow"
                     initial={{scale: 0.7, opacity:0}}
                     animate={inViewport && { scale: 1, opacity: 1 }}
                     transition={{
@@ -31,9 +27,19 @@ const TeamBlock = (props) => {
                         delay: 0.9,
                         default: { duration: 0.8 },
                     }}
-                    /> : ''}
+                    >
+                    {team.image ? 
                     
-                </div>
+                    <motion.img
+                        src={team.image.url} 
+                        alt={team.image.alt} 
+                        title={team.image.title} 
+                        whileHover={{ scale: 1.1 }}
+                        
+                    /> 
+                    : ''}
+                    
+                </motion.div>
                 <motion.h5
                     initial={{scale: 0.7, opacity:0}}
                     animate={inViewport && { scale: 1, opacity: 1 }}

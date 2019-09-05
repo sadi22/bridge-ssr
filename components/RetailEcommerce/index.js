@@ -89,6 +89,7 @@ class RetailEcommerce extends Component{
                                     }}
                                 >{Parser(title)}</motion.h2>
                                 <motion.p
+                                    className='primary-color'
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{

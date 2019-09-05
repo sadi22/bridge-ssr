@@ -92,7 +92,6 @@ class Footer extends Component{
                                 <ul>
                                     <motion.li
                                         style={{marginRight: '10px'}}
-                                        whileHover={{ scale: 1.2 }}
                                         initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{
@@ -111,7 +110,6 @@ class Footer extends Component{
                                         ><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
                                     </motion.li>
                                     <motion.li
-                                        whileHover={{ scale: 1.2 }}
                                         initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                         transition={{

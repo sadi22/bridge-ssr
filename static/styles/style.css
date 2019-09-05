@@ -345,6 +345,8 @@ select, .newsletter-form form .btn-default svg {
   .retail-ecommerce .section-title h2 {
     font-size: calc(32px + (37 - 32) * ((100vw - 320px) / (1920 - 320)));
     line-height: 1.26; }
+  .retail-ecommerce .section-title p {
+    color: #1fc1c3; }
   .retail-ecommerce .retailer-content {
     padding-right: 60px; }
     @media (max-width: 991px) {

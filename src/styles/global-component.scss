@@ -20,7 +20,9 @@
             font-size: calc(32px + (37 - 32) * ((100vw - 320px) / (1920 - 320))); 
             line-height: 1.26; 
         }
-        
+        p{
+            color: $primary-color;
+        }
     }
     
     .retailer-content{
