@@ -228,6 +228,9 @@ a {
     color: #fff;
     box-shadow: none; }
 
+.overflow {
+  overflow: hidden; }
+
 .overlay {
   position: absolute;
   left: 0;
@@ -375,17 +378,24 @@ select, .newsletter-form form .btn-default svg {
     @media (max-width: 991px) {
       .retail-ecommerce .retailer-image .lines-accent {
         display: none; } }
-  .retail-ecommerce .retailer-image > img {
-    border-radius: 7px;
-    z-index: 1;
-    position: relative;
-    box-shadow: -20px 32px 54px rgba(0, 0, 0, 0.15); }
-    @media (max-width: 991px) {
-      .retail-ecommerce .retailer-image > img {
-        box-shadow: -20px 12px 54px rgba(0, 0, 0, 0.15); } }
-    @media (max-width: 575px) {
-      .retail-ecommerce .retailer-image > img {
-        box-shadow: -20px 14px 34px rgba(0, 0, 0, 0.15); } }
+  .retail-ecommerce .retailer-image .img-wrapper {
+    overflow: hidden; }
+    .retail-ecommerce .retailer-image .img-wrapper > img {
+      border-radius: 7px;
+      z-index: 1;
+      position: relative;
+      box-shadow: -20px 32px 54px rgba(0, 0, 0, 0.15);
+      -webkit-transition: all 4s linear;
+      -moz-transition: all 4s linear;
+      -ms-transition: all 4s linear;
+      -o-transition: all 4s linear;
+      transition: all 4s linear; }
+      @media (max-width: 991px) {
+        .retail-ecommerce .retailer-image .img-wrapper > img {
+          box-shadow: -20px 12px 54px rgba(0, 0, 0, 0.15); } }
+      @media (max-width: 575px) {
+        .retail-ecommerce .retailer-image .img-wrapper > img {
+          box-shadow: -20px 14px 34px rgba(0, 0, 0, 0.15); } }
 
 /*-------vertical-line-wrapper---
 ---------------------------------------------------------*/

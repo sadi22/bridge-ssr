@@ -1,3 +1,5 @@
+@import 'variables';
+@import 'mixin';
 //*-------------------------*/
 .fw-300{
     font-weight: 300;
@@ -48,7 +50,9 @@ a {
     }
 }
 
-
+.overflow{
+    overflow: hidden;
+}
 
 .overlay {
     position: absolute;

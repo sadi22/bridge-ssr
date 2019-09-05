@@ -66,13 +66,16 @@
         }
         
         .seamless-image{
+            overflow: hidden;
+            
             img{
                 box-shadow: 0 2px 7px rgba(40, 44, 71, 0.24);
-                border-radius: 8px
+                border-radius: 8px;
+                @include transitions(all 4s linear);
             }
             
             &.img1{
-                padding-right: 15px;
+                padding: 15px;
                 
                 @media #{$device_0_575} {
                     padding-right: 0;
@@ -80,7 +83,7 @@
                 }
             }
             &.img2{
-                padding-left: 15px;
+                padding: 15px;
                 
                 @media #{$device_0_575} {
                     padding-left: 0;
