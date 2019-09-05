@@ -8,7 +8,6 @@ import "./index.scss";
 
 const FeatureBlock = (props) => {
     const { inViewport, innerRef, feature, index } = props;
-    console.log(inViewport);
     return (
         <div className="col-lg-6" ref={innerRef}>
             <motion.div 
