@@ -1,0 +1,32 @@
+body, p {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 26px; }
+
+h1 {
+  font-size: calc(44px + (56 - 44) * ((100vw - 320px) / (1920 - 320)));
+  line-height: 1.14;
+  color: #1d1f2c; }
+
+h2 {
+  font-size: calc(36px + (40 - 36) * ((100vw - 320px) / (1920 - 320)));
+  line-height: 1.05;
+  color: #1d1f2c; }
+
+h3 {
+  font-size: calc(28px + (32 - 28) * ((100vw - 320px) / (1920 - 320)));
+  line-height: 1.31; }
+
+h4 {
+  font-size: calc(22px + (24 - 22) * ((100vw - 320px) / (1920 - 320)));
+  line-height: 1.33;
+  color: #1d1f2c; }
+
+h5 {
+  font-size: 20px;
+  line-height: 32px;
+  color: #1d1f2c; }
+
+h6 {
+  font-size: 16px;
+  line-height: 26px; }

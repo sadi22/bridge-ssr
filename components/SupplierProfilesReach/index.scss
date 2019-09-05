@@ -3,12 +3,15 @@
 
 .supplier-profiles-reach{
     padding-top: 78px;
+    padding-bottom: 70px;
     
     @media #{$device_992_1199} {
         padding-top: 53px;
+        padding-bottom: 60px;
     }
     @media #{$device_768_991} {
         padding-top: 33px;
+        padding-bottom: 30px;
     }
     
     .supplier-profiles-reach{

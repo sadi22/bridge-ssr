@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Poppins:300,400,500,600,700|Roboto:300,400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cairo:300,400,600,700&display=swap');
 
 //-------trasandina font family---------
 @font-face {font-family: "Trasandina W03 Medium";
@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     -webkit-font-variant-ligatures: common-ligatures;
     font-variant-ligatures: common-ligatures;
+    font-family: $trasandina;
 }
 
 a:hover,
