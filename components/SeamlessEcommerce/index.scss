@@ -50,6 +50,10 @@
             font-size: calc(34px + (38 - 34) * ((100vw - 320px) / (1920 - 320))); 
             line-height: 1.26; 
         }
+
+        p {
+            font-size: 18px;
+        }
     }
     
     .seamless-image-area{

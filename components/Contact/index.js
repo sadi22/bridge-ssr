@@ -1,15 +1,29 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
-import { Enhance } from "../Enhance";
+import $ from "jquery";
 import handleViewport from 'react-in-viewport';
 import { motion } from "framer-motion"
 import "./index.scss";
+import axios from 'axios';
 import MapContainer from './Map';
+import {Spinner,Button} from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
 class Contact extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            fullName: '',
+            msg: '',
+            inquiry:'',
+            freeAudit: true,
+            startSubmission: false,
+        };
+    }
     static defaultProps = {
       center: {
         lat: 59.95,
@@ -17,8 +31,77 @@ class Contact extends Component{
       },
       zoom: 11
     };
+    componentDidMount(){
+        $('.contact-single-input').on('click', function(e){
+            e.stopPropagation();
+            $(this).children('label').hide();
+        });
+
+        $('body').on('click', function(){
+            $('.contact-single-input').each(function(){
+                var eachVal = $(this).children('.inputVal').val();
+                
+                if(eachVal) $(this).children('label').hide();
+                if(!eachVal ) $(this).children('label').show();
+                
+                $(this).siblings().children('label').show();
+            });
+        });
+    }
+    handleChange = evt => {
+        this.setState({
+            [evt.target.name]: evt.target.value,
+        });
+    };
+
+    handleCheckClick = (evt) => {
+        console.log(this.state);
+        this.setState({ freeAudit: !this.state.freeAudit });
+    }
+
+    onChange = () => {
+        this.setState({inquiry: event.target.value});
+        
+    }
+
+  
+    handleSubmit = (formID,evt) => {
+        evt.preventDefault();
+        this.setState({
+            startSubmission : !this.state.startSubmission
+        });
+        
+        axios({
+            method: 'post',
+            url: `${Config.apiUrl}/bridge/v1/forms/${formID}`,
+            data: {
+                email:this.state.email,
+            },
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+            }
+            },
+            )
+            .then((response) => {
+            toast.success("🔥 Congratulations. You will be notified", {
+                position: toast.POSITION.TOP_RIGHT
+            });
+            })
+            .catch((error) => {
+                console.log(error);
+            toast.error("⚠️ Upps! Something wrong !", {
+                position: toast.POSITION.TOP_RIGHT
+            });
+            })
+            .then(() => {
+            this.setState({
+                startSubmission : !this.state.startSubmission
+            })
+            });
+    }
     render() {
-        const { title, description, api, location } = this.props;
+        const { title, description, api, location, gravity_form_id } = this.props;
         const { inViewport } = this.props;
         return (
             <Fragment>
@@ -51,6 +134,66 @@ class Contact extends Component{
                                         }}
                                     >{Parser(description)}</motion.p>
                                 </div>
+                                {gravity_form_id &&
+                                <motion.form
+                                    onSubmit={this.handleSubmit.bind(this, gravity_form_id)} 
+                                    className="contact-form"
+                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 60,
+                                        damping: 500,
+                                        delay: 0.8,
+                                    }}
+                                 >
+                                    <div>
+                                        <div className="contact-single-input">
+                                            <label htmlFor="contactEmail">Enter your email<span>*</span></label>
+                                            <input type="email" name="email" id="contactEmail" value={this.state.email} onChange={this.handleChange} className="inputVal" required/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div className="contact-single-input">
+                                            <label htmlFor="contactfName">Full Name<span>*</span></label>
+                                            <input type="text" name="fullName" id="contactfName" className="inputVal" value={this.state.fullName} onChange={this.handleChange} className="inputVal" required/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div className="contact-single-input">
+                                            <select name="" id="contactInquiry" onChange={this.onChange} value={this.state.inquiry} >
+                                                <option value="">Nature of inquiry</option>
+                                                <option value="first-choice">First Choice</option>
+                                                <option value="second-choice">Second Choice</option>
+                                                <option value="third-choice">Third Choice</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                  
+                                    <div>
+                                        <div className="contact-single-input">
+                                            <label htmlFor="contactMsg">How can we hlep you<span>*</span></label>
+                                            <textarea name="msg" id="msg" cols="30" rows="10" value={this.state.msg} onChange={this.handleChange} className="inputVal" required></textarea>
+                                        </div>
+                                    </div>
+                                  
+                                    <div className="contact-single-input">
+                                        <div className="bridge-switcher">
+                                            <input className="switch-input" id="switcherId" type="checkbox" checked={this.state.freeAudit} onChange={this.handleCheckClick}/>
+                                            <label htmlFor="switcherId"></label>
+                                            <span className="title">Request a free technical audit of your organization, organize an online demo, or just let us know you are interested in learning <a href="">more</a>.</span>
+                                        </div>
+                                    </div>
+                                  
+                                    <div className="contact-single-input submit-btn">
+                                        <Button className="btn-default" type="submit">
+                                            Send
+                                            {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
+                                        </Button>
+                                    </div>
+                                </motion.form>}
                             </div>
                         </div>
                     </div>
@@ -59,6 +202,7 @@ class Contact extends Component{
                     <MapContainer apiKey={api} location={location}/>
                 </div>
             </div>
+            <ToastContainer autoClose={2000} />
             </Fragment>
         )
     }

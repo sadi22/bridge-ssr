@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import Error from 'next/error';
+// import Error from 'next/error';
+import Error from './_error';
 import Head from 'next/head';
 import WPAPI from 'wpapi';
 import Layout from '../components/Layout';
@@ -30,8 +31,7 @@ class Post extends Component {
   render() {
     const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link, gmap_api } = this.props;
 //    console.log('%cMade at %cBridge', 'font-weight: bolder;', ' font-weight: bolder; color: #1FC8C9;');
-
-    if (!page.title) return <Error statusCode={404} />;
+    if (!page) return <Error statusCode={404} />;
     let seo_title = page.title.rendered;
     let seo_description = page.title.rendered;
     let seo_canonical = page.link;

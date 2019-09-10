@@ -31,7 +31,14 @@
             color: #bdc3d3;
             
             span.underline{
-                color: #fff;
+                color: #1fc1c3;
+                font-weight: bold;
+                font-size: 20px;
+
+                &:before{
+                    background: #fff;
+                    bottom: 3px;
+                }
             }
         }
     }

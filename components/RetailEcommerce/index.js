@@ -104,7 +104,7 @@ class RetailEcommerce extends Component{
                         </div>
                     </div>
 
-                    <div className="row align-items-center">
+                    <div className="row">
                         <div className="col-lg-6">
                             <motion.div
                                 className="retailer-content"

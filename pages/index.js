@@ -3,7 +3,7 @@ import Head from 'next/head';
 import WPAPI from 'wpapi';
 import Layout from '../components/Layout';
 import ACFCONTENT from '../components/AcfContent';
-
+import Error from './_error';
 import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Header/index';
 import Footer from '../components/Footer/index';
@@ -39,6 +39,7 @@ class Index extends Component {
 
     render() {
         const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link, gmap_api } = this.props;
+        if (!page) return <Error statusCode={404} />;
         let seo_title = page.title.rendered;
         let seo_description = page.title.rendered;
         let seo_canonical = page.link;
@@ -68,12 +69,6 @@ class Index extends Component {
                 <Layout>
                     <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>
                     <ACFCONTENT {...page} gmap_api={gmap_api}/>
-                    <div
-                        // eslint-disable-next-line react/no-danger
-                        dangerouslySetInnerHTML={{
-                            __html: page.content.rendered,
-                        }}
-                    />
                     <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
                 </Layout>
             </Fragment>
