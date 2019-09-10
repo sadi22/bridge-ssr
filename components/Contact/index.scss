@@ -96,6 +96,16 @@
                 }
                 select{
                     text-transform: capitalize;
+                    -webkit-appearance: textfield;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    background: transparent;
+                    background-image: url('/static/images/arrow-down.png');
+                    background-repeat: no-repeat;
+                    background-position-x: calc(100% - 15px);
+                    background-position-y: 23px;
+                    padding-right: 38px;
+                    background-size: 12px;
                     option{
                         text-transform: capitalize;
                     }
