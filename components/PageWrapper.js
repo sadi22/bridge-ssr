@@ -1,29 +1,18 @@
 import React from 'react';
-import WPAPI from 'wpapi';
-import Config from '../config';
+import { getDataByEndPoint } from '../api/api';
 
-const wp = new WPAPI({ endpoint: Config.apiUrl });
-
-// This route is copied from the plugin: wordpress/wp-content/plugins/wp-rest-api-v2-menus/wp-rest-api-v2-menus.php
-wp.menus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z(-]+)');
-wp.site_logo = wp.registerRoute('bridge/v1', 'site_logo');
-wp.site_info = wp.registerRoute('bridge/v1', 'site_info');
-wp.social = wp.registerRoute('bridge/v1', 'social_links');
-wp.footer_text = wp.registerRoute('bridge/v1', 'footer_text');
-wp.getting_started = wp.registerRoute('bridge/v1', 'getting_started_link');
-wp.gmap_api = wp.registerRoute('bridge/v1', 'gmap_api');
 
 const PageWrapper = Comp =>
   class extends React.Component {
     static async getInitialProps(args) {
       const [headerMenu, footerMenu, logo, social, footer_text, getting_started_link, gmap_api, site_info, childProps] = await Promise.all([
-        wp.menus().id('header-menu'),
-        wp.menus().id('footer-menu'),
-        wp.site_logo(),
-        wp.social(),
-        wp.footer_text(),
-        wp.getting_started(),
-        wp.gmap_api(),
+        getDataByEndPoint('menus/v1/menus/header-menu').then(data=>{return data}),
+        getDataByEndPoint('menus/v1/menus/footer-menu').then(data=>{return data}),
+        getDataByEndPoint('bridge/v1/site_logo').then(data=>{return data}),
+        getDataByEndPoint('bridge/v1/social_links').then(data=>{return data}),
+        getDataByEndPoint('bridge/v1/footer_text').then(data=>{return data}),
+        getDataByEndPoint('bridge/v1/getting_started_link').then(data=>{return data}),
+        getDataByEndPoint('bridge/v1/gmap_api').then(data=>{return data}),
         '',
         Comp.getInitialProps(args),
       ]);

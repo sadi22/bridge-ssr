@@ -1,31 +1,26 @@
 import React, { Component, Fragment } from 'react';
-// import Error from 'next/error';
 import Error from './_error';
 import Head from 'next/head';
-import WPAPI from 'wpapi';
+import { getPostBySlug } from '../api/api';
 import Layout from '../components/Layout';
 import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Header/index';
-import Config from '../config';
 import Footer from "../components/Footer/index";
 import ACFCONTENT from '../components/AcfContent';
-
-const wp = new WPAPI({ endpoint: Config.apiUrl });
-
-wp.menus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z(-]+)');
 
 class Post extends Component {
   static async getInitialProps(context) {
     const { slug, apiRoute } = context.query;
-    let apiMethod = wp.pages();
-    const page = await apiMethod
-      .slug(slug)
-      .embed()
-      .then(data => {
-        return data[0];
-      });
-
-    return { page };
+    try {
+      const page = await getPostBySlug(slug)
+        .then(data =>{
+          return data[0]
+        });
+      return { page };
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
   }
 
   render() {
@@ -61,12 +56,6 @@ class Post extends Component {
         <Layout>
             <Menu menu={headerMenu} logo={logo} getting_started_link ={getting_started_link}/>
             <ACFCONTENT {...page} gmap_api={gmap_api}/>
-            <div
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                    __html: page.content.rendered,
-                }}
-            />
             <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
         </Layout>
       </Fragment>

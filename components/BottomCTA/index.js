@@ -106,7 +106,18 @@ class BottomCTA extends Component{
         const { inViewport } = this.props;
         return (
             <Fragment>
-            <div className="bottom-cta">
+            <motion.div 
+                className="bottom-cta"
+                initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
+                animate={{ translateX: 0, opacity: 1, visibility:"visible" }}
+                transition={{
+                    type: "spring",
+                    stiffness: 60,
+                    damping: 500,
+                    delay: 0.4,
+                    default: { duration: .8 },
+                }}
+            >
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -180,7 +191,7 @@ class BottomCTA extends Component{
                     </motion.form>}
 
                 </div>
-            </div>
+            </motion.div>
             <ToastContainer autoClose={2000} />
             </Fragment>
         )

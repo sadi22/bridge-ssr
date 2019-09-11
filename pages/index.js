@@ -1,39 +1,24 @@
 import React, {Component, Fragment} from 'react';
 import Head from 'next/head';
-import WPAPI from 'wpapi';
 import Layout from '../components/Layout';
 import ACFCONTENT from '../components/AcfContent';
 import Error from './_error';
 import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Header/index';
 import Footer from '../components/Footer/index';
-import Config from '../config';
+import { getPostBySlug } from '../api/api';
+import fetch from 'node-fetch';
 
-const wp = new WPAPI({ endpoint: Config.apiUrl });
+
 class Index extends Component {
-    state = {
-        id: '',
-    };
-
     static async getInitialProps() {
         try {
-            const [page, posts, pages] = await Promise.all([
-                wp
-                    .pages()
-                    .slug('home')
-                    .embed()
-                    .then(data => {
-                        return data[0];
-                    }),
-                wp.posts().embed(),
-                wp.pages().embed(),
-            ]);
-
-            return { page, posts, pages };
+            const page = await getPostBySlug('home').then(data=>{return data[0]});
+            return { page };
         } catch (err) {
             console.log(err);
+            return err;
         }
-        return null;
     }
 
 
@@ -55,16 +40,12 @@ class Index extends Component {
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta charSet="utf-8" />
                     <title>{seo_title}</title>
-                    {page.yoast_meta && page.yoast_meta.map(meta=>{
-                        return (
-                            <Fragment>
-                                {meta.name && <meta name={meta.name} content={meta.content}/>}
-                                {meta.property && (<meta property={meta.property} content={meta.content}/>)}
-                            </Fragment>
-                            
-                        )
-                        
-                    })}
+                    <meta name="og:title" content={seo_title}/>
+                    <meta name="og:type" content="article"/>
+                    <meta name="og:url" content={seo_canonical}/>
+                    <meta name="og:image" content="https://bridgssrelive.wpengine.com/wp-content/uploads/2019/08/site-logo.png"/>
+                    <meta name="og:site_name" content="Bridge"/>
+                    <meta name="og:description" content={seo_description}/>
                 </Head>
                 <Layout>
                     <Menu menu={headerMenu} logo={logo} getting_started_link={getting_started_link}/>
@@ -77,3 +58,4 @@ class Index extends Component {
 }
 
 export default PageWrapper(Index);
+

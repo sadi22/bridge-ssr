@@ -2,17 +2,16 @@
 import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
-import { Enhance } from "../Enhance";
 import handleViewport from 'react-in-viewport';
 import "./index.scss";
-
+import $ from "jquery";
 
 function featureMouseHover(e) {
+    var dataID = e.target.getAttribute('data-id');
+    $('.unique-reach-image-src').hide();
+    $(`#unique-reach-hovered-image-${dataID}`).show();
+
     e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
-    e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
-    e.target.classList.add( "active" );
-    var imgSrc = e.target.getAttribute('data-src');
-    document.getElementById("unique-reach-image-src").src = imgSrc;
     var this_item_height = e.target.offsetHeight;
     var target_offset = e.target.offsetTop;
     document.getElementsByClassName('vertical-line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;")        
@@ -22,20 +21,25 @@ const FeatureBlock = (props) => {
     const { inViewport, innerRef, index, features_text_with_image,feature_list_title, feature_description  } = props;
     let defaultImage = '';
     let featureListMarkup = null;
+    let featureImagesMarkup = null;
 
-    const variants = {
-        visible: i => ({
-            opacity: 1,
-            translateY: 0,
-            visibility:"visible",
-            transition: {
-            type: "spring",
-            stiffness: 60,
-            damping: 500,
-            delay: i * 0.3,
-            },
-        }),
-        hidden: { opacity: 0 },
+    if(features_text_with_image){
+        featureImagesMarkup = features_text_with_image.map((feature, i) => {
+            return (
+                <motion.img 
+                    key={i}
+                    style={ i===0 ? {display: 'block'} : {display: 'none'}}
+                    src={feature.feature_image.url}
+                    alt={feature.feature_image.alt}
+                    title={feature.feature_image.title}
+                    className="img-fluid unique-reach-image-src"
+                    id={`unique-reach-hovered-image-${i}`}
+                    whileHover={{
+                        scale: 1.1
+                    }}
+                />
+                );
+            });
     }
         
     if(features_text_with_image){            
@@ -55,12 +59,14 @@ const FeatureBlock = (props) => {
                     }}
                 
                     className={`${i==0 ? 'active': ''} unique-reach-list`} 
-                    data-src={feature.feature_image.url} key={i} 
+                    data-id={i}
                     onMouseOver={featureMouseHover.bind(this)}
                 >{feature.feature_text}</motion.li>
                 );
             });
     }
+
+    
     return (
         <div className="row align-items-center unique-reach" ref={innerRef}>
             <div className="col-lg-6">
@@ -77,14 +83,7 @@ const FeatureBlock = (props) => {
                 }}
                 >
                     <div className="overflow">
-                        <motion.img
-                            src={defaultImage} 
-                            className="img-fluid unique-reach-image-src" 
-                            id="unique-reach-image-src" 
-                            whileHover={{
-                                scale: 1.1
-                            }}    
-                        />
+                        {featureImagesMarkup}
                     </div>
                 </motion.div>
             </div>
@@ -133,6 +132,7 @@ class SupplierProfilesReach extends Component{
     render() {
         const {title, subtitle, description, image, enable_feature_list_with_image, feature_list_title, feature_description, features_text_with_image} = this.props;
         const { inViewport } = this.props;
+        
         return (
             <Fragment>
             <div className="supplier-profiles-reach section-padding">

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
-import { Enhance } from "../Enhance";
+import $ from "jquery";
 
 import "./index.scss";
 
@@ -16,10 +16,11 @@ class Feature extends Component{
     }
 
     featureMouseHover(e) {
-        var imgSrc = e.target.getAttribute('data-src');
+        var dataID = e.target.getAttribute('data-id');
+        $('.feature-list-hovered-image').hide();
+        $(`#feature-list-hovered-image-${dataID}`).show();
         e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
         e.target.classList.add( "active" );
-        document.getElementById("feature-list-hovered-image").src = imgSrc;
         var this_item_height = e.target.offsetHeight;
         var target_offset = e.target.offsetTop;
         document.getElementsByClassName('line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;")        
@@ -30,10 +31,10 @@ class Feature extends Component{
         const { inViewport } = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
+        let featureImagesMarkup = null;
         let initialDelay = 300;
         
-          
-    	if(feature_list){
+        if(feature_list){
     		featureListMarkup = feature_list.map((feature, i) => {
                 if(i == 0) defaultImage = feature.feature_image;
                 initialDelay = initialDelay + 100;
@@ -49,12 +50,32 @@ class Feature extends Component{
                             delay: i * 0.3,
                         }}
                         className={`${i==0 ? 'active': ''} feature-list`} 
-                        data-src={feature.feature_image.url} key={i} 
+                        data-id={i}
                         onMouseOver={this.featureMouseHover.bind(this)}
                     >{feature.feature_title}</motion.li>
 			      );
 			    });
-    	}
+        }
+        
+        if(feature_list){
+    		featureImagesMarkup = feature_list.map((feature, i) => {
+			    return (
+                    <motion.img 
+                        key={i}
+                        style={ i===0 ? {display: 'block'} : {display: 'none'}}
+                        src={feature.feature_image.url}
+                        alt={feature.feature_image.alt}
+                        title={feature.feature_image.title}
+                        className="feature-list-hovered-image"
+                        id={`feature-list-hovered-image-${i}`}
+                        whileHover={{
+                            scale: 1.1
+                        }}
+                    />
+			      );
+			    });
+        }
+
         return (
             <Fragment>
             <div className="feature">
@@ -69,7 +90,7 @@ class Feature extends Component{
                         transition={{
                             type: "spring",
                             stiffness: 60,
-                            damping: 500,
+                            damping: 500, 
                             delay: 0.3,
                         }}
                     />
@@ -134,7 +155,7 @@ class Feature extends Component{
                             default: { duration: 0.8 },
                         }}
                     >
-                        <motion.img 
+                        {/* <motion.img 
                             src={defaultImage.url}
                             alt={defaultImage.alt}
                             title={defaultImage.title}
@@ -143,7 +164,8 @@ class Feature extends Component{
                             whileHover={{
                                 scale: 1.1
                             }}
-                        />
+                        /> */}
+                        {featureImagesMarkup}
                     </motion.div>
                 </div>
             </div>
