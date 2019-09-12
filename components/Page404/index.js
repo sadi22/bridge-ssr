@@ -7,7 +7,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faHome } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faHome);
-import "./index.scss";
+import styles from  "./index.scss";
 
 
 class Page404 extends Component{
@@ -35,6 +35,9 @@ class Page404 extends Component{
                     </div>
                 </div>
             </div>
+            <style jsx>
+                {styles}
+            </style>
           </Fragment>
         )
     }

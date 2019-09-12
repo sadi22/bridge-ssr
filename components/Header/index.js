@@ -64,9 +64,15 @@ class Menu extends Component {
                 }
                 let as = item.object === 'page' ? `/${slug}` : `/${item.object}/${slug}`;
                 return (
+                    // <Link
+                    //     as={`${as}`}
+                    //     href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+                    //     key={item.ID}
+                    //     activeClassName='active'
+                    // >
                     <Link
-                        as={`${as}`}
-                        href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+                        as={`/${slug}`}
+                        href="/[slug]"
                         key={item.ID}
                         activeClassName='active'
                     >
@@ -175,6 +181,7 @@ class Menu extends Component {
                         </div>
                     </div>
                 </div>
+                
             </header>
         );
     }
