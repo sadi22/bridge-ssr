@@ -1,11 +1,12 @@
 import React from 'react'
 import App from 'next/app'
-import { PageTransition } from 'next-page-transitions'
+// import { PageTransition } from 'next-page-transitions'
+import MorphTransition from 'nextjs-morph-page';
 import Head from 'next/head';
 import AOS from 'aos';
 import Loader from '../components/Loader'
 
-const TIMEOUT = 400
+const TIMEOUT = 0
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
@@ -25,46 +26,30 @@ export default class MyApp extends App {
     return (
       <>
         
-        <PageTransition
-          timeout={TIMEOUT}
-          classNames='page-transition'
-          loadingComponent={<Loader/>}
-          loadingDelay={300}
-          loadingTimeout={{
-            enter: TIMEOUT,
-            exit: 0
-          }}
-          loadingClassNames='loading-indicator'
-        >
+        <MorphTransition timeout={50} classNames="morph">
           <Component {...pageProps} />
-        </PageTransition>
+        </MorphTransition>
         <style jsx global>{`
-          .page-transition-enter {
-            opacity: 0;
-            transform: translate3d(0, 20px, 0);
-          }
-          .page-transition-enter-active {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-            transition: opacity ${TIMEOUT}ms, transform ${TIMEOUT}ms;
-          }
-          .page-transition-exit {
-            opacity: 1;
-          }
-          .page-transition-exit-active {
-            opacity: 0;
-            transition: opacity ${TIMEOUT}ms;
-          }
-          .loading-indicator-appear,
-          .loading-indicator-enter {
+          .morph.enter {
             opacity: 0;
           }
-          .loading-indicator-appear-active,
-          .loading-indicator-enter-active {
+          .morph.enter.active {
             opacity: 1;
-            transition: opacity ${TIMEOUT}ms;
           }
+          .morph.exit {
+            opacity: 1;
+          }
+          .morph.exit.active {
+            opacity: 0;
+            transition: opacity 300ms;
+          }
+          .morph.exit.active .bottom-cta,
+          .morph.enter.active .bottom-cta {
+            display: none;
+          }
+         
         `}</style>
+      
       </>
     )
   }

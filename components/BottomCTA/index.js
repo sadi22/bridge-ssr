@@ -114,64 +114,36 @@ class BottomCTA extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <motion.h2
-                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 60,
-                                    damping: 500,
-                                    delay: 0.4,
-                                    default: { duration: .8 },
-                                    }}
-                                >{Parser(title)}</motion.h2>
-                                <motion.p
-                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 60,
-                                    damping: 500,
-                                    delay: 0.6,
-                                    default: { duration: .8 },
-                                    }}
-                                >{Parser(sub_title)}</motion.p>
+                                <h2 data-aos="fade-up" data-aos-delay="300">{Parser(title)}</h2>
+                                <p data-aos="fade-up" data-aos-delay="400">{Parser(sub_title)}</p>
                             </div>
                         </div>
                     </div>
                     {gravity_form_id &&
-                    <motion.form
-                         onSubmit={this.handleSubmit.bind(this, gravity_form_id)}
-                         className="cta-contact-form"
-                         initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                         animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                         transition={{
-                            type: "spring",
-                            stiffness: 60,
-                            damping: 500,
-                            delay: 0.8,
-                         }}
+                    <form
+                        onSubmit={this.handleSubmit.bind(this, gravity_form_id)}
+                        className="cta-contact-form"
                         >
                         <div className="row align-items-end">
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input">
+                                <div className="single-input" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="500">
                                     <label htmlFor="ctaEmail">Email<span>*</span></label>
                                     <input type="email" name="email" id="ctaEmail" value={this.state.email} onChange={this.handleChange} required/>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input">
+                                <div className="single-input" data-aos="zoom-in" data-aos-delay="600" data-aos-duration="500">
                                     <label htmlFor="ctafName">Full Name<span>*</span></label>
                                     <input type="text" name="fullName" id="ctafName" value={this.state.fullName} onChange={this.handleChange} required/>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input">
+                                <div className="single-input" data-aos="zoom-in" data-aos-delay="700" data-aos-duration="500">
                                     <label htmlFor="ctaCompany">Company<span>*</span></label>
                                     <input type="text" name="company" id="ctaCompany" value={this.state.company} onChange={this.handleChange} required/>
                                 </div>
                             </div>
-                            <div className="col-lg-3 col-md-6">
+                            <div className="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="800" data-aos-duration="500">
                                 <div className="single-input">
                                     <Button className="btn-default" type="submit">
                                         Request Demo
@@ -180,7 +152,7 @@ class BottomCTA extends Component{
                                 </div>
                             </div>
                         </div>
-                    </motion.form>}
+                    </form>}
 
                 </div>
             </div>

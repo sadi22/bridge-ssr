@@ -32,27 +32,20 @@ class Feature extends Component{
         let defaultImage = '';
         let featureListMarkup = null;
         let featureImagesMarkup = null;
-        let initialDelay = 300;
+        let initialDelay = 450;
         
         if(feature_list){
     		featureListMarkup = feature_list.map((feature, i) => {
                 if(i == 0) defaultImage = feature.feature_image;
                 initialDelay = initialDelay + 100;
 			    return (
-                    <motion.li 
+                    <li 
                         key={i}
-                        initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                        animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 60,
-                            damping: 500,
-                            delay: i * 0.3,
-                        }}
+                        data-aos="fade-right" data-aos-delay="150"
                         className={`${i==0 ? 'active': ''} feature-list`} 
                         data-id={i}
                         onMouseOver={this.featureMouseHover.bind(this)}
-                    >{feature.feature_title}</motion.li>
+                    >{feature.feature_title}</li>
 			      );
 			    });
         }
@@ -81,18 +74,11 @@ class Feature extends Component{
             <div className="feature">
                 
                 <div className="feature-list-image">
-                    <motion.img 
+                    <img 
                         src="/static/images/feature-list-lines-accent.png"
                         alt="bg-img" 
                         className="bg-image" 
-                        initial={{ translateX: 150, opacity: 0, visibility:"hidden" }}
-                        animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: 150, opacity: 0, visibility:"hidden" }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 60,
-                            damping: 500, 
-                            delay: 0.3,
-                        }}
+                        data-aos="fade-left" data-aos-delay="450"
                     />
                 </div>
             
@@ -100,26 +86,8 @@ class Feature extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <motion.h2
-                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 60,
-                                        damping: 500,
-                                        delay: 0.3,
-                                    }}
-                                >{Parser(title)}</motion.h2>
-                                <motion.p
-                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 60,
-                                        damping: 500,
-                                        delay: 0.4,
-                                    }}
-                                >{Parser(description)}</motion.p>
+                                <h2 data-aos="fade-up" data-aos-delay="300">{Parser(title)}</h2>
+                                <p data-aos="fade-up" data-aos-delay="400">{Parser(description)}</p>
                             </div>
                         </div>
                     </div>
@@ -144,29 +112,10 @@ class Feature extends Component{
                 </div>
                 
                 <div className="hovered-image-wrapper" id='hovered-image-wrapper'>
-                    <motion.div
-                        initial={{translateX: 100, opacity:0}}
-                        animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: 100, opacity:0}}
-                        transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 500,
-                            delay: 0.9,
-                            default: { duration: 0.8 },
-                        }}
-                    >
-                        {/* <motion.img 
-                            src={defaultImage.url}
-                            alt={defaultImage.alt}
-                            title={defaultImage.title}
-                            className="feature-list-hovered-image"
-                            id='feature-list-hovered-image'
-                            whileHover={{
-                                scale: 1.1
-                            }}
-                        /> */}
+                    <div data-aos="fade-left" data-aos-delay="700">
+                        
                         {featureImagesMarkup}
-                    </motion.div>
+                    </div>
                 </div>
             </div>
             </Fragment>

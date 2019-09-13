@@ -9,65 +9,20 @@ import "./index.scss";
 const FeatureBlock = (props) => {
     const { inViewport, innerRef, feature, index } = props;
     return (
-        <div className="col-lg-6" ref={innerRef}>
-            <motion.div 
-                className="single-drive"
-                initial={false}
-                animate={inViewport ? { scale:1, opacity: 1, visibility:"visible" }:{ scale:0.5, opacity: 0, visibility:"hidden" }}
-                transition={{
-                    type: "spring",
-                    stiffness: 60,
-                    damping: 500,
-                    delay: index * 0.1,
-                }}
-            >   
+        <div className="col-lg-6" ref={innerRef} data-aos="fade-up" data-aos-delay={`${index*400}`}>
+            <div className="single-drive">   
                 
-                <motion.span 
-                    className="icon" style={{backgroundColor: feature.image_background_color}}
-                    initial={false}
-                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 60,
-                        damping: 500,
-                        delay: index * 0.25,
-                    }}
-                >
-                { feature.image ? <motion.img 
-                    src={feature.image.url} alt={feature.image.alt} title={feature.image.title} className="img-fluid" 
-                    initial={false}
-                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 20, opacity: 0, visibility:"hidden" }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 60,
-                        damping: 500,
-                        delay: index * 0.5,
-                    }}
-                />: ''}
-                </motion.span>
+                <span  className="icon" style={{backgroundColor: feature.image_background_color}} >
+                    { feature.image ? <motion.img 
+                        src={feature.image.url} alt={feature.image.alt} title={feature.image.title} className="img-fluid" 
+                        data-aos="fade-up" data-aos-delay={`${index*500}`}
+                    />: ''}
+                </span>
                 <div className="drive-content">
-                    <motion.h4
-                        initial={false}
-                        animate={inViewport ? { y: 0, opacity: 1, visibility:"visible" }:{ y: 20, opacity: 0, visibility:"hidden" }}
-                        transition={{
-                        type: "spring",
-                            stiffness: 60,
-                            damping: 500,
-                            delay: index * 0.75,
-                        }}
-                    >{feature.title}</motion.h4>
-                    <motion.p
-                        initial={false}
-                        animate={inViewport ? { y: 0, opacity: 1, visibility:"visible" }:{ y: 20, opacity: 0, visibility:"hidden" }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 60,
-                            damping: 500,
-                            delay: index * 0.7,
-                        }}
-                    >{feature.description}</motion.p>
+                    <h4 data-aos="fade-left" data-aos-delay={`${index*600}`}>{feature.title}</h4>
+                    <p  data-aos="fade-left" data-aos-delay={`${index*800}`}>{feature.description}</p>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
   };
@@ -88,17 +43,7 @@ class DriveSales extends Component{
                             <div className="row">
                                 <div className="col-12">
                                     <div className="section-title text-center">
-                                        {/* <motion.h2
-                                            initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                            animate={inViewport && { translateY: 0, opacity: 1, visibility:"visible" }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 60,
-                                                damping: 500,
-                                                delay: 0.4,
-                                            }}
-                                        >{Parser(title)}</motion.h2> */}
-                                        <h2 data-aos="fade-up">{Parser(title)}</h2>
+                                        <h2 data-aos="fade-up" data-aos-delay="300">{Parser(title)}</h2>
                                     </div>
                                 </div>
                             </div>

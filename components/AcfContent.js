@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import dynamic from 'next/dynamic'
 
+import '../src/styles/style.scss'
 
 const Banner = dynamic(() => import('./Banner'), { loading: () => <p></p> });
 const UserType = dynamic(() => import('./UserType'), { loading: () => <p></p> });
@@ -43,6 +44,7 @@ class ACFCONTENT extends Component {
         return (
             <div className='bridge-content'>
                 {Section}
+                
                 <style jsx>{`
                     div {
                         padding-top: 170px;
@@ -57,9 +59,7 @@ class ACFCONTENT extends Component {
                     }
                 `}</style>
 
-                <style jsx global>{`
-                    
-                `}</style>
+               
             </div>
         )
     }

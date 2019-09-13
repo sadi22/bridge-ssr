@@ -6,5 +6,59 @@
 @import 'extend-style';
 @import 'global-component';
 
+#__next, body, html{
+    height: 100%;
+}
 
 
+.enter.done {
+    opacity: 1;
+    display: block;
+    transition: opacity 1s ease-out;
+}
+
+.page-transition-exit-done {
+    opacity: 0;
+}
+
+.page-transition-enter {
+    opacity: 0;
+}
+
+.page-transition-enter-done {
+    opacity: 1;
+}
+
+
+/* Animation */
+.loader {
+    position: fixed;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: 9999;
+    transition: all 0.8s ease;
+    background: rgb(255,255,255);
+}
+
+  .loading-indicator-appear,
+  .loading-indicator-enter {
+    height: 100%;
+    animation: slideDown 100ms ease;
+  }
+  .loading-indicator-appear-active,
+  .loading-indicator-enter-active {
+   
+  }
+
+
+  @keyframes slideDown{
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

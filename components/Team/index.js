@@ -91,7 +91,7 @@ class Team extends Component{
         const { inViewport } = this.props;
         return (
           <Fragment>
-            <div className="bridge-team-banner">
+            <div className="bridge-team-banner" >
                 <div className="overlay"></div>
                 <div className="container">
                     <div className="row">
