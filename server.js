@@ -73,43 +73,41 @@ app
     server.get('/post/:slug', (req, res) => {
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug, apiRoute: 'post' };
-      renderAndCache(req, res, actualPage, queryParams);
+      app.render(req, res, actualPage, queryParams);
+      // renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/blog/:pageno', (req, res) => {
       const actualPage = '/blog';
       const queryParams = { pageno: req.params.pageno, apiRoute: 'blog' };
-      renderAndCache(req, res, actualPage, queryParams);
+      app.render(req, res, actualPage, queryParams);
+      // renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/:slug', (req, res) => {
       const actualPage = '/page';
       const queryParams = { slug: req.params.slug };
-      renderAndCache(req, res, actualPage, queryParams);
+      app.render(req, res, actualPage, queryParams);
+      // renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/category/:slug', (req, res) => {
       const actualPage = '/category';
       const queryParams = { slug: req.params.slug };
-      renderAndCache(req, res, actualPage, queryParams);
+      app.render(req, res, actualPage, queryParams);
+      // renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/_preview/:id/:wpnonce', (req, res) => {
       const actualPage = '/preview';
       const queryParams = { id: req.params.id, wpnonce: req.params.wpnonce };
-      renderAndCache(req, res, actualPage, queryParams);
+      app.render(req, res, actualPage, queryParams);
+      // renderAndCache(req, res, actualPage, queryParams);
     });
 
 
     server.get('*', (req, res) => {
-      if (req.url.includes('/sw')) {
-        const filePath = join(__dirname, 'static', 'workbox', 'sw.js');
-        app.serveStatic(req, res, filePath);
-      } else if (req.url.startsWith('static/workbox/')) {
-        app.serveStatic(req, res, join(__dirname, req.url));
-      } else {
-        handle(req, res, req.url);
-      }
+      return handle(req, res);
     });
 
     server.listen(3000, err => {

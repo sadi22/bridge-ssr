@@ -19,8 +19,8 @@
     }
 
     .business-intelligence-img{
+        border-radius: 12px;
         img{
-            box-shadow: 0 2px 6px rgba(40, 44, 71, 0.24);
             border-radius: 12px;
             @include transitions(all 4s linear);
         }

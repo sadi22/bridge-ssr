@@ -7,7 +7,7 @@ import $ from "jquery";
 import Config from '../../config';
 import axios from 'axios';
 import handleViewport from 'react-in-viewport';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Spinner } from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library, config } from "@fortawesome/fontawesome-svg-core";
@@ -279,8 +279,6 @@ class Banner extends Component{
                                   />: ''}
                               </div>
 
-                              
-                              
                               {enable_user_type_dropdown ? 
                                 <motion.div 
                                   className="banner-select-option text-center"
@@ -310,7 +308,7 @@ class Banner extends Component{
                       </div>
                   </div>
               </div>
-              <ToastContainer autoClose={2000} />
+              
           </Fragment>
         )
     }

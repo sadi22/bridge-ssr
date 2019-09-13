@@ -8,8 +8,8 @@ import "./index.scss";
 import axios from 'axios';
 import MapContainer from './Map';
 import {Spinner,Button} from 'react-bootstrap'
-import { ToastContainer, toast } from 'react-toastify';
-
+import {  toast } from 'react-toastify';
+import Config from '../../config';
 
 
 class Contact extends Component{
@@ -163,29 +163,17 @@ class Contact extends Component{
                                     
                                     <div>
                                         <div className="contact-single-input">
-                                            <select name="" id="contactInquiry" onChange={this.onChange} value={this.state.inquiry} >
-                                                <option value="">Nature of inquiry</option>
-                                                <option value="first-choice">First Choice</option>
-                                                <option value="second-choice">Second Choice</option>
-                                                <option value="third-choice">Third Choice</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                  
-                                    <div>
-                                        <div className="contact-single-input">
                                             <label htmlFor="contactMsg">How can we hlep you<span>*</span></label>
                                             <textarea name="msg" id="msg" cols="30" rows="10" value={this.state.msg} onChange={this.handleChange} className="inputVal" required></textarea>
                                         </div>
                                     </div>
-                                  
+
                                     <div className="contact-single-input">
                                         <div className="bridge-switcher">
-                                            <input className="switch-input" id="switcherId" type="checkbox" checked={this.state.freeAudit} onChange={this.handleCheckClick}/>
-                                            <label htmlFor="switcherId"></label>
                                             <span className="title">Request a free technical audit of your organization, organize an online demo, or just let us know you are interested in learning <a href="">more</a>.</span>
                                         </div>
                                     </div>
+                                  
                                   
                                     <div className="contact-single-input submit-btn">
                                         <Button className="btn-default" type="submit">
@@ -202,7 +190,6 @@ class Contact extends Component{
                     <MapContainer apiKey={api} location={location}/>
                 </div>
             </div>
-            <ToastContainer autoClose={2000} />
             </Fragment>
         )
     }

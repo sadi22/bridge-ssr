@@ -1,9 +1,25 @@
 /*-------retail-ecommerce (this is common style with supplier page)---
 ---------------------------------------------------------*/
+
+.bridge-content > :first-child{
+    padding-top: 0 !important;
+}
+
+.bridge-content > .bridge-contact{
+    padding-top: 0 !important;
+    margin-top: -170px;
+    @media #{$device_768_991} {
+        margin-top: -100px;
+    }
+}
+
+.img-box-shadow {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18);
+}
+
+
 .retail-ecommerce{
-    padding-top: 50px;
     overflow: hidden;
-    padding-bottom: 90px;
     
     @media #{$device_992_1199} {
         padding-bottom: 70px;

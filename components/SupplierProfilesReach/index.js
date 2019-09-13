@@ -12,6 +12,7 @@ function featureMouseHover(e) {
     $(`#unique-reach-hovered-image-${dataID}`).show();
 
     e.target.parentElement.querySelectorAll( ".active" ).forEach( e => e.classList.remove( "active" ) );
+    e.target.classList.add( "active" );
     var this_item_height = e.target.offsetHeight;
     var target_offset = e.target.offsetTop;
     document.getElementsByClassName('vertical-line')[0].setAttribute("style", "top: "+target_offset+"px; height: "+this_item_height+"px;")        

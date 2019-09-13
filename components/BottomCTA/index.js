@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import $ from "jquery";
 import Config from '../../config';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import {Spinner,Button} from 'react-bootstrap'
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -106,17 +106,9 @@ class BottomCTA extends Component{
         const { inViewport } = this.props;
         return (
             <Fragment>
-            <motion.div 
+            <div 
                 className="bottom-cta"
-                initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                animate={{ translateX: 0, opacity: 1, visibility:"visible" }}
-                transition={{
-                    type: "spring",
-                    stiffness: 60,
-                    damping: 500,
-                    delay: 0.4,
-                    default: { duration: .8 },
-                }}
+                
             >
                 <div className="container">
                     <div className="row">
@@ -191,8 +183,7 @@ class BottomCTA extends Component{
                     </motion.form>}
 
                 </div>
-            </motion.div>
-            <ToastContainer autoClose={2000} />
+            </div>
             </Fragment>
         )
     }

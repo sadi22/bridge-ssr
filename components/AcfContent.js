@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 
 
 const Banner = dynamic(() => import('./Banner'), { loading: () => <p></p> });
+const UserType = dynamic(() => import('./UserType'), { loading: () => <p></p> });
 const BottomCTA = dynamic(() => import('./BottomCTA/index'), { loading: () => <p></p> });
 const DriveSales = dynamic(() => import('./DriveSales/index'), { loading: () => <p></p> });
 const RetailEcommerce = dynamic(() => import('./RetailEcommerce/index'), { loading: () => <p></p> });
@@ -23,6 +24,7 @@ class ACFCONTENT extends Component {
                 return (
                     <Fragment key={section.acf_fc_layout}>
                         {section.acf_fc_layout === 'banner' ? <Banner {...section}/> : ''}
+                        {section.acf_fc_layout === 'user_type' ? <UserType {...section}/> : ''}
                         {section.acf_fc_layout === 'title_and_two_image_columns' ? <SeamlessEcommerce {...section}/> : ''}
                         {section.acf_fc_layout === 'title_and_image_with_text_columns' ? <RetailEcommerce {...section}/> : ''}
                         {section.acf_fc_layout === 'features' ? <Feature {...section}/> : ''}
@@ -39,9 +41,26 @@ class ACFCONTENT extends Component {
         }
        
         return (
-            <Fragment>
+            <div className='bridge-content'>
                 {Section}
-            </Fragment>
+                <style jsx>{`
+                    div {
+                        padding-top: 170px;
+                    }
+                    div .bridge-contact{
+                        padding-top: 0;
+                    }
+                    @media only screen and (max-width: 991px) {
+                        div {
+                            padding-top: 100px;
+                        }
+                    }
+                `}</style>
+
+                <style jsx global>{`
+                    
+                `}</style>
+            </div>
         )
     }
 }

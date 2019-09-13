@@ -18,8 +18,8 @@ const TeamBlock = (props) => {
             <div className="single-member text-center">
                 <motion.div
                     className="member-img overflow"
-                    initial={{scale: 0.7, opacity:0}}
-                    animate={inViewport && { scale: 1, opacity: 1 }}
+                    initial={false}
+                    animate={inViewport ? { scale: 1, opacity: 1 } : {scale: 0.7, opacity:0}}
                     transition={{
                         type: "spring",
                         stiffness: 100,
@@ -41,8 +41,8 @@ const TeamBlock = (props) => {
                     
                 </motion.div>
                 <motion.h5
-                    initial={{scale: 0.7, opacity:0}}
-                    animate={inViewport && { scale: 1, opacity: 1 }}
+                    initial={false}
+                    animate={inViewport ? { scale: 1, opacity: 1 } : {scale: 0.7, opacity:0}}
                     transition={{
                         type: "spring",
                         stiffness: 100,
@@ -53,8 +53,8 @@ const TeamBlock = (props) => {
                 
                 >{team.name}</motion.h5>
                 <motion.h6
-                    initial={{scale: 0.7, opacity:0}}
-                    animate={inViewport && { scale: 1, opacity: 1 }}
+                    initial={false}
+                    animate={inViewport ? { scale: 1, opacity: 1 } : {scale: 0.7, opacity:0}}
                     transition={{
                         type: "spring",
                         stiffness: 100,
@@ -65,8 +65,8 @@ const TeamBlock = (props) => {
                 >{team.designation}</motion.h6>
                 <ul className="social">
                     <motion.li
-                        initial={{scale: 0.7, opacity:0}}
-                        animate={inViewport && { scale: 1, opacity: 1 }}
+                        initial={false}
+                        animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
                         transition={{
                             type: "spring",
                             stiffness: 100,
@@ -90,7 +90,7 @@ class Team extends Component{
         const {title, teams} = this.props;
         const { inViewport } = this.props;
         return (
-          <div>
+          <Fragment>
             <div className="bridge-team-banner">
                 <div className="overlay"></div>
                 <div className="container">
@@ -98,7 +98,7 @@ class Team extends Component{
                         <div className="col-12">
                             <div className="banner-content">
                                 <motion.h1
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                                    initial={false}
                                     animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }: { translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{
                                     type: "spring",
@@ -122,7 +122,7 @@ class Team extends Component{
                     </div>
                 </div>
             </div>
-          </div>
+          </Fragment>
         )
     }
 }

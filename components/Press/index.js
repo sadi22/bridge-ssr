@@ -22,7 +22,7 @@ class Press extends Component{
                                     alt={press.image.alt}
                                     title={press.image.title} 
                                     whileHover={{ scale: 1.1 }}
-                                    initial={{scale: 0.7, opacity:0}}
+                                    initial={false}
                                     animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
                                     transition={{
                                         type: "spring",

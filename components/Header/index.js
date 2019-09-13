@@ -64,9 +64,10 @@ class Menu extends Component {
                 }
                 let as = item.object === 'page' ? `/${slug}` : `/${item.object}/${slug}`;
                 return (
+                    
                     <Link
                         as={`${as}`}
-                        href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+                        href="/[slug]"
                         key={item.ID}
                         activeClassName='active'
                     >
@@ -110,7 +111,7 @@ class Menu extends Component {
                     
                     <Link
                         as={`/${getting_started_slug}`}
-                        href={`/${getting_started_actualPage}?slug=${getting_started_slug}&apiRoute=${getting_started_actualPage}`}
+                        href="/[slug]"
                     >
                         <motion.a 
                             className="getStarted"

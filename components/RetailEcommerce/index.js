@@ -4,7 +4,7 @@ import Parser from 'html-react-parser';
 import handleViewport from 'react-in-viewport';
 import { motion } from "framer-motion"
 import { Enhance } from "../Enhance";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Config from '../../config';
 import {Spinner,Button} from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +12,7 @@ import { library, config } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+library.add(faEdit, faCaretDown, faEnvelope);
 import axios from 'axios';
 
 import "./index.scss";
@@ -82,10 +83,10 @@ class RetailEcommerce extends Component{
                                     initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
                                     transition={{
-                                    type: "spring",
-                                    stiffness: 100,
-                                    damping: 500,
-                                    default: { duration: 0.8 },
+                                        type: "spring",
+                                        stiffness: 100,
+                                        damping: 500,
+                                        default: { duration: 0.8 },
                                     }}
                                 >{Parser(title)}</motion.h2>
                                 <motion.p
@@ -137,7 +138,7 @@ class RetailEcommerce extends Component{
                                             <FontAwesomeIcon icon={["fas", "envelope"]} />
                                             <input type="email" name="email" placeholder="Enter your email" required/>
                                         </span>
-                                        <button class="btn-default">
+                                        <button className="btn-default">
                                             Get Started
                                             {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
                                         </button>
@@ -148,20 +149,7 @@ class RetailEcommerce extends Component{
 
                         <div className="col-lg-6">
                             <div className={`${enable_drop_shadow ? 'image-shadow' : ''} retailer-image pos-relative`}>
-                                <div className="lines-accent">
-                                    { show_background ? <motion.img
-                                    src='/static/images/lines-accent.png'
-                                    initial={{ translateX: 100, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: 100, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 100,
-                                        damping: 500,
-                                        delay: 1,
-                                        duration: 1,
-                                    }}
-                                    /> : '' }
-                                </div>
+                                
                                 {right_image ? 
                                 <motion.div 
                                     className="img-wrapper"

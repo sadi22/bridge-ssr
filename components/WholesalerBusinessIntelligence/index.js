@@ -61,7 +61,7 @@ class WholesalerBusinessIntelligence extends Component{
                     <div className="row">
                         <div className="col-lg-7">
                             <motion.div 
-                            className="business-intelligence-img"
+                            className="business-intelligence-img img-box-shadow"
                             initial={{ translateX: -100, opacity: 0, visibility:"hidden" }}
                             animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -100, opacity: 0, visibility:"hidden" }}
                             transition={{

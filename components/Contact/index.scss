@@ -29,11 +29,12 @@
         position: relative;
         background: #fff;
         z-index: 1;
-        min-height: 100vh;
+        height: 100vh;
         display: flex;
         flex-flow: column;
         align-items: flex-start;
         justify-content: center;
+        min-height: 500px;
         
         @media #{$device_992_1199} {
             padding: 40px 0 0 0;
@@ -132,18 +133,15 @@
 
 
 .bridge-switcher {
-    display: flex;
-    flex-flow: row-reverse;
-    align-items: center;
-    justify-content: space-between;
+    
     
     .title{
         font-size: 12px;
         color: #999;
         text-transform: capitalize;
-        padding-right: 20px;
         line-height: 1.5;
-        width: calc(100% - 57px);
+        display: block;
+        width: 100%;
         
         a{
             color: $primary-color;

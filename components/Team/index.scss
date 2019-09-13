@@ -25,11 +25,11 @@
     }
     
     .banner-content{
-        height: 590px;
+        height: 500px;
         display: flex;
         flex-flow: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         text-align: center;
         padding: 50px 0;
         
@@ -42,7 +42,6 @@
             font-size: calc(40px + (48 - 40) * ((100vw - 320px) / (1920 - 320))); //---56px font size---
             line-height: 1.29;
             max-width: 800px;
-            margin-top: -140px;
             width: 100%;
         }
     }

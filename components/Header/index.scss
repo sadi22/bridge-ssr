@@ -47,7 +47,6 @@
                 &:hover,
                 &.active{
                     color: $primary-color;
-                    font-weight: 700;
                 }
                 
                 @media #{$device_768_991} {

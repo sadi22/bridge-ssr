@@ -2,8 +2,8 @@
 @import '../../src/styles/extend-style';
 
 .seamless-ecommerce{
-    padding-top: 67px;
-    padding-bottom: 60px;
+    padding-top: 30px;
+    padding-bottom: 40px;
     
     @media #{$device_992_1199} {
         padding-top: 47px;
@@ -73,7 +73,7 @@
             overflow: hidden;
             
             img{
-                box-shadow: 0 2px 7px rgba(40, 44, 71, 0.24);
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18);
                 border-radius: 8px;
                 @include transitions(all 4s linear);
             }
