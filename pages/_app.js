@@ -24,6 +24,13 @@ export default class MyApp extends App {
     const { Component, pageProps, router } = this.props
     return (
       <>
+        <Head>
+        
+
+          <title>Bridge</title>
+
+        
+        </Head>
         
         <PageTransition
           timeout={TIMEOUT}
@@ -36,7 +43,9 @@ export default class MyApp extends App {
           }}
           loadingClassNames='loading-indicator'
         >
+          
           <Component {...pageProps} />
+          
         </PageTransition>
         <style jsx global>{`
           .page-transition-enter {
@@ -63,6 +72,15 @@ export default class MyApp extends App {
           .loading-indicator-enter-active {
             opacity: 1;
             transition: opacity ${TIMEOUT}ms;
+          }
+
+          .page-overlay {
+              position: fixed;
+              bottom: 0;
+              height: 100%;
+              background: #ddd;
+              width: 100%;
+              z-index: 9999;
           }
         `}</style>
       </>

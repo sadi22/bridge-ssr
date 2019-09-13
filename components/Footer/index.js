@@ -45,7 +45,7 @@ class Footer extends Component{
                 >
                     <Link
                         as={`${as}`}
-                        href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+                        href="/[slug]"
                         key={item.ID}
                         activeClassName='active'
                     >

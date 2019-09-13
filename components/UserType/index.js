@@ -74,8 +74,7 @@ class UserType extends Component{
                     <div className='userdropdownType'>
                       <Link
                           as={`${as}`}
-                          href={`/page?slug=${slug}&apiRoute=page`}
-                          href={`/${actualPage}?slug=${slug}&apiRoute=${actualPage}`}
+                          href="/[slug]"
                           key={i}
                       >
                           <a className={`user-type-link`}>{item.type}</a>
@@ -93,8 +92,7 @@ class UserType extends Component{
             return (
               <Link
                   as={`${as}`}
-                  href={`/page?slug=${slug}&apiRoute=page`}
-                  href={`/${actualPage}?slug=${slug}&apiRoute=${actualPage}`}
+                  href="/[slug]"
                   key={i}
               >
                   <a className={`button user-type-selected-link user-type-link-${i} ${item.type.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '').toLowerCase()}`}>

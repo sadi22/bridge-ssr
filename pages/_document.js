@@ -35,8 +35,9 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css" />
         </Head>
         <body>
+          
           <Main />
-          <NextScript />
+          <NextScript />          
         </body>
       </html>
     );

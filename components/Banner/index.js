@@ -177,8 +177,7 @@ class Banner extends Component{
 
               <Link
                   as={`${as}`}
-                  href={`/page?slug=${slug}&apiRoute=page`}
-                  href={`/${actualPage}?slug=${slug}&apiRoute=${actualPage}`}
+                  href="/[slug]"
                   key={i}
               >
                   <a className={`button user-type-link ${item.type.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '').toLowerCase()}`}>
