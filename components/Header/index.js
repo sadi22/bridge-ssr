@@ -65,25 +65,33 @@ class Menu extends Component {
                 let as = item.object === 'page' ? `/${slug}` : `/${item.object}/${slug}`;
                 return (
                     
+                    // <Link
+                    //     as={`${as}`}
+                    //     href="/[slug]"
+                    //     key={item.ID}
+                    //     activeClassName='active'
+                    // >
+                        
+                    //     <motion.a 
+                    //         style={linkStyle} 
+                    //         initial={{ translateY: -50, opacity: 0, visibility:"hidden" }}
+                    //         animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
+                    //         transition={{
+                    //             type: "spring",
+                    //             stiffness: 100,
+                    //             damping: 500,
+                    //             delay: index * .3,
+                    //             default: { duration: 0.3 },
+                    //         }}
+                    //     >{item.title}</motion.a>
+                    // </Link>
                     <Link
                         as={`${as}`}
-                        href="/[slug]"
+                        href={`/${actualPage}?slug=${slug}`}
                         key={item.ID}
                         activeClassName='active'
                     >
-                        
-                        <motion.a 
-                            style={linkStyle} 
-                            initial={{ translateY: -50, opacity: 0, visibility:"hidden" }}
-                            animate={{ translateY: 0, opacity: 1, visibility:"visible" }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 100,
-                                damping: 500,
-                                delay: index * .3,
-                                default: { duration: 0.3 },
-                            }}
-                        >{item.title}</motion.a>
+                        <a style={linkStyle}>{item.title}</a>
                     </Link>
                 );
             }); 
@@ -176,6 +184,17 @@ class Menu extends Component {
                         </div>
                     </div>
                 </div>
+            
+                <Link
+                    href="/page/about"
+                >
+                    <a>test</a>
+                </Link>
+                <Link
+                    href="/sadi"
+                >
+                    <a>sadi</a>
+                </Link>
             </header>
         );
     }

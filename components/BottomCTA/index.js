@@ -25,19 +25,6 @@ class BottomCTA extends Component{
         };
     }
 
-    static async getInitialProps(context) {
-        const { slug, apiRoute } = context.query;
-        let apiMethod = wp.pages();
-        const page = await apiMethod
-          .slug(slug)
-          .embed()
-          .then(data => {
-            return data[0];
-          });
-
-        return { page };
-    }
-
     componentDidMount(){
         $('.single-input').on('click', function(e){
             e.stopPropagation();
@@ -114,8 +101,8 @@ class BottomCTA extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <h2 data-aos="fade-up" data-aos-delay="300">{Parser(title)}</h2>
-                                <p data-aos="fade-up" data-aos-delay="400">{Parser(sub_title)}</p>
+                                <h2>{Parser(title)}</h2>
+                                <p>{Parser(sub_title)}</p>
                             </div>
                         </div>
                     </div>
@@ -126,24 +113,24 @@ class BottomCTA extends Component{
                         >
                         <div className="row align-items-end">
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="500">
+                                <div className="single-input">
                                     <label htmlFor="ctaEmail">Email<span>*</span></label>
                                     <input type="email" name="email" id="ctaEmail" value={this.state.email} onChange={this.handleChange} required/>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input" data-aos="zoom-in" data-aos-delay="600" data-aos-duration="500">
+                                <div className="single-input">
                                     <label htmlFor="ctafName">Full Name<span>*</span></label>
                                     <input type="text" name="fullName" id="ctafName" value={this.state.fullName} onChange={this.handleChange} required/>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input" data-aos="zoom-in" data-aos-delay="700" data-aos-duration="500">
+                                <div className="single-input">
                                     <label htmlFor="ctaCompany">Company<span>*</span></label>
                                     <input type="text" name="company" id="ctaCompany" value={this.state.company} onChange={this.handleChange} required/>
                                 </div>
                             </div>
-                            <div className="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="800" data-aos-duration="500">
+                            <div className="col-lg-3 col-md-6">
                                 <div className="single-input">
                                     <Button className="btn-default" type="submit">
                                         Request Demo
@@ -160,4 +147,4 @@ class BottomCTA extends Component{
         )
     }
 }
-export default handleViewport(BottomCTA, {}, {disconnectOnLeave: false});
+export default BottomCTA;

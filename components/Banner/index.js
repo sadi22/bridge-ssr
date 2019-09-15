@@ -15,6 +15,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown, faEnvelope);
+import TweenMax from "gsap/TweenMax";
 
 import "./index.scss";
 

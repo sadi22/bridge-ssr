@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
 import handleViewport from 'react-in-viewport';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./index.scss";
 
 
@@ -21,7 +22,7 @@ class Press extends Component{
                                     src={press.image.url}
                                     alt={press.image.alt}
                                     title={press.image.title} 
-                                    data-aos="zoom-in" data-aos-duration="700" data-aos-delay="150"
+                                    
                                 /> : ''}
                             </a>
                         </div>
@@ -36,9 +37,15 @@ class Press extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <div className="banner-content">
-                                <h2  data-aos="fade-up" data-aos-delay="150">{Parser(title)}</h2>
-                            </div>
+                            <CSSTransition
+                                classNames="example"
+                                in={inViewport ? true : false}
+                                >
+                                <div className="banner-content">
+                                    <h2>{Parser(title)}</h2>
+                                </div>
+                            </CSSTransition>
+                            
                         </div>
                     </div>
                 </div>

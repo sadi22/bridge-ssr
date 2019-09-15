@@ -9,6 +9,7 @@ import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Header/index';
 import Footer from "../components/Footer/index";
 import ACFCONTENT from '../components/AcfContent';
+import { TransitionGroup, CSSTransition, Transition } from "react-transition-group";
 
 class Page extends Component {
   static async getInitialProps(context) {
@@ -71,7 +72,7 @@ Page.propTypes = {
 }
 
 Page.defaultProps = {
-  pageTransitionReadyToEnter: () => {console.log('Hello')}
+  pageTransitionReadyToEnter: () => {}
 }
 
 export default PageWrapper(Page)

@@ -5,7 +5,6 @@ import { getDataByEndPoint } from '../api/api';
 
 const PageWrapper = Comp =>
   class extends React.Component {
-    static pageTransitionDelayEnter = true
 
     static async getInitialProps(args) {
       const [headerMenu, footerMenu, logo, social, footer_text, getting_started_link, gmap_api, site_info, childProps] = await Promise.all([
@@ -32,37 +31,14 @@ const PageWrapper = Comp =>
       };
     }
 
-    constructor (props) {
-      super(props)
-      this.state = {
-        loaded: false
-      }
+    enterpage() {
+      console.log('Hello');
     }
-
-    componentDidMount () {
-      this.timeoutId = setTimeout(() => {
-        this.props.pageTransitionReadyToEnter()
-        this.setState({ loaded: true })
-      }, 2000)
-    }
-  
-    componentWillUnmount () {
-      if (this.timeoutId) clearTimeout(this.timeoutId)
-    }
-  
 
     render() {
       // if (!this.state.loaded) return null
       return <Comp {...this.props} />;
     }
   };
-
-PageWrapper.propTypes = {
-  pageTransitionReadyToEnter: PropTypes.func
-}
-
-PageWrapper.defaultProps = {
-  pageTransitionReadyToEnter: () => {}
-}
 
 export default PageWrapper;

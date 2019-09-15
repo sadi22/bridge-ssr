@@ -1,16 +1,13 @@
-import React from 'react';
-const TIMEOUT = 400
+import React, {Fragment} from 'react';
 
 const Layout = props => {
   const { children } = props;
   return (
-    <>
-        <div className='page-overlay'></div>
-        <div className='bridge-container'>
+    <Fragment>
+        <div className={`bridge-container`}>
             {children}
         </div>
-        
-    </>
+    </Fragment>
   );
 };
 export default Layout;
