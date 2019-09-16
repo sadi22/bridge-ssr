@@ -10,7 +10,7 @@ import MapContainer from './Map';
 import {Spinner,Button} from 'react-bootstrap'
 import {  toast } from 'react-toastify';
 import Config from '../../config';
-
+import ScrollAnimation from 'react-animate-on-scroll';
 
 class Contact extends Component{
     constructor(props) {
@@ -109,57 +109,54 @@ class Contact extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-5">
-                            <div className="contact-content" data-aos="fade-up" data-aos-delay="3000">
+                            <div className="contact-content">
                                 <div className="section-title">
-                                    <h2>{Parser(title)}</h2>
-                                    <p>{Parser(description)}</p>
+                                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                                        <h2>{Parser(title)}</h2>
+                                    </ScrollAnimation>
+                                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                                        <p>{Parser(description)}</p>
+                                    </ScrollAnimation>
                                 </div>
                                 {gravity_form_id &&
                                 <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)} className="contact-form">
-                                    <div>
-                                        <div className="contact-single-input">
-                                            <label htmlFor="contactEmail">Enter your email<span>*</span></label>
-                                            <input type="email" name="email" id="contactEmail" value={this.state.email} onChange={this.handleChange} className="inputVal" required/>
-                                        </div>
-                                    </div>
+                                    <ScrollAnimation className="contact-single-input" animateIn="fadeInUp" delay={500} animateOnce={true}>
+                                        <label htmlFor="contactEmail">Enter your email<span>*</span></label>
+                                        <input type="email" name="email" id="contactEmail" value={this.state.email} onChange={this.handleChange} className="inputVal" required/>
+                                    </ScrollAnimation>
                                 
-                                    <div>
-                                        <div className="contact-single-input">
-                                            <label htmlFor="contactfName">Full Name<span>*</span></label>
-                                            <input type="text" name="fullName" id="contactfName" className="inputVal" value={this.state.fullName} onChange={this.handleChange} className="inputVal" required/>
-                                        </div>
-                                    </div>
-                                
-                                    <div>
-                                        <div className="contact-single-input">
-                                            <label htmlFor="contactMsg">How can we hlep you<span>*</span></label>
-                                            <textarea name="msg" id="msg" cols="30" rows="10" value={this.state.msg} onChange={this.handleChange} className="inputVal" required></textarea>
-                                        </div>
-                                    </div>
+                                    <ScrollAnimation className="contact-single-input" animateIn="fadeInUp" delay={600} animateOnce={true}>
+                                        <label htmlFor="contactfName">Full Name<span>*</span></label>
+                                        <input type="text" name="fullName" id="contactfName" className="inputVal" value={this.state.fullName} onChange={this.handleChange} className="inputVal" required/>
+                                    </ScrollAnimation>
+                                    <ScrollAnimation className="contact-single-input" animateIn="fadeInUp" delay={700} animateOnce={true}>
+                                        <label htmlFor="contactMsg">How can we hlep you<span>*</span></label>
+                                        <textarea name="msg" id="msg" cols="30" rows="10" value={this.state.msg} onChange={this.handleChange} className="inputVal" required></textarea>
+                                    </ScrollAnimation>
 
-                                    <div className="contact-single-input">
+                                    <ScrollAnimation className="contact-single-input" animateIn="fadeInUp" delay={800} animateOnce={true}>
                                         <div className="bridge-switcher">
                                             <span className="title">Request a free technical audit of your organization, organize an online demo, or just let us know you are interested in learning <a href="">more</a>.</span>
                                         </div>
-                                    </div>
+                                    </ScrollAnimation>
                                   
-                                    <div className="contact-single-input submit-btn">
+                                    <ScrollAnimation className="contact-single-input submit-btn" animateIn="fadeInUp" delay={900} animateOnce={true}>
                                         <Button className="btn-default" type="submit">
                                             Send
                                             {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
                                         </Button>
-                                    </div>
+                                    </ScrollAnimation>
                                 </form>}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="google-map overlay">
+                <ScrollAnimation className="google-map overlay" animateIn="fadeInUp" delay={300} animateOnce={true}>
                     <MapContainer apiKey={api} location={location}/>
-                </div>
+                </ScrollAnimation>
             </div>
             </Fragment>
         )
     }
 }
-export default handleViewport(Contact, {}, {disconnectOnLeave: false});
+export default Contact;

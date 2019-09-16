@@ -24,7 +24,6 @@ class Page extends Component {
         return err;
     }
   }
-
   
   render () {
     const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link, gmap_api } = this.props;
@@ -38,7 +37,6 @@ class Page extends Component {
       seo_description = page.yoast_meta_rest.yoast_wpseo_metadesc;
       seo_canonical = page.yoast_meta_rest.yoast_wpseo_canonical;
     }
-
     return (
       <Fragment>
         <Head>
@@ -64,14 +62,6 @@ class Page extends Component {
       </Fragment>
     )
   }
-}
-
-Page.propTypes = {
-  pageTransitionReadyToEnter: PropTypes.func
-}
-
-Page.defaultProps = {
-  pageTransitionReadyToEnter: () => {console.log('Hello')}
 }
 
 export default PageWrapper(Page)

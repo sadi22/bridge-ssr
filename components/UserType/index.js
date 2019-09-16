@@ -12,14 +12,11 @@ import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-ico
 library.add(fab, far, faEdit, faCaretDown, faEnvelope);
 import Router from 'next/router'
 import "./index.scss";
-
 config.autoAddCss = false;
-
 const getSlug = url => {
   const parts = url.split('/');
   return parts.length > 2 ? parts[parts.length - 2] : '';
 };
-
 class UserType extends Component{
     constructor(props) {
       super(props);
@@ -29,15 +26,12 @@ class UserType extends Component{
           showUserTypeDropDown: false
       };
     }
-
     componentDidMount(){
       document.addEventListener('click', this.bodyClickHandler);
     }
-
     componentWillUnmount() {
         document.removeEventListener('click', this.bodyClickHandler);
     }
-
     bodyClickHandler = (e)  => {
       if(e.target.matches('.select-selected')) {
         this.setState({
@@ -49,13 +43,11 @@ class UserType extends Component{
         })
       }
     }
-
     userTypeSelect = (i, type, e) => {
       $('.currentType').html(type);
       $('.user-type-selected-link').hide();
       $(`.user-type-link-${i}`).css('display', 'flex');
     }
-
     render() {
         const { user_heading, text, user } = this.props;
         const { inViewport } = this.props;
@@ -74,8 +66,7 @@ class UserType extends Component{
                     <div className='userdropdownType'>
                       <Link
                           as={`${as}`}
-                          href={`/page?slug=${slug}&apiRoute=page`}
-                          href={`/${actualPage}?slug=${slug}&apiRoute=${actualPage}`}
+                          href="/[slug]"
                           key={i}
                       >
                           <a className={`user-type-link`}>{item.type}</a>
@@ -85,7 +76,6 @@ class UserType extends Component{
                 
             );
           });
-
           userDropdownLinkMarkup = user.map((item, i) => {
             const slug = item.link ? getSlug(item.link) : '';
             let actualPage = slug ? 'page' : '';
@@ -93,8 +83,7 @@ class UserType extends Component{
             return (
               <Link
                   as={`${as}`}
-                  href={`/page?slug=${slug}&apiRoute=page`}
-                  href={`/${actualPage}?slug=${slug}&apiRoute=${actualPage}`}
+                  href="/[slug]"
                   key={i}
               >
                   <a className={`button user-type-selected-link user-type-link-${i} ${item.type.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '').toLowerCase()}`}>
@@ -143,5 +132,4 @@ class UserType extends Component{
         )
     }
 }
-
 export default handleViewport(UserType, {}, {disconnectOnLeave: false});

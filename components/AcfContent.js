@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import dynamic from 'next/dynamic';
-// import { TransitionGroup, CSSTransition, Transition } from "react-transition-group";
+import dynamic from 'next/dynamic'
 
 
 const Banner = dynamic(() => import('./Banner'), { loading: () => <p></p> });
@@ -15,9 +14,6 @@ const Team = dynamic(() => import('./Team/index'), { loading: () => <p></p> });
 const FeatureWithLeftImage = dynamic(() => import('./WholesalerBusinessIntelligence/index'), { loading: () => <p></p> });
 const Press = dynamic(() => import('./Press/index'), { loading: () => <p></p> });
 const Contact = dynamic(() => import('./Contact/index'), { loading: () => <p></p> });
-const Transition = dynamic(() => import('./Transition/index'), { loading: () => <p></p> });
-
-
 
 class ACFCONTENT extends Component {
     render() {

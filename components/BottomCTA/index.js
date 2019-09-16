@@ -2,19 +2,15 @@
 import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
 import handleViewport from 'react-in-viewport';
-import { motion } from "framer-motion"
 import $ from "jquery";
 import Config from '../../config';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import {Spinner,Button} from 'react-bootstrap'
+import ScrollAnimation from 'react-animate-on-scroll';
 import 'react-toastify/dist/ReactToastify.css';
-
 import "./index.scss";
-
-
 class BottomCTA extends Component{
-
     constructor(props) {
         super(props);
         this.state = {
@@ -24,30 +20,26 @@ class BottomCTA extends Component{
             startSubmission: false,
         };
     }
-
+    
     componentDidMount(){
         $('.single-input').on('click', function(e){
             e.stopPropagation();
             $(this).children('label').hide();
         });
-
         $('body').on('click', function(){
             $('.single-input').each(function(){
                 var eachVal = $(this).children('input').val();
-
                 if(eachVal) $(this).children('label').hide();
                 if(!eachVal) $(this).children('label').show();
                 $(this).siblings().children('label').show();
             });
         });
     }
-
     handleChange = evt => {
         this.setState({
             [evt.target.name]: evt.target.value,
         });
     };
-
     handleSubmit = (formID,evt) => {
         evt.preventDefault();
         this.setState({
@@ -87,7 +79,6 @@ class BottomCTA extends Component{
             })
           });
     }
-
     render() {
         const {title, sub_title, gravity_form_id} = this.props;
         const { inViewport } = this.props;
@@ -101,8 +92,12 @@ class BottomCTA extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <h2>{Parser(title)}</h2>
-                                <p>{Parser(sub_title)}</p>
+                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                                    <h2>{Parser(title)}</h2>
+                                </ScrollAnimation>
+                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={300}>
+                                    <p>{Parser(sub_title)}</p>
+                                </ScrollAnimation>
                             </div>
                         </div>
                     </div>
@@ -113,34 +108,35 @@ class BottomCTA extends Component{
                         >
                         <div className="row align-items-end">
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input">
+                                <ScrollAnimation className="single-input" animateIn="fadeInUp" animateOnce={true} delay={350}>
                                     <label htmlFor="ctaEmail">Email<span>*</span></label>
                                     <input type="email" name="email" id="ctaEmail" value={this.state.email} onChange={this.handleChange} required/>
-                                </div>
+                                </ScrollAnimation>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input">
+                                <ScrollAnimation className="single-input" animateIn="fadeInUp" animateOnce={true} delay={450}>
                                     <label htmlFor="ctafName">Full Name<span>*</span></label>
                                     <input type="text" name="fullName" id="ctafName" value={this.state.fullName} onChange={this.handleChange} required/>
-                                </div>
+                                </ScrollAnimation>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input">
+                                <ScrollAnimation className="single-input" animateIn="fadeInUp" animateOnce={true} delay={550}>
                                     <label htmlFor="ctaCompany">Company<span>*</span></label>
                                     <input type="text" name="company" id="ctaCompany" value={this.state.company} onChange={this.handleChange} required/>
-                                </div>
+                                </ScrollAnimation>
+                                
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <div className="single-input">
+                                <ScrollAnimation className="single-input" animateIn="fadeInUp" animateOnce={true} delay={650}>
                                     <Button className="btn-default" type="submit">
                                         Request Demo
                                         {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
                                     </Button>
-                                </div>
+                                </ScrollAnimation>
+                                
                             </div>
                         </div>
                     </form>}
-
                 </div>
             </div>
             </Fragment>

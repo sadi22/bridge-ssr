@@ -4,16 +4,14 @@ import { PageTransition } from 'next-page-transitions'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import TweenMax from "gsap/TweenMax";
-
+import $ from "jquery";
 import Head from 'next/head';
 import AOS from 'aos';
 import Loader from '../components/Loader'
 import { TransitionGroup, CSSTransition, Transition } from "react-transition-group";
 
-
-
 Router.events.on('routeChangeStart', url => {
-  NProgress.start()
+    NProgress.start()
 })
 Router.events.on('routeChangeComplete', () => {
   NProgress.done()

@@ -9,6 +9,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fab);
+import ScrollAnimation from 'react-animate-on-scroll';
 
 
 const TeamBlock = (props) => {
@@ -16,18 +17,7 @@ const TeamBlock = (props) => {
     return (
         <div className="col-lg-4 col-sm-6 single-col" ref={innerRef}>
             <div className="single-member text-center">
-                <motion.div
-                    className="member-img overflow"
-                    initial={false}
-                    animate={inViewport ? { scale: 1, opacity: 1 } : {scale: 0.7, opacity:0}}
-                    transition={{
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 500,
-                        delay: 0.9,
-                        default: { duration: 0.8 },
-                    }}
-                    >
+                <ScrollAnimation className="member-img overflow" animateIn="zoomIn" animateOnce={true}>
                     {team.image ? 
                     
                     <motion.img
@@ -39,45 +29,16 @@ const TeamBlock = (props) => {
                     /> 
                     : ''}
                     
-                </motion.div>
-                <motion.h5
-                    initial={false}
-                    animate={inViewport ? { scale: 1, opacity: 1 } : {scale: 0.7, opacity:0}}
-                    transition={{
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 500,
-                        delay: 0.9,
-                        default: { duration: 0.8 },
-                    }}
-                
-                >{team.name}</motion.h5>
-                <motion.h6
-                    initial={false}
-                    animate={inViewport ? { scale: 1, opacity: 1 } : {scale: 0.7, opacity:0}}
-                    transition={{
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 500,
-                        delay: 0.9,
-                        default: { duration: 0.8 },
-                    }}
-                >{team.designation}</motion.h6>
-                <ul className="social">
-                    <motion.li
-                        initial={false}
-                        animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
-                        transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 500,
-                            delay: 0.9,
-                            default: { duration: 0.8 },
-                        }}
-                    >
-                        <a href={team.linkedin_link} target="_blank" title="Linked In"><FontAwesomeIcon icon={["fab", "linkedin-in"]} /></a>
-                    </motion.li>
-                </ul>
+                </ScrollAnimation>
+                <ScrollAnimation animateIn="zoomIn" animateOnce={true}>
+                    <h5>{team.name}</h5>
+                    <h6>{team.designation}</h6>
+                    <ul className="social">
+                        <li>
+                            <a href={team.linkedin_link} target="_blank" title="Linked In"><FontAwesomeIcon icon={["fab", "linkedin-in"]} /></a>
+                        </li>
+                    </ul>
+                </ScrollAnimation>
             </div>
         </div>
     );
@@ -97,16 +58,9 @@ class Team extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-content">
-                                <motion.h1
-                                    initial={false}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }: { translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 100,
-                                    damping: 500,
-                                    default: { duration: 0.8 },
-                                    }}
-                                >{Parser(title)}</motion.h1>
+                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                                    <h1>{Parser(title)}</h1>
+                                </ScrollAnimation>
                             </div>
                         </div>
                     </div>
@@ -127,4 +81,4 @@ class Team extends Component{
     }
 }
 
-export default handleViewport(Team, {}, {disconnectOnLeave: false});
+export default Team;

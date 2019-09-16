@@ -64,6 +64,7 @@
         max-width: 870px;
         text-align: center;
         width: 100%;
+        overflow: hidden;
         @include transforms(translateY(-50%));
         
         @media #{$device_1400_1599} {

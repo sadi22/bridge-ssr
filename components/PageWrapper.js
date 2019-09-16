@@ -32,7 +32,6 @@ const PageWrapper = Comp =>
     }
 
     enterpage() {
-      console.log('Hello');
     }
 
     render() {
