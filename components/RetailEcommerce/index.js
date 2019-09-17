@@ -13,13 +13,11 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 library.add(faEdit, faCaretDown, faEnvelope);
+import ScrollAnimation from 'react-animate-on-scroll';
+
 import axios from 'axios';
-
 import "./index.scss";
-
-
 class RetailEcommerce extends Component{
-
     constructor(props) {
         super(props);
         this.state = {
@@ -31,44 +29,43 @@ class RetailEcommerce extends Component{
         this.setState({
             [evt.target.name]: evt.target.value,
         });
-      };
-
-      handleSubmit = (formID,evt) => {
-        evt.preventDefault();
+    };
+    handleSubmit = (formID,evt) => {
+    evt.preventDefault();
+    this.setState({
+        startSubmission : !this.state.startSubmission
+    });
+    axios({
+        method: 'post',
+        url: `${Config.apiUrl}/bridge/v1/forms/${formID}`,
+        data: {
+            email:this.state.email,
+        },
+        headers: {
+            'Access-Control-Allow-Credentials' : true,
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods':'POST',
+            'Access-Control-Allow-Headers':'application/json',
+        }
+        },
+        )
+        .then((response) => {
+        toast.success("🔥 Congratulations. You will be notified", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+        })
+        .catch((error) => {
+            console.log(error);
+        toast.error("⚠️ Upps! Something wrong !", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+        })
+        .then(() => {
         this.setState({
             startSubmission : !this.state.startSubmission
+        })
         });
-        axios({
-            method: 'post',
-            url: `${Config.apiUrl}/bridge/v1/forms/${formID}`,
-            data: {
-                email:this.state.email,
-            },
-            headers: {
-                'Access-Control-Allow-Credentials' : true,
-                'Access-Control-Allow-Origin':'*',
-                'Access-Control-Allow-Methods':'POST',
-                'Access-Control-Allow-Headers':'application/json',
-            }
-          },
-          )
-          .then((response) => {
-            toast.success("🔥 Congratulations. You will be notified", {
-                position: toast.POSITION.TOP_RIGHT
-            });
-          })
-          .catch((error) => {
-              console.log(error);
-            toast.error("⚠️ Upps! Something wrong !", {
-                position: toast.POSITION.TOP_RIGHT
-            });
-          })
-          .then(() => {
-            this.setState({
-                startSubmission : !this.state.startSubmission
-            })
-          });
-      }
+    }
     render() {
         const {title, sub_title, left_text, right_image, show_background, enable_drop_shadow, enable_double_line_heading, gravity_form_id, getting_started_text } = this.props;
         const { inViewport } = this.props;
@@ -79,58 +76,26 @@ class RetailEcommerce extends Component{
                     <div className="row">
                         <div className={`${enable_double_line_heading ? 'col-lg-8' : 'col-12'} m-auto`}>
                             <div className="section-title text-center">
-                                <motion.h2
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 100,
-                                        damping: 500,
-                                        default: { duration: 0.8 },
-                                    }}
-                                >{Parser(title)}</motion.h2>
-                                <motion.p
-                                    className='primary-color'
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 100,
-                                    damping: 500,
-                                    delay: 0.5,
-                                    default: { duration: 0.8 },
-                                    }}
-                                >{Parser(sub_title)}</motion.p>
+                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                                    <h2>{Parser(title)}</h2>
+                                </ScrollAnimation>
+                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={300}>
+                                    <p className='primary-color'>{Parser(sub_title)}</p>
+                                </ScrollAnimation>
+                                
                             </div>
                         </div>
                     </div>
-
                     <div className="row">
                         <div className="col-lg-6">
-                            <motion.div
+                            <ScrollAnimation
                                 className="retailer-content"
-                                initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 100,
-                                    damping: 500,
-                                    delay: 0.8,
-                                    duration: 0.8,
-                                }}
+                                animateIn="fadeInUp" animateOnce={true} delay={300}
                             >
                                 {Parser(left_text)}
-                                {gravity_form_id &&  <motion.div
+                                {gravity_form_id &&  <ScrollAnimation
                                     className="newsletter-form retailer-newsletter-form"
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 100,
-                                    damping: 500,
-                                    delay: 0.9,
-                                    default: { duration: 0.8 },
-                                    }}
+                                    animateIn="fadeInUp" animateOnce={true} delay={400}
                                     >
                                     <h6>{Parser(getting_started_text)}</h6>
                                     <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
@@ -143,25 +108,16 @@ class RetailEcommerce extends Component{
                                             {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
                                         </button>
                                     </form>
-                                </motion.div>}
-                            </motion.div>
+                                </ScrollAnimation>}
+                            </ScrollAnimation>
                         </div>
-
                         <div className="col-lg-6">
                             <div className={`${enable_drop_shadow ? 'image-shadow' : ''} retailer-image pos-relative`}>
                                 
                                 {right_image ? 
-                                <motion.div 
+                                <ScrollAnimation 
                                     className="img-wrapper"
-                                    initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 100,
-                                        damping: 500,
-                                        delay: 1.4,
-                                        duration: 1,
-                                    }}
+                                    animateIn="slideInRight" animateOnce={true} delay={600}
                                     >
                                     <motion.img 
                                     src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"
@@ -169,7 +125,7 @@ class RetailEcommerce extends Component{
                                         scale: 1.1
                                     }}
                                     />
-                                </motion.div>: ''}
+                                </ScrollAnimation>: ''}
                             </div>
                         </div>
                     </div>
@@ -179,5 +135,4 @@ class RetailEcommerce extends Component{
         )
     }
 }
-
 export default handleViewport(RetailEcommerce, { rootMargin: '-10.0px' }, {disconnectOnLeave: false});

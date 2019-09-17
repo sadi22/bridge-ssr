@@ -4,7 +4,6 @@ import { getDataByEndPoint } from '../api/api';
 
 const PageWrapper = Comp =>
   class extends React.Component {
-    static pageTransitionDelayEnter = true
 
     static async getInitialProps(args) {
       const [headerMenu, footerMenu, logo, social, footer_text, getting_started_link, gmap_api, site_info, childProps] = await Promise.all([
@@ -29,7 +28,9 @@ const PageWrapper = Comp =>
         site_info,
         ...(Comp.getInitialProps ? childProps : null),
       };
-    }  
+
+    }
+
 
     render() {
       // if (!this.state.loaded) return null

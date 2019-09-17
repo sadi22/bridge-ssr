@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
 import handleViewport from 'react-in-viewport';
+import ScrollAnimation from 'react-animate-on-scroll';
+
 import "./index.scss";
 
 
@@ -17,12 +19,11 @@ class Press extends Component{
                     <div className="col-lg-3 col-sm-6 single-col" key={i}>
                         <div className="single-press">
                             <a href={press.link} target='_blank'>
-                                {press.image ? <img
+                                {press.image ? <ScrollAnimation animateIn="zoomIn" animateOnce={true}><img
                                     src={press.image.url}
                                     alt={press.image.alt}
                                     title={press.image.title} 
-                                    data-aos="zoom-in" data-aos-duration="700" data-aos-delay="150"
-                                /> : ''}
+                                /></ScrollAnimation> : ''}
                             </a>
                         </div>
                     </div>
@@ -37,7 +38,7 @@ class Press extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-content">
-                                <h2  data-aos="fade-up" data-aos-delay="150">{Parser(title)}</h2>
+                                <ScrollAnimation animateIn="fadeInUp" delay={300} animateOnce={true}><h2>{Parser(title)}</h2></ScrollAnimation>
                             </div>
                         </div>
                     </div>

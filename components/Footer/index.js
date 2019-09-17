@@ -31,17 +31,9 @@ class Footer extends Component{
             }
             let as = item.object === 'page' ? `/${slug}` : `/${item.object}/${slug}`;
             return (
-                <motion.li 
+                <li 
                     key={item.ID}
-                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" } : { translateY: 50, opacity: 0, visibility:"hidden" }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 500,
-                        delay: index * 0.6,
-                        default: { duration: 0.6 },
-                    }}
+                    
                 >
                     <Link
                         as={`${as}`}
@@ -51,11 +43,20 @@ class Footer extends Component{
                     >
                         <a>{item.title}</a>
                     </Link>
-                </motion.li>
+                </li>
             );
         });
         return (
-            <footer className="site-footer">
+            <motion.footer 
+                initial={false}
+                animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
+                transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 500,
+                    delay: 0.6,
+                }}
+                className="site-footer">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-3">
@@ -63,17 +64,9 @@ class Footer extends Component{
                                 { logo ? (
                                     <Link href="/" as='/'>
                                         <a>
-                                            <motion.img 
+                                            <img 
                                                 src={logo}
-                                                initial={!inViewport && { translateY: 50, opacity: 0, visibility:"hidden" }}
-                                                animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" } : { translateY: 50, opacity: 0, visibility:"hidden" }}
-                                                transition={{
-                                                    type: "spring",
-                                                    stiffness: 100,
-                                                    damping: 500,
-                                                    delay: 0.6,
-                                                    default: { duration: 0.6 },
-                                                }}
+                                                
                                             />
                                         </a>
                                     </Link>
@@ -90,40 +83,19 @@ class Footer extends Component{
                         <div className="col-lg-3">
                             <div className="footer-social-contact text-center">
                                 <ul>
-                                    <motion.li
-                                        style={{marginRight: '10px'}}
-                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        transition={{
-                                            type: "spring",
-                                            stiffness: 100,
-                                            damping: 500,
-                                            delay: 0.6,
-                                            default: { duration: 0.6 },
-                                        }}
-                                    >
+                                    <li style={{marginRight: '10px'}}>
                                         <a 
                                             href={social.facebook} 
                                             title="Facebook" 
                                             target='_balnk'
                                             
                                         ><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
-                                    </motion.li>
-                                    <motion.li
-                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        transition={{
-                                            type: "spring",
-                                            stiffness: 100,
-                                            damping: 500,
-                                            delay: 0.6,
-                                            default: { duration: 0.6 },
-                                        }}
-                                    >
+                                    </li>
+                                    <li>
                                         <a href={social.linkedin} title="Linked-in" target='_balnk'>
                                             <FontAwesomeIcon icon={["fab", "linkedin-in"]} />
                                         </a>
-                                    </motion.li>
+                                    </li>
                                 </ul>
                             </div> 
                         </div>
@@ -135,7 +107,7 @@ class Footer extends Component{
                         </div>
                     </div>
                 </div>
-            </footer>
+            </motion.footer>
         )
     }
 }

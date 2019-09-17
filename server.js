@@ -91,6 +91,13 @@ app
       // renderAndCache(req, res, actualPage, queryParams);
     });
 
+    server.get('/test', (req, res) => {
+      const actualPage = '/test';
+      const queryParams = { slug: req.params.slug };
+      app.render(req, res, actualPage, queryParams);
+      // renderAndCache(req, res, actualPage, queryParams);
+    });
+
     server.get('/category/:slug', (req, res) => {
       const actualPage = '/category';
       const queryParams = { slug: req.params.slug };

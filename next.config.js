@@ -2,8 +2,14 @@ const path = require('path');
 const withSass = require('@zeit/next-sass');
 const withCSS = require('@zeit/next-css')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const withTM = require('next-transpile-modules');
 
-const nextConfig = withCSS(withSass({}));
+// const nextConfig = withPlugins(withCSS(withSass({})));
+const nextConfig = withCSS(withSass(
+    withTM({
+        transpileModules: ['gsap'],
+    })
+));
 module.exports = nextConfig;
 
 // const path = require('path');

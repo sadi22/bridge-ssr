@@ -1,14 +1,12 @@
 @import '../../src/styles/variables';
 @import '../../src/styles/extend-style';
 @import 'node_modules/@fortawesome/fontawesome-svg-core/styles';
-
 .bridge-user-type-container {
     padding-bottom: 30px;
     .only-mobile {
         display: none;
         @media #{$device_576_767} {
             display: block;
-
             p{
                 font-size: 25px;
                 font-family: "Trasandina W03 Medium";
@@ -63,7 +61,6 @@
                 &.user-type-selected-link {
                     display: none
                 }
-
                 &.user-type-selected-link:first-of-type{
                     display: flex;
                 }
@@ -93,7 +90,6 @@
             }
         }
     }
-
     .bridge-select-container {
         position: relative;
         margin-right: 30px;
@@ -129,7 +125,6 @@
                 padding-right: 0;
                 margin-right: 30px;
             }
-
             &:after {
                 position: absolute;
                 content: "";
@@ -217,11 +212,7 @@
                     margin-bottom: 0;
                 }
             }
-
-            .userdropdownType {
-                
-                
-            }
+           
         }
         
         .select-items-container > div:hover,
@@ -229,7 +220,6 @@
             color: $primary-color;
         }
     }
-
     .userdropdownType {
         a {
             color: #000;
@@ -238,7 +228,6 @@
             }
         }
     }
-
     .user-type-area {
         h3, .currentType {
             font-size: calc(28px + (40 - 25) * ((100vw - 320px) / (1920 - 320)))

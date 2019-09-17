@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import handleViewport from 'react-in-viewport';
 import "./index.scss";
 import $ from "jquery";
+import ScrollAnimation from 'react-animate-on-scroll';
 
 function featureMouseHover(e) {
     var dataID = e.target.getAttribute('data-id');
@@ -71,49 +72,28 @@ const FeatureBlock = (props) => {
     return (
         <div className="row align-items-center unique-reach" ref={innerRef}>
             <div className="col-lg-6">
-                <motion.div 
+                <ScrollAnimation 
                 className="unique-reach-image pos-relative"
-                initial={{translateX: -100, opacity:0}}
-                animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: -100, opacity:0}}
-                transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 500,
-                    delay: 0.3,
-                    default: { duration: 0.8 },
-                }}
+                animateIn="fadeInLeft" animateOnce={true}
                 >
                     <div className="overflow">
                         {featureImagesMarkup}
                     </div>
-                </motion.div>
+                </ScrollAnimation>
             </div>
             
             <div className="col-lg-5 ml-auto">
                 <div className="unique-reach-content">
                     <div className="section-title">
-                        <motion.h3
-                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                        transition={{
-                        type: "spring",
-                        stiffness: 60,
-                        damping: 500,
-                        delay: 0.5,
-                        default: { duration: 0.8 },
-                        }}
-                        >{Parser(feature_list_title)}</motion.h3>
-                        <motion.p
-                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                        transition={{
-                        type: "spring",
-                        stiffness: 60,
-                        damping: 500,
-                        delay: 0.7,
-                        default: { duration: 0.8 },
-                        }}
-                        >{Parser(feature_description)}</motion.p>
+                    <ScrollAnimation 
+                        animateIn="fadeInDown" animateOnce={true} delay={300}
+                        >
+                        <h3>{Parser(feature_list_title)}</h3></ScrollAnimation>
+                        <ScrollAnimation 
+                        animateIn="fadeInDown" animateOnce={true} delay={400}
+                        >
+                        <p>{Parser(feature_description)}</p></ScrollAnimation>
+                        
                     </div>
                     
                     <ul className="vertical-line-wrapper unique-reach-wrapper">

@@ -5,6 +5,7 @@ import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
 import $ from "jquery";
+import ScrollAnimation from 'react-animate-on-scroll';
 
 import "./index.scss";
 
@@ -39,13 +40,13 @@ class Feature extends Component{
                 if(i == 0) defaultImage = feature.feature_image;
                 initialDelay = initialDelay + 100;
 			    return (
+                    
                     <li 
                         key={i}
-                        data-aos="fade-right" data-aos-delay="150"
                         className={`${i==0 ? 'active': ''} feature-list`} 
                         data-id={i}
                         onMouseOver={this.featureMouseHover.bind(this)}
-                    >{feature.feature_title}</li>
+                    ><ScrollAnimation animateIn="slideInLeft" animateOnce={true} delay={i*300}>{feature.feature_title}</ScrollAnimation></li>
 			      );
 			    });
         }
@@ -53,6 +54,7 @@ class Feature extends Component{
         if(feature_list){
     		featureImagesMarkup = feature_list.map((feature, i) => {
 			    return (
+                    
                     <motion.img 
                         key={i}
                         style={ i===0 ? {display: 'block'} : {display: 'none'}}
@@ -61,6 +63,7 @@ class Feature extends Component{
                         title={feature.feature_image.title}
                         className="feature-list-hovered-image"
                         id={`feature-list-hovered-image-${i}`}
+                        
                         whileHover={{
                             scale: 1.1
                         }}
@@ -74,20 +77,26 @@ class Feature extends Component{
             <div className="feature">
                 
                 <div className="feature-list-image">
+                    <ScrollAnimation animateIn="slideInRight" animateOnce={true}>
                     <img 
                         src="/static/images/feature-list-lines-accent.png"
                         alt="bg-img" 
                         className="bg-image" 
-                        data-aos="fade-left" data-aos-delay="450"
                     />
+                    </ScrollAnimation>
                 </div>
             
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <h2 data-aos="fade-up" data-aos-delay="300">{Parser(title)}</h2>
-                                <p data-aos="fade-up" data-aos-delay="400">{Parser(description)}</p>
+                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                                    <h2>{Parser(title)}</h2>
+                                </ScrollAnimation>
+                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={400}>
+                                    <p className='primary-color'>{Parser(description)}</p>
+                                </ScrollAnimation>
+                                
                             </div>
                         </div>
                     </div>
@@ -112,10 +121,9 @@ class Feature extends Component{
                 </div>
                 
                 <div className="hovered-image-wrapper" id='hovered-image-wrapper'>
-                    <div data-aos="fade-left" data-aos-delay="700">
-                        
+                    <ScrollAnimation animateIn="slideInRight" animateOnce={true}>     
                         {featureImagesMarkup}
-                    </div>
+                    </ScrollAnimation>
                 </div>
             </div>
             </Fragment>

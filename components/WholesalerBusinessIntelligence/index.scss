@@ -33,7 +33,7 @@
             margin-top: 40px;
         }
         
-        & >h2{
+        & > div > h2{
            margin-bottom: 74px; 
             
             @media #{$device_992_1199} {

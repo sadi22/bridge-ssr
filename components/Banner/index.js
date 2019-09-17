@@ -15,6 +15,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown, faEnvelope);
+import ScrollAnimation from 'react-animate-on-scroll';
 
 import "./index.scss";
 
@@ -208,43 +209,14 @@ class Banner extends Component{
                           <div className="col-12">
                               <div className="banner-content text-center">
                                   <div className="banner-text">
-                                  <motion.h1 
-                                          initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
-                                          animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                          transition={{
-                                            type: "spring",
-                                            stiffness: 60,
-                                            damping: 500,
-                                            delay: 0.7,
-                                            default: { duration: .8 },
-                                          }}
-                                          
-                                      >{ heading }</motion.h1>
-                                      <motion.p
-                                          initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
-                                          animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                          transition={{
-                                            type: "spring",
-                                            stiffness: 100,
-                                            damping: 500,
-                                            delay: 0.9,
-                                            default: { duration: 0.8 },
-                                          }}
-                                      >{ description }</motion.p>
+                                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true}><h1>{ heading } </h1></ScrollAnimation>
+                                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={400}><p>{description}</p></ScrollAnimation>
                                   </div>
 
                                   {gravity_form_id && 
-                                  <motion.div 
+                                  <ScrollAnimation
                                     class="newsletter-form"
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" } }
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                      type: "spring",
-                                      stiffness: 100,
-                                      damping: 500,
-                                      delay: 0.9,
-                                      default: { duration: 0.8 },
-                                    }}
+                                    animateIn="fadeInUp" animateOnce={true} delay={500}
                                   >
                                       <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
                                           <span className="input-wrapper pos-relative">
@@ -257,51 +229,35 @@ class Banner extends Component{
                                               {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
                                           </button>
                                       </form>
-                                  </motion.div>}
+                                  </ScrollAnimation>}
 
                                   
 
-                                  { image ? <motion.img 
+                                  { image ? <ScrollAnimation animateIn="zoomIn" animateOnce={true} delay={600}><img 
                                       src={image.url} 
                                       alt={image.alt} 
                                       title={image.title} 
                                       className="banner-img img-fluid" 
-                                      initial={{scale: 0.7, opacity:0}}
-                                      animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
-                                      transition={{
-                                          type: "spring",
-                                          stiffness: 100,
-                                          damping: 500,
-                                          delay: 0.9,
-                                          default: { duration: 0.8 },
-                                      }}
-                                  />: ''}
+                                      
+                                  /></ScrollAnimation>: ''}
                               </div>
 
                               {enable_user_type_dropdown ? 
-                                <motion.div 
-                                  className="banner-select-option text-center"
-                                  initial={{translateY: 50, visibility:"hidden"}}
-                                  animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{translateY: 50, visibility:"hidden"}}
-                                  transition={{
-                                      type: "spring",
-                                      stiffness: 100,
-                                      damping: 500,
-                                      delay: 1,
-                                      default: { duration: 0.8 },
-                                  }}
-                                >
-                                    <p>{Parser(user_heading)}</p>
-                                    <div className="business-type-area">
-                                        <h3><span>{text}</span></h3>
-                                        <div className="bridge-select">
-                                            <select>
-                                              {userDropdownMarkup}
-                                            </select>
-                                        </div>
-                                        {userDropdownLinkMarkup}
-                                    </div>
-                                </motion.div>
+                                <ScrollAnimation 
+                                className="banner-select-option text-center"
+                                animateIn="fadeInUp" animateOnce={true} delay={600}
+                              >
+                                  <p>{Parser(user_heading)}</p>
+                                  <div className="business-type-area">
+                                      <h3><span>{text}</span></h3>
+                                      <div className="bridge-select">
+                                          <select>
+                                            {userDropdownMarkup}
+                                          </select>
+                                      </div>
+                                      {userDropdownLinkMarkup}
+                                  </div>
+                              </ScrollAnimation>
                               : ''}
                           </div>
                       </div>

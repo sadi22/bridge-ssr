@@ -3,27 +3,26 @@ import React, { Component, Fragment } from 'react';
 import { motion } from "framer-motion";
 import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 import "./index.scss";
 
 const FeatureBlock = (props) => {
     const { inViewport, innerRef, feature, index } = props;
     return (
-        <div className="col-lg-6" ref={innerRef} data-aos="fade-up" data-aos-delay={`${index*400}`}>
+        <ScrollAnimation className="col-lg-6" animateIn="fadeInUp" animateOnce={true} delay={300*index}>
             <div className="single-drive">   
-                
                 <span  className="icon" style={{backgroundColor: feature.image_background_color}} >
-                    { feature.image ? <motion.img 
+                    { feature.image ? <ScrollAnimation animateIn="fadeInLeft" animateOnce={true} delay={400*index}><img 
                         src={feature.image.url} alt={feature.image.alt} title={feature.image.title} className="img-fluid" 
-                        data-aos="fade-up" data-aos-delay={`${index*500}`}
-                    />: ''}
+                    /></ScrollAnimation>: ''}
                 </span>
                 <div className="drive-content">
-                    <h4 data-aos="fade-left" data-aos-delay={`${index*600}`}>{feature.title}</h4>
-                    <p  data-aos="fade-left" data-aos-delay={`${index*800}`}>{feature.description}</p>
+                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={500*index}><h4>{feature.title}</h4></ScrollAnimation>
+                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={600*index}><p>{feature.description}</p></ScrollAnimation>
                 </div>
             </div>
-        </div>
+        </ScrollAnimation>
     );
   };
    
@@ -43,7 +42,7 @@ class DriveSales extends Component{
                             <div className="row">
                                 <div className="col-12">
                                     <div className="section-title text-center">
-                                        <h2 data-aos="fade-up" data-aos-delay="300">{Parser(title)}</h2>
+                                        <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={300}><h2>{title}</h2></ScrollAnimation>
                                     </div>
                                 </div>
                             </div>

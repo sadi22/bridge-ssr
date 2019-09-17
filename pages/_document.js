@@ -28,8 +28,8 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
           <link rel="stylesheet" href="/static/styles/vendor.min.css" />
+          <link rel="stylesheet" href="/static/styles/animate.min.css" />
           <link rel="stylesheet" href="/static/styles/style.css" />
-          <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css" />
         </Head>
         <body>
           

@@ -5,6 +5,7 @@ import Parser from 'html-react-parser';
 import handleViewport from 'react-in-viewport';
 import { motion } from "framer-motion"
 import "./index.scss";
+import ScrollAnimation from 'react-animate-on-scroll';
 
 
 class WholesalerBusinessIntelligence extends Component{
@@ -15,43 +16,20 @@ class WholesalerBusinessIntelligence extends Component{
     	if(feature_list){            
     		featureListMarkup = feature_list.map((feature, i) => {
 			    return (
-                    <motion.div 
+                    <ScrollAnimation 
                     className="single-block supply" 
                     key={i}
-                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                    transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 500,
-                    delay: index * 1.2,
-                    default: { duration: 0.8 },
-                    }}
+                    animateIn="slideInLeft" animateOnce={true} delay={400}
                     >
-                        <motion.h4
-                            initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                            animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                            transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 500,
-                            delay:1.2,
-                            default: { duration: 0.8 },
-                            }}
-                        >{Parser(feature.feature_title)}</motion.h4>
-                        <motion.p
-                            initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                            animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                            transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 500,
-                            delay:1.4,
-                            default: { duration: 0.8 },
-                            }}
-                        >{Parser(feature.feature_description)}</motion.p>
-                        
-                    </motion.div>
+                        <ScrollAnimation 
+                        animateIn="fadeInUp" animateOnce={true} delay={300}
+                        >
+                        <h3>{Parser(feature.feature_title)}</h3></ScrollAnimation>
+                        <ScrollAnimation 
+                        animateIn="fadeInUp" animateOnce={true} delay={400}
+                        >
+                        <p>{Parser(feature.feature_description)}</p></ScrollAnimation>
+                    </ScrollAnimation>
 			      );
 			    });
     	}
@@ -60,17 +38,8 @@ class WholesalerBusinessIntelligence extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-7">
-                            <motion.div 
-                            className="business-intelligence-img img-box-shadow"
-                            initial={{ translateX: -100, opacity: 0, visibility:"hidden" }}
-                            animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -100, opacity: 0, visibility:"hidden" }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 100,
-                                damping: 500,
-                                delay: 0.8,
-                                duration: 1,
-                            }}
+                            <ScrollAnimation 
+                            animateIn="fadeInUp" animateOnce={true} delay={400}
                             >
                                 <div className="overflow">
                                     {image ? <motion.img 
@@ -83,21 +52,14 @@ class WholesalerBusinessIntelligence extends Component{
                                         }}
                                      /> : ''}
                                 </div>
-                            </motion.div>
+                            </ScrollAnimation>
                         </div>
                         <div className="col-lg-5">
                             <div className="business-intelligence-content">
-                            <motion.h2
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 100,
-                                    damping: 500,
-                                    delay:1,
-                                    default: { duration: 0.8 },
-                                    }}
-                                >{Parser(title)}</motion.h2>
+                            <ScrollAnimation 
+                        animateIn="fadeInUp" animateOnce={true} delay={300}
+                        >
+                        <h2>{Parser(title)}</h2></ScrollAnimation>
                                 {featureListMarkup}
                             </div>
                         </div>
