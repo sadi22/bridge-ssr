@@ -6,6 +6,7 @@ import handleViewport from 'react-in-viewport';
 import { motion } from "framer-motion"
 import "./index.scss";
 import ScrollAnimation from 'react-animate-on-scroll';
+import {Fade} from 'react-reveal';
 
 
 class WholesalerBusinessIntelligence extends Component{
@@ -16,20 +17,12 @@ class WholesalerBusinessIntelligence extends Component{
     	if(feature_list){            
     		featureListMarkup = feature_list.map((feature, i) => {
 			    return (
-                    <ScrollAnimation 
-                    className="single-block supply" 
-                    key={i}
-                    animateIn="slideInLeft" animateOnce={true} delay={400}
-                    >
-                        <ScrollAnimation 
-                        animateIn="fadeInUp" animateOnce={true} delay={300}
-                        >
-                        <h3>{Parser(feature.feature_title)}</h3></ScrollAnimation>
-                        <ScrollAnimation 
-                        animateIn="fadeInUp" animateOnce={true} delay={400}
-                        >
-                        <p>{Parser(feature.feature_description)}</p></ScrollAnimation>
-                    </ScrollAnimation>
+                    <Fade bottom delay={i*300} duration={1000} distance="50px" key={i}>
+                        <div className="single-block supply">
+                            <h3>{Parser(feature.feature_title)}</h3>
+                            <p>{Parser(feature.feature_description)}</p>
+                        </div>
+                    </Fade>
 			      );
 			    });
     	}
@@ -38,9 +31,7 @@ class WholesalerBusinessIntelligence extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-7">
-                            <ScrollAnimation 
-                            animateIn="fadeInUp" animateOnce={true} delay={400}
-                            >
+                            <Fade left delay={500} duration={1000} distance="100px">
                                 <div className="overflow">
                                     {image ? <motion.img 
                                         src={image.url} 
@@ -48,18 +39,16 @@ class WholesalerBusinessIntelligence extends Component{
                                         title={image.title} 
                                         className="img-fluid"
                                         whileHover={{
-                                            scale: 1.1
+                                            scale: 1.1,
+                                            duration: 1,
                                         }}
                                      /> : ''}
                                 </div>
-                            </ScrollAnimation>
+                            </Fade>
                         </div>
                         <div className="col-lg-5">
-                            <div className="business-intelligence-content">
-                            <ScrollAnimation 
-                        animateIn="fadeInUp" animateOnce={true} delay={300}
-                        >
-                        <h2>{Parser(title)}</h2></ScrollAnimation>
+                            <div className="business-intelligence-content">                                
+                                <Fade bottom delay={300} duration={1000} distance="100px"><div><h2>{Parser(title)}</h2></div></Fade>
                                 {featureListMarkup}
                             </div>
                         </div>

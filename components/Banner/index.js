@@ -15,7 +15,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown, faEnvelope);
-import ScrollAnimation from 'react-animate-on-scroll';
+
 import {Fade} from 'react-reveal';
 
 import "./index.scss";
@@ -201,7 +201,7 @@ class Banner extends Component{
                         type: "spring",
                         stiffness: 60,
                         damping: 500,
-                        delay: 0.7,
+                        delay: 0,
                       }} 
                       className="overlay"
                   ></motion.div>
@@ -209,51 +209,45 @@ class Banner extends Component{
                   <div className="container">
                       <div className="row">
                           <div className="col-12">
-                              <div className="banner-content text-center">
+                                <div className="banner-content text-center">
                                   
                                   <div className="banner-text">
-                                    <Fade delay={300} bottom><h1>{ heading } </h1></Fade>
-                                    <Fade delay={400} bottom><p>{description}</p></Fade>
-                                    {/* <ScrollAnimation animateIn="fadeInUp" animateOnce={true}><h1>{ heading } </h1></ScrollAnimation>
-                                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={400}><p>{description}</p></ScrollAnimation> */}
+                                    <Fade bottom delay={800} duration={1000}><h1>{ heading } </h1></Fade>
+                                    <Fade bottom delay={1100} duration={1000}><p>{description}</p></Fade>
                                   </div>
 
                                   {gravity_form_id && 
-                                  <ScrollAnimation
-                                    class="newsletter-form"
-                                    animateIn="fadeInUp" animateOnce={true} delay={500}
-                                  >
-                                      <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
-                                          <span className="input-wrapper pos-relative">
-                                              <FontAwesomeIcon icon={["fas", "envelope"]} />
-                                              <input type="email" name="email" placeholder="Enter your email" required/>
-                                          </span>
-                                          <button class="btn-default">
-                                              Get Started
-                                              {!this.state.startSubmission &&<svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>}
-                                              {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
-                                          </button>
-                                      </form>
-                                  </ScrollAnimation>}
+                                    <Fade bottom delay={1300} duration={1000}>
+                                        <div class="newsletter-form">
+                                            <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
+                                                <span className="input-wrapper pos-relative">
+                                                  <FontAwesomeIcon icon={["fas", "envelope"]} />
+                                                  <input type="email" name="email" placeholder="Enter your email" required/>
+                                                </span>
+                                                <button class="btn-default">
+                                                  Get Started
+                                                  {!this.state.startSubmission &&<svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><g><g><path fill="#1fc1c3" d="M11.23 3.84L7.6.256a.885.885 0 0 0-1.245 0 .867.867 0 0 0 0 1.234l2.13 2.094H.88c-.486 0-.88.391-.88.873s.394.873.88.873h7.604L6.355 7.424a.867.867 0 0 0 0 1.234.881.881 0 0 0 1.245 0l3.63-3.584a.867.867 0 0 0 0-1.234z"/></g></g></svg>}
+                                                  {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </Fade>}
 
                                   
 
-                                  { image ? <ScrollAnimation animateIn="zoomIn" animateOnce={true} delay={600}><img 
+                                  { image ? <Fade delay={1500} duration={1000}><img 
                                       src={image.url} 
                                       alt={image.alt} 
                                       title={image.title} 
                                       className="banner-img img-fluid" 
                                       
-                                  /></ScrollAnimation>: ''}
+                                  /></Fade>: ''}
                               </div>
 
                               {enable_user_type_dropdown ? 
-                                <ScrollAnimation 
-                                className="banner-select-option text-center"
-                                animateIn="fadeInUp" animateOnce={true} delay={600}
-                              >
-                                  <p>{Parser(user_heading)}</p>
-                                  <div className="business-type-area">
+                                <div className="banner-select-option text-center">
+                                  <Fade delay={500} duration={1000}><p>{Parser(user_heading)}</p>
+                                   <div className="business-type-area">
                                       <h3><span>{text}</span></h3>
                                       <div className="bridge-select">
                                           <select>
@@ -262,7 +256,8 @@ class Banner extends Component{
                                       </div>
                                       {userDropdownLinkMarkup}
                                   </div>
-                              </ScrollAnimation>
+                                    </Fade>
+                                </div>
                               : ''}
                           </div>
                       </div>

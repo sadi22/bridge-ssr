@@ -3,26 +3,29 @@ import React, { Component, Fragment } from 'react';
 import { motion } from "framer-motion";
 import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
-import ScrollAnimation from 'react-animate-on-scroll';
+import {Fade} from 'react-reveal';
 
 import "./index.scss";
 
 const FeatureBlock = (props) => {
     const { inViewport, innerRef, feature, index } = props;
     return (
-        <ScrollAnimation className="col-lg-6" animateIn="fadeInUp" animateOnce={true} delay={300*index}>
-            <div className="single-drive">   
-                <span  className="icon" style={{backgroundColor: feature.image_background_color}} >
-                    { feature.image ? <ScrollAnimation animateIn="fadeInLeft" animateOnce={true} delay={400*index}><img 
-                        src={feature.image.url} alt={feature.image.alt} title={feature.image.title} className="img-fluid" 
-                    /></ScrollAnimation>: ''}
-                </span>
-                <div className="drive-content">
-                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={500*index}><h4>{feature.title}</h4></ScrollAnimation>
-                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={600*index}><p>{feature.description}</p></ScrollAnimation>
+        <div className="col-lg-6">
+            <Fade bottom delay={200*index} duration={1000} distance="50px">
+                <div className="single-drive">   
+                    <span  className="icon" style={{backgroundColor: feature.image_background_color}} >
+                        { feature.image ?
+                        <Fade bottom delay={350*index} duration={1300}>
+                            <img src={feature.image.url} alt={feature.image.alt} title={feature.image.title} className="img-fluid" 
+                        /></Fade>: ''}
+                    </span>
+                    <div className="drive-content">
+                        <Fade right cascade delay={450*index} duration={800}  distance="150px"><h4>{feature.title}</h4></Fade>
+                        <Fade right cascade delay={550*index} duration={800}  distance="150px"><p>{feature.description}</p></Fade>
+                    </div>
                 </div>
-            </div>
-        </ScrollAnimation>
+            </Fade>
+        </div>
     );
   };
    
@@ -42,7 +45,7 @@ class DriveSales extends Component{
                             <div className="row">
                                 <div className="col-12">
                                     <div className="section-title text-center">
-                                        <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={300}><h2>{title}</h2></ScrollAnimation>
+                                        <Fade bottom delay={300} duration={1000}><h2>{title}</h2></Fade>
                                     </div>
                                 </div>
                             </div>

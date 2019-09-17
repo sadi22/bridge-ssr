@@ -5,7 +5,7 @@ import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
 import $ from "jquery";
-import ScrollAnimation from 'react-animate-on-scroll';
+import {Fade} from 'react-reveal';
 
 import "./index.scss";
 
@@ -40,13 +40,14 @@ class Feature extends Component{
                 if(i == 0) defaultImage = feature.feature_image;
                 initialDelay = initialDelay + 100;
 			    return (
-                    
+                    <Fade right delay={initialDelay} duration={1000} distance="20px">
                     <li 
                         key={i}
                         className={`${i==0 ? 'active': ''} feature-list`} 
                         data-id={i}
                         onMouseOver={this.featureMouseHover.bind(this)}
-                    ><ScrollAnimation animateIn="slideInLeft" animateOnce={true} delay={i*300}>{feature.feature_title}</ScrollAnimation></li>
+                    >{feature.feature_title}</li>
+                    </Fade>
 			      );
 			    });
         }
@@ -77,26 +78,21 @@ class Feature extends Component{
             <div className="feature">
                 
                 <div className="feature-list-image">
-                    <ScrollAnimation animateIn="slideInRight" animateOnce={true}>
-                    <img 
-                        src="/static/images/feature-list-lines-accent.png"
-                        alt="bg-img" 
-                        className="bg-image" 
-                    />
-                    </ScrollAnimation>
+                    <Fade right delay={500} duration={1000} distance="250px">
+                        <img 
+                            src="/static/images/feature-list-lines-accent.png"
+                            alt="bg-img" 
+                            className="bg-image" 
+                        />
+                    </Fade>
                 </div>
             
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                                    <h2>{Parser(title)}</h2>
-                                </ScrollAnimation>
-                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={400}>
-                                    <p className='primary-color'>{Parser(description)}</p>
-                                </ScrollAnimation>
-                                
+                                <Fade bottom delay={200} duration={1000} distance="50px"><h2>{Parser(title)}</h2> </Fade>
+                                <Fade bottom delay={500} duration={1000} distance="50px"> <p className='primary-color'>{Parser(description)}</p> </Fade>
                             </div>
                         </div>
                     </div>
@@ -121,9 +117,9 @@ class Feature extends Component{
                 </div>
                 
                 <div className="hovered-image-wrapper" id='hovered-image-wrapper'>
-                    <ScrollAnimation animateIn="slideInRight" animateOnce={true}>     
+                    <Fade right delay={1000} duration={1000} distance="100px">  
                         {featureImagesMarkup}
-                    </ScrollAnimation>
+                    </Fade>
                 </div>
             </div>
             </Fragment>

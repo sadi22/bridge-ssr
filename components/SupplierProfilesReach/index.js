@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import handleViewport from 'react-in-viewport';
 import "./index.scss";
 import $ from "jquery";
-import ScrollAnimation from 'react-animate-on-scroll';
+import {Fade} from 'react-reveal';
 
 function featureMouseHover(e) {
     var dataID = e.target.getAttribute('data-id');
@@ -48,22 +48,14 @@ const FeatureBlock = (props) => {
         featureListMarkup = features_text_with_image.map((feature, i) => {
             if(i == 0) defaultImage = feature.feature_image.url;
             return (
-                <motion.li 
-                    key={i}
-                    initial={{ translateX: 50, opacity: 0, visibility:"hidden" }}
-                    animate={inViewport ? { opacity: 1, translateX: 0, visibility:"visible"}:{ translateX: 50, opacity: 0, visibility:"hidden" }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 60,
-                        damping: 500,
-                        delay: i * 0.2,
-                        default: { duration: 1 },
-                    }}
-                
-                    className={`${i==0 ? 'active': ''} unique-reach-list`} 
-                    data-id={i}
-                    onMouseOver={featureMouseHover.bind(this)}
-                >{feature.feature_text}</motion.li>
+                <Fade right delay={i*200} duration={1000} distance="70px">
+                    <li 
+                        key={i}
+                        className={`${i==0 ? 'active': ''} unique-reach-list`} 
+                        data-id={i}
+                        onMouseOver={featureMouseHover.bind(this)}
+                    >{feature.feature_text}</li>
+                </Fade>
                 );
             });
     }
@@ -72,27 +64,20 @@ const FeatureBlock = (props) => {
     return (
         <div className="row align-items-center unique-reach" ref={innerRef}>
             <div className="col-lg-6">
-                <ScrollAnimation 
-                className="unique-reach-image pos-relative"
-                animateIn="fadeInLeft" animateOnce={true}
-                >
-                    <div className="overflow">
-                        {featureImagesMarkup}
+                <Fade left delay={700} duration={1000} distance="100px">
+                    <div className="unique-reach-image pos-relative">
+                        <div className="overflow">
+                            {featureImagesMarkup}
+                        </div>
                     </div>
-                </ScrollAnimation>
+                </Fade>
             </div>
             
             <div className="col-lg-5 ml-auto">
                 <div className="unique-reach-content">
                     <div className="section-title">
-                    <ScrollAnimation 
-                        animateIn="fadeInDown" animateOnce={true} delay={300}
-                        >
-                        <h3>{Parser(feature_list_title)}</h3></ScrollAnimation>
-                        <ScrollAnimation 
-                        animateIn="fadeInDown" animateOnce={true} delay={400}
-                        >
-                        <p>{Parser(feature_description)}</p></ScrollAnimation>
+                    <Fade bottom delay={300} duration={1000} distance="50px"><h3>{Parser(feature_list_title)}</h3></Fade>
+                    <Fade bottom delay={500} duration={1000} distance="50px"><p>{Parser(feature_description)}</p></Fade>
                         
                     </div>
                     
@@ -121,17 +106,7 @@ class SupplierProfilesReach extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
-                            <motion.h2
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 60,
-                                    damping: 500,
-                                    delay: 0.4,
-                                    default: { duration: .8 },
-                                    }}
-                            >{Parser(title)}</motion.h2>
+                                <Fade bottom delay={300} duration={1000}><h2>{Parser(title)}</h2></Fade>
                             </div>
                         </div>
                     </div>
@@ -140,57 +115,28 @@ class SupplierProfilesReach extends Component{
                         <div className="col-lg-5">
                             <div className="customer-profiling-content">
                                 <div className="section-title">
-                                    <motion.h3
-                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        transition={{
-                                        type: "spring",
-                                        stiffness: 60,
-                                        damping: 500,
-                                        delay: 0.7,
-                                        default: { duration: .8 },
-                                        }}
-                                    >{Parser(subtitle)}</motion.h3>
-                                    <motion.div
-                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        transition={{
-                                        type: "spring",
-                                        stiffness: 60,
-                                        damping: 500,
-                                        delay: 0.9,
-                                        default: { duration: .8 },
-                                        }}
-                                    >{Parser(description)}</motion.div>
+                                    <Fade bottom delay={500} duration={1000} distance="50px"><h3>{Parser(subtitle)}</h3></Fade>
+                                    <Fade bottom delay={700} duration={1000} distance="50px"><div>{Parser(description)}</div></Fade>
                                 </div>
                             </div>
                         </div>
                         
                         <div className="col-lg-6 ml-auto">
-                            <motion.div 
-                            className="customer-profiling-image pos-relative"
-                            initial={{translateX: 100, opacity:0}}
-                            animate={inViewport ? { translateX: 0, opacity: 1 }:{translateX: 100, opacity:0}}
-                            transition={{
-                                type: "spring",
-                                stiffness: 100,
-                                damping: 500,
-                                delay: 1,
-                                default: { duration: 0.8 },
-                            }}
-                            >
-                                <div className="overflow">
-                                    { image ? <motion.img 
-                                            src={image.url}
-                                            alt={image.alt} 
-                                            title={image.title} 
-                                            className="img-fluid"
-                                            whileHover={{
-                                                scale: 1.1
-                                              }}
-                                        />: ''}
+                            <Fade right delay={900} duration={1000} distance="100px">
+                                <div className="customer-profiling-image pos-relative">
+                                    <div className="overflow">
+                                        { image ? <motion.img 
+                                                src={image.url}
+                                                alt={image.alt} 
+                                                title={image.title} 
+                                                className="img-fluid"
+                                                whileHover={{
+                                                    scale: 1.1
+                                                  }}
+                                            />: ''}
+                                    </div>
                                 </div>
-                            </motion.div>
+                            </Fade>
                         </div>
                     </div>
             

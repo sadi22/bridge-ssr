@@ -6,6 +6,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import handleViewport from 'react-in-viewport';
 import Config from '../../config';
 import { CSSTransition } from "react-transition-group";
+import {Fade} from 'react-reveal';
 import "./index.scss";
 
 const linkStyle = {
@@ -111,40 +112,35 @@ class Menu extends Component {
             }
         } 
         return (
+            <Fade delay={600} duration={1000}>
             <header className="header-main">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <CSSTransition
-                                in={inViewport}
-                                timeout={350}
-                                classNames="navbar-animation"
-                                unmountOnExit
-                            >
-                                <Navbar expand="lg">
-                                    <Navbar.Brand href="/">
-                                        { logo ? (
-                                            <Link
-                                                as='/' 
-                                                href="/"
-                                            >
-                                                <img src={logo}/>
-                                            </Link>
-                                        ) : '' }
-                                    </Navbar.Brand>
-                                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                                    <Navbar.Collapse id="basic-navbar-nav">
-                                        <Nav className="m-auto">
-                                            {menuItems}
-                                        </Nav>
-                                        {getStartedLink()}
-                                    </Navbar.Collapse>
-                                </Navbar>
-                            </CSSTransition>
+                            <Navbar expand="lg">
+                                <Navbar.Brand href="/">
+                                    { logo ? (
+                                        <Link
+                                            as='/' 
+                                            href="/"
+                                        >
+                                            <img src={logo}/>
+                                        </Link>
+                                    ) : '' }
+                                </Navbar.Brand>
+                                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                                <Navbar.Collapse id="basic-navbar-nav">
+                                    <Nav className="m-auto">
+                                        {menuItems}
+                                    </Nav>
+                                    {getStartedLink()}
+                                </Navbar.Collapse>
+                            </Navbar>
                         </div>
                     </div>
                 </div>
             </header>
+</Fade>
         );
     }
 }

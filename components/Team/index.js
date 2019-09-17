@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fab);
 import ScrollAnimation from 'react-animate-on-scroll';
+import {Fade, Zoom} from 'react-reveal';
 
 
 const TeamBlock = (props) => {
@@ -17,7 +18,7 @@ const TeamBlock = (props) => {
     return (
         <div className="col-lg-4 col-sm-6 single-col" ref={innerRef}>
             <div className="single-member text-center">
-                <ScrollAnimation className="member-img overflow" animateIn="zoomIn" animateOnce={true}>
+                <Zoom bottomclassName="member-img overflow">
                     {team.image ? 
                     
                     <motion.img
@@ -29,8 +30,8 @@ const TeamBlock = (props) => {
                     /> 
                     : ''}
                     
-                </ScrollAnimation>
-                <ScrollAnimation animateIn="zoomIn" animateOnce={true}>
+                </Zoom>
+                <Zoom delay={400}>
                     <h5>{team.name}</h5>
                     <h6>{team.designation}</h6>
                     <ul className="social">
@@ -38,7 +39,7 @@ const TeamBlock = (props) => {
                             <a href={team.linkedin_link} target="_blank" title="Linked In"><FontAwesomeIcon icon={["fab", "linkedin-in"]} /></a>
                         </li>
                     </ul>
-                </ScrollAnimation>
+                </Zoom>
             </div>
         </div>
     );

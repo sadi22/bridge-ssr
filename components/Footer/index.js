@@ -10,6 +10,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit);
+import {Fade} from 'react-reveal';
 
 const getSlug = url => {
     const parts = url.split('/');
@@ -47,16 +48,8 @@ class Footer extends Component{
             );
         });
         return (
-            <motion.footer 
-                initial={false}
-                animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 500,
-                    delay: 0.6,
-                }}
-                className="site-footer">
+        <Fade delay={600} duration={1000}>
+            <footer className="site-footer">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-3">
@@ -107,7 +100,8 @@ class Footer extends Component{
                         </div>
                     </div>
                 </div>
-            </motion.footer>
+            </footer>
+        </Fade>
         )
     }
 }

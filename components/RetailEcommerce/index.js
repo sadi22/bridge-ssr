@@ -13,7 +13,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 library.add(faEdit, faCaretDown, faEnvelope);
-import ScrollAnimation from 'react-animate-on-scroll';
+import {Fade} from 'react-reveal';
 
 import axios from 'axios';
 import "./index.scss";
@@ -76,56 +76,46 @@ class RetailEcommerce extends Component{
                     <div className="row">
                         <div className={`${enable_double_line_heading ? 'col-lg-8' : 'col-12'} m-auto`}>
                             <div className="section-title text-center">
-                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                                    <h2>{Parser(title)}</h2>
-                                </ScrollAnimation>
-                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={300}>
-                                    <p className='primary-color'>{Parser(sub_title)}</p>
-                                </ScrollAnimation>
-                                
+                                <Fade bottom delay={700} duration={1000}> <h2>{Parser(title)}</h2> </Fade>
+                                <Fade bottom delay={900} duration={1000}> <p className='primary-color'>{Parser(sub_title)}</p> </Fade>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-lg-6">
-                            <ScrollAnimation
-                                className="retailer-content"
-                                animateIn="fadeInUp" animateOnce={true} delay={300}
-                            >
-                                {Parser(left_text)}
-                                {gravity_form_id &&  <ScrollAnimation
-                                    className="newsletter-form retailer-newsletter-form"
-                                    animateIn="fadeInUp" animateOnce={true} delay={400}
-                                    >
-                                    <h6>{Parser(getting_started_text)}</h6>
-                                    <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
-                                        <span className="input-wrapper pos-relative">
-                                            <FontAwesomeIcon icon={["fas", "envelope"]} />
-                                            <input type="email" name="email" placeholder="Enter your email" required/>
-                                        </span>
-                                        <button className="btn-default">
-                                            Get Started
-                                            {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
-                                        </button>
-                                    </form>
-                                </ScrollAnimation>}
-                            </ScrollAnimation>
+                            <div className="retailer-content">
+                                <Fade bottom delay={1000} duration={1000}>{Parser(left_text)}</Fade>
+                                {gravity_form_id &&  
+                                <div className="newsletter-form retailer-newsletter-form">
+                                    <Fade bottom delay={1200} duration={1000}><h6>{Parser(getting_started_text)}</h6></Fade>
+                                    <Fade bottom delay={1400} duration={1000}>
+                                        <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
+                                                <span className="input-wrapper pos-relative">
+                                                    <FontAwesomeIcon icon={["fas", "envelope"]} />
+                                                    <input type="email" name="email" placeholder="Enter your email" required/>
+                                                </span>
+                                            <button className="btn-default">
+                                                Get Started
+                                                {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
+                                            </button>
+                                        </form>
+                                    </Fade>
+                                </div>}
+                            </div>
                         </div>
                         <div className="col-lg-6">
                             <div className={`${enable_drop_shadow ? 'image-shadow' : ''} retailer-image pos-relative`}>
                                 
                                 {right_image ? 
-                                <ScrollAnimation 
-                                    className="img-wrapper"
-                                    animateIn="slideInRight" animateOnce={true} delay={600}
-                                    >
+                                <Fade right delay={1500} duration={1000} distance="100px">
+                                <div className="img-wrapper">
                                     <motion.img 
                                     src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"
                                     whileHover={{
                                         scale: 1.1
                                     }}
                                     />
-                                </ScrollAnimation>: ''}
+                                </div></Fade>: ''}
                             </div>
                         </div>
                     </div>

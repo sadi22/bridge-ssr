@@ -139,6 +139,7 @@ ul.vertical-line-wrapper{
         display: inline-block;
         cursor: pointer;
         margin-bottom: 10px;
+        transition: all 0.3s ease;
 
         @media #{$device_992_1199} {
             padding: 10px 0 10px 35px;
