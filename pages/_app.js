@@ -3,7 +3,7 @@ import App from 'next/app'
 import { PageTransition } from 'next-page-transitions'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import TweenMax from "gsap/TweenMax";
+import { TweenMax, TimelineMax } from "gsap";
 import $ from "jquery";
 import Head from 'next/head';
 import AOS from 'aos';
@@ -11,7 +11,9 @@ import Loader from '../components/Loader'
 import { TransitionGroup, CSSTransition, Transition } from "react-transition-group";
 
 Router.events.on('routeChangeStart', url => {
-    NProgress.start()
+    var el = document.getElementsByClassName("bridge-contents-exit");
+    console.log(el);
+    NProgress.start();
 })
 Router.events.on('routeChangeComplete', () => {
   NProgress.done()
@@ -46,7 +48,7 @@ export default class MyApp extends App {
         <TransitionGroup className="page-transitions">
           <CSSTransition
               key={router.asPath}
-              timeout={200}
+              timeout={300}
               classNames="bridge-contents"
             >
               <Component {...pageProps} key={router.route} />
@@ -71,7 +73,6 @@ export default class MyApp extends App {
             opacity: 0;
             transition: opacity 200ms;
           }
-
         `}</style>
       
       </>

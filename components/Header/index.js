@@ -3,9 +3,7 @@ import React, { Component, Children } from 'react';
 import $ from 'jquery';
 import Link from '../ActiveLink'
 import { Navbar, Nav } from "react-bootstrap";
-import handleViewport from 'react-in-viewport';
 import Config from '../../config';
-import { CSSTransition } from "react-transition-group";
 import {Fade} from 'react-reveal';
 import "./index.scss";
 
@@ -112,36 +110,36 @@ class Menu extends Component {
             }
         } 
         return (
-            <Fade delay={600} duration={1000}>
-            <header className="header-main">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <Navbar expand="lg">
-                                <Navbar.Brand href="/">
-                                    { logo ? (
-                                        <Link
-                                            as='/' 
-                                            href="/"
-                                        >
-                                            <img src={logo}/>
-                                        </Link>
-                                    ) : '' }
-                                </Navbar.Brand>
-                                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                                <Navbar.Collapse id="basic-navbar-nav">
-                                    <Nav className="m-auto">
-                                        {menuItems}
-                                    </Nav>
-                                    {getStartedLink()}
-                                </Navbar.Collapse>
-                            </Navbar>
+            <Fade top delay={600} duration={1000}>
+                <header className="header-main">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <Navbar expand="lg">
+                                    <Navbar.Brand href="/">
+                                        { logo ? (
+                                            <Link
+                                                as='/' 
+                                                href="/"
+                                            >
+                                                <img src={logo}/>
+                                            </Link>
+                                        ) : '' }
+                                    </Navbar.Brand>
+                                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                                    <Navbar.Collapse id="basic-navbar-nav">
+                                        <Nav className="m-auto">
+                                            {menuItems}
+                                        </Nav>
+                                        {getStartedLink()}
+                                    </Navbar.Collapse>
+                                </Navbar>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </header>
-</Fade>
+                </header>
+            </Fade>
         );
     }
 }
-export default handleViewport(Menu, {}, {disconnectOnLeave: true});
+export default Menu;

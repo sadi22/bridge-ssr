@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import dynamic from 'next/dynamic'
-
+import config from 'react-reveal/globals';
+config({ ssrFadeout: true });
 
 const Banner = dynamic(() => import('./Banner'), { loading: () => <p></p> });
 const UserType = dynamic(() => import('./UserType'), { loading: () => <p></p> });

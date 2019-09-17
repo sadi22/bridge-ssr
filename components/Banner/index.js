@@ -246,7 +246,7 @@ class Banner extends Component{
 
                               {enable_user_type_dropdown ? 
                                 <div className="banner-select-option text-center">
-                                  <Fade delay={500} duration={1000}><p>{Parser(user_heading)}</p>
+                                  <Fade bottom delay={500} duration={1000}><p>{Parser(user_heading)}</p>
                                    <div className="business-type-area">
                                       <h3><span>{text}</span></h3>
                                       <div className="bridge-select">

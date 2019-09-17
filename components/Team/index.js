@@ -4,12 +4,10 @@ import  "./index.scss";
 import handleViewport from 'react-in-viewport';
 import Parser from 'html-react-parser';
 import { motion } from "framer-motion"
-
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fab);
-import ScrollAnimation from 'react-animate-on-scroll';
 import {Fade, Zoom} from 'react-reveal';
 
 
@@ -18,18 +16,18 @@ const TeamBlock = (props) => {
     return (
         <div className="col-lg-4 col-sm-6 single-col" ref={innerRef}>
             <div className="single-member text-center">
-                <Zoom bottomclassName="member-img overflow">
-                    {team.image ? 
-                    
-                    <motion.img
-                        src={team.image.url} 
-                        alt={team.image.alt} 
-                        title={team.image.title} 
-                        whileHover={{ scale: 1.1 }}
-                        
-                    /> 
-                    : ''}
-                    
+                <Zoom delay={900} duration={1000}>
+                    <div className="member-img overflow">
+                        {team.image ?        
+                            <motion.img
+                                src={team.image.url} 
+                                alt={team.image.alt} 
+                                title={team.image.title} 
+                                whileHover={{ scale: 1.1 }}
+                                
+                            /> 
+                            : ''}
+                    </div>
                 </Zoom>
                 <Zoom delay={400}>
                     <h5>{team.name}</h5>
@@ -59,9 +57,9 @@ class Team extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-content">
-                                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                                <Fade bottom delay={800} duration={1000}>
                                     <h1>{Parser(title)}</h1>
-                                </ScrollAnimation>
+                                </Fade>
                             </div>
                         </div>
                     </div>

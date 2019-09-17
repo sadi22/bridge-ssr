@@ -2,17 +2,16 @@
 import React, { Component, Fragment } from 'react'
 import Link from 'next/link';
 import Parser from 'html-react-parser';
-import { motion } from "framer-motion"
 import $ from "jquery";
-import handleViewport from 'react-in-viewport';
 import { library, config } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown, faEnvelope);
-import Router from 'next/router'
+import {Fade} from 'react-reveal';
 import "./index.scss";
 config.autoAddCss = false;
+
 const getSlug = url => {
   const parts = url.split('/');
   return parts.length > 2 ? parts[parts.length - 2] : '';
@@ -101,16 +100,8 @@ class UserType extends Component{
                   <div className="container">
                       <div className="row">
                           <div className="col-12">
-                                <motion.div 
-                                    className="banner-select-option text-center"
-                                    initial={false}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{translateY: 50, visibility:"hidden"}}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 100,
-                                        damping: 500,
-                                    }}
-                                    >
+                              <Fade bottom delay={800} duration={1000}>
+                                <div className="banner-select-option text-center">
                                     <p>{Parser(user_heading)}</p>
                                     <div className="user-type-area">
                                         <h3><span>{text}</span></h3>
@@ -119,10 +110,10 @@ class UserType extends Component{
                                             <div className='select-items-container' style={this.state.showUserTypeDropDown ? {display: 'block'} : {display: 'none'}}>
                                               {userDropdownMarkup}
                                             </div>
-                                           
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
+                              </Fade>
                           </div>
                       </div>
                   </div>
@@ -132,4 +123,4 @@ class UserType extends Component{
         )
     }
 }
-export default handleViewport(UserType, {}, {disconnectOnLeave: false});
+export default UserType;
