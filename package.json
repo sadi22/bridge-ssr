@@ -49,6 +49,7 @@
     "react-dom": "^16.9.0",
     "react-in-viewport": "^0.0.38",
     "react-on-screen": "^2.1.1",
+    "react-reveal": "^1.2.2",
     "react-toastify": "^5.3.2",
     "react-transition-group": "^4.3.0",
     "react-visibility-sensor": "^5.1.1",

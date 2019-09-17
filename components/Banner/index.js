@@ -16,6 +16,7 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown, faEnvelope);
 import ScrollAnimation from 'react-animate-on-scroll';
+import {Fade} from 'react-reveal';
 
 import "./index.scss";
 
@@ -192,6 +193,7 @@ class Banner extends Component{
         return (
           <Fragment>
             <div className="bridge-banner pos-relative">
+                    
                   <motion.div
                       initial={{ height:0 }}
                       animate={inViewport ? { height:"77%" } : { height:0 }}
@@ -208,9 +210,12 @@ class Banner extends Component{
                       <div className="row">
                           <div className="col-12">
                               <div className="banner-content text-center">
+                                  
                                   <div className="banner-text">
-                                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true}><h1>{ heading } </h1></ScrollAnimation>
-                                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={400}><p>{description}</p></ScrollAnimation>
+                                    <Fade delay={300} bottom><h1>{ heading } </h1></Fade>
+                                    <Fade delay={400} bottom><p>{description}</p></Fade>
+                                    {/* <ScrollAnimation animateIn="fadeInUp" animateOnce={true}><h1>{ heading } </h1></ScrollAnimation>
+                                    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} delay={400}><p>{description}</p></ScrollAnimation> */}
                                   </div>
 
                                   {gravity_form_id && 
