@@ -1,11 +1,18 @@
 import React from 'react'
 import App from 'next/app'
-import { PageTransition } from 'next-page-transitions'
+import NProgress from 'nprogress'
+import Router from 'next/router'
 import Head from 'next/head';
 import AOS from 'aos';
-import Loader from '../components/Loader'
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-const TIMEOUT = 400
+Router.events.on('routeChangeStart', url => {
+  NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => {
+  NProgress.done()
+})
+Router.events.on('routeChangeError', () => NProgress.done())
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
@@ -25,64 +32,40 @@ export default class MyApp extends App {
     return (
       <>
         <Head>
-        
-
           <title>Bridge</title>
-
-        
         </Head>
-        
-        <PageTransition
-          timeout={TIMEOUT}
-          classNames='page-transition'
-          loadingComponent={<Loader/>}
-          loadingDelay={300}
-          loadingTimeout={{
-            enter: TIMEOUT,
-            exit: 0
-          }}
-          loadingClassNames='loading-indicator'
-        >
-          
-          <Component {...pageProps} />
-          
-        </PageTransition>
+
+        <TransitionGroup className="page-transitions">
+          <CSSTransition
+              key={router.asPath}
+              timeout={200}
+              classNames="bridge-contents"
+            >
+              <Component {...pageProps} key={router.route} />
+            </CSSTransition>
+        </TransitionGroup>
         <style jsx global>{`
-          .page-transition-enter {
-            opacity: 0;
-            transform: translate3d(0, 20px, 0);
-          }
-          .page-transition-enter-active {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-            transition: opacity ${TIMEOUT}ms, transform ${TIMEOUT}ms;
-          }
-          .page-transition-exit {
-            opacity: 1;
-          }
-          .page-transition-exit-active {
-            opacity: 0;
-            transition: opacity ${TIMEOUT}ms;
-          }
-          .loading-indicator-appear,
-          .loading-indicator-enter {
+          .bridge-contents-enter {
+            display: none;
             opacity: 0;
           }
-          .loading-indicator-appear-active,
-          .loading-indicator-enter-active {
+          .bridge-contents-enter-active {
             opacity: 1;
-            transition: opacity ${TIMEOUT}ms;
+            transition: opacity 200ms;
+          }
+          .bridge-contents-exit {
+            display: none;
+            opacity: 0;
+            position: static;
+          }
+          .bridge-contents-exit-active {
+            display: none;
+            opacity: 0;
+            transition: opacity 200ms;
           }
 
-          .page-overlay {
-              position: fixed;
-              bottom: 0;
-              height: 100%;
-              background: #ddd;
-              width: 100%;
-              z-index: 9999;
-          }
         `}</style>
+      
       </>
     )
   }

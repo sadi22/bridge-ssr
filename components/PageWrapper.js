@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types'
 import { getDataByEndPoint } from '../api/api';
 
 
@@ -30,39 +29,12 @@ const PageWrapper = Comp =>
         site_info,
         ...(Comp.getInitialProps ? childProps : null),
       };
-    }
-
-    constructor (props) {
-      super(props)
-      this.state = {
-        loaded: false
-      }
-    }
-
-    componentDidMount () {
-      this.timeoutId = setTimeout(() => {
-        this.props.pageTransitionReadyToEnter()
-        this.setState({ loaded: true })
-      }, 2000)
-    }
-  
-    componentWillUnmount () {
-      if (this.timeoutId) clearTimeout(this.timeoutId)
-    }
-  
+    }  
 
     render() {
       // if (!this.state.loaded) return null
       return <Comp {...this.props} />;
     }
   };
-
-PageWrapper.propTypes = {
-  pageTransitionReadyToEnter: PropTypes.func
-}
-
-PageWrapper.defaultProps = {
-  pageTransitionReadyToEnter: () => {}
-}
 
 export default PageWrapper;

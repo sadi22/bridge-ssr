@@ -25,10 +25,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff"></meta>
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-config" content="/static/favicon/browserconfig.xml" />
-          <meta name="theme-color" content="#ffffff" />  
-
-          <title>Bridge</title>
-
+          <meta name="theme-color" content="#ffffff" />
           <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
           <link rel="stylesheet" href="/static/styles/vendor.min.css" />
           <link rel="stylesheet" href="/static/styles/style.css" />

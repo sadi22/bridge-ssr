@@ -109,58 +109,27 @@ class Contact extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-5">
-                            <div className="contact-content">
+                            <div className="contact-content" data-aos="fade-up" data-aos-delay="3000">
                                 <div className="section-title">
-                                    <motion.h2
-                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        transition={{
-                                        type: "spring",
-                                        stiffness: 60,
-                                        damping: 500,
-                                        delay: 0.4,
-                                        default: { duration: .8 },
-                                        }}
-                                    >{Parser(title)}</motion.h2>
-                                    <motion.p
-                                        initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                        transition={{
-                                        type: "spring",
-                                        stiffness: 60,
-                                        damping: 500,
-                                        delay: 0.4,
-                                        default: { duration: .8 },
-                                        }}
-                                    >{Parser(description)}</motion.p>
+                                    <h2>{Parser(title)}</h2>
+                                    <p>{Parser(description)}</p>
                                 </div>
                                 {gravity_form_id &&
-                                <motion.form
-                                    onSubmit={this.handleSubmit.bind(this, gravity_form_id)} 
-                                    className="contact-form"
-                                    initial={{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateX: 0, opacity: 1, visibility:"visible" }:{ translateX: -50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 60,
-                                        damping: 500,
-                                        delay: 0.8,
-                                    }}
-                                 >
+                                <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)} className="contact-form">
                                     <div>
                                         <div className="contact-single-input">
                                             <label htmlFor="contactEmail">Enter your email<span>*</span></label>
                                             <input type="email" name="email" id="contactEmail" value={this.state.email} onChange={this.handleChange} className="inputVal" required/>
                                         </div>
                                     </div>
-                                    
+                                
                                     <div>
                                         <div className="contact-single-input">
                                             <label htmlFor="contactfName">Full Name<span>*</span></label>
                                             <input type="text" name="fullName" id="contactfName" className="inputVal" value={this.state.fullName} onChange={this.handleChange} className="inputVal" required/>
                                         </div>
                                     </div>
-                                    
+                                
                                     <div>
                                         <div className="contact-single-input">
                                             <label htmlFor="contactMsg">How can we hlep you<span>*</span></label>
@@ -174,14 +143,13 @@ class Contact extends Component{
                                         </div>
                                     </div>
                                   
-                                  
                                     <div className="contact-single-input submit-btn">
                                         <Button className="btn-default" type="submit">
                                             Send
                                             {this.state.startSubmission && <Spinner animation="border" variant="light" size="sm" style={{marginLeft: '5px'}}/>}
                                         </Button>
                                     </div>
-                                </motion.form>}
+                                </form>}
                             </div>
                         </div>
                     </div>

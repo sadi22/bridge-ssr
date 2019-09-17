@@ -17,20 +17,11 @@ class Press extends Component{
                     <div className="col-lg-3 col-sm-6 single-col" key={i}>
                         <div className="single-press">
                             <a href={press.link} target='_blank'>
-                                {press.image ? <motion.img
+                                {press.image ? <img
                                     src={press.image.url}
                                     alt={press.image.alt}
                                     title={press.image.title} 
-                                    whileHover={{ scale: 1.1 }}
-                                    initial={false}
-                                    animate={inViewport ? { scale: 1, opacity: 1 }:{scale: 0.7, opacity:0}}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 100,
-                                        damping: 500,
-                                        delay: 0.9,
-                                        default: { duration: 0.8 },
-                                    }}
+                                    data-aos="zoom-in" data-aos-duration="700" data-aos-delay="150"
                                 /> : ''}
                             </a>
                         </div>
@@ -46,7 +37,7 @@ class Press extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-content">
-                                <h2>{Parser(title)}</h2>
+                                <h2  data-aos="fade-up" data-aos-delay="150">{Parser(title)}</h2>
                             </div>
                         </div>
                     </div>

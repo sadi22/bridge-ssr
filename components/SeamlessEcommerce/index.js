@@ -21,28 +21,8 @@ class SeamlessEcommerce extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
-                                <motion.h2
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 60,
-                                    damping: 500,
-                                    delay: 0.4,
-                                    default: { duration: .8 },
-                                    }}
-                                >{Parser(title)}</motion.h2>
-                                <motion.p
-                                    initial={{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    animate={inViewport ? { translateY: 0, opacity: 1, visibility:"visible" }:{ translateY: 50, opacity: 0, visibility:"hidden" }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 60,
-                                    damping: 500,
-                                    delay: 0.6,
-                                    default: { duration: .8 },
-                                    }}
-                                >{Parser(sub_title)}</motion.p>
+                                <h2 data-aos="fade-up" data-aos-delay="200">{Parser(title)}</h2>
+                                <p data-aos="fade-up" data-aos-delay="300">{Parser(sub_title)}</p>
                             </div>
                         </div>
                     </div>
@@ -51,45 +31,25 @@ class SeamlessEcommerce extends Component{
                         <div className="col-lg-12">
                             <div className="seamless-image-area">
                                 <div className="seamless-image img1">
-                                    <motion.div 
-                                        initial={{ translateX: -80, opacity:0 }}
-                                        animate={inViewport ? { translateX: 0, opacity:1 }:{ translateX: -80, opacity:0 }}
-                                        transition={{
-                                        type: "spring",
-                                        stiffness: 260,
-                                        damping: 20,
-                                        delay: 0.8,
-                                        default: { duration: 0.7 },
-                                        }}
-                                      >
+                                    <div data-aos="fade-right" data-aos-delay="400">
                                         { left_image ? <motion.img 
                                          src={left_image.url} alt={left_image.alt} title={left_image.title} className="banner-img img-fluid" 
                                          whileHover={{
                                             scale: 1.1
                                           }}
                                          />: ''}
-                                    </motion.div>
+                                    </div>
                                 </div>
 
                                 <div className="seamless-image img2"> 
-                                    <motion.div 
-                                    initial={{ translateX: 80, opacity:0 }}
-                                    animate={inViewport ? { translateX: 0, opacity:1 }:{ translateX: 80, opacity:0 }}
-                                    transition={{
-                                    type: "spring",
-                                    stiffness: 260,
-                                    damping: 20,
-                                    delay: 1,
-                                    default: { duration: 0.7 },
-                                    }}
-                                    >
+                                    <div data-aos="fade-left" data-aos-delay="700">
                                         { left_image ? <motion.img 
                                          src={right_image.url} alt={right_image.alt} title={right_image.title} className="banner-img img-fluid" 
                                          whileHover={{
                                             scale: 1.1
                                           }}
                                          />: ''}
-                                    </motion.div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,6 @@ import ACFCONTENT from '../components/AcfContent';
 class Page extends Component {
   static async getInitialProps(context) {
     const { slug, apiRoute } = context.query;
-    console.log(slug);
     try {
       const page = await getPostBySlug(slug)
         .then(data =>{
