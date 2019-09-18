@@ -38,7 +38,7 @@ class Press extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-content">
-                                <Fade bottom delay={800} duration={1000}><h2>{Parser(title)}</h2></Fade>
+                                <Fade ssrFadeout bottom delay={800} duration={1000}><h2>{Parser(title)}</h2></Fade>
                             </div>
                         </div>
                     </div>

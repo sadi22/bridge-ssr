@@ -40,13 +40,13 @@ class Feature extends Component{
                 if(i == 0) defaultImage = feature.feature_image;
                 initialDelay = initialDelay + 100;
 			    return (
-                    <Fade right delay={initialDelay} duration={1000} distance="20px">
-                    <li 
-                        key={i}
-                        className={`${i==0 ? 'active': ''} feature-list`} 
-                        data-id={i}
-                        onMouseOver={this.featureMouseHover.bind(this)}
-                    >{feature.feature_title}</li>
+                    <Fade ssrFadeout  right delay={initialDelay} duration={1000} distance="20px" key={i}>
+                        <li 
+                            key={i}
+                            className={`${i==0 ? 'active': ''} feature-list`} 
+                            data-id={i}
+                            onMouseOver={this.featureMouseHover.bind(this)}
+                        >{feature.feature_title}</li>
                     </Fade>
 			      );
 			    });
@@ -78,7 +78,7 @@ class Feature extends Component{
             <div className="feature">
                 
                 <div className="feature-list-image">
-                    <Fade right delay={500} duration={1000} distance="250px">
+                    <Fade ssrFadeout  right delay={500} duration={1000} distance="250px">
                         <img 
                             src="/static/images/feature-list-lines-accent.png"
                             alt="bg-img" 
@@ -91,8 +91,8 @@ class Feature extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <Fade bottom delay={200} duration={1000} distance="50px"><h2>{Parser(title)}</h2> </Fade>
-                                <Fade bottom delay={500} duration={1000} distance="50px"> <p className='primary-color'>{Parser(description)}</p> </Fade>
+                                <Fade ssrFadeout  bottom delay={200} duration={1000} distance="50px"><h2>{Parser(title)}</h2> </Fade>
+                                <Fade ssrFadeout  bottom delay={500} duration={1000} distance="50px"> <p className='primary-color'>{Parser(description)}</p> </Fade>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@ class Feature extends Component{
                 </div>
                 
                 <div className="hovered-image-wrapper" id='hovered-image-wrapper'>
-                    <Fade right delay={1000} duration={1000} distance="100px">  
+                    <Fade ssrFadeout  right delay={1000} duration={1000} distance="100px">  
                         {featureImagesMarkup}
                     </Fade>
                 </div>

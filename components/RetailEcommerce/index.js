@@ -76,19 +76,19 @@ class RetailEcommerce extends Component{
                     <div className="row">
                         <div className={`${enable_double_line_heading ? 'col-lg-8' : 'col-12'} m-auto`}>
                             <div className="section-title text-center">
-                                <Fade bottom delay={700} duration={1000}> <h2>{Parser(title)}</h2> </Fade>
-                                <Fade bottom delay={900} duration={1000}> <p className='primary-color'>{Parser(sub_title)}</p> </Fade>
+                                <Fade ssrFadeout bottom delay={700} duration={1000}> <h2>{Parser(title)}</h2> </Fade>
+                                <Fade ssrFadeout bottom delay={900} duration={1000}> <p className={`primary-color`}>{Parser(sub_title)}</p> </Fade>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="retailer-content">
-                                <Fade bottom delay={1000} duration={1000}>{Parser(left_text)}</Fade>
+                                <Fade ssrFadeout bottom delay={1000} duration={1000}>{Parser(left_text)}</Fade>
                                 {gravity_form_id &&  
                                 <div className="newsletter-form retailer-newsletter-form">
-                                    <Fade bottom delay={1200} duration={1000}><h6>{Parser(getting_started_text)}</h6></Fade>
-                                    <Fade bottom delay={1400} duration={1000}>
+                                    <Fade ssrFadeout bottom delay={1200} duration={1000}><h6>{Parser(getting_started_text)}</h6></Fade>
+                                    <Fade ssrFadeout bottom delay={1400} duration={1000}>
                                         <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
                                                 <span className="input-wrapper pos-relative">
                                                     <FontAwesomeIcon icon={["fas", "envelope"]} />
@@ -107,15 +107,16 @@ class RetailEcommerce extends Component{
                             <div className={`${enable_drop_shadow ? 'image-shadow' : ''} retailer-image pos-relative`}>
                                 
                                 {right_image ? 
-                                <Fade right delay={1500} duration={1000} distance="100px">
-                                <div className="img-wrapper">
-                                    <motion.img 
-                                    src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"
-                                    whileHover={{
-                                        scale: 1.1
-                                    }}
-                                    />
-                                </div></Fade>: ''}
+                                <Fade ssrFadeout right delay={1500} duration={1000} distance="100px">
+                                    <div className="img-wrapper">
+                                        <motion.img 
+                                            src={right_image.url} alt={right_image.alt} title={right_image.title} className="img-fluid"
+                                            whileHover={{
+                                                scale: 1.1
+                                            }}
+                                        />
+                                    </div>
+                                </Fade>: ''}
                             </div>
                         </div>
                     </div>

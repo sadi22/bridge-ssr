@@ -92,8 +92,8 @@ class BottomCTA extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">
-                                <Fade bottom delay={300} duration={1000}><h2>{Parser(title)}</h2> </Fade>
-                                <Fade bottom delay={500} duration={1000}><p>{Parser(sub_title)}</p> </Fade>
+                                <Fade ssrFadeout  bottom delay={300} duration={1000}><h2>{Parser(title)}</h2> </Fade>
+                                <Fade ssrFadeout  bottom delay={500} duration={1000}><p>{Parser(sub_title)}</p> </Fade>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ class BottomCTA extends Component{
                         >
                         <div className="row align-items-end">
                             <div className="col-lg-3 col-md-6">
-                                <Fade bottom delay={700} duration={1000}>
+                                <Fade ssrFadeout  bottom delay={700} duration={1000}>
                                     <div className="single-input">
                                         <label htmlFor="ctaEmail">Email<span>*</span></label>
                                         <input type="email" name="email" id="ctaEmail" value={this.state.email} onChange={this.handleChange} required/>
@@ -112,7 +112,7 @@ class BottomCTA extends Component{
                                 </Fade>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <Fade bottom delay={900} duration={1000}>
+                                <Fade ssrFadeout  bottom delay={900} duration={1000}>
                                     <div className="single-input">
                                         <label htmlFor="ctafName">Full Name<span>*</span></label>
                                         <input type="text" name="fullName" id="ctafName" value={this.state.fullName} onChange={this.handleChange} required/>
@@ -120,7 +120,7 @@ class BottomCTA extends Component{
                                 </Fade>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <Fade bottom delay={1100} duration={1000}>
+                                <Fade ssrFadeout  bottom delay={1100} duration={1000}>
                                     <div className="single-input">
                                         <label htmlFor="ctaCompany">Company<span>*</span></label>
                                         <input type="text" name="company" id="ctaCompany" value={this.state.company} onChange={this.handleChange} required/>
@@ -128,7 +128,7 @@ class BottomCTA extends Component{
                                 </Fade>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <Fade bottom delay={1300} duration={1000}>
+                                <Fade ssrFadeout  bottom delay={1300} duration={1000}>
                                     <div className="single-input">
                                         <Button className="btn-default" type="submit">
                                             Request Demo

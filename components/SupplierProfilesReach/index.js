@@ -48,7 +48,7 @@ const FeatureBlock = (props) => {
         featureListMarkup = features_text_with_image.map((feature, i) => {
             if(i == 0) defaultImage = feature.feature_image.url;
             return (
-                <Fade right delay={i*200} duration={1000} distance="70px">
+                <Fade ssrFadeout right delay={i*200} duration={1000} distance="70px" key={i}>
                     <li 
                         key={i}
                         className={`${i==0 ? 'active': ''} unique-reach-list`} 
@@ -64,7 +64,7 @@ const FeatureBlock = (props) => {
     return (
         <div className="row align-items-center unique-reach" ref={innerRef}>
             <div className="col-lg-6">
-                <Fade left delay={700} duration={1000} distance="100px">
+                <Fade ssrFadeout left delay={700} duration={1000} distance="100px">
                     <div className="unique-reach-image pos-relative">
                         <div className="overflow">
                             {featureImagesMarkup}
@@ -76,8 +76,8 @@ const FeatureBlock = (props) => {
             <div className="col-lg-5 ml-auto">
                 <div className="unique-reach-content">
                     <div className="section-title">
-                    <Fade bottom delay={300} duration={1000} distance="50px"><h3>{Parser(feature_list_title)}</h3></Fade>
-                    <Fade bottom delay={500} duration={1000} distance="50px"><p>{Parser(feature_description)}</p></Fade>
+                    <Fade ssrFadeout bottom delay={300} duration={1000} distance="50px"><h3>{Parser(feature_list_title)}</h3></Fade>
+                    <Fade ssrFadeout bottom delay={500} duration={1000} distance="50px"><p>{Parser(feature_description)}</p></Fade>
                         
                     </div>
                     
@@ -106,7 +106,7 @@ class SupplierProfilesReach extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
-                                <Fade bottom delay={300} duration={1000}><h2>{Parser(title)}</h2></Fade>
+                                <Fade ssrFadeout bottom delay={300} duration={1000}><h2>{Parser(title)}</h2></Fade>
                             </div>
                         </div>
                     </div>
@@ -115,14 +115,14 @@ class SupplierProfilesReach extends Component{
                         <div className="col-lg-5">
                             <div className="customer-profiling-content">
                                 <div className="section-title">
-                                    <Fade bottom delay={500} duration={1000} distance="50px"><h3>{Parser(subtitle)}</h3></Fade>
-                                    <Fade bottom delay={700} duration={1000} distance="50px"><div>{Parser(description)}</div></Fade>
+                                    <Fade ssrFadeout bottom delay={500} duration={1000} distance="50px"><h3>{Parser(subtitle)}</h3></Fade>
+                                    <Fade ssrFadeout bottom delay={700} duration={1000} distance="50px"><div>{Parser(description)}</div></Fade>
                                 </div>
                             </div>
                         </div>
                         
                         <div className="col-lg-6 ml-auto">
-                            <Fade right delay={900} duration={1000} distance="100px">
+                            <Fade ssrFadeout right delay={900} duration={1000} distance="100px">
                                 <div className="customer-profiling-image pos-relative">
                                     <div className="overflow">
                                         { image ? <motion.img 

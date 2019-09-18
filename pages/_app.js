@@ -11,9 +11,11 @@ import Loader from '../components/Loader'
 import { TransitionGroup, CSSTransition, Transition } from "react-transition-group";
 
 Router.events.on('routeChangeStart', url => {
-    var el = document.getElementsByClassName("bridge-contents-exit");
-    console.log(el);
-    NProgress.start();
+    let pages = ['/', '/retailer', '/supplier', '/wholesaler'];
+    if (!pages.includes(url)) {
+      NProgress.start();
+    }
+    
 })
 Router.events.on('routeChangeComplete', () => {
   NProgress.done()
@@ -30,30 +32,29 @@ export default class MyApp extends App {
     return { pageProps }
   }
 
-  componentDidMount() {
-    // AOS.init()
-  }
-
-  enterPage = () => {
-  }
 
   render () {
-    const { Component, pageProps, router } = this.props
+    const { Component, pageProps, router } = this.props;
+    let pages = ['/', '/retailer', '/supplier', '/wholesaler'];
     return (
       <>
         <Head>
           <title>Bridge</title>
         </Head>
-
-        <TransitionGroup className="page-transitions">
-          <CSSTransition
-              key={router.asPath}
-              timeout={300}
-              classNames="bridge-contents"
-            >
-              <Component {...pageProps} key={router.route} />
-            </CSSTransition>
-        </TransitionGroup>
+        {pages.includes(router.asPath) ? <Component {...pageProps} key={router.route} /> : 
+      
+            <TransitionGroup className="page-transitions">
+              <CSSTransition
+                  key={router.asPath}
+                  timeout={200}
+                  classNames={ pages.includes(router.asPath) ? '' : 'bridge-contents'}
+                >
+                  <Component {...pageProps} key={router.route} />
+                </CSSTransition>
+            </TransitionGroup>
+        }
+        
+        
         <style jsx global>{`
           .bridge-contents-enter {
             display: none;

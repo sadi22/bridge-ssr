@@ -37,79 +37,26 @@ class Banner extends Component{
     }
 
     componentDidMount(){
-       
-        var x, i, j, selElmnt, a, b, c;
-        
-        x = document.getElementsByClassName("bridge-select");
-        for (i = 0; i < x.length; i++) {
-            selElmnt = x[i].getElementsByTagName("select")[0];
-
-            a = document.createElement("DIV");
-            a.setAttribute("class", "select-selected");
-            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-            x[i].appendChild(a);
-
-
-            b = document.createElement("DIV");
-            b.setAttribute("class", "select-items select-hide");
-            for (j = 1; j < selElmnt.length; j++) {
-                c = document.createElement("DIV");
-                c.innerHTML = selElmnt.options[j].innerHTML;
-                c.dataset.url = selElmnt.options[j].dataset.url;
-                c.addEventListener("click", function(e) {
-
-                    var y, i, k, s, h;
-                    let className = this.innerHTML.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '').toLowerCase();
-                    $('.user-type-link').hide();
-                    $(`.${className}`).show(); 
-
-                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-                    h = this.parentNode.previousSibling;
-                    for (i = 0; i < s.length; i++) {
-                      if (s.options[i].innerHTML == this.innerHTML) {
-                        s.selectedIndex = i;
-                        h.innerHTML = this.innerHTML;
-                        this.dataset.url = this.dataset.url;
-                        y = this.parentNode.getElementsByClassName("same-as-selected");
-                        for (k = 0; k < y.length; k++) {
-                          y[k].removeAttribute("class");
-                        }
-                        this.setAttribute("class", "same-as-selected");
-                        break;
-                      }
-                    }
-                    h.click();
-                });
-                b.appendChild(c);
-            }
-            x[i].appendChild(b);
-            a.addEventListener("click", function(e) {
-              e.stopPropagation();
-              closeAllSelect(this);
-              this.nextSibling.classList.toggle("select-hide");
-              this.classList.toggle("select-arrow-active");
-            });
-        }
-        
-        function closeAllSelect(elmnt) {
-            var x, y, i, arrNo = [];
-            x = document.getElementsByClassName("select-items");
-            y = document.getElementsByClassName("select-selected");
-            for (i = 0; i < y.length; i++) {
-                if (elmnt == y[i]) {
-                  arrNo.push(i)
-                } else {
-                  y[i].classList.remove("select-arrow-active");
-                }
-            }
-            for (i = 0; i < x.length; i++) {
-                if (arrNo.indexOf(i)) {
-                  x[i].classList.add("select-hide");
-                }
-            }
-        }
-        
-        document.addEventListener("click", closeAllSelect);
+      document.addEventListener('click', this.bodyClickHandler);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('click', this.bodyClickHandler);
+    }
+    bodyClickHandler = (e)  => {
+      if(e.target.matches('.select-selected')) {
+        this.setState({
+          showUserTypeDropDown: true
+        })
+      }else {
+        this.setState({
+          showUserTypeDropDown: false
+        })
+      }
+    }
+    userTypeSelect = (i, type, e) => {
+      $('.currentType').html(type);
+      $('.user-type-selected-link').hide();
+      $(`.user-type-link-${i}`).css('display', 'flex');
     }
 
     handleChange = evt => {
@@ -158,14 +105,24 @@ class Banner extends Component{
         let userDropdownMarkup = null;
         let userDropdownLinkMarkup = null;
         let defaultOption = '';
+        let currentType = null;
         if(user){            
           userDropdownMarkup = user.map((item, i) => {
-            if(i==0) defaultOption = <option data-url={item.url}>{item.type}</option>;
-            else defaultOption = '';
+            const slug = item.link ? getSlug(item.link) : '';
+            let actualPage = slug ? 'page' : '';
+            let as = actualPage === 'page' ? `/${slug}` : `/${actualPage}/${slug}` ;
+            if(i==0) currentType = <div className='select-selected currentType'>{item.type}</div>
             return (
                 <Fragment key={i}>
-                    {defaultOption}
-                    <option data-url={item.link} >{item.type}</option>
+                    <div className='userdropdownType'>
+                      <Link
+                          as={`${as}`}
+                          href="/[slug]"
+                          key={i}
+                      >
+                          <a className={`user-type-link`}>{item.type}</a>
+                      </Link>
+                    </div>
                 </Fragment>
                 
             );
@@ -212,12 +169,12 @@ class Banner extends Component{
                                 <div className="banner-content text-center">
                                   
                                   <div className="banner-text">
-                                    <Fade bottom delay={800} duration={1000}><h1>{ heading } </h1></Fade>
-                                    <Fade bottom delay={1100} duration={1000}><p>{description}</p></Fade>
+                                    <Fade ssrFadeout  bottom delay={800} duration={1000}><h1>{ heading } </h1></Fade>
+                                    <Fade ssrFadeout  bottom delay={1100} duration={1000}><p>{description}</p></Fade>
                                   </div>
 
                                   {gravity_form_id && 
-                                    <Fade bottom delay={1300} duration={1000}>
+                                    <Fade ssrFadeout  bottom delay={1300} duration={1000}>
                                         <div class="newsletter-form">
                                             <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)}>
                                                 <span className="input-wrapper pos-relative">
@@ -235,7 +192,7 @@ class Banner extends Component{
 
                                   
 
-                                  { image ? <Fade delay={1500} duration={1000}><img 
+                                  { image ? <Fade ssrFadeout  delay={1500} duration={1000}><img 
                                       src={image.url} 
                                       alt={image.alt} 
                                       title={image.title} 
@@ -245,17 +202,18 @@ class Banner extends Component{
                               </div>
 
                               {enable_user_type_dropdown ? 
-                                <div className="banner-select-option text-center">
-                                  <Fade bottom delay={500} duration={1000}><p>{Parser(user_heading)}</p>
-                                   <div className="business-type-area">
-                                      <h3><span>{text}</span></h3>
-                                      <div className="bridge-select">
-                                          <select>
-                                            {userDropdownMarkup}
-                                          </select>
-                                      </div>
-                                      {userDropdownLinkMarkup}
-                                  </div>
+                                <div className="banner-select-option text-center bridge-user-type-container">
+                                  <Fade ssrFadeout  bottom delay={500} duration={1000}><p>{Parser(user_heading)}</p>
+                                    <div className="business-type-area">
+                                        <h3><span>{text}</span></h3>
+                                        <div className="bridge-select-container">
+                                            {currentType}
+                                            <div className='select-items-container' style={this.state.showUserTypeDropDown ? {display: 'block'} : {display: 'none'}}>
+                                              {userDropdownMarkup}
+                                            </div>
+                                        </div>
+                                        {userDropdownLinkMarkup}
+                                    </div>
                                     </Fade>
                                 </div>
                               : ''}

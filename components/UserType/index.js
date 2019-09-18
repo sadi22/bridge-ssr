@@ -100,7 +100,7 @@ class UserType extends Component{
                   <div className="container">
                       <div className="row">
                           <div className="col-12">
-                              <Fade bottom delay={800} duration={1000}>
+                              <Fade ssrFadeout bottom delay={800} duration={1000}>
                                 <div className="banner-select-option text-center">
                                     <p>{Parser(user_heading)}</p>
                                     <div className="user-type-area">

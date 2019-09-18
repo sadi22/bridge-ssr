@@ -110,7 +110,7 @@ class Menu extends Component {
             }
         } 
         return (
-            <Fade top delay={600} duration={1000}>
+            <Fade ssrFadeout top delay={600} duration={1000}>
                 <header className="header-main">
                     <div className="container">
                         <div className="row">

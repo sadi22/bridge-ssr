@@ -48,7 +48,7 @@ class Footer extends Component{
             );
         });
         return (
-        <Fade delay={600} duration={1000}>
+        <Fade ssrFadeout bottom delay={600} duration={1000}>
             <footer className="site-footer">
                 <div className="container">
                     <div className="row align-items-center">

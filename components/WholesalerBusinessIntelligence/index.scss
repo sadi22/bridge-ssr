@@ -20,8 +20,10 @@
 
     .business-intelligence-img{
         border-radius: 12px;
+        padding: 8px;
         img{
             border-radius: 12px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18);
             @include transitions(all 4s linear);
         }
     }

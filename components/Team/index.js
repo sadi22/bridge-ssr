@@ -57,7 +57,7 @@ class Team extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-content">
-                                <Fade bottom delay={800} duration={1000}>
+                                <Fade ssrFadeout bottom delay={800} duration={1000}>
                                     <h1>{Parser(title)}</h1>
                                 </Fade>
                             </div>

@@ -112,42 +112,42 @@ class Contact extends Component{
                         <div className="col-lg-5">
                             <div className="contact-content">
                                 <div className="section-title">
-                                    <Fade bottom delay={800} duration={1000}>
+                                    <Fade ssrFadeout  bottom delay={800} duration={1000}>
                                         <h2>{Parser(title)}</h2>
                                     </Fade>
-                                    <Fade bottom delay={900} duration={1000}>
+                                    <Fade ssrFadeout  bottom delay={900} duration={1000}>
                                         <p>{Parser(description)}</p>
                                     </Fade>
                                 </div>
                                 {gravity_form_id &&
                                 <form onSubmit={this.handleSubmit.bind(this, gravity_form_id)} className="contact-form">
-                                    <Fade left delay={1000} duration={1000}>
+                                    <Fade ssrFadeout  left delay={1000} duration={1000}>
                                         <div className="contact-single-input">
                                             <label htmlFor="contactEmail">Enter your email<span>*</span></label>
                                             <input type="email" name="email" id="contactEmail" value={this.state.email} onChange={this.handleChange} className="inputVal" required/>
                                         </div>
                                     </Fade>
                                     
-                                    <Fade left delay={1100} duration={1000}>
+                                    <Fade ssrFadeout  left delay={1100} duration={1000}>
                                     <div className="contact-single-input">
                                         <label htmlFor="contactfName">Full Name<span>*</span></label>
                                         <input type="text" name="fullName" id="contactfName" className="inputVal" value={this.state.fullName} onChange={this.handleChange} className="inputVal" required/>
                                     </div>
                                     </Fade>
-                                    <Fade left delay={1200} duration={1000}>
+                                    <Fade ssrFadeout  left delay={1200} duration={1000}>
                                     <div className="contact-single-input">
-                                        <label htmlFor="contactMsg">How can we hlep you<span>*</span></label>
+                                        <label htmlFor="contactMsg">How can we help you<span>*</span></label>
                                         <textarea name="msg" id="msg" cols="30" rows="10" value={this.state.msg} onChange={this.handleChange} className="inputVal" required></textarea>
                                     </div>
                                     </Fade>
-                                    <Fade left delay={1300} duration={1000}>
+                                    <Fade ssrFadeout  left delay={1300} duration={1000}>
                                     <div className="contact-single-input">
                                         <div className="bridge-switcher">
                                             <span className="title">Request a free technical audit of your organization, organize an online demo, or just let us know you are interested in learning <a href="">more</a>.</span>
                                         </div>
                                     </div>
                                     </Fade>
-                                    <Fade left delay={1400} duration={1000}>
+                                    <Fade ssrFadeout  left delay={1400} duration={1000}>
                                     <div className="contact-single-input submit-btn">
                                         <Button className="btn-default" type="submit">
                                             Send
@@ -161,7 +161,7 @@ class Contact extends Component{
                     </div>
                 </div>
                 
-                <Fade delay={800} duration={1000}>
+                <Fade ssrFadeout  delay={800} duration={1000}>
                     <div className="google-map overlay">
                         <MapContainer apiKey={api} location={location}/>
                     </div>

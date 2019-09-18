@@ -27,7 +27,6 @@ class Page extends Component {
   
   render () {
     const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link, gmap_api } = this.props;
-//    console.log('%cMade at %cBridge', 'font-weight: bolder;', ' font-weight: bolder; color: #1FC8C9;');
     if (!page) return <Error statusCode={404} />;
     let seo_title = page.title.rendered;
     let seo_description = page.title.rendered;
@@ -43,15 +42,13 @@ class Page extends Component {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta charSet="utf-8" />
             <title>{seo_title}</title>
-            {page.yoast_meta && page.yoast_meta.map(meta=>{
+            {page.yoast_meta && page.yoast_meta.map((meta, i)=>{
                 return (
-                    <Fragment>
+                    <Fragment key={i}>
                         {meta.name && <meta name={meta.name} content={meta.content}/>}
                         {meta.property && (<meta property={meta.property} content={meta.content}/>)}
-                    </Fragment>
-                    
+                    </Fragment>   
                 )
-                
             })}
         </Head>
         <Layout>

@@ -17,7 +17,7 @@ class WholesalerBusinessIntelligence extends Component{
     	if(feature_list){            
     		featureListMarkup = feature_list.map((feature, i) => {
 			    return (
-                    <Fade bottom delay={i*300} duration={1000} distance="50px" key={i}>
+                    <Fade ssrFadeout bottom delay={(i+1)*300} duration={1000} distance="50px" key={i}>
                         <div className="single-block supply">
                             <h3>{Parser(feature.feature_title)}</h3>
                             <p>{Parser(feature.feature_description)}</p>
@@ -31,8 +31,8 @@ class WholesalerBusinessIntelligence extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-7">
-                            <Fade left delay={500} duration={1000} distance="100px">
-                                <div className="overflow">
+                            <Fade ssrFadeout left delay={500} duration={1000} distance="100px">
+                                <div className="overflow business-intelligence-img">
                                     {image ? <motion.img 
                                         src={image.url} 
                                         alt={image.alt} 
@@ -40,7 +40,6 @@ class WholesalerBusinessIntelligence extends Component{
                                         className="img-fluid"
                                         whileHover={{
                                             scale: 1.1,
-                                            duration: 1,
                                         }}
                                      /> : ''}
                                 </div>
@@ -48,7 +47,7 @@ class WholesalerBusinessIntelligence extends Component{
                         </div>
                         <div className="col-lg-5">
                             <div className="business-intelligence-content">                                
-                                <Fade bottom delay={300} duration={1000} distance="100px"><div><h2>{Parser(title)}</h2></div></Fade>
+                                <Fade ssrFadeout bottom delay={300} duration={1000} distance="100px"><div><h2>{Parser(title)}</h2></div></Fade>
                                 {featureListMarkup}
                             </div>
                         </div>

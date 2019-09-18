@@ -21,8 +21,8 @@ class SeamlessEcommerce extends Component{
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title text-center">
-                                <Fade bottom delay={200} duration={1000}> <h2>{Parser(title)}</h2> </Fade>
-                                <Fade bottom delay={500} duration={1000}> <p>{Parser(sub_title)}</p> </Fade>
+                                <Fade ssrFadeout bottom delay={200} duration={1000}> <h2>{Parser(title)}</h2> </Fade>
+                                <Fade ssrFadeout bottom delay={500} duration={1000}> <p>{Parser(sub_title)}</p> </Fade>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@ class SeamlessEcommerce extends Component{
                             <div className="seamless-image-area">
                                 <div className="seamless-image img1">
                                     { left_image ? 
-                                        <Fade left delay={700} duration={1000} distance="100px">
+                                        <Fade ssrFadeout left delay={700} duration={1000} distance="100px">
                                             <motion.img 
                                              src={left_image.url} alt={left_image.alt} title={left_image.title} className="banner-img img-fluid" 
                                              whileHover={{
@@ -44,7 +44,7 @@ class SeamlessEcommerce extends Component{
 
                                 <div className="seamless-image img2"> 
                                     { right_image ? 
-                                        <Fade right delay={1000} duration={1000} distance="100px">
+                                        <Fade ssrFadeout right delay={1000} duration={1000} distance="100px">
                                             <motion.img 
                                              src={right_image.url} alt={right_image.alt} title={right_image.title} className="banner-img img-fluid" 
                                              whileHover={{
