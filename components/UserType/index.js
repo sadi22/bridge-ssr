@@ -8,7 +8,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faCaretDown, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, far, faEdit, faCaretDown, faEnvelope);
-import {Fade} from 'react-reveal';
+import { motion } from "framer-motion"
 import "./index.scss";
 config.autoAddCss = false;
 
@@ -95,31 +95,28 @@ class UserType extends Component{
         }
       
         return (
-          <Fragment>
-            <div className="bridge-user-type-container pos-relative">
-                  <div className="container">
-                      <div className="row">
-                          <div className="col-12">
-                              <Fade ssrFadeout bottom delay={800} duration={1000}>
-                                <div className="banner-select-option text-center">
-                                    <p>{Parser(user_heading)}</p>
-                                    <div className="user-type-area">
-                                        <h3><span>{text}</span></h3>
-                                        <div className="bridge-select-container">
-                                            {currentType}
-                                            <div className='select-items-container' style={this.state.showUserTypeDropDown ? {display: 'block'} : {display: 'none'}}>
-                                              {userDropdownMarkup}
-                                            </div>
+          <div 
+              className="bridge-user-type-container pos-relative"
+            >
+              <div className="container">
+                  <div className="row">
+                      <div className="col-12">
+                            <div className="banner-select-option text-center">
+                                <p>{Parser(user_heading)}</p>
+                                <div className="user-type-area">
+                                    <h3><span>{text}</span></h3>
+                                    <div className="bridge-select-container">
+                                        {currentType}
+                                        <div className='select-items-container' style={this.state.showUserTypeDropDown ? {display: 'block'} : {display: 'none'}}>
+                                          {userDropdownMarkup}
                                         </div>
                                     </div>
                                 </div>
-                              </Fade>
-                          </div>
+                            </div>
                       </div>
                   </div>
               </div>
-              
-          </Fragment>
+          </div>
         )
     }
 }

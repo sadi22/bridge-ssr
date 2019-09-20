@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import App from 'next/app'
 import { PageTransition } from 'next-page-transitions'
 import NProgress from 'nprogress'
@@ -37,22 +37,19 @@ export default class MyApp extends App {
     const { Component, pageProps, router } = this.props;
     let pages = ['/', '/retailer', '/supplier', '/wholesaler'];
     return (
-      <>
+      <Fragment>
         <Head>
           <title>Bridge</title>
         </Head>
-        {pages.includes(router.asPath) ? <Component {...pageProps} key={router.route} /> : 
-      
-            <TransitionGroup className="page-transitions">
-              <CSSTransition
-                  key={router.asPath}
-                  timeout={200}
-                  classNames={ pages.includes(router.asPath) ? '' : 'bridge-contents'}
-                >
-                  <Component {...pageProps} key={router.route} />
-                </CSSTransition>
-            </TransitionGroup>
-        }
+        <TransitionGroup className="page-transitions">
+          <CSSTransition
+              key={router.asPath}
+              timeout={200}
+              classNames={ pages.includes(router.asPath) ? '' : 'bridge-contents'}
+            >
+              <Component {...pageProps} key={router.route} />
+            </CSSTransition>
+        </TransitionGroup>
         
         
         <style jsx global>{`
@@ -76,7 +73,7 @@ export default class MyApp extends App {
           }
         `}</style>
       
-      </>
+      </Fragment>
     )
   }
 }

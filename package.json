@@ -33,7 +33,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "jquery": "^3.4.1",
     "lru-cache": "^5.1.1",
-    "next": "^9.0.5",
+    "next": "^9.0.6",
     "next-page-transitions": "^1.0.0-beta.2",
     "next-transpile-modules": "^2.3.1",
     "nextjs-morph-page": "^2.0.3",
