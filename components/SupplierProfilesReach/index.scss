@@ -2,8 +2,11 @@
 @import '../../src/styles/extend-style';
 
 .supplier-profiles-reach{
-    padding-top: 78px;
-    padding-bottom: 70px;
+    
+    &.section-padding {
+        padding-top: 78px;
+        padding-bottom: 70px;
+    }
     
     @media #{$device_992_1199} {
         padding-top: 53px;
@@ -21,6 +24,7 @@
     .section-title{
         max-width: 750px;
         margin: 0 auto;
+        padding-bottom: 0;
     }
     
     .customer-profiling-image img{
@@ -48,7 +52,6 @@
     }
     
     .unique-reach {
-        margin-top: 60px;
         
         @media #{$device_768_991} {
             flex-flow: column-reverse;
@@ -105,5 +108,9 @@
                 }
             }
         }
+    }
+
+    .fingerprints {
+        padding-top: 35px;
     }
 }

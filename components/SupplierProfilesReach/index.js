@@ -101,7 +101,7 @@ class SupplierProfilesReach extends Component{
         
         return (
             <Fragment>
-            <div className="supplier-profiles-reach section-padding">
+            <div className={`supplier-profiles-reach ${title ? `section-padding` : ``}`}>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -110,8 +110,8 @@ class SupplierProfilesReach extends Component{
                             </div>
                         </div>
                     </div>
-            
-                    <div className="row align-items-center">
+                    {enable_feature_list_with_image && <VFeatureBlock feature_list_title={feature_list_title} feature_description={feature_description} features_text_with_image={features_text_with_image}/>}
+                    <div className="row align-items-center fingerprints">
                         <div className="col-lg-5">
                             <div className="customer-profiling-content">
                                 <div className="section-title">
@@ -138,9 +138,7 @@ class SupplierProfilesReach extends Component{
                                 </div>
                             </Fade>
                         </div>
-                    </div>
-            
-                    {enable_feature_list_with_image && <VFeatureBlock feature_list_title={feature_list_title} feature_description={feature_description} features_text_with_image={features_text_with_image}/>}
+                    </div>   
                 </div>
             </div>
             </Fragment>

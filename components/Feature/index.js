@@ -28,7 +28,7 @@ class Feature extends Component{
     }
     
     render() {
-        const {title, description, feature_list, show_more, show_more_link} = this.props;
+        const {title, description, feature_list, show_more, show_more_link, section_heading} = this.props;
         const { inViewport } = this.props;
         let defaultImage = '';
         let featureListMarkup = null;
@@ -88,6 +88,13 @@ class Feature extends Component{
                 </div>
             
                 <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="feature-section-title section-title text-center">
+                                <Fade ssrFadeout bottom delay={300} duration={1000}><h2>{Parser(section_heading)}</h2></Fade>
+                            </div>
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col-12">
                             <div className="section-title">

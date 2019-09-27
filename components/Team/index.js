@@ -16,7 +16,7 @@ const TeamBlock = (props) => {
     return (
         <div className="col-lg-4 col-sm-6 single-col" ref={innerRef}>
             <div className="single-member text-center">
-                <Zoom delay={900} duration={1000}>
+                <Zoom delay={(index+1) * 300} duration={700}>
                     <div className="member-img overflow">
                         {team.image ?        
                             <motion.img

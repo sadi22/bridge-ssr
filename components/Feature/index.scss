@@ -18,9 +18,16 @@
     .feature{
         padding: 0;
     }
+
     
+
     .section-title{
         max-width: 390px;
+
+        h2 {
+            font-size: 36px;
+            text-transform: unset;
+        }
         
         @media #{$device_768_991} {
             max-width: 100%;
@@ -32,6 +39,14 @@
             color: $body-font-color;
         }
     }
+
+    .feature-section-title {
+        max-width: 750px;
+        margin: 0 auto;
+        padding-bottom: 50px;
+    }
+    
+   
     
     .feature-list-image{
         position: absolute;

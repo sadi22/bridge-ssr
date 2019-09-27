@@ -1,8 +1,8 @@
 
 body, p {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
-    line-height: 26px;
+    line-height: 1.625;
 }
 
 //*-----------heading tag Typogrpahy------------*/
@@ -12,7 +12,7 @@ h1 {
     color: #1d1f2c;
 }
 h2 {
-    font-size: calc(36px + (40 - 36) * ((100vw - 320px) / (1920 - 320))); //---40px font size---
+    font-size: calc(36px + (38 - 36) * ((100vw - 320px) / (1920 - 320))); //---40px font size---
     line-height: 1.05; //---42px line height---
     color: #1d1f2c;
 }

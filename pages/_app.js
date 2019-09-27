@@ -1,14 +1,10 @@
 import React, {Fragment} from 'react'
 import App from 'next/app'
-import { PageTransition } from 'next-page-transitions'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import { TweenMax, TimelineMax } from "gsap";
-import $ from "jquery";
 import Head from 'next/head';
-import AOS from 'aos';
-import Loader from '../components/Loader'
-import { TransitionGroup, CSSTransition, Transition } from "react-transition-group";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 Router.events.on('routeChangeStart', url => {
     let pages = ['/', '/retailer', '/supplier', '/wholesaler'];
@@ -36,20 +32,31 @@ export default class MyApp extends App {
   render () {
     const { Component, pageProps, router } = this.props;
     let pages = ['/', '/retailer', '/supplier', '/wholesaler'];
+    const spring = {
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+      when: "afterChildren"
+    };
     return (
       <Fragment>
         <Head>
           <title>Bridge</title>
         </Head>
-        <TransitionGroup className="page-transitions">
-          <CSSTransition
+        <AnimatePresence>
+          <div className="page-transition-wrapper">
+            <motion.div
+              transition={spring}
               key={router.asPath}
-              timeout={200}
-              classNames={ pages.includes(router.asPath) ? '' : 'bridge-contents'}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              id="page-transition-container"
             >
-              <Component {...pageProps} key={router.route} />
-            </CSSTransition>
-        </TransitionGroup>
+              <Component {...pageProps} key={router.asPath} />
+            </motion.div>
+          </div>
+        </AnimatePresence>
         
         
         <style jsx global>{`

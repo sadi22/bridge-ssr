@@ -43,9 +43,9 @@ class Page extends Component {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta charSet="utf-8" />
             <title>{seo_title}</title>
-            {page.yoast_meta && page.yoast_meta.map(meta=>{
+            {page.yoast_meta && page.yoast_meta.map((meta, i)=>{
                 return (
-                    <Fragment>
+                    <Fragment key={i}>
                         {meta.name && <meta name={meta.name} content={meta.content}/>}
                         {meta.property && (<meta property={meta.property} content={meta.content}/>)}
                     </Fragment>

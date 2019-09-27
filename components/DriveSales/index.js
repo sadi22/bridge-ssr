@@ -21,7 +21,7 @@ const FeatureBlock = (props) => {
                     </span>
                     <div className="drive-content">
                         <Fade ssrFadeout  right cascade delay={450*index} duration={800}  distance="150px"><h4>{feature.title}</h4></Fade>
-                        <Fade ssrFadeout  right cascade delay={550*index} duration={800}  distance="150px"><p>{feature.description}</p></Fade>
+                        <Fade ssrFadeout  right delay={550*index} duration={800}  distance="150px"><p>{feature.description}</p></Fade>
                     </div>
                 </div>
             </Fade>
@@ -45,7 +45,7 @@ class DriveSales extends Component{
                             <div className="row">
                                 <div className="col-12">
                                     <div className="section-title text-center">
-                                        <Fade ssrFadeout  bottom delay={300} duration={1000}><h2>{title}</h2></Fade>
+                                        <Fade ssrFadeout  bottom delay={300} duration={1000}><h2>{Parser(title)}</h2></Fade>
                                     </div>
                                 </div>
                             </div>

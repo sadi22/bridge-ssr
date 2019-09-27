@@ -76,12 +76,12 @@ class RetailEcommerce extends Component{
                     <div className="row">
                         <div className={`${enable_double_line_heading ? 'col-lg-8' : 'col-12'} m-auto`}>
                             <div className="section-title text-center">
-                                <Fade ssrFadeout bottom delay={700} duration={1000}> <h2>{Parser(title)}</h2> </Fade>
+                                <Fade ssrFadeout bottom delay={700} duration={1000}> <h1>{Parser(title)}</h1> </Fade>
                                 <Fade ssrFadeout bottom delay={900} duration={1000}> <p className={`primary-color`}>{Parser(sub_title)}</p> </Fade>
                             </div>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row align-items-center">
                         <div className="col-lg-6">
                             <div className="retailer-content">
                                 <Fade ssrFadeout bottom delay={1000} duration={1000}>{Parser(left_text)}</Fade>
