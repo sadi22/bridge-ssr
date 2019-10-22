@@ -76,14 +76,14 @@ class Footer extends Component{
                         <div className="col-lg-3">
                             <div className="footer-social-contact text-center">
                                 <ul>
-                                    <li style={{marginRight: '10px'}}>
+                                    {/* <li style={{marginRight: '10px'}}>
                                         <a 
                                             href={social.facebook} 
                                             title="Facebook" 
                                             target='_balnk'
                                             
                                         ><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <a href={social.linkedin} title="Linked-in" target='_balnk'>
                                             <FontAwesomeIcon icon={["fab", "linkedin-in"]} />

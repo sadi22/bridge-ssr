@@ -30,10 +30,12 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/static/styles/vendor.min.css" />
           <link rel="stylesheet" href="/static/styles/animate.min.css" />
           <link rel="stylesheet" href="/static/styles/style.css" />
+               
+          
         </Head>
         <body>
-          
           <Main />
+          
           <NextScript />          
         </body>
       </html>

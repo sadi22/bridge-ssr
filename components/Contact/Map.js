@@ -201,7 +201,7 @@ export class MapContainer extends Component {
         <Map
             google = { this.props.google }
             zoom = { 14 }
-            initialCenter = {{ lat: lat, lng: lng }}
+            initialCenter = {{ lat: lat ? lat : '27.941930', lng: lng ? lng : '-82.466850' }}
             styles = {mapStyles}
         >
           <Marker name={'Current location'} onClick={this.onMarkerClick}/>

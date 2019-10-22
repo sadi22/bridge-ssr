@@ -27,27 +27,32 @@ class Contact extends Component{
     }
     static defaultProps = {
       center: {
-        lat: 59.95,
-        lng: 30.33
+        lat: 27.941930,
+        lng: -82.466850
       },
       zoom: 11
     };
     componentDidMount(){
-        $('.contact-single-input').on('click', function(e){
-            e.stopPropagation();
-            $(this).children('label').hide();
+        // $('.contact-single-input').on('click', function(e){
+        //     e.stopPropagation();
+        //     $(this).children('label').hide();
+        // });
+
+        $("input, textarea").focus(function() { 
+            // $(this).children('label').hide();
+            $(this).parent().find('label').hide();
         });
 
-        $('body').on('click', function(){
-            $('.contact-single-input').each(function(){
-                var eachVal = $(this).children('.inputVal').val();
-                
-                if(eachVal) $(this).children('label').hide();
-                if(!eachVal ) $(this).children('label').show();
-                
-                $(this).siblings().children('label').show();
-            });
-        });
+        // $('body').on('click', function(){
+        //     $('.contact-single-input').each(function(){
+        //         var eachVal = $(this).children('.inputVal').val();
+        //         if(eachVal) {
+        //             $(this).children('label').hide();
+        //         }else {
+        //             $(this).children('label').show();
+        //         }
+        //     });
+        // });
     }
     handleChange = evt => {
         this.setState({
@@ -56,7 +61,6 @@ class Contact extends Component{
     };
 
     handleCheckClick = (evt) => {
-        console.log(this.state);
         this.setState({ freeAudit: !this.state.freeAudit });
     }
 
@@ -77,23 +81,22 @@ class Contact extends Component{
             url: `${Config.apiUrl}/bridge/v1/forms/${formID}`,
             data: {
                 email:this.state.email,
+                fullName:this.state.fullName,
+                msg:this.state.msg,
             },
-            headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*",
-            }
+          
             },
             )
             .then((response) => {
-            toast.success("🔥 Congratulations. You will be notified", {
-                position: toast.POSITION.TOP_RIGHT
-            });
+                toast.success("🔥 Congratulations. You will be notified", {
+                    position: toast.POSITION.TOP_RIGHT
+                });
             })
             .catch((error) => {
                 console.log(error);
-            toast.error("⚠️ Upps! Something wrong !", {
-                position: toast.POSITION.TOP_RIGHT
-            });
+                toast.error("⚠️ Upps! Something wrong !", {
+                    position: toast.POSITION.TOP_RIGHT
+                });
             })
             .then(() => {
             this.setState({

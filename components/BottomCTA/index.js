@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Parser from 'html-react-parser';
-import handleViewport from 'react-in-viewport';
 import $ from "jquery";
 import Config from '../../config';
 import axios from 'axios';
@@ -22,18 +21,21 @@ class BottomCTA extends Component{
     }
     
     componentDidMount(){
-        $('.single-input').on('click', function(e){
-            e.stopPropagation();
-            $(this).children('label').hide();
+        $("input").focus(function() { 
+            // $(this).children('label').hide();
+            $(this).parent().find('label').hide();
         });
-        $('body').on('click', function(){
-            $('.single-input').each(function(){
-                var eachVal = $(this).children('input').val();
-                if(eachVal) $(this).children('label').hide();
-                if(!eachVal) $(this).children('label').show();
-                $(this).siblings().children('label').show();
-            });
-        });
+       
+        // $('body').on('click', function(){
+        //     $('.single-input').each(function(){
+        //         var eachVal = $(this).children('.inputVal').val();
+        //         if(eachVal) {
+        //             $(this).children('label').hide();
+        //         }else {
+        //             $(this).children('label').show();
+        //         }
+        //     });
+        // });
     }
     handleChange = evt => {
         this.setState({
@@ -53,12 +55,6 @@ class BottomCTA extends Component{
                 fullName:this.state.fullName,
                 email:this.state.email,
                 company:this.state.company,
-            },
-            headers: {
-                'Access-Control-Allow-Credentials' : true,
-                'Access-Control-Allow-Origin':'*',
-                'Access-Control-Allow-Methods':'POST',
-                'Access-Control-Allow-Headers':'application/json',
             }
           },
           )
@@ -68,10 +64,10 @@ class BottomCTA extends Component{
             });
           })
           .catch((error) => {
-              console.log(error);
-            toast.error("⚠️ Upps! Something wrong !", {
-                position: toast.POSITION.TOP_RIGHT
-            });
+                console.log(error);
+                toast.error("⚠️ Upps! Something wrong !", {
+                    position: toast.POSITION.TOP_RIGHT
+                });
           })
           .then(() => {
             this.setState({
@@ -107,7 +103,7 @@ class BottomCTA extends Component{
                                 <Fade ssrFadeout  bottom delay={700} duration={1000}>
                                     <div className="single-input">
                                         <label htmlFor="ctaEmail">Email<span>*</span></label>
-                                        <input type="email" name="email" id="ctaEmail" value={this.state.email} onChange={this.handleChange} required/>
+                                        <input className='inputVal' type="email" name="email" id="ctaEmail" value={this.state.email} onChange={this.handleChange} required/>
                                     </div>
                                 </Fade>
                             </div>
@@ -115,7 +111,7 @@ class BottomCTA extends Component{
                                 <Fade ssrFadeout  bottom delay={900} duration={1000}>
                                     <div className="single-input">
                                         <label htmlFor="ctafName">Full Name<span>*</span></label>
-                                        <input type="text" name="fullName" id="ctafName" value={this.state.fullName} onChange={this.handleChange} required/>
+                                        <input className='inputVal' type="text" name="fullName" id="ctafName" value={this.state.fullName} onChange={this.handleChange} required/>
                                     </div>
                                 </Fade>
                             </div>
@@ -123,7 +119,7 @@ class BottomCTA extends Component{
                                 <Fade ssrFadeout  bottom delay={1100} duration={1000}>
                                     <div className="single-input">
                                         <label htmlFor="ctaCompany">Company<span>*</span></label>
-                                        <input type="text" name="company" id="ctaCompany" value={this.state.company} onChange={this.handleChange} required/>
+                                        <input className='inputVal' type="text" name="company" id="ctaCompany" value={this.state.company} onChange={this.handleChange} required/>
                                     </div>
                                 </Fade>
                             </div>

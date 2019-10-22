@@ -9,6 +9,7 @@ import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Header/index';
 import Footer from "../components/Footer/index";
 import ACFCONTENT from '../components/AcfContent';
+import Intercom from 'react-intercom';
 
 class Page extends Component {
   static async getInitialProps(context) {
@@ -26,7 +27,7 @@ class Page extends Component {
   }
   
   render () {
-    const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link, gmap_api } = this.props;
+    const { headerMenu, page, logo, social, footer_text, footerMenu, getting_started_link, gmap_api, path } = this.props;
 //    console.log('%cMade at %cBridge', 'font-weight: bolder;', ' font-weight: bolder; color: #1FC8C9;');
     if (!page) return <Error statusCode={404} />;
     let seo_title = page.title.rendered;
@@ -36,6 +37,11 @@ class Page extends Component {
       seo_title = page.yoast_meta_rest.yoast_wpseo_title;
       seo_description = page.yoast_meta_rest.yoast_wpseo_metadesc;
       seo_canonical = page.yoast_meta_rest.yoast_wpseo_canonical;
+    }
+    let pages = ['retailer', 'supplier', 'wholesaler'];
+    let slug = 'none';
+    if(path.slug) {
+      slug = path.slug;
     }
     return (
       <Fragment>
@@ -59,6 +65,7 @@ class Page extends Component {
             <ACFCONTENT {...page} gmap_api={gmap_api}/>
             <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
         </Layout>
+        <Intercom appID="mya235re"/>
       </Fragment>
     )
   }

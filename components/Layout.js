@@ -1,10 +1,12 @@
 import React, {Fragment} from 'react';
+import { ToastContainer } from 'react-toastify';
 
 const Layout = props => {
   const { children } = props;
   return (
     <>
         <main>{children}</main>
+        <ToastContainer/>
         <style jsx global>{`
           html,
           body {

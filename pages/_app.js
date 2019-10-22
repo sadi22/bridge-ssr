@@ -53,7 +53,7 @@ export default class MyApp extends App {
               exit={{ opacity: 0 }}
               id="page-transition-container"
             >
-              <Component {...pageProps} key={router.asPath} />
+              <Component {...pageProps} key={router.asPath} path={router.query}/>
             </motion.div>
           </div>
         </AnimatePresence>
