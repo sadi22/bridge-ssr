@@ -45,9 +45,7 @@ class Menu extends Component {
             menuItems = menu.items.map((item, index) => {
                 if (item.object === 'custom') {
                     return (
-                        <Link activeClassName='active' href={item.url} key={item.ID}>
-                            <a style={linkStyle}>{item.title}</a>
-                        </Link>
+                        <a href={item.url} target={item.target ? item.target : '_self'} style={linkStyle} key={item.ID}>{item.title}</a>
                     );
                 }
                 const slug = getSlug(item.url);

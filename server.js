@@ -9,7 +9,8 @@ const axios = require('axios');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-var port = process.env.PORT || 8080;
+const PORT = 3000;
+
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 
@@ -73,43 +74,38 @@ app
     server.get('/post/:slug', (req, res) => {
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug, apiRoute: 'post' };
-      app.render(req, res, actualPage, queryParams);
-      // renderAndCache(req, res, actualPage, queryParams);
+      // app.render(req, res, actualPage, queryParams);
+      renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/blog/:pageno', (req, res) => {
       const actualPage = '/blog';
       const queryParams = { pageno: req.params.pageno, apiRoute: 'blog' };
-      app.render(req, res, actualPage, queryParams);
-      // renderAndCache(req, res, actualPage, queryParams);
+      // app.render(req, res, actualPage, queryParams);
+      renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/:slug', (req, res) => {
       const actualPage = '/page';
       const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-      // renderAndCache(req, res, actualPage, queryParams);
+      // app.render(req, res, actualPage, queryParams);
+      renderAndCache(req, res, actualPage, queryParams);
     });
 
-    server.get('/test', (req, res) => {
-      const actualPage = '/test';
-      const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-      // renderAndCache(req, res, actualPage, queryParams);
-    });
+   
 
     server.get('/category/:slug', (req, res) => {
       const actualPage = '/category';
       const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-      // renderAndCache(req, res, actualPage, queryParams);
+      // app.render(req, res, actualPage, queryParams);
+      renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/_preview/:id/:wpnonce', (req, res) => {
       const actualPage = '/preview';
       const queryParams = { id: req.params.id, wpnonce: req.params.wpnonce };
-      app.render(req, res, actualPage, queryParams);
-      // renderAndCache(req, res, actualPage, queryParams);
+      // app.render(req, res, actualPage, queryParams);
+      renderAndCache(req, res, actualPage, queryParams);
     });
 
 
@@ -117,9 +113,9 @@ app
       return handle(req, res);
     });
 
-    server.listen(3000, err => {
+    server.listen(PORT, err => {
       if (err) throw err;
-      console.log(`> Ready on http://localhost:${port}`);
+      console.log(`> Ready on http://localhost:${PORT}`);
     });
   })
   .catch(ex => {

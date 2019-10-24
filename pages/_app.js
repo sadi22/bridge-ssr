@@ -4,7 +4,13 @@ import NProgress from 'nprogress'
 import Router from 'next/router'
 import Head from 'next/head';
 import { motion, AnimatePresence } from "framer-motion";
+import { IntercomAPI } from 'react-intercom';
+import dynamic from 'next/dynamic'
 
+
+const IntercomWrapper = dynamic(import('../components/IntercomWrapper'), {
+  ssr: false
+})
 
 Router.events.on('routeChangeStart', url => {
     let pages = ['/', '/retailer', '/supplier', '/wholesaler'];
@@ -28,6 +34,9 @@ export default class MyApp extends App {
     return { pageProps }
   }
 
+  componentDidUpdate() {
+    IntercomAPI('boot');
+  }
 
   render () {
     const { Component, pageProps, router } = this.props;
@@ -55,6 +64,7 @@ export default class MyApp extends App {
             >
               <Component {...pageProps} key={router.asPath} path={router.query}/>
             </motion.div>
+            <IntercomWrapper/>
           </div>
         </AnimatePresence>
         

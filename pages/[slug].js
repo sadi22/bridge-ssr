@@ -9,7 +9,6 @@ import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Header/index';
 import Footer from "../components/Footer/index";
 import ACFCONTENT from '../components/AcfContent';
-import Intercom from 'react-intercom';
 
 class Page extends Component {
   static async getInitialProps(context) {
@@ -65,7 +64,6 @@ class Page extends Component {
             <ACFCONTENT {...page} gmap_api={gmap_api}/>
             <Footer menu={footerMenu} logo={logo} social={social} footer_text={footer_text}/>
         </Layout>
-        <Intercom appID="mya235re"/>
       </Fragment>
     )
   }
