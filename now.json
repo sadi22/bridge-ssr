@@ -2,7 +2,10 @@
   "version": 2,
   "name": "bridge-ssr",
   "builds": [
-    { "src": "package.json", "use": "@now/static-build" }
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    }
   ],
   "routes": [
     {
@@ -12,6 +15,21 @@
     {
       "src": "/(.*)",
       "dest": "/$1"
+    },
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "^/favicon.ico$",
+      "dest": "/static/icons/favicon.ico",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable"
+      }
     }
   ]
 }
